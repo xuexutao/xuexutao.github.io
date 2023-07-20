@@ -5,7 +5,19 @@
     <title>yaorongke</title>
 </head>
 <body>
-    <h1>yaorongke的个人主页</h1>
-    <h1>Hello ~</h1>
+    <h1>主页</h1>
+    <h3>Hello ~</h3>
+    加法：<input type="text" id="text1">+<input type="text" id="text2"> <button id="clicks">=</button>
+    <input id="answer"></input>
+
+
+    <script>
+        document.getElementById("clicks").click(function(){
+            var div = document.getElementById("answer");
+            var text1 = document.getElementById("text1");
+            var text2 = document.getElementById("text2");
+            div.value = a+b;
+        })
+    </script>
 </body>
 </html>
