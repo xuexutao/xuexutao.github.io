@@ -7,18 +7,23 @@
 <body>
     <h1>主页</h1>
     <h3>Hello ~</h3>
-    加法：<input type="text" id="text1">+<input type="text" id="text2"> <button id="clicks">=</button>
+    加法：<input type="text" id="text1">+<input type="text" id="text2"> <button id="clicks()">=</button>
     <input  type="text" id="answer"></input>
 
 
     <script>
-        document.getElementById("clicks").click(function(){
-            var div = document.getElementById("answer");
-            var text1 = document.getElementById("text1");
-            var text2 = document.getElementById("text2");
-            div.value = text1+text2;
-            console.log(text1+text2);
-        })
+        window.onload = function(){
+
+            function clicks(){
+                var answer = document.getElementById("answer");
+                var text1 = document.getElementById("text1");
+                var text2 = document.getElementById("text2");
+                answer.value = text1+text2;
+                console.log(text1 + text2);
+            }
+            
+        }
+        
     </script>
 </body>
 </html>
