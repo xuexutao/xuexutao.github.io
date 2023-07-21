@@ -195,7 +195,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-07-21 16:21:39 / 修改时间：16:22:56" itemprop="dateCreated datePublished" datetime="2023-07-21T16:21:39+08:00">2023-07-21</time>
+              <time title="创建时间：2023-07-21 16:21:39 / 修改时间：16:28:56" itemprop="dateCreated datePublished" datetime="2023-07-21T16:21:39+08:00">2023-07-21</time>
             </span>
 
           
@@ -210,6 +210,14 @@
 
       
           <h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/21/java/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -253,7 +261,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-07-21 15:55:41 / 修改时间：16:23:09" itemprop="dateCreated datePublished" datetime="2023-07-21T15:55:41+08:00">2023-07-21</time>
+              <time title="创建时间：2023-07-21 15:55:41 / 修改时间：16:28:10" itemprop="dateCreated datePublished" datetime="2023-07-21T15:55:41+08:00">2023-07-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
             </span>
 
           
@@ -267,163 +284,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="计算机网络知识点总结"><a href="#计算机网络知识点总结" class="headerlink" title="计算机网络知识点总结"></a>计算机网络知识点总结</h1><h2 id="1-什么是网络协议？"><a href="#1-什么是网络协议？" class="headerlink" title="1. 什么是网络协议？"></a>1. 什么是网络协议？</h2><p>计算机网络中数据交换遵循事先约定好的规则，这个规则称为协议。<br>协议的三要素：语义，语法，时序（交换规则）。</p>
-<h2 id="2-数据交换的分类？"><a href="#2-数据交换的分类？" class="headerlink" title="2. 数据交换的分类？"></a>2. 数据交换的分类？</h2><p>数据交换主要分为：电路交换，报文交换，分组交换</p>
-<ul>
-<li><p>电路交换特点：<br>数据传输之前需要建立连接<br>预留通信所需要的资源<br>利用频分多路复用(FDM)与时分多路复用(TDM)进行链路共享<br>数据按序传输到达<br>优点是可以为一个通话保证一定数量的带宽，当预留的带宽都被使用时，利用率高且稳定<br>缺点是当预留的资源没有被使用时，资源利用率较低</p>
-</li>
-<li><p>报文交换：将源发送的信息作为一个整体进行传输</p>
-</li>
-<li><p>分组交换的特点：<br>将报文拆分成一系列的数据包进行传输<br>不需要预留资源，不需要提前建立连接，只要链路空闲即可传输<br>采用存储转发进行数据传输，延迟不可估计<br>数据不一定按需到达<br>优点是利用率高<br>缺点是可能产生延迟，丢包等，需要控制协议进行可靠数据传输</p>
-</li>
-</ul>
-<h2 id="3-分组交换的时延？"><a href="#3-分组交换的时延？" class="headerlink" title="3. 分组交换的时延？"></a>3. 分组交换的时延？</h2><ul>
-<li>节点处理时延：检查分组头部，路由选择，差错检验等处理时间</li>
-<li>排队时延：分组交换采用存储转发的模式，当分组到达节点时，在它之前有其他分组正在传输，那它得先缓存排队等待</li>
-<li>传输时延：将分组的所有比特推向链路花费的时间，L为分组长度，R为传输速率，则传输时延为L&#x2F;R</li>
-<li>传播时延：分组被推向链路之后，在链路上传播的时间，传播速度约等于光速</li>
-</ul>
-<h2 id="4-丢包的原因？"><a href="#4-丢包的原因？" class="headerlink" title="4. 丢包的原因？"></a>4. 丢包的原因？</h2><p>丢包是指分组到达某一节点，但是节点的排队缓存队列已经满了，无法存储这个分组，所以将他丢弃。</p>
-<p>产生丢包的原因不止这一个，还有比如：<br>如果传输过来的节点发生错误，将它丢弃<br>如果节点在网络中的传输时间超过了它的寿命(TTL)，将它丢弃</p>
-<h2 id="5-协议的层次与模型？"><a href="#5-协议的层次与模型？" class="headerlink" title="5. 协议的层次与模型？"></a>5. 协议的层次与模型？</h2><ul>
-<li><p>OSI七层模型<br><strong>应用层</strong>：允许访问OSI环境的手段。HTTP, FTP, DNS, SMTP, Telnet<br><strong>表示层</strong>：对数据进行翻译，加密和压缩。JPEG, MPEG, ASII<br><strong>会话层</strong>：建立，管理和终止回话。NFS, SQL, RPC<br><strong>传输层</strong>：提供不同端系统的进程间通信。TCP, UDP, SPX<br><strong>网络层</strong>：提供主机之间的通信。IP, ICMP, ARP, RAPR, RIP, OSPF, BGP-4 (路由器)<br><strong>数据链路层</strong>：提供网络中点到点之间数据帧的传递。PPP, FR, HDLC, VLAN, MAC (网桥，交换机)<br><strong>物理层</strong>：提供在物理介质上每一比特的传输。RJ45, CLOCK, IEEE802.3 (中继器，集线器，网关)</p>
-</li>
-<li><p>Internet五层模型<br><strong>应用层</strong>：将应用程序的报文交给传输层<br><strong>传输层</strong>：将接收的报文分段，封装TCP&#x2F;UDP头部信息，将报文段传递给网络层<br><strong>网络层</strong>：将接收的报文段封装IP头部信息，将数据报交给数据链路层<br><strong>数据链路层</strong>：将接收网络层的数据报，封装数据帧头部信息，将数据帧从一个节点通过链路传到另一个节点<br><strong>物理层</strong>：数据链路层负责将一个个数据帧从一点传递到另一点，物理层负责一个个比特从一点传递到另一点</p>
-</li>
-</ul>
-<h2 id="6-网络应用程序体系结构"><a href="#6-网络应用程序体系结构" class="headerlink" title="6. 网络应用程序体系结构"></a>6. 网络应用程序体系结构</h2><ul>
-<li><p>客户端&#x2F;服务器体系结构（client-server architecture）比如Web，DNS等<br><strong>客户端</strong>：<br>与服务器通信，使用服务器提供的网络<br>间歇性的接入网络<br>可能使用动态IP地址<br>不会与其他客户端直接通信<br>一般主动发起通信的为客户端<br><strong>服务器</strong><br>7*24小时提供无间歇服务<br>永久访问的地址，域名<br>利用大量服务器实现可扩展性<br>一般被动接收通信的为服务器</p>
-</li>
-<li><p>P2P体系结构（peer-to-peer architecture）比如因特网电话Skype<br>没有永远在线的服务器<br>任意端系统与节点之间可以任意通信<br>节点间歇性接入网络，可动态改变IP地址<br>高度可伸缩性</p>
-</li>
-<li><p>混合结构（Hybrid architecture）比如Mp3文件下载软件Napster<br>文件传输使用P2P结构<br>文件搜索使用C&#x2F;S结构，集中式搜索<br>每个节点向中间服务器等级自己的内容，服务器建立目录索引<br>每个节点向中间服务器查询自己感兴趣的内容</p>
-</li>
-</ul>
-<h2 id="7-概述Web与HTTP协议？"><a href="#7-概述Web与HTTP协议？" class="headerlink" title="7. 概述Web与HTTP协议？"></a>7. 概述Web与HTTP协议？</h2><p>HTTP又名超文本传输协议（HyperText Transfer Protocol）<br>采用C&#x2F;S客户端服务器体系结构<br>采用TCP传输层服务<br>HTTP是无状态协议，不保存维护与客户相关的任何信息<br>HTTP分为非持续连接（一次连接只能传递一个对象）和持续连接（一次能够传递多个对象）</p>
-<p><strong>HTTP响应报文常见状态码</strong></p>
-<ul>
-<li>200　OK：请求成功，信息在返回的响应报文中</li>
-<li>301　Moved Permanently：自动重定向，请求对象已被永久转移，返回新URL，客户软件自动获取新URL</li>
-<li>400　Bad Request：差错请求报文</li>
-<li>404　Not Found：被请求的文档不在服务器上</li>
-<li>505　HTTP Version Not Supported：HTTP协议版本不支持</li>
-</ul>
-<p><strong>用户与服务器的交互</strong><br>由于HTTP是无状态的，这简化了服务器的设计，但是很多场合需要保存一些用户的状态<br>可以运用cookie和session</p>
-<p><strong>Web缓存代理服务器</strong><br>Web缓存代理服务器会缓存最近常访问的对象副本<br>用户发起HTTP请求时，先请求代理服务器，若有，则在与服务器确认对象是最新的之后，直接返回带有对象的HTTP响应报文给用户<br>使用Web缓存服务器的原因：</p>
-<ol>
-<li>可减少客户的响应时间</li>
-<li>可减少一个机构的介入链路到因特网的通信量</li>
-</ol>
-<h2 id="8-概述FTP协议？"><a href="#8-概述FTP协议？" class="headerlink" title="8. 概述FTP协议？"></a>8. 概述FTP协议？</h2><p>与HTTP一样，FTP也是文件传输协议<br>与HTTP不同的是，FTP采用两个并行的TCP连接来传输文件<br>一个是控制连接，贯穿整个会话期间<br>一个是数据连接，每一次传输数据都需要建立一个新的数据连接，传输完成后关闭</p>
-<h2 id="9-概述SMTP协议？"><a href="#9-概述SMTP协议？" class="headerlink" title="9. 概述SMTP协议？"></a>9. 概述SMTP协议？</h2><p>SMTP是电子邮件协议<br>SMTP由于历史问题，限制所有邮件报文体形式只能采用简单的７比特的ASCII码<br>SMTP一般不使用中间邮件服务器，即两个邮件服务器之间之间相连<br><strong>A发送邮件到B</strong><br>A的代理使用SMTP协议将邮件发到A的邮件服务器，A的邮件服务器使用SMTP协议将邮件发送到B的邮件服务器，最后B代理通过POP3, IMAP, HTTP等邮件访问协议将邮件从B的邮件服务器“拉”回来。<br>注意，前两步的SMTP协议是“推”协议，第三部的邮件访问协议是“拉”协议</p>
-<p><strong>SMTP与HTTP的对比</strong><br>相同点：<br>都是文件传输，都是使用TCP传输服务<br>不同点：<br>SMTP是“推”协议，HTTP是“拉”协议<br>SMTP只能使用７比特的ASCII码，HTTP没有这种限制<br>如何处理既包含文本又包含图形的文档，HTTP把每个对象封装到HTTP响应报文中，SMTP则把所有报文对象放在一个报文中</p>
-<h2 id="10-概述DNS协议？"><a href="#10-概述DNS协议？" class="headerlink" title="10. 概述DNS协议？"></a>10. 概述DNS协议？</h2><p><strong>DNS</strong>又称为域名系统<br>主要服务是提供域名到IP地址的转换<br>DNS使用UDP传输层协议，端口号53<br>DNS一般不直接为用户使用，一般为应用程序提供支持<br>DNS域名系统使用层次式的，分布式的服务器层次结构<br>主要有：<br><strong>根DNS服务器</strong>：分布在全球各地，数量较少<br><strong>顶级DNS服务器</strong>：比如com, net等顶级域名或cn, hk等国家域名<br><strong>权威DNS服务器</strong>：每个在互联网具有公共可访问主机的机构都必须提供公共可访问DNS记录，DNS将这些主机映射为IP地址，比如google, baidu等<br><strong>本地DNS服务器</strong>：本地DNS可缓存常用或最近查询过的域名信息</p>
-<h2 id="11-常用应用程序协议服务与端口号？"><a href="#11-常用应用程序协议服务与端口号？" class="headerlink" title="11. 常用应用程序协议服务与端口号？"></a>11. 常用应用程序协议服务与端口号？</h2><p>FTP &#x2F; TCP  — 21<br>SSH &#x2F; TCP — 22<br>TELNET &#x2F; TCP — 23<br>SMTP &#x2F; TCP — 25<br>DNS &#x2F; UDP — 53<br>HTTP &#x2F; TCP — 80<br>POP3 &#x2F; TCP — 109<br>HTTPS &#x2F; TCP — 443</p>
-<h2 id="12-概述传输层的服务？"><a href="#12-概述传输层的服务？" class="headerlink" title="12. 概述传输层的服务？"></a>12. 概述传输层的服务？</h2><p>传输层协议为不同主机上的应用进程提供通信服务，传输层协议只在主机上实现，不在路由器上存在。<br>传输层负责接收应用程序的数据，封装上传输层头部信息，然后传递给网络层<br>传输层服务主要有两类：UDP与TCP</p>
-<h2 id="13-传输层的多路复用与多路分解？"><a href="#13-传输层的多路复用与多路分解？" class="headerlink" title="13. 传输层的多路复用与多路分解？"></a>13. 传输层的多路复用与多路分解？</h2><p>传输层的多路复用是指：多个应用程序将要传递的信息交给传输层，传输层封装信息然后统一交给网络层<br>传输层的多路分解是指：传输层统一接收来自网络层的数据，提取出各个端口（应用进程）的数据，分发给各个应用进程</p>
-<h2 id="14-概述UDP协议？"><a href="#14-概述UDP协议？" class="headerlink" title="14. 概述UDP协议？"></a>14. 概述UDP协议？</h2><p>UDP协议是一种简单的，无连接的，不可靠的传输层协议</p>
-<p>UDP的缺点是不能提供可靠的数据传输</p>
-<p>UDP的优点是：<br>应用层能更好的控制要发送的数据和发送时间<br>无需建立连接，无需维护连接状态<br>分组开销小</p>
-<p>应用：<br>常用于速率敏感，能够容忍丢包的实时性应用进程</p>
-<p>比如：<br>DNS，即时通信等</p>
-<p><strong>UDP头部</strong>：<br><strong>源端口号</strong>：发送方进程的端口号，客户端进程一般由操作系统随机选择，服务器进程端口号一般为固定<br><strong>目的端口号</strong>：接收方进程的端口号<br><strong>长度</strong>：UDP头部加上数据的总长度<br><strong>校验和</strong>：UDP头部加上数据部分总的检验和</p>
-<h2 id="15-传输层的可靠数据传输原理？"><a href="#15-传输层的可靠数据传输原理？" class="headerlink" title="15. 传输层的可靠数据传输原理？"></a>15. 传输层的可靠数据传输原理？</h2><p><strong>确认–重传机制</strong>：对正确接收的报分组发送ACK确认报文，如未正确接收，则重传。目的是为了处理不可靠信道传输可能出错的可能性<br><strong>停–等机制</strong>：只有确认接收方正确接收了一个分组时，发送方才会发送下一个分组<br><strong>序号机制</strong>：为发送的分组编号。目的是为了处理在停-等协议中可能出现的接收方的ACK丢失，接收方以为下一个分组是新的，而发送方没有收到ACK，重传上一个分组，序号机制的出现是为了处理这种重复分组的问题<br><strong>定时器机制</strong>：为发送的分组设置定时器，若发送方在规定时间内没有收到ACK，则重传分组。目的是为了处理在不可靠信道传输过程中可能出现的丢包现象</p>
-<p><strong>流水线机制</strong>：允许发送方一次性发送多个分组，打破停等协议，提高传输效率。<br><strong>【0……..[base………nextsequence……..N]…………】</strong><br>**[0, base]**：已发送且已被接收的分组<br>**[base, nextquence]**：已发送但是未被接收的分组<br>**[nextquence, N]**：未发送但是可以发送的分组<br>**[N, …]**：未发送且暂时不可发送的分组<br>**[base, N]**：为滑动窗口的大小</p>
-<p><strong>GBN协议</strong>：GBN采用累计确认的方式，即接收方只接收按序到达的最大序号的分组，并确认，对于未按序到达的分组，接收方直接丢弃，并重新确认按需到达的最大序号的分组。若发生超时时间，重传引发超时事件的分组及后面的所有分组</p>
-<p><strong>SR协议</strong>：SR采用选择重传的机制，为了解决GBN协议重传了很多不必要的分组。SR协议要求接收方要有接收缓存，能够缓存没有按序到达的正确的分组，并确认。发送方只重传为被正确接收的那个分组。很重要的一点是，选择SR协议必须保证窗口大小必须小于序号的一半，否则可能会出现接收方与发送方窗口不一致的情况</p>
-<h2 id="16-概述TCP协议？"><a href="#16-概述TCP协议？" class="headerlink" title="16. 概述TCP协议？"></a>16. 概述TCP协议？</h2><p>TCP协议是一种点对点的，面向连接的，全双工的服务的，面向字节流的，可靠的，具有拥塞控制的传输层协议<br><strong>点对点</strong>：TCP连接只能是一对一建立的<br><strong>面向连接</strong>：TCP协议在传输数据之前需要建立连接<br><strong>全双工服务</strong>：TCP连接建立之后，连接双方都可以同时向对方发送数据<br><strong>面向字节流的</strong>：TCP把数据看成无结构的，有序的字节流，TCP的序号是建立在字节流上而不是建立在报文段上<br><strong>可靠的</strong>：TCP采用<strong>确认重传机制，序号机制，定时器机制，快速重传，滑动窗口机制，流量控制</strong>等来保证数据传输的可靠性<br><strong>拥塞控制</strong>：TCP采用<strong>慢启动，拥塞避免，快速恢复</strong>的机制来进行拥塞控制，共避免网络空间陷入拥塞</p>
-<ul>
-<li><p><strong>TCP报文头部</strong><br><strong>源端口号</strong>：发送方进程端口号<br><strong>目的端口号</strong>：接收方进程端口号<br><strong>序号</strong>：32比特，建立在字节流上的序号机制<br><strong>确认号</strong>：32比特，确认号表示期望收到的下一字节的序号，与序号共同保证TCP的可靠传输<br><strong>首部长度</strong>：TCP首部长度，因为选项字段的存在，一般无选项头部长为20字节<br><strong>URG</strong>：表示报文段中存在被发送方指示为紧急的数据。紧急数据由紧急数据指针指出<br><strong>ACK</strong>：确认标志位，表示首部的确认号有效<br><strong>PSH</strong>：表示接收方应立即将接收的数据交付给上层。因为TCP接收方可能存在接收缓存，接收方可能在忙其他事情，可能等接收缓存满的时候，才会将数据交付给上层，PSH标志位表示接收方应立即将数据交付上层<br><strong>RST</strong>：表示复位，用来异常的关闭连接，引发RST的原因主要有：提前关闭，请求超时，端口未打开，在一个已关闭的SOCKET接收到数据<br><strong>SYN</strong>：建立TCP连接时的标志位<br><strong>FIN</strong>：关闭TCP连接时的标志位<br><strong>接收窗口</strong>：表示接收方还有多少缓存供接收，用于控制发送方的发送速率，以免溢出。用于流量控制<br><strong>检验和</strong>：首部+数据全部的检验和<br><strong>紧急数据指针</strong>：与URG标志位共同使用，指出数据中的紧急数据字段</p>
-</li>
-<li><p><strong>TCP的可靠数据传输</strong><br>TCP的可靠数据传输服务保证应用进程从接收缓存中读取的数据是不错，不乱，不丢的数据<br><strong>确认</strong>：只发送ACK确认被正确接收的分组，不发NAK，确认号是期望收到的下一字节<br><strong>序号</strong>：序号基于无结构，有序的字节流。序号表示该报文段的首字节的字节流编号<br><strong>定时器</strong>：TCP设置单一定时器<br><strong>累计确认</strong>：TCP采用累计确认，即接收方发送确认号为x的ACK，表示x之前的报文段都已被正确的接收；但是采用全部重传还是选择重传，TCP没有明确规定<br><strong>超时重传</strong>：如果报文段的传输时间超时，则重传<br><strong>快熟重传</strong>：当发送方收到三个重复ACK（即共4个ACK），则快速重传该报文段</p>
-</li>
-<li><p><strong>TCP流量控制</strong><br>因为接收方设置有限的接收缓存，如果发送方发送速率过大的话，接收方缓存可能溢出，导致不必要的分组丢失<br>所以流量控制是为了限制发送方的发送速率，来保证接收方可以来得及接收到来的报文段<br>接收方在头部的<strong>接收窗口</strong>告诉发送方，接收缓存还剩多少，即还能接收多少数据，发送方保证发送的数据量不超过这个量<br>若接收方告知<strong>接收窗口为0了，为避免阻塞</strong>，发送方仍发送数据量为1的报文段，接收方接收并回复ACK，并同时告知此时的接收窗口大小<br>发送方的发送速率由流量控制的接收窗口大小与拥塞控制的拥塞窗口大小共同控制</p>
-</li>
-<li><p><strong>TCP的拥塞控制</strong><br>发送方控制自己的发送速率，避免公共网络陷入拥塞，所有TCP发送方共同维护公共网络<br><strong>拥塞控制与流量控制的区别</strong>：流量控制是考虑端到端之间的问题，是避免发送方发送速率过快导致接收方来不及接收，考虑的是私人利益；拥塞控制考虑的是公共网络，避免发送方发送速率过快而导致网络陷入拥塞，考虑的是公共网络的问题<br>TCP在发送方维护一个CWND的拥塞窗口变量，与接收窗口RWND共同控制发送速率（滑动窗口的大小）<br>TCP<strong>根据丢包事件来感知网络的拥塞状态</strong>，如果发生<strong>超时丢包</strong>事件，则说明网络已经比较拥塞了，数据已经传输不到接收方；如果<strong>重复ACK丢包</strong>事件，则表示网络可能即将陷入拥塞，但是没有那么严重，因为数据还能传输到接收方<br><strong>拥塞控制方法</strong><br><strong>慢启动</strong>：TCP启动速度很慢，一般从MSS从1开始，但是希望快速找到可用带宽的数量，发送速率指数增长，知道遇到丢包时间，则设置一个阀值等于丢包时的速率的一般，即ssthresh &#x3D; CWND&#x2F;2<br><strong>拥塞避免</strong>：如果是超时事件引起的丢包，则进入拥塞避免状态，拥塞避免状态将阀值设为拥塞窗口值的一半之后，将速率设为MSS &#x3D; 1，然后开始指数增长，直到达到阀值ssthresh，此时可能即将进入拥塞状态了，所以之后再线性增长，直到遇到丢包事件<br><strong>快速恢复</strong>：如果是3个重复ACK引起的丢包事件，此时TCP执行快速重传，并进入快速恢复状态，将阀值设为拥塞窗口值的一般，即ssthresh &#x3D; CWND&#x2F;2，然后将发送速率降为阀值ssthresh，之后线性增长，直到遇到丢包事件</p>
-</li>
-</ul>
-<h2 id="17-TCP连接建立的三次握手？"><a href="#17-TCP连接建立的三次握手？" class="headerlink" title="17. TCP连接建立的三次握手？"></a>17. TCP连接建立的三次握手？</h2><p>TCP在数据传输之前需要建立连接，建立连接的过程一般被称为三次握手<br>假定主动发起连接的是客户机，被动接收请求的是服务器</p>
-<p><strong>第一次握手</strong>：客户机发送SYN请求报文，进入SYN_SENT状态<br><strong>第二次握手</strong>：服务器接收SYN请求报文，并发送SYNACK确认报文，从LISTEN状态进入SYN_RCVD状态；在第二次握手期间，服务器为此次连接分配缓存和变量资源<br><strong>第三次握手</strong>：客户机接收SYNACK报文，回复ACK报文，进入ESTABLISHED状态，并可携带数据，服务器接收ACK报文后也进入ESTABLISHED；客户机在第三次握手期间为此次连接分配缓存和变量资源</p>
-<p><strong>为什么是三次握手</strong><br>因为三次握手是在不可靠信道上建立可靠的数据传输，理论上需要最少的次数</p>
-<p><strong>为什么不是两次</strong><br>是为了处理<strong>网络中可能存在的延迟到达的连接请求问题</strong><br>考虑这样一种情况：如果客户机发送一个连接请求，但是在网络中某个节点长时间延迟了；此时客户机重新请求连接并数据传输完毕；此时之前的请求连接才到达服务器，服务器分配资源，并回复SYNACK，而客户机认为自己这是什么鬼，我没有请求连接啊，所以将其丢弃，而服务器以为连接已经建立，就一直等待数据。。。分配的资源也无法收回。如果是三次握手的话，在等待一段时间没有收到ACK，就可以回收资源了。</p>
-<p><strong>为什么不是四次握手</strong><br>如果是四次握手的话，即服务器的ACK和SYN分开发送，但是这两个本可以在服务器分配资源后一起发送的<br>为了效率考虑，三次握手已经可以建立可靠的数据传输连接了，没必要四次</p>
-<h2 id="18-TCP连接拆除的四次挥手？"><a href="#18-TCP连接拆除的四次挥手？" class="headerlink" title="18. TCP连接拆除的四次挥手？"></a>18. TCP连接拆除的四次挥手？</h2><p>当数据传输完毕，需要拆除TCP连接，拆除的过程称为四次挥手</p>
-<p><strong>第一次挥手</strong>：客户机发起FIN请求，进入FIN_WAIT1状态，表示我没有数据要发送了，但是还可以接收<br><strong>第二次挥手</strong>：服务器接收FIN请求，并立即发送ACK报文，进入CLOSE_WAIT状态，客户机接收ACK后进入FIN_WAIT2状态，表示我知道了，我去看看我还有没有数据要发，如果有，我得先发完<br><strong>第三次握手</strong>：服务器在处理完缓存之后，发送FIN报文，进入LAST_ACK状态，表示我也没有数据要发送了<br><strong>第四次握手</strong>：客户机接收FIN请求后，发送ACK，进入TIME_WAIT状态，等待2MSL，如果没有收到服务器重复的FIN报文，则关闭。服务器收到ACK后就进入CLOSED状态了。</p>
-<p><strong>为什么要TIME_WAIT状态，为什么是2MSL</strong><br><strong>为了确保TCP全双工连接被正确的关闭</strong>：如果最后一个ACK丢失了，那么服务器将会重发FIN，这时如果客户机已经关闭连接了，就只能回复RST报文，服务器连接异常关闭。所以此时客户机应该等待一个TIME_WAIT时间，为接收可能来到的重复的FIN报文，确保连接正确关闭<br><strong>为了耗尽网络中剩余的延迟分组</strong>：TIME_WAIT等待2MSL，因为一个分组在网络中存活的最大时长为MSL，等待2MSL可以保证耗尽剩余的延迟分组；由于系统不允许同一时刻建立两个一模一样的TCP连接，如果没有TIME_WAIT时间，那么可能存在这种情况，在TCP连接关闭之后，应用进程重新请求，立刻建立了一个相似的TCP连接，而可能还存活与网络中的上一次的延迟分组将可能影响这个新连接的数据可靠传输。而等待2MSL的TIME_WAIT时间，可以保证延迟分组被耗尽，也可以使得系统不能立即建立一个相似的TCP连接，确保不会出现上述情况。</p>
-<p><strong>为什么是四次挥手？不是三次？</strong><br>建立连接时是三次握手，是因为ACK和SYN合并了。在第二次握手时，服务器收到SYN请求，立即分配资源，然后回复ACK与SYN，这两个显然可以合并，为了效率</p>
-<p>但是在拆除连接时，第二次的挥手与第三次的挥手就不能合并。因为服务器在收到FIN请求之后，需要立刻回复ACK，不然客户机会以为超时，但是不能立刻回复FIN，因为服务器可能还有数据要发送，在处理完缓存之后，服务器才发送FIN请求，所以ACK与FIN之间，服务器需要处理缓存，故这两个不能同时发送。所以必须要四次挥手</p>
-<h2 id="19-TCP连接状态图？"><a href="#19-TCP连接状态图？" class="headerlink" title="19. TCP连接状态图？"></a>19. TCP连接状态图？</h2><p><strong>客户端的状图迁移图</strong><br><strong>CLOSED</strong> – 发送SYN请求报文–&gt; <strong>SYN_SENT</strong> – 接收SYNACK&amp;发送ACK –&gt; <strong>ESTABLISHED</strong> – 发送FIN请求报文 –&gt; <strong>FIN_WAIT1</strong> – 接收ACK –&gt; <strong>FIN_WAIT2</strong> – 接收FIN报文&amp;发送ACK –&gt; <strong>TIME_WAIT</strong> – 等待2MSL –&gt; <strong>CLOSED</strong></p>
-<p><strong>服务器的状态迁移图</strong><br><strong>CLOSED</strong> – 创建套接字，监听 –&gt; <strong>LISTEN</strong> – 接收SYN请求&amp;回复SYNACK –&gt; <strong>SYN_RCVD</strong> – 收到ACK –&gt; <strong>ESTABLISHED</strong> – 接收FIN&amp;发送ACK –&gt; <strong>CLOSE_WAIT</strong> – 发送FIN –&gt; <strong>LAST_ACK</strong> – 接收ACK –&gt; <strong>CLOSED</strong></p>
-<h2 id="20-概述网络层的服务？"><a href="#20-概述网络层的服务？" class="headerlink" title="20. 概述网络层的服务？"></a>20. 概述网络层的服务？</h2><p>网络层提供主机到主机之间的通信，接收来自传输层的报文，封装上网络层头部信息，交给数据链路层进行传输<br>网络层提供的基本服务主要有：<br><strong>转发</strong>：将到来的分组从合适的接口转发出去，属于路由器的本地动作<br><strong>路由选择</strong>：为从源到目的地的分组选择合适的路径，属于整个网络层的功能</p>
-<p>网络层主要提供两种模式：虚电路网络（ATM）与数据报网络（Internet）</p>
-<h2 id="21-概述IP协议？"><a href="#21-概述IP协议？" class="headerlink" title="21. 概述IP协议？"></a>21. 概述IP协议？</h2><p>IP协议是Internet网络层所使用的协议栈，它提供了Internet中主机与主机之间的通信<br>IP协议提供不可靠信道传输，尽力而为的服务</p>
-<ul>
-<li><p><strong>IP头部信息</strong><br><strong>IP版本号</strong>：现阶段版本为IPv4，IP地址为32比特，新版本为IPv6，IP地址为128比特<br><strong>首部长度</strong>：IP头部字段的长度<br><strong>服务类型</strong>：区别需要不同服务类型的IP分组，比如最低时延，最高可靠性，最高吞吐量，最小费用等<br><strong>数据报长度</strong>：数据报长度为IP分组的总长度，即IP头部长度加上数据部分（报文长度）<br><strong>标识，标志，片偏移</strong>：当分组超过链路层最大容量（MTU）时，就需要分片才能把分组传输过去。标识字段用于标识同一个IP分组（即使被分片，也属于同一个分组），方便后面组装；标识字段用于表示，当分组长度大于MTU，分组能否被分片，和分片后某个分片是否为此IP分组的最后一个分片，不至于无限期的等待下去；片偏移表示分片相对IP分组最头部的偏移量，用于组装时能按序组装。TCP报文段应尽量避免被分片。路由器只分不组，重新组装的工作交给终端。<br><strong>寿命</strong>：TTL(Time-To-Live)，在互联网的存活时间，保证分组不会被无限制的转发下去，初始设置一个值，每被转发一次减一，降为0即被丢弃<br><strong>上层协议</strong>：确定是传输层哪个协议的数据，交付时交付给正确的上层协议<br><strong>首部检验和</strong>：IP首部的校验和，不包含数据段，因为数据段为传输层的报文，在传输层已经校验过了。方法为将头部的每16比特求和，溢出部分加入尾部，再取反码<br><strong>源IP地址</strong>：本地主机的IP地址<br><strong>目的IP地址</strong>：目的主机的IP地址<br><strong>选项</strong>：如果无选项字段，IP头部长为20字节，若包含选项字段，最长可达60字节</p>
-</li>
-<li><p><strong>IP编址</strong><br><strong>IPv4地址</strong>：32比特，网络号+主机号表示唯一IP地址<br><strong>子网地址</strong>：为了让IP地址更加灵活，加入子网的概念。一个A类地址太大，就再划分为多个子网。网络号+子网号确定一个子网<br><strong>子网掩码</strong>：用于确定子网大小，IP地址和子网掩码相与，得到子网大小<br><strong>IP地址的分类</strong><br>A类：1.0.0.0 – 126.255.255.255<br>B类：128.0.0.0 – 191.255.255.255<br>C类：192.0.0.0 – 223.255.255.255<br>D类：224.0.0.0 – 239.255.255.255 （一般用于组播）<br>E类：240.0.0.0 – 255.255.255.255 （保留未用）<br><strong>私有网络地址</strong>（为ABC类地址的一部分）：<br>A类：10.0.0.0 – 10.255.255.255<br>B类：172.16.0.0 – 172.31.255.255<br>C类：192.168.0.0 – 192.168.255.255<br><strong>CIDR无类域间路由</strong>：将子网的概念一般化，为了IP地址寻址更加灵活高效。将IP地址用另外一种表现形式。a.b.c.d&#x2F;x，x为网络号的长度。寻址采用最长前缀匹配有限原则</p>
-</li>
-<li><p><strong>IPv6</strong><br>IPv6是新版本为IP协议，IPv6采用128比特的IP地址，解决了IPv4地址不足的问题，新版本的IP协议重点是快速处理与转发<br><strong>IPv6与IPv4的不同</strong><br>IPv4地址32比特，IPv6地址128比特<br>IPv4头部长度不固定，IPv6头部长度固定，为40比特<br>IPv6不再允许分片，若长度大于MTU，则直接丢弃，并发送ICMP报文<br>IPv6头部不再有首部校验和，新版本的重点是快速处理与转发，在每个路由器进行检验太耗时了<br><strong>IPv4迁移到IPv6</strong><br>主要为双栈的方法，即节点既能处理IPv4的分组，也能处理IPv6的分组。另一种双栈的方法为建隧道，即当IPv6分组作为一个报文，封装上IPv4的头部信息通过IPv4的节点</p>
-</li>
-</ul>
-<h2 id="22-概述DHCP协议？"><a href="#22-概述DHCP协议？" class="headerlink" title="22. 概述DHCP协议？"></a>22. 概述DHCP协议？</h2><p><strong>DHCP</strong>协议又称为动态主机配置协议，DHCP允许主机自动获取IP地址<br>DHCP是一种客户端-服务器协议，在应用层实现，采用UDP<br><strong>主机获取IP地址步骤</strong>：</p>
-<ol>
-<li>主机广播DHCP发现报文</li>
-<li>DHCP服务器回应ACK，并携带分配给它的IP地址，表示提供服务</li>
-<li>主机广播DHCP请求，表示我打算连接到你分配的IP地址，同时也相当于告诉其他DHCP服务器，我已经打算连接到这个DHCP服务器的IP地址了，你们分配的IP地址可收回了</li>
-<li>DHCP服务器最后回复ACK报文</li>
-</ol>
-<h2 id="23-概述NAT协议？"><a href="#23-概述NAT协议？" class="headerlink" title="23. 概述NAT协议？"></a>23. 概述NAT协议？</h2><p><strong>NAT</strong>又称为网络地址转换，为本地私有网络提供合法IP地址，连接到外部网络<br>NAT不仅能解决IP地址不足的问题，而且能有效避免被攻击，隐藏和保护内部计算机<br>NAT的转换方式主要有三种：<br><strong>静态转换</strong>：将私有网络的某IP地址转换成特定的合法IP地址，一对一静态转换<br><strong>动态转换</strong>：将私有网络的IP地址转换成合法IP地址时，是不确定的，可以随机转换成任意指定的合法IP地址<br><strong>端口多路复用</strong>：将私有网络的IP地址转换成合法IP地址时，所有私有网络主机共享一个合法IP地址，每个主机转换为端口号，进行外部网络的访问。</p>
-<h2 id="24-概述ICMP协议？"><a href="#24-概述ICMP协议？" class="headerlink" title="24.概述ICMP协议？"></a>24.概述ICMP协议？</h2><p>ICMP协议又称为互联网控制报文协议，属于IP协议的一部分<br>ICMP协议的主要服务是为网络层提供差错信息及其他信息<br>ICMP报文是被封装到IP数据报中进行传输的<br>两类ICMP报文：<br>差错控制报文：目的不可达，源抑制，超时超期，参数问题，重定向等<br>网络探寻报文：回声请求与应答报文，时间戳请求与应答报文</p>
-<p><strong>运用ICMP的应用</strong><br>tracerooute：运用超时超期（TTL超时）和目的端口不可达的ICMP差错报文<br>ping：利用回显请求与应答报文</p>
-<h2 id="25-概述路由算法？"><a href="#25-概述路由算法？" class="headerlink" title="25. 概述路由算法？"></a>25. 概述路由算法？</h2><ul>
-<li><p><strong>链路状态路由算法（LS）</strong><br>全局式的路由选择算法<br>每个节点有本网络所有的网络拓扑以及链路费用的全局信息<br>运用迪杰斯特拉（Dijkstra）算法计算最短路由选择<br><strong>特点</strong><br>向网络上所有其他节点广播消息<br>消息仅包括到邻居节点的费用<br>收敛速度较快<br>存在震荡现象（当费用与通信量相关时）</p>
-</li>
-<li><p><strong>距离向量路由算法（DV）</strong><br>分布式的路由算则算法<br>每个节点仅保存通往目的地的最短路径的下一跳，通过迭代的方式计算出路径选择<br>每个节点从直接相连的邻居处获取信息，然后计算，若有变化，则将计算结果分发给直接相连的邻居<br>每个节点直接检测到链路费用，更新路由信息，若变化，发送给所有直接的邻居<br><strong>特点</strong><br>分布式，迭代，异步的路由算法<br>仅向直接相连的邻居交换信息<br>每个节点仅保存通往目的地最短路径的下一跳<br>收敛速度慢<br>好消息传播快，坏消息传播慢<br>存在无穷计数的问题，解决办法为毒性逆转，（如果A通往目的地的最短路径的下一跳是B，则当B询问B通过A去目的地的最短路径时，A回复无穷大）</p>
-</li>
-<li><p><strong>层次路由选择</strong><br>将一个大规模网络分为多个自治系统（AS），每个自治系统内运行相同的路由算法，称为自治系统内部路由选择协议（如RIP，OSPF）<br>两个自治系统AS之间的通信运行自治系统间路由选择协议（如BGP）</p>
-</li>
-<li><p><strong>RIP</strong><br>路由选择信息协议（Routing Information Protocol）<br>基于距离向量路由算法（DV），定义跳数为其链路费用<br>RIP被当做一个应用进程来实现，交换信息使用UDP<br>RIP通常被用于小规模网络，下层ISP及公司网络</p>
-</li>
-<li><p><strong>OSPF</strong><br>开放最短路优先协议（Open Shortest Path First）<br>基于链路状态路由算法（LS）<br>当一条链路费用变化时，节点向网络中所有节点广播路由选择信息<br>每个节点使用Dijkstra算法计算最低费用路径选择<br>OSPF更复杂，也有很多<strong>优点</strong>：<br>安全<br>可以有多条相同费用路径，当需要传递大量分组时，有多个选择，充分利用<br>支持单播和多播路由<br>OSPF支持在AS内部进一步分层</p>
-</li>
-<li><p><strong>BGP</strong><br>边界网关协议（Border Gateway Protocol）,自治系统间的路由选择协议<br>eBGP，从邻居子网获取可达信息<br>iBGP，向本子网内节点传递子网可达信息<br>基于可达信息的路径，确定到达外部子网的好的路径</p>
-</li>
-</ul>
-<hr>
-<h2 id="27-概述数据链路层的服务？"><a href="#27-概述数据链路层的服务？" class="headerlink" title="27. 概述数据链路层的服务？"></a>27. 概述数据链路层的服务？</h2><p>基本服务：将网络层的数据报封装成数据帧，通过单一通信链路从一个节点传输到另一个节点<br>链路层的主体是在<strong>网络适配器</strong>上实现的<br>链路层信道主要分为两类，点对点链路（PPP），和广播链路</p>
-<h2 id="28-概述MAC协议？"><a href="#28-概述MAC协议？" class="headerlink" title="28. 概述MAC协议？"></a>28. 概述MAC协议？</h2><p>MAC协议称为多路访问控制协议<br>主要能分为三类：<strong>信道划分协议</strong>，<strong>随机接入协议</strong>，<strong>轮流协议</strong></p>
-<ul>
-<li><p><strong>信道划分协议</strong><br>主要分为时分多路复用（TDM），频分多路复用（FDM），码分多址（CDMA）<br>相当于是为每一个可能使用的人预留了一段资源，每个人在自己分配的那段资源里传输数据，所以一定不会发生碰撞<br>当某时刻用的人很多时，利用率高<br>当某时刻用的人很少时，利用率低</p>
-</li>
-<li><p><strong>随机接入协议</strong><br>基本思想是：当用户有数据需要发送时，就直接发送，如果与其他人发生碰撞了，就等一个随机时延，再重新发送，直到没有碰撞发生，发送成功为止<br>主要有<strong>时隙ALOHA</strong>，<strong>ALOHA</strong>，<strong>CSMA</strong>，<strong>CSMA&#x2F;CD</strong>协议<br><strong>时隙ALOHA</strong>将时间划分若干时隙，规定所有人只能在某一个时隙的起始点发送数据<br><strong>ALOHA</strong>则没有这个规定，所有人可以在任何时间发送数据<br>时隙ALOHA的效率比ALOHA协议的效率要高一倍左右<br><strong>CSMA</strong>协议称为载波侦听多路访问，即发送数据之前先侦听信道，当没有人发送数据时，才发送数据<br><strong>CSMA&#x2F;CD</strong>协议称为带碰撞检测的载波侦听多路访问协议，在CSMA基础上加了碰撞检测，若检测到碰撞，则都立即停止发送，等一个随机时间后再次发送<br>既然所有人都侦听了，为什么还会发生碰撞呢？原因是存在传播延迟。<br>随机接入协议，当某时刻用的人少时，效率很高<br>用的人多时，发生碰撞概率高，效率较低</p>
-</li>
-<li><p><strong>轮流协议</strong><br>按照一定的轮流规则，所有需要发送数据的人轮流发送数据，轮到谁就谁发。<br>主要有<br><strong>轮询协议</strong>：主节点轮流通知每个节点，你可以发送数据了，如果你有数据，就发，没数据，就过<br>缺点：带来额外的轮询消耗；如果主节点发生故障，则后果严重<br><strong>令牌传递</strong>：某种称为令牌的特殊帧在节点之间按特定次序传递，令牌传递到的节点才可以发送数据。<br>缺点：同样带来消耗，某一节点发生故障也可能给整个信道带来奔溃。</p>
-</li>
-</ul>
-<h2 id="29-概述MAC地址与ARP协议？"><a href="#29-概述MAC地址与ARP协议？" class="headerlink" title="29. 概述MAC地址与ARP协议？"></a>29. 概述MAC地址与ARP协议？</h2><p>每一个网络设备的适配器都有自己的链路层地址，MAC地址，这个地址是子自生产出来就是唯一的。数据链路层需要通过MAC地址来转发数据帧来通过交换机网络</p>
-<p><strong>ARP协议</strong>称为地址解析协议，提供了IP地址转换为链路层MAC地址的机制<br>IP地址相当于邮政地址，MAC地址相当于身份证号</p>
-<p><strong>ARP工作原理</strong>：<br>每台主机或路由器都保存有一张ARP表，表中包含IP地址与MAC地址的映射关系<br>当表中有目的IP地址的信息时，就直接交给链路层进行发送<br>如果表中还没有相关信息，则在本子网内发送ARP广播查询，若此IP目的节点收到后应回复一个ARP应答报文<br>所以ARP是自适应的，自动建立的，即插即用的</p>
-<h2 id="30-概述以太网？"><a href="#30-概述以太网？" class="headerlink" title="30. 概述以太网？"></a>30. 概述以太网？</h2><p>以太网是目前有限局域网中具有统治地位的局域网类型<br>其多路访问控制协议采用CSMA&#x2F;CD协议<br>现阶段总线型拓扑结构以太网已被星型拓扑结构所取代<br>星型拓扑结构中，集线器已被交换机所取代</p>
-<h2 id="30-概述链路层交换机？"><a href="#30-概述链路层交换机？" class="headerlink" title="30. 概述链路层交换机？"></a>30. 概述链路层交换机？</h2><p>链路层交换机是数据链路层设备，其提供的主要服务为转发与过滤<br>链路层交换机所提供的服务是基于MAC地址的<br>交换机的转发与过滤借助于维护一个交换机表，表中有MAC地址与端口的对应关系<br><strong>转发</strong>：指的是将具有目的MAC地址的数据帧从某个端口转发出去，若没有该表项，则广播该帧<br><strong>过滤</strong>：如果MAC地址所对应的端口与数据帧进来的端口号相同，则丢弃</p>
-<p>交换机是<strong>自学习</strong>的，即自动维护交换机表，即插即用<br>交换机缓存从每一个接口接收到的入帧的信息，若一定时间内没有再收到此地址的帧，则将该表项删除</p>
-<h2 id="31-转发器，交换机，网桥，路由器，网关等？"><a href="#31-转发器，交换机，网桥，路由器，网关等？" class="headerlink" title="31. 转发器，交换机，网桥，路由器，网关等？"></a>31. 转发器，交换机，网桥，路由器，网关等？</h2><p><strong>转发器</strong>：物理层设备<br><strong>交换机</strong>：数据链路层设备，基于MAC地址，提供数据帧的转发与过滤服务<br><strong>网桥</strong>：数据链路层设备，提供将两个不同网段的网络连接起来的服务<br><strong>路由器</strong>：网络层设备，基于IP地址，提供数据报的路由和转发服务<br><strong>网关</strong>：网络层以上设备，提供一个网络与另一个网络连接的服务</p>
-<p><strong>交换机与路由器的对比</strong></p>
-<ul>
-<li>交换机是第二层（数据链路层）设备，路由器是第三层（网络层）设备</li>
-</ul>
-<ul>
-<li>交换机基于MAC地址，路由器基于IP地址 </li>
-<li>交换机是即插即用的，路由器不是，需要认为设置IP地址</li>
-<li>交换机可能会产生广播风暴，路由器不会</li>
-<li>交换机主要负责组建局域网，路由器主要负责将局域网连接起来，连入互联网</li>
-<li>交换机求快，直接按目的MAC地址转发，路由器谋短，需要计算最小费用路径，然后转发</li>
-<li>交换机主要用于规模较小的局域网，路由器主要用于规模较大的网络</li>
-</ul>
-<h2 id="32-一个Web页面请求全过程？"><a href="#32-一个Web页面请求全过程？" class="headerlink" title="32. 一个Web页面请求全过程？"></a>32. 一个Web页面请求全过程？</h2><p><strong>从键入<a target="_blank" rel="noopener" href="http://www.google.com到浏览器显示网页经历了一系列的事件/">www.google.com到浏览器显示网页经历了一系列的事件</a></strong></p>
-<p><strong>1. 首先需要利用DNS域名服务知道google服务器的IP地址</strong>：主机的操作系统生成一个DNS域名查询报文，采用UDP传输层协议，端口号53，网络层将此报文封装上IP头部信息，加上源IP地址与目的IP地址（即DNS服务器的IP地址），数据链路层将数据报封装成链路层数据帧，并将其转发到网关路由器（通过ARP协议，链路层转发），网关路由器抽取DNS数据报的IP地址，查询转发表，将其从某接口转发，最终到达DNS服务器，DNS服务器查询这个域名DNS源记录，并将包含google服务器的地址的DNS应答报文发送给主机，主机接收到后，提取出google服务器的IP地址</p>
-<p><strong>2. 主机得先与google服务器建立TCP连接</strong>：传输层得先创建TCP套接字，目的端口80，目的IP地址google服务器的地址，建立连接需要三次握手，主机发送SYN连接请求报文，google服务器收到后，分配缓存与变量，回复SYNACK报文，主机收到后，分配缓存与变量资源，回复ACK报文，并可以携带HTTP GET报文</p>
-<p><strong>3. 主机发送HTTP GET报文</strong>：主机应用层生成HTTP GET报文，传递给TCP传输层，TCP协议给HTTP GET报文封装TCP头部信息，并交给IP层，IP层封装IP头部信息称为数据报，再交给数据链路层封装成数据帧，通过ARP协议，进行链路层转发到网关路由器，网关路由器提取IP地址，查询转发表，再转发到某借口，最终到达google服务器，服务器提取出HTTP GET报文，生成一个HTTP响应报文，将所请求的WEB页面放入HTTP响应体中，并通过TCP连接将此报文发送回主机，主机收到后，提取出HTTP响应报文，从HTTP响应体中提取出HTML文件，最终显示出了WEB页面</p>
-
+          <p>考研计算机网络知识点小总结</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/21/Network/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -467,7 +336,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-07-21 13:02:29 / 修改时间：16:22:54" itemprop="dateCreated datePublished" datetime="2023-07-21T13:02:29+08:00">2023-07-21</time>
+              <time title="创建时间：2023-07-21 13:02:29 / 修改时间：16:28:43" itemprop="dateCreated datePublished" datetime="2023-07-21T13:02:29+08:00">2023-07-21</time>
             </span>
 
           
@@ -485,16 +354,14 @@
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/21/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -580,6 +447,14 @@
           <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
