@@ -170,6 +170,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/java8new/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="薛旭涛">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="薛旭涛">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/02/java8new/" class="post-title-link" itemprop="url">java8new</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-02 16:43:17" itemprop="dateCreated datePublished" datetime="2023-08-02T16:43:17+08:00">2023-08-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/java-nio-bio/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -195,7 +252,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-02 10:06:42 / 修改时间：16:41:40" itemprop="dateCreated datePublished" datetime="2023-08-02T10:06:42+08:00">2023-08-02</time>
+              <time title="创建时间：2023-08-02 10:06:42 / 修改时间：16:45:43" itemprop="dateCreated datePublished" datetime="2023-08-02T10:06:42+08:00">2023-08-02</time>
             </span>
 
           
@@ -430,103 +487,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/Cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/01/Cookie/" class="post-title-link" itemprop="url">Cookie的使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-08-01 17:40:29 / 修改时间：18:11:50" itemprop="dateCreated datePublished" datetime="2023-08-01T17:40:29+08:00">2023-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-
-<h3 id="一、Cookie的属性"><a href="#一、Cookie的属性" class="headerlink" title="一、Cookie的属性"></a>一、Cookie的属性</h3><p>一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：</p>
-<ul>
-<li><strong>name</strong>字段为一个cookie的名称</li>
-<li><strong>value</strong>字段为一个cookie的值</li>
-<li><strong>domain</strong>字段为可以访问此cookie的域名，Servlet中通过setDomain()设置</li>
-</ul>
-<p><img src="/2023/08/01/Cookie/Cookie_chrome.png"></p>
-<p>非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其他二级域名的cookie，否则cookie无法生成。（<strong>cookie不能跨域</strong>）</p>
-<p>顶级域名只能设置domain为顶级域名，不能设置为二级域名或者三级域名，否则cookie无法生成。</p>
-<p>二级域名能读取设置了domain为顶级域名或者自身的cookie，不能读取其他二级域名domain的cookie。所以要想cookie在多个二级域名中共享，需要设置domain为顶级域名，这样就可以在所有二级域名里面或者到这个cookie的值了。<br> 顶级域名只能获取到domain设置为顶级域名的cookie，其他domain设置为二级域名的无法获取。</p>
-<ul>
-<li><strong>path</strong>字段为可以访问此cookie的页面路径。 比如<code>domain</code>是<code>abc.com</code>,<code>path</code>是<code>/test</code>，那么只有&#x2F;test路径下的页面可以读取此cookie。Servlet中通过setPath()设置，”&#x2F;“表示根路径</li>
-<li><strong>expires&#x2F;Max-Age</strong> 字段为此cookie超时时间。若设置其值为一个时间，那么当到达此时间后，此cookie失效。不设置的话默认值是Session，意思是cookie会和session一起失效。当<code>浏览器关闭</code>(不是浏览器标签页，而是整个浏览器) 后，此cookie失效。</li>
-<li><strong>size</strong>字段 此cookie大小。</li>
-<li><strong>http</strong>字段  cookie的http only属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过document.cookie来访问此cookie。</li>
-<li><strong>secure</strong> 字段 设置是否只能通过https来传递此条cookie</li>
-</ul>
-<h3 id="二、Cookie的路径"><a href="#二、Cookie的路径" class="headerlink" title="二、Cookie的路径"></a>二、Cookie的路径</h3><p>Cookie的属性其中有一个属性是路径。有些人认为Cookie的路径指的是Cookie在客户端的保存路径，其实并不是。<strong>Cookie的路径是在服务器创建Cookie时设置的，它的作用是决定浏览器访问服务器的某个资源时，需要将浏览器端保存的那些Cookie归还给服务器</strong>。</p>
-<h3 id="三、Cookie跨域setDomain和setPath"><a href="#三、Cookie跨域setDomain和setPath" class="headerlink" title="三、Cookie跨域setDomain和setPath"></a>三、Cookie跨域setDomain和setPath</h3><p>正常的cookie只能在一个应用中共享，即一个cookie只能由创建它的应用获得。</p>
-<h6 id="1-可在同一应用服务器内共享方法："><a href="#1-可在同一应用服务器内共享方法：" class="headerlink" title="1.可在同一应用服务器内共享方法："></a>1.可在同一应用服务器内共享方法：</h6><p>设置cookie.setPath(“&#x2F;“); 假设本机tomcat&#x2F;webapp下面有两个应用：cas和webapp_b：</p>
-<ul>
-<li>1）原来在cas下面设置的cookie，在webapp_b下面获取不到，path默认是产生cookie的应用的路径。</li>
-<li>2）若在cas下面设置cookie的时候，增加一条<code>cookie.setPath(&quot;/&quot;)</code>;或者<code>cookie.setPath(&quot;/webapp_b/&quot;)</code>;就可以在webapp_b下面获取到cas设置的cookie了。</li>
-<li>3）此处的参数，是相对于<code>应用服务器</code>存放应用的文件夹的根目录而言的(比如tomcat下面的<code>webapp</code>)，因此cookie.setPath(“&#x2F;“);之后，可以在webapp文件夹下的所有应用共享cookie，而cookie.setPath(“&#x2F;webapp_b&#x2F;“);是指cas应用设置的cookie只能在webapp_b应用下的获得，即便是产生这个cookie的cas应用也不可以。</li>
-<li>4）设置cookie.setPath(“&#x2F;webapp_b&#x2F;jsp”)或者cookie.setPath(“&#x2F;webapp_b&#x2F;jsp&#x2F;“)的时候，只有在webapp_b&#x2F;jsp下面可以获得cookie，在webapp_b下面但是在jsp文件夹外的都不能获得cookie。</li>
-<li>5）设置cookie.setPath(“&#x2F;webapp_b”);，是指在webapp_b下面才可以使用cookie，这样就不可以在产生cookie的应用cas下面获取cookie了</li>
-<li>6）有多条cookie.setPath(“XXX”);语句的时候，起作用的以<code>最后一条</code>为准。</li>
-</ul>
-<h6 id="2-跨域共享cookie的方法："><a href="#2-跨域共享cookie的方法：" class="headerlink" title="2.跨域共享cookie的方法："></a>2.跨域共享cookie的方法：</h6><p>设置cookie.setDomain(“.jszx.com”);假设 A机所在的域：home.langchao.com,A有应用cas B机所在的域：jszx.com，B有应用webapp_b ：</p>
-<ul>
-<li>1）在cas下面设置cookie的时候，增加cookie.setDomain(“.jszx.com”)，这样在webapp_b下面就可以取到cookie。</li>
-<li>2）这个参数必须以“.”开始。</li>
-<li>3）输入url访问webapp_b的时候，必须输入域名才能解析。比如说在A机器输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://lc-bsp.jszx.com:8080/webapp_b">http://lc-bsp.jszx.com:8080/webapp_b</a>,可以获取cas在客户端设置的cookie，而B机器访问本机的应用，输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://localhost:8080/webapp_b">http://localhost:8080/webapp_b</a>则不可以获得cookie。</li>
-<li>4）设置了cookie.setDomain(“.jszx.com”);，还可以在默认的home.langchao.com下面共享。</li>
-</ul>
-<p>数必须以“.”开始。</p>
-<p>摘自作者：拾壹北<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/432ec6097003">https://www.jianshu.com/p/432ec6097003</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -558,7 +518,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-02 14:33:27" itemprop="dateModified" datetime="2023-08-02T14:33:27+08:00">2023-08-02</time>
+                <time title="修改时间：2023-08-02 16:46:11" itemprop="dateModified" datetime="2023-08-02T16:46:11+08:00">2023-08-02</time>
               </span>
 
           
@@ -572,15 +532,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/21/java/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <span id="more"></span>
+<h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3><h3 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h3><p>CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。  </p>
+<p>&ensp; &ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。<br>8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H 时，是如何通过数据总线传送数据的。图1.5 展示了 8088CPU数据总线上的数据传送情况:图 1.6 展示了8086CPU 数据总线上的数据传送情况。</p>
+<h3 id="二、java8流式编程"><a href="#二、java8流式编程" class="headerlink" title="二、java8流式编程"></a>二、java8流式编程</h3>
       
     </div>
 
