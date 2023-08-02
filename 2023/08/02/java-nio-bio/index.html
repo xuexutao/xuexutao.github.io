@@ -20,28 +20,35 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="薛旭涛">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="一、单线程BIO实现 服务端  12345678910111213141516171819202122232425public class Server &amp;#123;    public static void main(String[] args) &amp;#123;        byte[] buffer &#x3D; new byte[1024];        try &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java_nio_bio">
+<meta property="og:url" content="http://example.com/2023/08/02/java-nio-bio/index.html">
 <meta property="og:site_name" content="薛旭涛">
+<meta property="og:description" content="一、单线程BIO实现 服务端  12345678910111213141516171819202122232425public class Server &amp;#123;    public static void main(String[] args) &amp;#123;        byte[] buffer &#x3D; new byte[1024];        try &amp;#123;">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023%5C08%5C02%5CNIO1.png">
+<meta property="og:image" content="d:\Blog\source_posts\java-nio-bio.assets\image-20230802103559185.png">
+<meta property="article:published_time" content="2023-08-02T02:06:42.000Z">
+<meta property="article:modified_time" content="2023-08-02T02:57:37.903Z">
 <meta property="article:author" content="薛旭涛">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023%5C08%5C02%5CNIO1.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2023/08/02/java-nio-bio/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>薛旭涛</title>
+  <title>java_nio_bio | 薛旭涛</title>
   
 
 
@@ -164,9 +171,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -182,10 +190,9 @@
       <meta itemprop="name" content="薛旭涛">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/02/java-nio-bio/" class="post-title-link" itemprop="url">java_nio_bio</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          java_nio_bio
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -209,7 +216,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
+        <span id="more"></span>
 
 <h3 id="一、单线程BIO实现"><a href="#一、单线程BIO实现" class="headerlink" title="一、单线程BIO实现"></a>一、单线程BIO实现</h3><ul>
 <li>服务端</li>
@@ -315,431 +322,30 @@
 <li>2）NIO方式： 适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。</li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/" class="post-title-link" itemprop="url">Cookie跨域</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-08-01 17:47:25 / 修改时间：18:09:10" itemprop="dateCreated datePublished" datetime="2023-08-01T17:47:25+08:00">2023-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-
-<h3 id="一、Cookie的属性"><a href="#一、Cookie的属性" class="headerlink" title="一、Cookie的属性"></a>一、Cookie的属性</h3><p>一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：</p>
-<ul>
-<li><strong>name</strong>字段为一个cookie的名称</li>
-<li><strong>value</strong>字段为一个cookie的值</li>
-<li><strong>domain</strong>字段为可以访问此cookie的域名，Servlet中通过setDomain()设置</li>
-</ul>
-<p><img src="/2023/08/01/Cookie/Cookie_chrome.png"></p>
-<p>非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其他二级域名的cookie，否则cookie无法生成。（<strong>cookie不能跨域</strong>）</p>
-<p>顶级域名只能设置domain为顶级域名，不能设置为二级域名或者三级域名，否则cookie无法生成。</p>
-<p>二级域名能读取设置了domain为顶级域名或者自身的cookie，不能读取其他二级域名domain的cookie。所以要想cookie在多个二级域名中共享，需要设置domain为顶级域名，这样就可以在所有二级域名里面或者到这个cookie的值了。<br> 顶级域名只能获取到domain设置为顶级域名的cookie，其他domain设置为二级域名的无法获取。</p>
-<ul>
-<li><strong>path</strong>字段为可以访问此cookie的页面路径。 比如<code>domain</code>是<code>abc.com</code>,<code>path</code>是<code>/test</code>，那么只有&#x2F;test路径下的页面可以读取此cookie。Servlet中通过setPath()设置，”&#x2F;“表示根路径</li>
-<li><strong>expires&#x2F;Max-Age</strong> 字段为此cookie超时时间。若设置其值为一个时间，那么当到达此时间后，此cookie失效。不设置的话默认值是Session，意思是cookie会和session一起失效。当<code>浏览器关闭</code>(不是浏览器标签页，而是整个浏览器) 后，此cookie失效。</li>
-<li><strong>size</strong>字段 此cookie大小。</li>
-<li><strong>http</strong>字段  cookie的http only属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过document.cookie来访问此cookie。</li>
-<li><strong>secure</strong> 字段 设置是否只能通过https来传递此条cookie</li>
-</ul>
-<h3 id="二、Cookie的路径"><a href="#二、Cookie的路径" class="headerlink" title="二、Cookie的路径"></a>二、Cookie的路径</h3><p>Cookie的属性其中有一个属性是路径。有些人认为Cookie的路径指的是Cookie在客户端的保存路径，其实并不是。<strong>Cookie的路径是在服务器创建Cookie时设置的，它的作用是决定浏览器访问服务器的某个资源时，需要将浏览器端保存的那些Cookie归还给服务器</strong>。</p>
-<h3 id="三、Cookie跨域setDomain和setPath"><a href="#三、Cookie跨域setDomain和setPath" class="headerlink" title="三、Cookie跨域setDomain和setPath"></a>三、Cookie跨域setDomain和setPath</h3><p>正常的cookie只能在一个应用中共享，即一个cookie只能由创建它的应用获得。</p>
-<h6 id="1-可在同一应用服务器内共享方法："><a href="#1-可在同一应用服务器内共享方法：" class="headerlink" title="1.可在同一应用服务器内共享方法："></a>1.可在同一应用服务器内共享方法：</h6><p>设置cookie.setPath(“&#x2F;“); 假设本机tomcat&#x2F;webapp下面有两个应用：cas和webapp_b：</p>
-<ul>
-<li>1）原来在cas下面设置的cookie，在webapp_b下面获取不到，path默认是产生cookie的应用的路径。</li>
-<li>2）若在cas下面设置cookie的时候，增加一条<code>cookie.setPath(&quot;/&quot;)</code>;或者<code>cookie.setPath(&quot;/webapp_b/&quot;)</code>;就可以在webapp_b下面获取到cas设置的cookie了。</li>
-<li>3）此处的参数，是相对于<code>应用服务器</code>存放应用的文件夹的根目录而言的(比如tomcat下面的<code>webapp</code>)，因此cookie.setPath(“&#x2F;“);之后，可以在webapp文件夹下的所有应用共享cookie，而cookie.setPath(“&#x2F;webapp_b&#x2F;“);是指cas应用设置的cookie只能在webapp_b应用下的获得，即便是产生这个cookie的cas应用也不可以。</li>
-<li>4）设置cookie.setPath(“&#x2F;webapp_b&#x2F;jsp”)或者cookie.setPath(“&#x2F;webapp_b&#x2F;jsp&#x2F;“)的时候，只有在webapp_b&#x2F;jsp下面可以获得cookie，在webapp_b下面但是在jsp文件夹外的都不能获得cookie。</li>
-<li>5）设置cookie.setPath(“&#x2F;webapp_b”);，是指在webapp_b下面才可以使用cookie，这样就不可以在产生cookie的应用cas下面获取cookie了</li>
-<li>6）有多条cookie.setPath(“XXX”);语句的时候，起作用的以<code>最后一条</code>为准。</li>
-</ul>
-<h6 id="2-跨域共享cookie的方法："><a href="#2-跨域共享cookie的方法：" class="headerlink" title="2.跨域共享cookie的方法："></a>2.跨域共享cookie的方法：</h6><p>设置cookie.setDomain(“.jszx.com”);假设 A机所在的域：home.langchao.com,A有应用cas B机所在的域：jszx.com，B有应用webapp_b ：</p>
-<ul>
-<li>1）在cas下面设置cookie的时候，增加cookie.setDomain(“.jszx.com”)，这样在webapp_b下面就可以取到cookie。</li>
-<li>2）这个参数必须以“.”开始。</li>
-<li>3）输入url访问webapp_b的时候，必须输入域名才能解析。比如说在A机器输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://lc-bsp.jszx.com:8080/webapp_b">http://lc-bsp.jszx.com:8080/webapp_b</a>,可以获取cas在客户端设置的cookie，而B机器访问本机的应用，输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://localhost:8080/webapp_b">http://localhost:8080/webapp_b</a>则不可以获得cookie。</li>
-<li>4）设置了cookie.setDomain(“.jszx.com”);，还可以在默认的home.langchao.com下面共享。</li>
-</ul>
-<p>数必须以“.”开始。</p>
-<p>摘自作者：拾壹北<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/432ec6097003">https://www.jianshu.com/p/432ec6097003</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/Cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/01/Cookie/" class="post-title-link" itemprop="url">Cookie的使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-08-01 17:40:29 / 修改时间：18:11:50" itemprop="dateCreated datePublished" datetime="2023-08-01T17:40:29+08:00">2023-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-
-<h3 id="一、Cookie的属性"><a href="#一、Cookie的属性" class="headerlink" title="一、Cookie的属性"></a>一、Cookie的属性</h3><p>一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：</p>
-<ul>
-<li><strong>name</strong>字段为一个cookie的名称</li>
-<li><strong>value</strong>字段为一个cookie的值</li>
-<li><strong>domain</strong>字段为可以访问此cookie的域名，Servlet中通过setDomain()设置</li>
-</ul>
-<p><img src="/2023/08/01/Cookie/Cookie_chrome.png"></p>
-<p>非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其他二级域名的cookie，否则cookie无法生成。（<strong>cookie不能跨域</strong>）</p>
-<p>顶级域名只能设置domain为顶级域名，不能设置为二级域名或者三级域名，否则cookie无法生成。</p>
-<p>二级域名能读取设置了domain为顶级域名或者自身的cookie，不能读取其他二级域名domain的cookie。所以要想cookie在多个二级域名中共享，需要设置domain为顶级域名，这样就可以在所有二级域名里面或者到这个cookie的值了。<br> 顶级域名只能获取到domain设置为顶级域名的cookie，其他domain设置为二级域名的无法获取。</p>
-<ul>
-<li><strong>path</strong>字段为可以访问此cookie的页面路径。 比如<code>domain</code>是<code>abc.com</code>,<code>path</code>是<code>/test</code>，那么只有&#x2F;test路径下的页面可以读取此cookie。Servlet中通过setPath()设置，”&#x2F;“表示根路径</li>
-<li><strong>expires&#x2F;Max-Age</strong> 字段为此cookie超时时间。若设置其值为一个时间，那么当到达此时间后，此cookie失效。不设置的话默认值是Session，意思是cookie会和session一起失效。当<code>浏览器关闭</code>(不是浏览器标签页，而是整个浏览器) 后，此cookie失效。</li>
-<li><strong>size</strong>字段 此cookie大小。</li>
-<li><strong>http</strong>字段  cookie的http only属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过document.cookie来访问此cookie。</li>
-<li><strong>secure</strong> 字段 设置是否只能通过https来传递此条cookie</li>
-</ul>
-<h3 id="二、Cookie的路径"><a href="#二、Cookie的路径" class="headerlink" title="二、Cookie的路径"></a>二、Cookie的路径</h3><p>Cookie的属性其中有一个属性是路径。有些人认为Cookie的路径指的是Cookie在客户端的保存路径，其实并不是。<strong>Cookie的路径是在服务器创建Cookie时设置的，它的作用是决定浏览器访问服务器的某个资源时，需要将浏览器端保存的那些Cookie归还给服务器</strong>。</p>
-<h3 id="三、Cookie跨域setDomain和setPath"><a href="#三、Cookie跨域setDomain和setPath" class="headerlink" title="三、Cookie跨域setDomain和setPath"></a>三、Cookie跨域setDomain和setPath</h3><p>正常的cookie只能在一个应用中共享，即一个cookie只能由创建它的应用获得。</p>
-<h6 id="1-可在同一应用服务器内共享方法："><a href="#1-可在同一应用服务器内共享方法：" class="headerlink" title="1.可在同一应用服务器内共享方法："></a>1.可在同一应用服务器内共享方法：</h6><p>设置cookie.setPath(“&#x2F;“); 假设本机tomcat&#x2F;webapp下面有两个应用：cas和webapp_b：</p>
-<ul>
-<li>1）原来在cas下面设置的cookie，在webapp_b下面获取不到，path默认是产生cookie的应用的路径。</li>
-<li>2）若在cas下面设置cookie的时候，增加一条<code>cookie.setPath(&quot;/&quot;)</code>;或者<code>cookie.setPath(&quot;/webapp_b/&quot;)</code>;就可以在webapp_b下面获取到cas设置的cookie了。</li>
-<li>3）此处的参数，是相对于<code>应用服务器</code>存放应用的文件夹的根目录而言的(比如tomcat下面的<code>webapp</code>)，因此cookie.setPath(“&#x2F;“);之后，可以在webapp文件夹下的所有应用共享cookie，而cookie.setPath(“&#x2F;webapp_b&#x2F;“);是指cas应用设置的cookie只能在webapp_b应用下的获得，即便是产生这个cookie的cas应用也不可以。</li>
-<li>4）设置cookie.setPath(“&#x2F;webapp_b&#x2F;jsp”)或者cookie.setPath(“&#x2F;webapp_b&#x2F;jsp&#x2F;“)的时候，只有在webapp_b&#x2F;jsp下面可以获得cookie，在webapp_b下面但是在jsp文件夹外的都不能获得cookie。</li>
-<li>5）设置cookie.setPath(“&#x2F;webapp_b”);，是指在webapp_b下面才可以使用cookie，这样就不可以在产生cookie的应用cas下面获取cookie了</li>
-<li>6）有多条cookie.setPath(“XXX”);语句的时候，起作用的以<code>最后一条</code>为准。</li>
-</ul>
-<h6 id="2-跨域共享cookie的方法："><a href="#2-跨域共享cookie的方法：" class="headerlink" title="2.跨域共享cookie的方法："></a>2.跨域共享cookie的方法：</h6><p>设置cookie.setDomain(“.jszx.com”);假设 A机所在的域：home.langchao.com,A有应用cas B机所在的域：jszx.com，B有应用webapp_b ：</p>
-<ul>
-<li>1）在cas下面设置cookie的时候，增加cookie.setDomain(“.jszx.com”)，这样在webapp_b下面就可以取到cookie。</li>
-<li>2）这个参数必须以“.”开始。</li>
-<li>3）输入url访问webapp_b的时候，必须输入域名才能解析。比如说在A机器输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://lc-bsp.jszx.com:8080/webapp_b">http://lc-bsp.jszx.com:8080/webapp_b</a>,可以获取cas在客户端设置的cookie，而B机器访问本机的应用，输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://localhost:8080/webapp_b">http://localhost:8080/webapp_b</a>则不可以获得cookie。</li>
-<li>4）设置了cookie.setDomain(“.jszx.com”);，还可以在默认的home.langchao.com下面共享。</li>
-</ul>
-<p>数必须以“.”开始。</p>
-<p>摘自作者：拾壹北<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/432ec6097003">https://www.jianshu.com/p/432ec6097003</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/21/java/" class="post-title-link" itemprop="url">汇编语言指令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-21 16:21:39" itemprop="dateCreated datePublished" datetime="2023-07-21T16:21:39+08:00">2023-07-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-02 14:33:27" itemprop="dateModified" datetime="2023-08-02T14:33:27+08:00">2023-08-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/21/java/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/Network/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/21/Network/" class="post-title-link" itemprop="url">计网</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-07-21 15:55:41 / 修改时间：16:28:10" itemprop="dateCreated datePublished" datetime="2023-07-21T15:55:41+08:00">2023-07-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>考研计算机网络知识点小总结</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/21/Network/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/" rel="prev" title="Cookie跨域">
+      <i class="fa fa-chevron-left"></i> Cookie跨域
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-07-21 13:02:29 / 修改时间：16:28:43" itemprop="dateCreated datePublished" datetime="2023-07-21T13:02:29+08:00">2023-07-21</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/21/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -792,6 +398,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8D%95%E7%BA%BF%E7%A8%8BBIO%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">一、单线程BIO实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%A7%A3%E5%86%B3BIO%E4%B8%A4%E6%AC%A1%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">二、多线程解决BIO两次阻塞问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81NIO"><span class="nav-number">3.</span> <span class="nav-text">三、NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%9C%9F%E6%AD%A3%E7%9A%84NIO"><span class="nav-number">4.</span> <span class="nav-text">四、真正的NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIO%E3%80%81NIO%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90"><span class="nav-number">5.</span> <span class="nav-text">五、BIO、NIO适用场景分析</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
