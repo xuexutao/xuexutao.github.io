@@ -170,6 +170,190 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/commonConfig/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="薛旭涛">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="薛旭涛">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/02/commonConfig/" class="post-title-link" itemprop="url">commonConfig</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-02 17:58:28 / 修改时间：17:59:01" itemprop="dateCreated datePublished" datetime="2023-08-02T17:58:28+08:00">2023-08-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+
+<h2 id="1、安装java"><a href="#1、安装java" class="headerlink" title="1、安装java"></a>1、安装java</h2><blockquote>
+<p>安装步骤：</p>
+<ul>
+<li>执行命令yum -y list java*查看可安装java版本</li>
+<li><code>yum install -y java-1.8.0-openjdk-devel.x86_64</code>， 一键安装</li>
+<li>安装位置：<code>/usr/lib/jvm</code></li>
+</ul>
+</blockquote>
+<p>~&#x2F;bigdata&#x2F;hadoop-2.7.5&#x2F;tmp</p>
+<h2 id="2、安装redis"><a href="#2、安装redis" class="headerlink" title="2、安装redis"></a>2、安装redis</h2><blockquote>
+<p>安装步骤：</p>
+<ul>
+<li>wget <a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-6.0.8.tar.gz">http://download.redis.io/releases/redis-6.0.8.tar.gz</a></li>
+<li>tar xzf redis-6.0.8.tar.gz</li>
+<li>cd redis-6.0.8</li>
+<li>make</li>
+</ul>
+</blockquote>
+<p>执行完 make 命令后，redis-6.0.8 的 src 目录下会出现编译后的 redis 服务程序 redis-server，还有用于测试的客户端程序 redis-cli。</p>
+<p>启动 redis 服务    客户端</p>
+<blockquote>
+<ul>
+<li>cd src</li>
+<li>.&#x2F;redis-server  启动客户端: .&#x2F;redis-cli</li>
+</ul>
+</blockquote>
+<h2 id="3、安装docker"><a href="#3、安装docker" class="headerlink" title="3、安装docker"></a>3、安装docker</h2><p>1、使用 yum 安装</p>
+<blockquote>
+<p>安装步骤</p>
+<ol>
+<li>配置yum软件源</li>
+<li>安装依赖包</li>
+<li>安装</li>
+</ol>
+</blockquote>
+<ol>
+<li>执行下面的命令添加 yum 软件源：</li>
+</ol>
+<ul>
+<li><p>sudo yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
+</li>
+<li><p>sudo sed -i ‘s&#x2F;download.docker.com&#x2F;mirrors.aliyun.com/docker-ce&#x2F;g’ &#x2F;etc&#x2F;yum.repos.d&#x2F;docker-ce.repo</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>官方源</strong></p>
+<ul>
+<li>sudo yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a></li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>执行以下命令<strong>安装依赖包</strong>：<code>sudo yum install -y yum-utils</code></li>
+</ol>
+<p>如果需要测试版本的 Docker 请执行以下命令：<br>sudo yum-config-manager –enable docker-ce-test</p>
+<ol start="3">
+<li><strong>安装</strong> Docker 更新 yum 软件源缓存，并安装 docker-ce。<blockquote>
+<ul>
+<li>sudo yum install docker-ce docker-ce-cli containerd.io</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p><strong>2、 启动 Docker</strong><br><code>sudo systemctl enable docker</code></p>
+<p><code>sudo systemctl start docker</code></p>
+<p>如果拉取缓慢配置国内源：<a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mirror">https://yeasy.gitbook.io/docker_practice/install/mirror</a></p>
+<p>CentOS8 额外设置<br>由于CentOS8 防火墙使用了nftables，但Docker尚未支持nftables，可以使用如下设置使用iptables：</p>
+<p>更改 <code>/etc/firewalld/firewalld.conf</code>中的<code>FirewallBackend=nftables</code>改为<code>FirewallBackend=iptables</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/Untitled/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/icon.jpg">
+      <meta itemprop="name" content="薛旭涛">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="薛旭涛">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/02/Untitled/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-02 17:23:04" itemprop="dateCreated datePublished" datetime="2023-08-02T17:23:04+08:00">2023-08-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/java8new/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -762,7 +946,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

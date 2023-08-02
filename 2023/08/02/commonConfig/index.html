@@ -20,21 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、Cookie的属性一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：  name字段为一个cookie的名称 value字段为一个cookie的值 domain字段为可以访问此cookie的域名，Servlet中通过setDomain()设置   非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其">
+  <meta name="description" content="1、安装java 安装步骤：  执行命令yum -y list java*查看可安装java版本 yum install -y java-1.8.0-openjdk-devel.x86_64， 一键安装 安装位置：&#x2F;usr&#x2F;lib&#x2F;jvm   ~&#x2F;bigdata&#x2F;hadoop-2.7.5&#x2F;tmp 2、安装redis 安装步骤：  wget http:&#x2F;&#x2F;downl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cookie跨域">
-<meta property="og:url" content="http://example.com/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/index.html">
+<meta property="og:title" content="commonConfig">
+<meta property="og:url" content="http://example.com/2023/08/02/commonConfig/index.html">
 <meta property="og:site_name" content="薛旭涛">
-<meta property="og:description" content="一、Cookie的属性一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：  name字段为一个cookie的名称 value字段为一个cookie的值 domain字段为可以访问此cookie的域名，Servlet中通过setDomain()设置   非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其">
+<meta property="og:description" content="1、安装java 安装步骤：  执行命令yum -y list java*查看可安装java版本 yum install -y java-1.8.0-openjdk-devel.x86_64， 一键安装 安装位置：&#x2F;usr&#x2F;lib&#x2F;jvm   ~&#x2F;bigdata&#x2F;hadoop-2.7.5&#x2F;tmp 2、安装redis 安装步骤：  wget http:&#x2F;&#x2F;downl">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/08/01/Cookie/Cookie_chrome.png">
-<meta property="article:published_time" content="2023-08-01T09:47:25.000Z">
-<meta property="article:modified_time" content="2023-08-01T10:09:10.482Z">
+<meta property="article:published_time" content="2023-08-02T09:58:28.000Z">
+<meta property="article:modified_time" content="2023-08-02T09:59:01.101Z">
 <meta property="article:author" content="薛旭涛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/08/01/Cookie/Cookie_chrome.png">
 
-<link rel="canonical" href="http://example.com/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/">
+<link rel="canonical" href="http://example.com/2023/08/02/commonConfig/">
 
 
 <script id="page-configurations">
@@ -47,7 +45,7 @@
   };
 </script>
 
-  <title>Cookie跨域 | 薛旭涛</title>
+  <title>commonConfig | 薛旭涛</title>
   
 
 
@@ -177,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/commonConfig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/icon.jpg">
@@ -190,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Cookie跨域
+          commonConfig
         </h1>
 
         <div class="post-meta">
@@ -201,7 +199,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-01 17:47:25 / 修改时间：18:09:10" itemprop="dateCreated datePublished" datetime="2023-08-01T17:47:25+08:00">2023-08-01</time>
+              <time title="创建时间：2023-08-02 17:58:28 / 修改时间：17:59:01" itemprop="dateCreated datePublished" datetime="2023-08-02T17:58:28+08:00">2023-08-02</time>
             </span>
 
           
@@ -217,43 +215,73 @@
       
         <span id="more"></span>
 
-<h3 id="一、Cookie的属性"><a href="#一、Cookie的属性" class="headerlink" title="一、Cookie的属性"></a>一、Cookie的属性</h3><p>一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：</p>
+<h2 id="1、安装java"><a href="#1、安装java" class="headerlink" title="1、安装java"></a>1、安装java</h2><blockquote>
+<p>安装步骤：</p>
 <ul>
-<li><strong>name</strong>字段为一个cookie的名称</li>
-<li><strong>value</strong>字段为一个cookie的值</li>
-<li><strong>domain</strong>字段为可以访问此cookie的域名，Servlet中通过setDomain()设置</li>
+<li>执行命令yum -y list java*查看可安装java版本</li>
+<li><code>yum install -y java-1.8.0-openjdk-devel.x86_64</code>， 一键安装</li>
+<li>安装位置：<code>/usr/lib/jvm</code></li>
 </ul>
-<p><img src="/2023/08/01/Cookie/Cookie_chrome.png"></p>
-<p>非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其他二级域名的cookie，否则cookie无法生成。（<strong>cookie不能跨域</strong>）</p>
-<p>顶级域名只能设置domain为顶级域名，不能设置为二级域名或者三级域名，否则cookie无法生成。</p>
-<p>二级域名能读取设置了domain为顶级域名或者自身的cookie，不能读取其他二级域名domain的cookie。所以要想cookie在多个二级域名中共享，需要设置domain为顶级域名，这样就可以在所有二级域名里面或者到这个cookie的值了。<br> 顶级域名只能获取到domain设置为顶级域名的cookie，其他domain设置为二级域名的无法获取。</p>
+</blockquote>
+<p>~&#x2F;bigdata&#x2F;hadoop-2.7.5&#x2F;tmp</p>
+<h2 id="2、安装redis"><a href="#2、安装redis" class="headerlink" title="2、安装redis"></a>2、安装redis</h2><blockquote>
+<p>安装步骤：</p>
 <ul>
-<li><strong>path</strong>字段为可以访问此cookie的页面路径。 比如<code>domain</code>是<code>abc.com</code>,<code>path</code>是<code>/test</code>，那么只有&#x2F;test路径下的页面可以读取此cookie。Servlet中通过setPath()设置，”&#x2F;“表示根路径</li>
-<li><strong>expires&#x2F;Max-Age</strong> 字段为此cookie超时时间。若设置其值为一个时间，那么当到达此时间后，此cookie失效。不设置的话默认值是Session，意思是cookie会和session一起失效。当<code>浏览器关闭</code>(不是浏览器标签页，而是整个浏览器) 后，此cookie失效。</li>
-<li><strong>size</strong>字段 此cookie大小。</li>
-<li><strong>http</strong>字段  cookie的http only属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过document.cookie来访问此cookie。</li>
-<li><strong>secure</strong> 字段 设置是否只能通过https来传递此条cookie</li>
+<li>wget <a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-6.0.8.tar.gz">http://download.redis.io/releases/redis-6.0.8.tar.gz</a></li>
+<li>tar xzf redis-6.0.8.tar.gz</li>
+<li>cd redis-6.0.8</li>
+<li>make</li>
 </ul>
-<h3 id="二、Cookie的路径"><a href="#二、Cookie的路径" class="headerlink" title="二、Cookie的路径"></a>二、Cookie的路径</h3><p>Cookie的属性其中有一个属性是路径。有些人认为Cookie的路径指的是Cookie在客户端的保存路径，其实并不是。<strong>Cookie的路径是在服务器创建Cookie时设置的，它的作用是决定浏览器访问服务器的某个资源时，需要将浏览器端保存的那些Cookie归还给服务器</strong>。</p>
-<h3 id="三、Cookie跨域setDomain和setPath"><a href="#三、Cookie跨域setDomain和setPath" class="headerlink" title="三、Cookie跨域setDomain和setPath"></a>三、Cookie跨域setDomain和setPath</h3><p>正常的cookie只能在一个应用中共享，即一个cookie只能由创建它的应用获得。</p>
-<h6 id="1-可在同一应用服务器内共享方法："><a href="#1-可在同一应用服务器内共享方法：" class="headerlink" title="1.可在同一应用服务器内共享方法："></a>1.可在同一应用服务器内共享方法：</h6><p>设置cookie.setPath(“&#x2F;“); 假设本机tomcat&#x2F;webapp下面有两个应用：cas和webapp_b：</p>
+</blockquote>
+<p>执行完 make 命令后，redis-6.0.8 的 src 目录下会出现编译后的 redis 服务程序 redis-server，还有用于测试的客户端程序 redis-cli。</p>
+<p>启动 redis 服务    客户端</p>
+<blockquote>
 <ul>
-<li>1）原来在cas下面设置的cookie，在webapp_b下面获取不到，path默认是产生cookie的应用的路径。</li>
-<li>2）若在cas下面设置cookie的时候，增加一条<code>cookie.setPath(&quot;/&quot;)</code>;或者<code>cookie.setPath(&quot;/webapp_b/&quot;)</code>;就可以在webapp_b下面获取到cas设置的cookie了。</li>
-<li>3）此处的参数，是相对于<code>应用服务器</code>存放应用的文件夹的根目录而言的(比如tomcat下面的<code>webapp</code>)，因此cookie.setPath(“&#x2F;“);之后，可以在webapp文件夹下的所有应用共享cookie，而cookie.setPath(“&#x2F;webapp_b&#x2F;“);是指cas应用设置的cookie只能在webapp_b应用下的获得，即便是产生这个cookie的cas应用也不可以。</li>
-<li>4）设置cookie.setPath(“&#x2F;webapp_b&#x2F;jsp”)或者cookie.setPath(“&#x2F;webapp_b&#x2F;jsp&#x2F;“)的时候，只有在webapp_b&#x2F;jsp下面可以获得cookie，在webapp_b下面但是在jsp文件夹外的都不能获得cookie。</li>
-<li>5）设置cookie.setPath(“&#x2F;webapp_b”);，是指在webapp_b下面才可以使用cookie，这样就不可以在产生cookie的应用cas下面获取cookie了</li>
-<li>6）有多条cookie.setPath(“XXX”);语句的时候，起作用的以<code>最后一条</code>为准。</li>
+<li>cd src</li>
+<li>.&#x2F;redis-server  启动客户端: .&#x2F;redis-cli</li>
 </ul>
-<h6 id="2-跨域共享cookie的方法："><a href="#2-跨域共享cookie的方法：" class="headerlink" title="2.跨域共享cookie的方法："></a>2.跨域共享cookie的方法：</h6><p>设置cookie.setDomain(“.jszx.com”);假设 A机所在的域：home.langchao.com,A有应用cas B机所在的域：jszx.com，B有应用webapp_b ：</p>
+</blockquote>
+<h2 id="3、安装docker"><a href="#3、安装docker" class="headerlink" title="3、安装docker"></a>3、安装docker</h2><p>1、使用 yum 安装</p>
+<blockquote>
+<p>安装步骤</p>
+<ol>
+<li>配置yum软件源</li>
+<li>安装依赖包</li>
+<li>安装</li>
+</ol>
+</blockquote>
+<ol>
+<li>执行下面的命令添加 yum 软件源：</li>
+</ol>
 <ul>
-<li>1）在cas下面设置cookie的时候，增加cookie.setDomain(“.jszx.com”)，这样在webapp_b下面就可以取到cookie。</li>
-<li>2）这个参数必须以“.”开始。</li>
-<li>3）输入url访问webapp_b的时候，必须输入域名才能解析。比如说在A机器输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://lc-bsp.jszx.com:8080/webapp_b">http://lc-bsp.jszx.com:8080/webapp_b</a>,可以获取cas在客户端设置的cookie，而B机器访问本机的应用，输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://localhost:8080/webapp_b">http://localhost:8080/webapp_b</a>则不可以获得cookie。</li>
-<li>4）设置了cookie.setDomain(“.jszx.com”);，还可以在默认的home.langchao.com下面共享。</li>
+<li><p>sudo yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
+</li>
+<li><p>sudo sed -i ‘s&#x2F;download.docker.com&#x2F;mirrors.aliyun.com/docker-ce&#x2F;g’ &#x2F;etc&#x2F;yum.repos.d&#x2F;docker-ce.repo</p>
+</li>
 </ul>
-<p>数必须以“.”开始。</p>
-<p>摘自作者：拾壹北<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/432ec6097003">https://www.jianshu.com/p/432ec6097003</a></p>
+<blockquote>
+<p><strong>官方源</strong></p>
+<ul>
+<li>sudo yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a></li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>执行以下命令<strong>安装依赖包</strong>：<code>sudo yum install -y yum-utils</code></li>
+</ol>
+<p>如果需要测试版本的 Docker 请执行以下命令：<br>sudo yum-config-manager –enable docker-ce-test</p>
+<ol start="3">
+<li><strong>安装</strong> Docker 更新 yum 软件源缓存，并安装 docker-ce。<blockquote>
+<ul>
+<li>sudo yum install docker-ce docker-ce-cli containerd.io</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p><strong>2、 启动 Docker</strong><br><code>sudo systemctl enable docker</code></p>
+<p><code>sudo systemctl start docker</code></p>
+<p>如果拉取缓慢配置国内源：<a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mirror">https://yeasy.gitbook.io/docker_practice/install/mirror</a></p>
+<p>CentOS8 额外设置<br>由于CentOS8 防火墙使用了nftables，但Docker尚未支持nftables，可以使用如下设置使用iptables：</p>
+<p>更改 <code>/etc/firewalld/firewalld.conf</code>中的<code>FirewallBackend=nftables</code>改为<code>FirewallBackend=iptables</code></p>
 
     </div>
 
@@ -269,13 +297,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/07/21/java/" rel="prev" title="汇编语言指令">
-      <i class="fa fa-chevron-left"></i> 汇编语言指令
+    <a href="/2023/08/02/Untitled/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/08/02/java-nio-bio/" rel="next" title="java_nio_bio">
-      java_nio_bio <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -334,7 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Cookie%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">一、Cookie的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Cookie%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="nav-number">2.</span> <span class="nav-text">二、Cookie的路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81Cookie%E8%B7%A8%E5%9F%9FsetDomain%E5%92%8CsetPath"><span class="nav-number">3.</span> <span class="nav-text">三、Cookie跨域setDomain和setPath</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%8F%AF%E5%9C%A8%E5%90%8C%E4%B8%80%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%86%85%E5%85%B1%E4%BA%AB%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">1.可在同一应用服务器内共享方法：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E8%B7%A8%E5%9F%9F%E5%85%B1%E4%BA%ABcookie%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">2.跨域共享cookie的方法：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85java"><span class="nav-number">1.</span> <span class="nav-text">1、安装java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85redis"><span class="nav-number">2.</span> <span class="nav-text">2、安装redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85docker"><span class="nav-number">3.</span> <span class="nav-text">3、安装docker</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
