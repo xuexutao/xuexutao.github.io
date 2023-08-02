@@ -195,7 +195,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-02 17:58:28 / 修改时间：17:59:01" itemprop="dateCreated datePublished" datetime="2023-08-02T17:58:28+08:00">2023-08-02</time>
+              <time title="创建时间：2023-08-02 17:58:28 / 修改时间：18:02:52" itemprop="dateCreated datePublished" datetime="2023-08-02T17:58:28+08:00">2023-08-02</time>
             </span>
 
           
@@ -209,133 +209,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h2 id="1、安装java"><a href="#1、安装java" class="headerlink" title="1、安装java"></a>1、安装java</h2><blockquote>
-<p>安装步骤：</p>
-<ul>
-<li>执行命令yum -y list java*查看可安装java版本</li>
-<li><code>yum install -y java-1.8.0-openjdk-devel.x86_64</code>， 一键安装</li>
-<li>安装位置：<code>/usr/lib/jvm</code></li>
-</ul>
-</blockquote>
-<p>~&#x2F;bigdata&#x2F;hadoop-2.7.5&#x2F;tmp</p>
-<h2 id="2、安装redis"><a href="#2、安装redis" class="headerlink" title="2、安装redis"></a>2、安装redis</h2><blockquote>
-<p>安装步骤：</p>
-<ul>
-<li>wget <a target="_blank" rel="noopener" href="http://download.redis.io/releases/redis-6.0.8.tar.gz">http://download.redis.io/releases/redis-6.0.8.tar.gz</a></li>
-<li>tar xzf redis-6.0.8.tar.gz</li>
-<li>cd redis-6.0.8</li>
-<li>make</li>
-</ul>
-</blockquote>
-<p>执行完 make 命令后，redis-6.0.8 的 src 目录下会出现编译后的 redis 服务程序 redis-server，还有用于测试的客户端程序 redis-cli。</p>
-<p>启动 redis 服务    客户端</p>
-<blockquote>
-<ul>
-<li>cd src</li>
-<li>.&#x2F;redis-server  启动客户端: .&#x2F;redis-cli</li>
-</ul>
-</blockquote>
-<h2 id="3、安装docker"><a href="#3、安装docker" class="headerlink" title="3、安装docker"></a>3、安装docker</h2><p>1、使用 yum 安装</p>
-<blockquote>
-<p>安装步骤</p>
-<ol>
-<li>配置yum软件源</li>
-<li>安装依赖包</li>
-<li>安装</li>
-</ol>
-</blockquote>
-<ol>
-<li>执行下面的命令添加 yum 软件源：</li>
-</ol>
-<ul>
-<li><p>sudo yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
-</li>
-<li><p>sudo sed -i ‘s&#x2F;download.docker.com&#x2F;mirrors.aliyun.com/docker-ce&#x2F;g’ &#x2F;etc&#x2F;yum.repos.d&#x2F;docker-ce.repo</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>官方源</strong></p>
-<ul>
-<li>sudo yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a></li>
-</ul>
-</blockquote>
-<ol start="2">
-<li>执行以下命令<strong>安装依赖包</strong>：<code>sudo yum install -y yum-utils</code></li>
-</ol>
-<p>如果需要测试版本的 Docker 请执行以下命令：<br>sudo yum-config-manager –enable docker-ce-test</p>
-<ol start="3">
-<li><strong>安装</strong> Docker 更新 yum 软件源缓存，并安装 docker-ce。<blockquote>
-<ul>
-<li>sudo yum install docker-ce docker-ce-cli containerd.io</li>
-</ul>
-</blockquote>
-</li>
-</ol>
-<p><strong>2、 启动 Docker</strong><br><code>sudo systemctl enable docker</code></p>
-<p><code>sudo systemctl start docker</code></p>
-<p>如果拉取缓慢配置国内源：<a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mirror">https://yeasy.gitbook.io/docker_practice/install/mirror</a></p>
-<p>CentOS8 额外设置<br>由于CentOS8 防火墙使用了nftables，但Docker尚未支持nftables，可以使用如下设置使用iptables：</p>
-<p>更改 <code>/etc/firewalld/firewalld.conf</code>中的<code>FirewallBackend=nftables</code>改为<code>FirewallBackend=iptables</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/Untitled/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/02/Untitled/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-08-02 17:23:04" itemprop="dateCreated datePublished" datetime="2023-08-02T17:23:04+08:00">2023-08-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
+          <p><strong>Linux安装常用软件</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/02/commonConfig/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -436,7 +318,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-08-02 10:06:42 / 修改时间：16:45:43" itemprop="dateCreated datePublished" datetime="2023-08-02T10:06:42+08:00">2023-08-02</time>
+              <time title="创建时间：2023-08-02 10:06:42 / 修改时间：18:04:20" itemprop="dateCreated datePublished" datetime="2023-08-02T10:06:42+08:00">2023-08-02</time>
             </span>
 
           
@@ -450,112 +332,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h3 id="一、单线程BIO实现"><a href="#一、单线程BIO实现" class="headerlink" title="一、单线程BIO实现"></a>一、单线程BIO实现</h3><ul>
-<li>服务端</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ServerSocket</span> <span class="variable">serverSocket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(<span class="number">8080</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;服务器已启动并监听8080端口&quot;</span>);</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                System.out.println();</span><br><span class="line">                System.out.println(<span class="string">&quot;服务器正在等待连接...&quot;</span>);</span><br><span class="line">                <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> serverSocket.accept();</span><br><span class="line">                System.out.println(<span class="string">&quot;服务器已接收到连接请求...&quot;</span>);</span><br><span class="line">                System.out.println();</span><br><span class="line">                System.out.println(<span class="string">&quot;服务器正在等待数据...&quot;</span>);</span><br><span class="line">                socket.getInputStream().read(buffer);</span><br><span class="line">                System.out.println(<span class="string">&quot;服务器已经接收到数据&quot;</span>);</span><br><span class="line">                System.out.println();</span><br><span class="line">                <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(buffer);</span><br><span class="line">                System.out.println(<span class="string">&quot;接收到的数据:&quot;</span> + content);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>客户端（1）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Consumer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span>,<span class="number">8080</span>);</span><br><span class="line">            socket.getOutputStream().write(<span class="string">&quot;向服务器发数据&quot;</span>.getBytes());</span><br><span class="line">            socket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此时客户端建立连接后直接发送数据。</p>
-<ul>
-<li>客户端（2）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Consumer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(<span class="string">&quot;127.0.0.1&quot;</span>,<span class="number">8080</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            message = sc.next();</span><br><span class="line">            socket.getOutputStream().write(message.getBytes());</span><br><span class="line">            socket.close();</span><br><span class="line">            sc.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个客户端会接受控制台输入的文字发送到服务端。</p>
-<blockquote>
-<p>从上面的运行结果中可以看到，服务器端在启动后：</p>
-</blockquote>
-<ul>
-<li>1）首先需要等待客户端的连接请求（<strong>第一次阻塞</strong>）；</li>
-<li>2）如果没有客户端连接，服务端将一直阻塞等待；</li>
-<li>3）然后当客户端连接后，服务器会等待客户端发送数据（<strong>第二次阻塞</strong>）；</li>
-<li>4）如果客户端没有发送数据，那么服务端将会一直阻塞等待客户端发送数据。</li>
-</ul>
-<p>服务端从启动到收到客户端数据的这个过程，将会有两次阻塞的过程。</p>
-<p><code>BIO</code>会产生两次阻塞，是<code>BIO</code>的非常重要的一个特点。</p>
-<p><strong>问题</strong>：</p>
-<ul>
-<li>当服务器接收到一个连接后，并且没有接收到客户端发送的数据时，是会阻塞在<code>read()</code>方法中的，那么此时如果再来一个客户端的请求，服务端是无法进行响应的。即：在不考虑多线程的情况下，<code>BIO</code>是无法处理多个客户端请求的。</li>
-<li>单线程无法处理并发</li>
-</ul>
-<h3 id="二、多线程解决BIO两次阻塞问题"><a href="#二、多线程解决BIO两次阻塞问题" class="headerlink" title="二、多线程解决BIO两次阻塞问题"></a>二、多线程解决BIO两次阻塞问题</h3><ul>
-<li>服务端</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ServerSocket</span> <span class="variable">serverSocket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(<span class="number">8080</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;服务器已启动并监听8080端口&quot;</span>);</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                System.out.println();</span><br><span class="line">                System.out.println(<span class="string">&quot;服务器正在等待连接...&quot;</span>);</span><br><span class="line">                <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> serverSocket.accept();</span><br><span class="line">                <span class="comment">// 多线程处理</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                        System.out.println(<span class="string">&quot;服务器已接收到连接请求...&quot;</span>);</span><br><span class="line">                        System.out.println();</span><br><span class="line">                        System.out.println(<span class="string">&quot;服务器正在等待数据...&quot;</span>);</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            socket.getInputStream().read(buffer);</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                        System.out.println(<span class="string">&quot;服务器已经接收到数据&quot;</span>);</span><br><span class="line">                        System.out.println();</span><br><span class="line">                        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(buffer);</span><br><span class="line">                        System.out.println(<span class="string">&quot;接收到的数据:&quot;</span> + content);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).start();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>服务器的状态就是一个线程对应一个请求，为每一个连接请求都创建了一个线程来处理。</p>
-<p><strong>问题：</strong></p>
-<ul>
-<li>如果有大量的请求连接到服务器上，但是却不发送消息，服务器也会为这些不发送消息的请求创建一个单独的线程，连接数一多就会对服务端造成极大的压力。</li>
-</ul>
-<h3 id="三、NIO"><a href="#三、NIO" class="headerlink" title="三、NIO"></a>三、NIO</h3><p><code>NIO</code>需要解决的最根本的问题就是<code>BIO</code>中的两个阻塞，分别是<code>等待连接时的阻塞</code>和<code>等待数据时的阻塞</code>。</p>
-<ol>
-<li><strong>等待连接时和等待数据时不阻塞</strong></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="type">ByteBuffer</span> <span class="variable">byteBuffer</span> <span class="operator">=</span> ByteBuffer.allocate(<span class="number">1024</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//Java为非阻塞设置的类</span></span><br><span class="line">            <span class="type">ServerSocketChannel</span> <span class="variable">serverSocketChannel</span> <span class="operator">=</span> ServerSocketChannel.open();</span><br><span class="line">            serverSocketChannel.bind(<span class="keyword">new</span> <span class="title class_">InetSocketAddress</span>(<span class="number">8080</span>));</span><br><span class="line">            <span class="comment">//设置为非阻塞</span></span><br><span class="line">            serverSocketChannel.configureBlocking(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="type">SocketChannel</span> <span class="variable">socketChannel</span> <span class="operator">=</span> serverSocketChannel.accept();</span><br><span class="line">                <span class="keyword">if</span>(socketChannel==<span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">//表示没人连接</span></span><br><span class="line">                    System.out.println(<span class="string">&quot;正在等待客户端请求连接...&quot;</span>);</span><br><span class="line">                    Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;当前接收到客户端请求连接...&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(socketChannel!=<span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">//设置为非阻塞</span></span><br><span class="line">                    socketChannel.configureBlocking(<span class="literal">false</span>);</span><br><span class="line">                    byteBuffer.flip();<span class="comment">//切换模式  写--&gt;读</span></span><br><span class="line">                    <span class="type">int</span> <span class="variable">effective</span> <span class="operator">=</span> socketChannel.read(byteBuffer);</span><br><span class="line">                    <span class="keyword">if</span>(effective!=<span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> Charset.forName(<span class="string">&quot;utf-8&quot;</span>).decode(byteBuffer).toString();</span><br><span class="line">                        System.out.println(content);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        System.out.println(<span class="string">&quot;当前未收到客户端消息&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/08/02/java-nio-bio/NIO1.png"></p>
-<p>在接收客户端消息时不会阻塞，但是又开始重新接收服务器请求，用户来不及输入消息，服务器就转向接收别的客户端请求了，<strong>服务器弄丢了当前客户端的请求</strong>。</p>
-<ol start="2">
-<li><strong>缓存Socket，轮询数据是否准备好</strong></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line">        <span class="type">ByteBuffer</span> <span class="variable">byteBuffer</span> <span class="operator">=</span> ByteBuffer.allocate(<span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">        List&lt;SocketChannel&gt; socketList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;SocketChannel&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//Java为非阻塞设置的类</span></span><br><span class="line">            <span class="type">ServerSocketChannel</span> <span class="variable">serverSocketChannel</span> <span class="operator">=</span> ServerSocketChannel.open();</span><br><span class="line">            serverSocketChannel.bind(<span class="keyword">new</span> <span class="title class_">InetSocketAddress</span>(<span class="number">8080</span>));</span><br><span class="line">            <span class="comment">//设置为非阻塞</span></span><br><span class="line">            serverSocketChannel.configureBlocking(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="type">SocketChannel</span> <span class="variable">socketChannel</span> <span class="operator">=</span> serverSocketChannel.accept();</span><br><span class="line">                <span class="keyword">if</span>(socketChannel==<span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">//表示没人连接</span></span><br><span class="line">                    System.out.println(<span class="string">&quot;正在等待客户端请求连接...&quot;</span>);</span><br><span class="line">                    Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;当前接收到客户端请求连接...&quot;</span>);</span><br><span class="line">                    socketList.add(socketChannel);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(SocketChannel socket:socketList) &#123;</span><br><span class="line">                    socket.configureBlocking(<span class="literal">false</span>);</span><br><span class="line">                    <span class="type">int</span> <span class="variable">effective</span> <span class="operator">=</span> socket.read(byteBuffer);</span><br><span class="line">                    <span class="keyword">if</span>(effective!=<span class="number">0</span>) &#123;</span><br><span class="line">                        byteBuffer.flip();<span class="comment">//切换模式  写--&gt;读</span></span><br><span class="line">                        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> Charset.forName(<span class="string">&quot;UTF-8&quot;</span>).decode(byteBuffer).toString();</span><br><span class="line">                        System.out.println(<span class="string">&quot;接收到消息:&quot;</span>+content);</span><br><span class="line">                        byteBuffer.clear();</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        System.out.println(<span class="string">&quot;当前未收到客户端消息&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/08/02/java-nio-bio/image-20230802103559185.png"></p>
-<p>在<code>1</code>中，采用了非阻塞方式，但是发现一旦非阻塞，等待客户端发送消息时就不会再阻塞了，而是直接重新去获取新客户端的连接请求，这就会造成客户端连接丢失。</p>
-<p>而<code>2</code>中，将连接存储在一个<code>list</code>集合中，每次等待客户端消息时都去轮询，看看消息是否准备好，如果准备好则直接打印消息。</p>
-<p>可以看到，从头到尾一直没有开启第二个线程，而是一直采用单线程来处理多个客户端的连接，这样的一个模式可以很完美地解决<code>BIO</code>在单线程模式下无法处理多客户端请求的问题，并且解决了非阻塞状态下连接丢失的问题。</p>
-<p><strong>问题：</strong></p>
-<ul>
-<li><p>消息没有丢失，程序也没有阻塞。</p>
-</li>
-<li><p>在接收消息的方式上可能有些许不妥，服务端采用了一个<code>轮询的方式</code>来接收消息，每次都轮询所有的连接，看消息是否准备好，测试用例中只是三个连接，所以看不出什么问题来，但是我们假设有1000万连接，甚至更多，采用这种轮询的方式效率是极低的。</p>
-</li>
-<li><p>1000万连接中，可能只会有100万会有消息，剩下的900万并不会发送任何消息，那么这些连接程序依旧要每次都去轮询，这显然是不合适的。</p>
-</li>
-</ul>
-<h3 id="四、真正的NIO"><a href="#四、真正的NIO" class="headerlink" title="四、真正的NIO"></a>四、真正的NIO</h3><p>真实<code>NIO</code>中，并不会在<code>Java</code>层上来进行一个轮询，而是将轮询的这个步骤交给我们的<code>操作系统</code>来进行，他将轮询的那部分代码改为操作系统级别的系统调用（windows环境为<strong>select</strong>函数，在linux环境中为<strong>epoll</strong>），在操作系统级别上调用select函数，主动地去感知有数据的socket。</p>
-<ol>
-<li>select</li>
-</ol>
-<p>Java程序其本质在轮询每个Socket的时候也需要去调用系统函数，轮询一次调用一次，会造成不必要的上下文切换开销。</p>
-<p>Select会将五个请求从用户态空间<code>全量复制</code>一份到内核态空间，在内核态空间来判断每个请求是否准备好数据，完全避免频繁的上下文切换。所以效率是比我们直接在应用层写轮询要高的。</p>
-<p>如果：select没有查询到到有数据的请求，那么将会一直阻塞（是的，select是一个阻塞函数）。如果有一个或者多个请求已经准备好数据了，那么select将会先将有数据的文件描述符置位，然后select返回。返回后通过遍历查看哪个请求有数据。</p>
-<p><strong>select的缺点：</strong></p>
-<ul>
-<li>1）底层存储依赖bitmap，处理的请求是有上限的，为1024；</li>
-<li>2）文件描述符是会置位的，所以如果当被置位的文件描述符需要重新使用时，是需要重新赋空值的；</li>
-<li>3）fd（文件描述符）从用户态拷贝到内核态仍然有一笔开销；</li>
-<li>4）select返回后还要再次遍历，来获知是哪一个请求有数据。</li>
-</ul>
-<ol start="2">
-<li>poll</li>
-</ol>
-<p>poll的工作原理和select很像，先来看一段poll内部使用的一个结构体。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">pollfd</span>&#123;</span><br><span class="line">    <span class="type">int</span> fd; </span><br><span class="line">    <span class="type">short</span> events;</span><br><span class="line">    <span class="type">short</span> revents;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>poll同样会将所有的请求拷贝到内核态，和select一样，poll同样是一个<code>阻塞函数</code>，当一个或多个请求有数据的时候，也同样会进行置位，但是它置位的是结构体pollfd中的events或者revents置位，而不是对fd本身进行置位，所以在下一次使用的时候不需要再进行重新赋空值的操作。poll内部存储不依赖bitmap，而是使用pollfd数组的这样一个数据结构，数组的大小肯定是大于1024的。解决了select 1、2两点的缺点。</p>
-<p>epoll是最新的一种多路IO复用的函数。它的特点:</p>
-<ul>
-<li><p>epoll和上述两个函数最大的不同是，它的fd是共享在用户态和内核态之间的，所以可以不必进行从用户态到内核态的一个拷贝，这样可以节约系统资源。</p>
-</li>
-<li><p>在select和poll中，如果某个请求的数据已经准备好，它们会将所有的请求都返回，供程序去遍历查看哪个请求存在数据，但是epoll只会返回存在数据的请求，这是因为epoll在发现某个请求存在数据时，首先会进行一个重排操作，将所有有数据的fd放到最前面的位置，然后返回（返回值为存在数据请求的个数N），那么上层程序就可以不必将所有请求都轮询，而是直接遍历epoll返回的前N个请求，这些请求都是有数据的请求。</p>
-</li>
-</ul>
-<h3 id="五、BIO、NIO适用场景分析"><a href="#五、BIO、NIO适用场景分析" class="headerlink" title="五、BIO、NIO适用场景分析"></a>五、BIO、NIO适用场景分析</h3><p>Java BIO (blocking I&#x2F;O)： 同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善；</p>
-<p>java NIO (non-blocking I&#x2F;O)： 同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I&#x2F;O请求时才启动一个线程进行处理。</p>
-<ul>
-<li>1）BIO方式： 适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解；</li>
-<li>2）NIO方式： 适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。</li>
-</ul>
-
+          <p><strong>java的BIO和NIO问题</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/02/java-nio-bio/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -597,10 +382,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-08-01 17:47:25 / 修改时间：18:09:10" itemprop="dateCreated datePublished" datetime="2023-08-01T17:47:25+08:00">2023-08-01</time>
+              <time title="创建时间：2023-08-01 17:47:25" itemprop="dateCreated datePublished" datetime="2023-08-01T17:47:25+08:00">2023-08-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-02 18:03:08" itemprop="dateModified" datetime="2023-08-02T18:03:08+08:00">2023-08-02</time>
+              </span>
 
           
 
@@ -613,46 +404,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h3 id="一、Cookie的属性"><a href="#一、Cookie的属性" class="headerlink" title="一、Cookie的属性"></a>一、Cookie的属性</h3><p>一个域名下面可能存在着很多个cookie对象，cookie具有多个属性：</p>
-<ul>
-<li><strong>name</strong>字段为一个cookie的名称</li>
-<li><strong>value</strong>字段为一个cookie的值</li>
-<li><strong>domain</strong>字段为可以访问此cookie的域名，Servlet中通过setDomain()设置</li>
-</ul>
-<p><img src="/2023/08/01/Cookie/Cookie_chrome.png"></p>
-<p>非顶级域名，如二级域名或者三级域名，设置的cookie的domain只能为顶级域名或者二级域名或者三级域名本身，不能设置其他二级域名的cookie，否则cookie无法生成。（<strong>cookie不能跨域</strong>）</p>
-<p>顶级域名只能设置domain为顶级域名，不能设置为二级域名或者三级域名，否则cookie无法生成。</p>
-<p>二级域名能读取设置了domain为顶级域名或者自身的cookie，不能读取其他二级域名domain的cookie。所以要想cookie在多个二级域名中共享，需要设置domain为顶级域名，这样就可以在所有二级域名里面或者到这个cookie的值了。<br> 顶级域名只能获取到domain设置为顶级域名的cookie，其他domain设置为二级域名的无法获取。</p>
-<ul>
-<li><strong>path</strong>字段为可以访问此cookie的页面路径。 比如<code>domain</code>是<code>abc.com</code>,<code>path</code>是<code>/test</code>，那么只有&#x2F;test路径下的页面可以读取此cookie。Servlet中通过setPath()设置，”&#x2F;“表示根路径</li>
-<li><strong>expires&#x2F;Max-Age</strong> 字段为此cookie超时时间。若设置其值为一个时间，那么当到达此时间后，此cookie失效。不设置的话默认值是Session，意思是cookie会和session一起失效。当<code>浏览器关闭</code>(不是浏览器标签页，而是整个浏览器) 后，此cookie失效。</li>
-<li><strong>size</strong>字段 此cookie大小。</li>
-<li><strong>http</strong>字段  cookie的http only属性。若此属性为true，则只有在http请求头中会带有此cookie的信息，而不能通过document.cookie来访问此cookie。</li>
-<li><strong>secure</strong> 字段 设置是否只能通过https来传递此条cookie</li>
-</ul>
-<h3 id="二、Cookie的路径"><a href="#二、Cookie的路径" class="headerlink" title="二、Cookie的路径"></a>二、Cookie的路径</h3><p>Cookie的属性其中有一个属性是路径。有些人认为Cookie的路径指的是Cookie在客户端的保存路径，其实并不是。<strong>Cookie的路径是在服务器创建Cookie时设置的，它的作用是决定浏览器访问服务器的某个资源时，需要将浏览器端保存的那些Cookie归还给服务器</strong>。</p>
-<h3 id="三、Cookie跨域setDomain和setPath"><a href="#三、Cookie跨域setDomain和setPath" class="headerlink" title="三、Cookie跨域setDomain和setPath"></a>三、Cookie跨域setDomain和setPath</h3><p>正常的cookie只能在一个应用中共享，即一个cookie只能由创建它的应用获得。</p>
-<h6 id="1-可在同一应用服务器内共享方法："><a href="#1-可在同一应用服务器内共享方法：" class="headerlink" title="1.可在同一应用服务器内共享方法："></a>1.可在同一应用服务器内共享方法：</h6><p>设置cookie.setPath(“&#x2F;“); 假设本机tomcat&#x2F;webapp下面有两个应用：cas和webapp_b：</p>
-<ul>
-<li>1）原来在cas下面设置的cookie，在webapp_b下面获取不到，path默认是产生cookie的应用的路径。</li>
-<li>2）若在cas下面设置cookie的时候，增加一条<code>cookie.setPath(&quot;/&quot;)</code>;或者<code>cookie.setPath(&quot;/webapp_b/&quot;)</code>;就可以在webapp_b下面获取到cas设置的cookie了。</li>
-<li>3）此处的参数，是相对于<code>应用服务器</code>存放应用的文件夹的根目录而言的(比如tomcat下面的<code>webapp</code>)，因此cookie.setPath(“&#x2F;“);之后，可以在webapp文件夹下的所有应用共享cookie，而cookie.setPath(“&#x2F;webapp_b&#x2F;“);是指cas应用设置的cookie只能在webapp_b应用下的获得，即便是产生这个cookie的cas应用也不可以。</li>
-<li>4）设置cookie.setPath(“&#x2F;webapp_b&#x2F;jsp”)或者cookie.setPath(“&#x2F;webapp_b&#x2F;jsp&#x2F;“)的时候，只有在webapp_b&#x2F;jsp下面可以获得cookie，在webapp_b下面但是在jsp文件夹外的都不能获得cookie。</li>
-<li>5）设置cookie.setPath(“&#x2F;webapp_b”);，是指在webapp_b下面才可以使用cookie，这样就不可以在产生cookie的应用cas下面获取cookie了</li>
-<li>6）有多条cookie.setPath(“XXX”);语句的时候，起作用的以<code>最后一条</code>为准。</li>
-</ul>
-<h6 id="2-跨域共享cookie的方法："><a href="#2-跨域共享cookie的方法：" class="headerlink" title="2.跨域共享cookie的方法："></a>2.跨域共享cookie的方法：</h6><p>设置cookie.setDomain(“.jszx.com”);假设 A机所在的域：home.langchao.com,A有应用cas B机所在的域：jszx.com，B有应用webapp_b ：</p>
-<ul>
-<li>1）在cas下面设置cookie的时候，增加cookie.setDomain(“.jszx.com”)，这样在webapp_b下面就可以取到cookie。</li>
-<li>2）这个参数必须以“.”开始。</li>
-<li>3）输入url访问webapp_b的时候，必须输入域名才能解析。比如说在A机器输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://lc-bsp.jszx.com:8080/webapp_b">http://lc-bsp.jszx.com:8080/webapp_b</a>,可以获取cas在客户端设置的cookie，而B机器访问本机的应用，输入：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://localhost:8080/webapp_b">http://localhost:8080/webapp_b</a>则不可以获得cookie。</li>
-<li>4）设置了cookie.setDomain(“.jszx.com”);，还可以在默认的home.langchao.com下面共享。</li>
-</ul>
-<p>数必须以“.”开始。</p>
-<p>摘自作者：拾壹北<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/432ec6097003">https://www.jianshu.com/p/432ec6097003</a></p>
-
+          <p><strong>关于Cookie跨域的问题</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/01/Cookie%E8%B7%A8%E5%9F%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -702,7 +462,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-02 16:46:11" itemprop="dateModified" datetime="2023-08-02T16:46:11+08:00">2023-08-02</time>
+                <time title="修改时间：2023-08-02 18:03:28" itemprop="dateModified" datetime="2023-08-02T18:03:28+08:00">2023-08-02</time>
               </span>
 
           
@@ -716,10 +476,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-<h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3><h3 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h3><p>CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。  </p>
-<p>&ensp; &ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。<br>8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H 时，是如何通过数据总线传送数据的。图1.5 展示了 8088CPU数据总线上的数据传送情况:图 1.6 展示了8086CPU 数据总线上的数据传送情况。</p>
-<h3 id="二、java8流式编程"><a href="#二、java8流式编程" class="headerlink" title="二、java8流式编程"></a>二、java8流式编程</h3>
+          <p><strong>汇编部分指令</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/21/java/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -946,7 +711,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
