@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-08 15:47:50" itemprop="dateModified" datetime="2023-08-08T15:47:50+08:00">2023-08-08</time>
+                <time title="修改时间：2023-08-08 16:00:47" itemprop="dateModified" datetime="2023-08-08T16:00:47+08:00">2023-08-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,123 +242,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>远程仓库的使用是必不可少的技能。可以使用<code>git remote</code>命令查看每一个远程服务器的简写，对于已经克隆的仓库，它至少会包含一个<code>origin</code>，这是 Git 给克隆仓库服务器取的默认名字，它和其它服务器并没有什么区别，只是很少人会去修改这个默认名字而已。</p>
-<p>如果想要给一个远程仓库重新取一个简写名，那么可以运行<code>git remote rename</code>来完成，比如<code>git remote rename pb paul</code>就是将<code>pb</code>重命名为<code>paul</code>。值得注意的是这样同样也会修改远程分支名字，那些过去引用<code>pb/master</code>的现在全引用<code>paul/master</code>。</p>
-<p>当想要将自己的成果分享给他人时，就需要将其推送到上游，使用<code>git push [remote-name] [branch-name]</code>即可，比如你想要将<code>master</code>分支推送到<code>origin</code>服务器时，就可以运行<code>git push origin master</code>。</p>
-<p>除了分享自己的成果，我们也需要获取他人的成果，即从仓库拉取自己没有的信息，比如<code>git fetch origin</code>，需要注意的是<code>git fetch</code>命令会将数据拉取到你的本地仓库，但它并不会自动合并或修改你当前的工作，所以你还需要<code>git merge</code>来合并分支，实际上有一个<code>git pull</code>命令可以帮我们把这两个步骤都做了，你可以简单的将<code>git pull</code>理解为<code>git fetch</code>后面紧接着一个<code>git merge</code>。</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>Git 的分支模型是它的必杀技特性，它处理分支的方式是难以置信的轻量，创建分支几乎是在一瞬间完成，而且在不同分支间的切换也非常的便捷，要理解 Git 的分支，我们必须要再次回顾 Git 是如何保存数据的。</p>
-<p>下图是一个工作流，可以看到所谓的分支实际上就是一个可以移动的指针而已，<code>master</code>、<code>v1.0</code>都仅仅是一个指针，而创建分支、切换分支等操作也都只是对指针的操作，因此就不奇怪为什么 Git 这么快了。</p>
-<p><img src="D:\Blog\source_posts\Git.assets\1D783A0929907B306A072F3305B1382A.png" alt="图片说明"></p>
-<p>那么 Git 又是如何知道当前在哪一个分支上呢？它仅仅是用了一个名为<code>HEAD</code>的特殊指针，你可以将<code>HEAD</code>想象为当前分支的别名，<code>HEAD</code>指向哪个分支，就表示当前处于哪个分支。</p>
-<h2 id="分支创建与切换"><a href="#分支创建与切换" class="headerlink" title="分支创建与切换"></a>分支创建与切换</h2><p>我们可以使用<code>git branch [branch-name]</code>来创建一个新的分支，比如<code>git branch testing</code>；如果使用不带选项的<code>git branch</code>，那么它会列出当前所有的分支，这里需要注意的是<code>master</code>分支也不是特殊分支，它是运行<code>git init</code>时自动创建的默认分支，因为大家都懒得去改它，所以它就好像变得特殊了一样。</p>
-<p><code>git branch [branch-name]</code>只是创建了一个新分支，并不会切换到这个分支上面去，分支的切换说白了就是移动<code>HEAD</code>指针，我们只需要使用<code>git checkout testing</code>就可以切换到<code>testing</code>分支上去了。</p>
-<p>当然我们可以使用<code>git checkout -b [branch-name]</code>来创建一个分支并同时切换到这个分支，把这个命令与<code>git commit -a -m</code>来对比，你就会发现它们的类似之处。</p>
-<h2 id="分支的合并与删除"><a href="#分支的合并与删除" class="headerlink" title="分支的合并与删除"></a>分支的合并与删除</h2><p>当我们零时在一个新分支上解决了问题后，需要将其合并到<code>master</code>分支，只需要切换到<code>master</code>再运行<code>git merge</code>命令即可，Git 会自动找到这两个分支的共同祖先，然后做一个简单的三方合并。</p>
-<p>当然理想情况下是直接合并成功，但是不免会遇到合并冲突的情况，一旦遇到冲突了，Git 会像下面这样来标记冲突内容，你需要做的是选择由<code>=======</code>分割的令部分的其中一个或者自行合并，当<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，和<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>这些行被完全删除了，你需要对每个文件使用<code>git add</code>将其标记为冲突已解决。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;footer&quot;</span>&gt;</span>contact : email.support@github.com<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">=======</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;footer&quot;</span>&gt;</span></span><br><span class="line"> please contact us at support@github.com</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; testing:index.html</span><br></pre></td></tr></table></figure>
-
-<p>当合并完分支后，之前的分支一般就不会再要了，这时可以运行<code>git branch -d [branch-name]</code>来删除指定分支，比如使用<code>git branch -d testing</code>来删除<code>testing</code>分支。</p>
-<h2 id="Git-常用命令"><a href="#Git-常用命令" class="headerlink" title="Git 常用命令"></a>Git 常用命令</h2><table>
-<thead>
-<tr>
-<th><strong>命令</strong></th>
-<th><strong>作用</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git init</code></td>
-<td>将一个目录转变成一个 Git 仓库</td>
-</tr>
-<tr>
-<td><code>git clone</code></td>
-<td>从远程克隆一个仓库到本地，它是<strong>多个命令的组合</strong></td>
-</tr>
-<tr>
-<td><code>git add</code></td>
-<td>将内容从工作目录添加到暂存区</td>
-</tr>
-<tr>
-<td><code>git commit</code></td>
-<td>将暂存区文件在数据库中创建一个快照，然后将分支指针移到其上</td>
-</tr>
-<tr>
-<td><code>git commit -a -m [msg]</code></td>
-<td><code>git add</code>和<code>git commit</code>的组合</td>
-</tr>
-<tr>
-<td><code>git status</code></td>
-<td>展示工作区及暂存区域中不同状态的文件</td>
-</tr>
-<tr>
-<td><code>git status -s</code></td>
-<td>比<code>git status</code>展示的内容更加简洁</td>
-</tr>
-<tr>
-<td><code>git diff</code></td>
-<td>对比工作目录文件和暂存区快照之间的差异</td>
-</tr>
-<tr>
-<td><code>git diff --cached</code></td>
-<td>对比已暂存的差异</td>
-</tr>
-<tr>
-<td><code>git reset</code></td>
-<td>根据你传递给动作的参数来执行撤销操作</td>
-</tr>
-<tr>
-<td><code>git rm</code></td>
-<td>从工作区，或者暂存区移除文件</td>
-</tr>
-<tr>
-<td><code>git clean</code></td>
-<td>从工作区中移除不想要的文件的命令</td>
-</tr>
-<tr>
-<td><code>git checkout</code></td>
-<td>切换分支，或者检出内容到工作目录</td>
-</tr>
-<tr>
-<td><code>git branch</code></td>
-<td>列出你所有的分支、创建新分支、删除分支及重命名分支</td>
-</tr>
-<tr>
-<td><code>git checkout -b [branch]</code></td>
-<td>创建新分支并切换到该分支</td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>展示历史记录</td>
-</tr>
-<tr>
-<td><code>git log --pretty=oneline</code></td>
-<td>简洁版历史记录</td>
-</tr>
-<tr>
-<td><code>git merge</code></td>
-<td>合并一个或者多个分支到已检出的分支中</td>
-</tr>
-<tr>
-<td><code>git stash</code></td>
-<td>临时地保存一些还没有提交的工作</td>
-</tr>
-<tr>
-<td><code>git pull</code></td>
-<td>git fetch 和 git merge 命令的组合体</td>
-</tr>
-<tr>
-<td><code>git push</code></td>
-<td>将本地工作内容推送到远程仓库</td>
-</tr>
-<tr>
-<td><code>git push origin local_branch:remote_branch</code></td>
-<td>比<code>git push</code>更加详细的推送</td>
-</tr>
-<tr>
-<td><code>git checkout --track [remote-name]/[branch]</code></td>
-<td>在本地创建一个分支用于跟踪远程同名分支</td>
-</tr>
-</tbody></table>
-
+          <p>项目管理工具Git</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/07/Git/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
