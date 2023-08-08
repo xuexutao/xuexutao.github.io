@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="项目管理工具Git">
+  <meta name="description" content="远程仓库远程仓库的使用是必不可少的技能。可以使用git remote命令查看每一个远程服务器的简写，对于已经克隆的仓库，它至少会包含一个origin，这是 Git 给克隆仓库服务器取的默认名字，它和其它服务器并没有什么区别，只是很少人会去修改这个默认名字而已。 如果想要给一个远程仓库重新取一个简写名，那么可以运行git remote rename来完成，比如git remote rename pb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://example.com/2023/08/07/Git/index.html">
 <meta property="og:site_name" content="薛旭涛">
-<meta property="og:description" content="项目管理工具Git">
+<meta property="og:description" content="远程仓库远程仓库的使用是必不可少的技能。可以使用git remote命令查看每一个远程服务器的简写，对于已经克隆的仓库，它至少会包含一个origin，这是 Git 给克隆仓库服务器取的默认名字，它和其它服务器并没有什么区别，只是很少人会去修改这个默认名字而已。 如果想要给一个远程仓库重新取一个简写名，那么可以运行git remote rename来完成，比如git remote rename pb">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:\Blog\source_posts\Git.assets\1D783A0929907B306A072F3305B1382A.png">
+<meta property="og:image" content="http://example.com/2023/08/07/Git/1D783A0929907B306A072F3305B1382A.png">
 <meta property="article:published_time" content="2023-08-07T08:33:43.000Z">
-<meta property="article:modified_time" content="2023-08-08T08:00:47.890Z">
+<meta property="article:modified_time" content="2023-08-08T08:35:00.281Z">
 <meta property="article:author" content="薛旭涛">
-<meta property="article:tag" content="关键词">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:\Blog\source_posts\Git.assets\1D783A0929907B306A072F3305B1382A.png">
+<meta name="twitter:image" content="http://example.com/2023/08/07/Git/1D783A0929907B306A072F3305B1382A.png">
 
 <link rel="canonical" href="http://example.com/2023/08/07/Git/">
 
@@ -209,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-08 16:00:47" itemprop="dateModified" datetime="2023-08-08T16:00:47+08:00">2023-08-08</time>
+                <time title="修改时间：2023-08-08 16:35:00" itemprop="dateModified" datetime="2023-08-08T16:35:00+08:00">2023-08-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,15 +246,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>项目管理工具Git</p>
-<span id="more"></span>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>远程仓库的使用是必不可少的技能。可以使用<code>git remote</code>命令查看每一个远程服务器的简写，对于已经克隆的仓库，它至少会包含一个<code>origin</code>，这是 Git 给克隆仓库服务器取的默认名字，它和其它服务器并没有什么区别，只是很少人会去修改这个默认名字而已。</p>
+        <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>远程仓库的使用是必不可少的技能。可以使用<code>git remote</code>命令查看每一个远程服务器的简写，对于已经克隆的仓库，它至少会包含一个<code>origin</code>，这是 Git 给克隆仓库服务器取的默认名字，它和其它服务器并没有什么区别，只是很少人会去修改这个默认名字而已。</p>
 <p>如果想要给一个远程仓库重新取一个简写名，那么可以运行<code>git remote rename</code>来完成，比如<code>git remote rename pb paul</code>就是将<code>pb</code>重命名为<code>paul</code>。值得注意的是这样同样也会修改远程分支名字，那些过去引用<code>pb/master</code>的现在全引用<code>paul/master</code>。</p>
+<span id="more"></span>
+
 <p>当想要将自己的成果分享给他人时，就需要将其推送到上游，使用<code>git push [remote-name] [branch-name]</code>即可，比如你想要将<code>master</code>分支推送到<code>origin</code>服务器时，就可以运行<code>git push origin master</code>。</p>
 <p>除了分享自己的成果，我们也需要获取他人的成果，即从仓库拉取自己没有的信息，比如<code>git fetch origin</code>，需要注意的是<code>git fetch</code>命令会将数据拉取到你的本地仓库，但它并不会自动合并或修改你当前的工作，所以你还需要<code>git merge</code>来合并分支，实际上有一个<code>git pull</code>命令可以帮我们把这两个步骤都做了，你可以简单的将<code>git pull</code>理解为<code>git fetch</code>后面紧接着一个<code>git merge</code>。</p>
 <h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>Git 的分支模型是它的必杀技特性，它处理分支的方式是难以置信的轻量，创建分支几乎是在一瞬间完成，而且在不同分支间的切换也非常的便捷，要理解 Git 的分支，我们必须要再次回顾 Git 是如何保存数据的。</p>
 <p>下图是一个工作流，可以看到所谓的分支实际上就是一个可以移动的指针而已，<code>master</code>、<code>v1.0</code>都仅仅是一个指针，而创建分支、切换分支等操作也都只是对指针的操作，因此就不奇怪为什么 Git 这么快了。</p>
-<p><img src="D:\Blog\source_posts\Git.assets\1D783A0929907B306A072F3305B1382A.png" alt="图片说明"></p>
+<img src="./1D783A0929907B306A072F3305B1382A.png" alt="URI" style="zoom:50%;" />
+
 <p>那么 Git 又是如何知道当前在哪一个分支上呢？它仅仅是用了一个名为<code>HEAD</code>的特殊指针，你可以将<code>HEAD</code>想象为当前分支的别名，<code>HEAD</code>指向哪个分支，就表示当前处于哪个分支。</p>
 <h2 id="分支创建与切换"><a href="#分支创建与切换" class="headerlink" title="分支创建与切换"></a>分支创建与切换</h2><p>我们可以使用<code>git branch [branch-name]</code>来创建一个新的分支，比如<code>git branch testing</code>；如果使用不带选项的<code>git branch</code>，那么它会列出当前所有的分支，这里需要注意的是<code>master</code>分支也不是特殊分支，它是运行<code>git init</code>时自动创建的默认分支，因为大家都懒得去改它，所以它就好像变得特殊了一样。</p>
 <p><code>git branch [branch-name]</code>只是创建了一个新分支，并不会切换到这个分支上面去，分支的切换说白了就是移动<code>HEAD</code>指针，我们只需要使用<code>git checkout testing</code>就可以切换到<code>testing</code>分支上去了。</p>
@@ -372,6 +373,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
 
         
 
@@ -468,8 +472,10 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span>
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
