@@ -22,18 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="汇编部分指令 汇编语言数据总线CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。   &amp;ensp; &amp;ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H">
+  <meta name="description" content="数据总线CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。   &amp;ensp; &amp;ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H 时，是如何通过数据总">
 <meta property="og:type" content="article">
-<meta property="og:title" content="汇编语言指令">
+<meta property="og:title" content="杂糅知识">
 <meta property="og:url" content="http://example.com/2023/07/21/java/index.html">
 <meta property="og:site_name" content="薛旭涛">
-<meta property="og:description" content="汇编部分指令 汇编语言数据总线CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。   &amp;ensp; &amp;ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H">
+<meta property="og:description" content="数据总线CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。   &amp;ensp; &amp;ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H 时，是如何通过数据总">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:\Blog\source_posts\java.assets\202307261249950.png">
+<meta property="og:image" content="d:\Blog\source_posts\java.assets\202307261249126.png">
+<meta property="og:image" content="d:\Blog\source_posts\java.assets\202307261249931.png">
 <meta property="article:published_time" content="2023-07-21T08:21:39.882Z">
-<meta property="article:modified_time" content="2023-08-08T08:36:28.345Z">
+<meta property="article:modified_time" content="2023-08-08T10:05:47.226Z">
 <meta property="article:author" content="薛旭涛">
 <meta property="article:tag" content="关键词">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\Blog\source_posts\java.assets\202307261249950.png">
 
 <link rel="canonical" href="http://example.com/2023/07/21/java/">
 
@@ -48,7 +52,7 @@
   };
 </script>
 
-  <title>汇编语言指令 | 薛旭涛</title>
+  <title>杂糅知识 | 薛旭涛</title>
   
 
 
@@ -192,7 +196,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          汇编语言指令
+          杂糅知识
         </h1>
 
         <div class="post-meta">
@@ -209,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-08 16:36:28" itemprop="dateModified" datetime="2023-08-08T16:36:28+08:00">2023-08-08</time>
+                <time title="修改时间：2023-08-08 18:05:47" itemprop="dateModified" datetime="2023-08-08T18:05:47+08:00">2023-08-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>200</span>
+              <span>5.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>19 分钟</span>
             </span>
 
         </div>
@@ -246,12 +250,94 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>汇编部分指令</strong></p>
-<h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3><h3 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h3><p>CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。  </p>
+        <h3 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h3><p>CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。  </p>
 <p>&ensp; &ensp; 数据总线的宽度决定了 CPU 和外界的数据传送速度。8 根数据总线一次可传送一个 8 位二进制数据(即一个字节)。16 根数据总线一次可传送两个字节。<br>8088CPU 的数据总线宽度为 8，8086CPU 的数据总线宽度为 16。我们来分别看一下它们向内存中写入数据 89D8H 时，是如何通过数据总线传送数据的。图1.5 展示了 8088CPU数据总线上的数据传送情况:图 1.6 展示了8086CPU 数据总线上的数据传送情况。</p>
 <span id="more"></span>
 
-<h3 id="二、java8流式编程"><a href="#二、java8流式编程" class="headerlink" title="二、java8流式编程"></a>二、java8流式编程</h3>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="GDT和LDT"><a href="#GDT和LDT" class="headerlink" title="GDT和LDT"></a>GDT和LDT</h3><h4 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h4><ol>
+<li><code>GDT</code>（Global Descriptor Table）在操作系统中是唯一的一张表（一个处理器对应一个GDT）。</li>
+<li><code>LDT</code>（Local Descriptor Table）在PCB中，一个进程对应一个<code>LDT</code>，记录了每个段的起始位置。</li>
+<li><code>LDTR</code>是记录当前进程<code>LDT</code>表的位置，切换进程的时候，切换<code>PCB</code>。其实也是切换<code>LDT</code>。</li>
+</ol>
+<p><code>GDT</code>可以被放在内存的任何位置，但CPU必须知道<code>GDT</code>的入口，也就是基地址放在哪里，Intel的设计者门提供了一个寄存器<code>GDTR</code>用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过<code>LGDT</code>指令将GDT的入口地址装入此寄存器，从此以后，CPU就根据此寄存器中的内容作为GDT的入口来访问GDT了。GDTR中存放的是GDT在内存中的<code>基地址</code>和<code>其表长界限</code>。</p>
+<p>段选择子（Selector）由GDTR访问，全局描述符表是通过“段选择子”（实模式下的段寄存器）来完成的。段选择子是一个16位的寄存器（同实模式下的段寄存器相同）</p>
+<p>段选择子包括三部分：描述符索引（index）、TI、请求特权级（RPL）。他的index（描述符索引）部分表示所需要的段的描述符在描述符表的位置，由这个位置再根据在GDTR中存储的描述符表基址就可以找到相应的描述符。然后用描述符表中的段基址加上逻辑地址（SEL:OFFSET）的OFFSET就可以转换成线性地址，段选择子中的TI值只有一位0或1，0代表选择子是在GDT选择，1代表选择子是在LDT选择。请求特权级（RPL）则代表选择子的特权级，共有4个特权级（0级、1级、2级、3级）。</p>
+<blockquote>
+<p>关于特权级的说明：任务中的每一个段都有一个特定的级别。每当一个程序试图访问某一个段时，就将该程序所拥有的特权级与要访问的特权级进行比较，以决定能否访问该段。系统约定，CPU只能访问同一特权级或级别较低特权级的段。</p>
+</blockquote>
+<ul>
+<li>LDT和GDT从本质上说是相同的，只是LDT嵌套在GDT之中。</li>
+</ul>
+<p>LDTR记录局部描述符表的起始位置，与GDTR不同，LDTR的内容是一个段选择子。由于LDT本身同样是一段内存，也是一个段，所以它也有个描述符描述它，这个描述符就存储在GDT中，对应这个表述符也会有一个选择子，LDTR装载的就是这样一个选择子。LDTR可以在程序中随时改变，通过使用lldt指令。</p>
+<h4 id="二、实例"><a href="#二、实例" class="headerlink" title="二、实例"></a>二、实例</h4><ol>
+<li>访问GDT</li>
+</ol>
+<p>当TI&#x3D;0时表示段描述符在GDT中，如上图所示：</p>
+<p>①先从GDTR寄存器中获得GDT基址。</p>
+<p>②然后再GDT中以段选择器高13位位置索引值得到段描述符。</p>
+<p>③段描述符符包含段的基址、限长、优先级等各种属性，这就得到了段的起始地址（基址），再以基址加上偏移地址yyyyyyyy才得到最后的线性地址。</p>
+<ol start="2">
+<li>访问LDT</li>
+</ol>
+<p>当TI&#x3D;1时表示段描述符在LDT中</p>
+<p>①还是先从GDTR寄存器中获得<code>GDT基址</code>。</p>
+<p>②从LDTR寄存器中获取LDT所在段的<code>位置索引</code>(LDTR高13位)。</p>
+<p>③以这个位置索引在GDT中得到<code>LDT段描述符</code>从而得到<code>LDT段基址</code>。</p>
+<p>④用段选择器高13位位置索引值从LDT段中得到段描述符。</p>
+<p>⑤段描述符符包含段的基址、限长、优先级等各种属性，这就得到了段的起始地址（基址），再以基址加上偏移地址yyyyyyyy才得到最后的线性地址。</p>
+<p>扩展</p>
+<p>除了GDTR、LDTR外还有IDTR和TR</p>
+<p>（1）中断描述符表寄存器IDTR </p>
+<p>与GDTR的作用类似，IDTR寄存器用于存放中断描述符表IDT的32位线性基地址和16位表长度值。指令LIDT和SIDT分别用于加载和保存IDTR寄存器的内容。在机器刚加电或处理器复位后，基地址被默认地设置为0，而长度值被设置成0xFFFF。</p>
+<p>（2）任务寄存器TR</p>
+<p>TR用于寻址一个特殊的任务状态段（Task State Segment，TSS）。TSS中包含着当前执行任务的重要信息。</p>
+<p>TR寄存器用于存放当前任务TSS段的16位段选择符、32位基地址、16位段长度和描述符属性值。它引用GDT表中的一个TSS类型的描述符。指令LTR和STR分别用于加载和保存TR寄存器的段选择符部分。当使用LTR指令把选择符加载进任务寄存器时，TSS描述符中的段基地址、段限长度以及描述符属性会被自动加载到任务寄存器中。当执行任务切换时，处理器会把新任务的TSS的段选择符和段描述符自动加载进任务寄存器TR中。</p>
+<h4 id="三、为什么会有GDT，为什么会有LDT"><a href="#三、为什么会有GDT，为什么会有LDT" class="headerlink" title="三、为什么会有GDT，为什么会有LDT"></a>三、为什么会有GDT，为什么会有LDT</h4><p>在Protected Mode下，一个重要的必不可少的数据结构就是GDT（Global Descriptor Table）。 </p>
+<p>为什么要有GDT？我们首先考虑一下在Real Mode下的编程模型：<br>在Real Mode下，我们对一个内存地址的访问是通过Segment:Offset的方式来进行的，其中Segment是一个段的Base Address，一个Segment的最大长度是64 KB，这是16-bit系统所能表示的最大长度。而Offset则是相对于此Segment Base Address的偏移量。Base Address+Offset就是一个内存绝对地址。由此，我们可以看出，一个段具备两个因素：Base Address和Limit（段的最大长度），而对一个内存地址的访问，则是需要指出：使用哪个段？以及相对于这个段Base Address的Offset，这个Offset应该小于此段的Limit。当然对于16-bit系统，Limit不要指定，默认为最大长度64KB，而 16-bit的Offset也永远不可能大于此Limit。我们在实际编程的时候，使用16-bit段寄存器CS（Code Segment），DS（Data Segment），SS（Stack Segment）来指定Segment，CPU将段积存器中的数值向左偏移4-bit，放到20-bit的地址线上就成为20-bit的Base Address。<br>到了Protected Mode，内存的管理模式分为两种，段模式和页模式，其中页模式也是基于段模式的。也就是说，Protected Mode的内存管理模式事实上是：纯段模式和段页式。进一步说，段模式是必不可少的，而页模式则是可选的——如果使用页模式，则是段页式；否则这是纯段模式。<br>既然是这样，我们就先不去考虑页模式。对于段模式来讲，访问一个内存地址仍然使用Segment:Offset的方式，这是很自然的。由于 Protected Mode运行在32-bit系统上，那么Segment的两个因素：Base Address和Limit也都是32位的。IA-32允许将一个段的Base Address设为32-bit所能表示的任何值（Limit则可以被设为32-bit所能表示的，以2^12为倍数的任何指），而不象Real Mode下，一个段的Base Address只能是16的倍数（因为其低4-bit是通过左移运算得来的，只能为0，从而达到使用16-bit段寄存器表示20-bit Base Address的目的），而一个段的Limit只能为固定值64 KB。另外，Protected Mode，顾名思义，又为段模式提供了保护机制，也就说一个段的描述符需要规定对自身的访问权限（Access）。所以，在Protected Mode下，对一个段的描述则包括3方面因素：[Base Address, Limit, Access]，它们加在一起被放在一个64-bit长的数据结构中，被称为段描述符。这种情况下，如果我们直接通过一个64-bit段描述符来引用一个段的时候，就必须使用一个64-bit长的段积存器装入这个段描述符。但Intel为了保持向后兼容，将段积存器仍然规定为16-bit（尽管每个段积存器事实上有一个64-bit长的不可见部分，但对于程序员来说，段积存器就是16-bit的），那么很明显，我们无法通过16-bit长度的段积存器来直接引用64-bit的段描述符。<br>怎么办？解决的方法就是把这些长度为64-bit的段描述符放入一个数组中，而将段寄存器中的值作为下标索引来间接引用（事实上，是将段寄存器中的高13 -bit的内容作为索引）。这个全局的数组就是GDT。事实上，在GDT中存放的不仅仅是段描述符，还有其它描述符，它们都是64-bit长，我们随后再讨论。<br>GDT可以被放在内存的任何位置，那么当程序员通过段寄存器来引用一个段描述符时，CPU必须知道GDT的入口，也就是基地址放在哪里，所以 Intel的设计者门提供了一个寄存器GDTR用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过LGDT指令将GDT的入口地址装入此积存器，从此以后，CPU就根据此积存器中的内容作为GDT的入口来访问GDT了。<br>GDT是Protected Mode所必须的数据结构，也是唯一的——不应该，也不可能有多个。另外，正象它的名字（Global Descriptor Table）所揭示的，它是全局可见的，对任何一个任务而言都是这样。<br>除了GDT之外，IA-32还允许程序员构建与GDT类似的数据结构，它们被称作LDT（Local Descriptor Table），但与GDT不同的是，LDT在系统中可以存在多个，并且从LDT的名字可以得知，LDT不是全局可见的，它们只对引用它们的任务可见，每个任务最多可以拥有一个LDT。另外，每一个LDT自身作为一个段存在，它们的段描述符被放在GDT中。<br>IA-32为LDT的入口地址也提供了一个寄存器LDTR，因为在任何时刻只能有一个任务在运行，所以LDT寄存器全局也只需要有一个。如果一个任务拥有自身的LDT，那么当它需要引用自身的LDT时，它需要通过LLDT将其LDT的段描述符装入此寄存器。LLDT指令与LGDT指令不同的时，LGDT指令的操作数是一个32-bit的内存地址，这个内存地址处存放的是一个32-bit GDT的入口地址，以及16-bit的GDT Limit。而LLDT指令的操作数是一个16-bit的选择子，这个选择子主要内容是：被装入的LDT的段描述符在GDT中的索引值——这一点和刚才所讨论的通过段积存器引用段的模式是一样的。</p>
+<h3 id="内存分页"><a href="#内存分页" class="headerlink" title="内存分页"></a>内存分页</h3><h4 id="一、单级页表"><a href="#一、单级页表" class="headerlink" title="一、单级页表"></a>一、单级页表</h4><p>在分段机制下，程序的每一个段必须占用一段连续的内存空间，否则内存寻址就会出错。但仅仅依靠分段来使用内存，随着系统的运行，内存中会形成许多无法使用的碎片。分页机制是在分段机制的基础上实现的。内存分页的思想是将内存分为一页一页的，每页大小为4KB，这样一个进程最多也就浪费4K的内存，相比与之前的直接分段，内存碎片小了很多。</p>
+<p>段页结合的方式既满足了用户需要内存分段的体验，也达到了底层需要减少内存碎片的要求。更重要的是段页结合的方式为虚拟内存的实现提供的条件。</p>
+<blockquote>
+<p>虚拟存储技术的基本思想时利用大容量外存来扩充内存，产生一个比有限的实际内存空间大得多的、逻辑的虚拟空间，简称虚存，以便能够有效地支持多道程序系统的实现和大型程序运行的需要，从而增强系统的处理能力。</p>
+<p>——摘取自《操作系统》</p>
+</blockquote>
+<p>因此物理内存用分页切割，虚拟内存用分段切割.</p>
+<p><img src="D:\Blog\source_posts\java.assets\202307261249950.png" alt="img"></p>
+<p>从图中可以看出，分段机制产生的线性地址被分为两个部分：页号(bit12-31)和偏移地址(bit0-11)。页号是页表的索引，页表中的页框号是内存的索引。页号和页框号是任意映射的。页框号可以在运行过程中填入：当需要访问的某个线性地址的页号对应的页框号为空时，内核就需要在内存中找出一个空闲页，让这个线性地址能对应到真正的物理内存中。每个进程都有一个自己页表，每个进程的页表都有着相同的页号。分页机制让每个进程都有了0-4G的线性地址空间，也就是说每个进程都有0-4G的虚拟内存空间。将虚拟内存空间与内存的换入换出技术相结合，一个简单的虚拟内存技术就形成了。</p>
+<p><strong>但单级页表结构有个缺陷：需要单独拿出一大片内存来存放页表</strong>。若一个页表项为4B（页号和页框号各2B），那么一个进程的页表大小就为4MB，假如有100个进程呢？那就是400MB空间。</p>
+<h4 id="二、多级页表"><a href="#二、多级页表" class="headerlink" title="二、多级页表"></a>二、多级页表</h4><p><img src="D:\Blog\source_posts\java.assets\202307261249126.png" alt="img"></p>
+<p>虽然多级页表在空间上做到了精简，但是增加了访问内存的次数</p>
+<h4 id="三、快表"><a href="#三、快表" class="headerlink" title="三、快表"></a>三、快表</h4><p>由于多级页表需要多次访问内存，造成了时间上的损耗，因此引入快表 TLB，是一组相联快速存储，是寄存器</p>
+<p><img src="D:\Blog\source_posts\java.assets\202307261249931.png" alt="img"></p>
+<p>用<code>硬件电路</code>可以实现一次命中，先在快表中查找，没找到在多级页表中查找 <code>有点类似于cache</code></p>
+<p>最后还存在一个问题：由于在开启分页机制之后，内存地址的映射方式就发生了改变，因此在开启分页机制之前建立的GDT表，在开启分页机制之后还能找到吗？</p>
+<ol>
+<li>是能够找到的。</li>
+<li>需要对内核空间对应的页目录项和页表做特殊处理。在开启分页机制之前线性地址就等于物理地址，因此只要保证在开启分页机制后内核空间的线性地址依旧等于物理地址，那么在开启分页机制后，同样的只要GDT的线性地址不变就能找到。在head.s中填写了内核空间的页目录项和页表，并且填写的内容让内核空间的线性地址与物理地址一一对应。</li>
+</ol>
+<h4 id="四、页面置换算法"><a href="#四、页面置换算法" class="headerlink" title="四、页面置换算法"></a>四、页面置换算法</h4><p>进程运行时，若其访问的页面不在内存而需将其调入，但内存已无空闲空间时，就需要从内存中调出一页程序或数据，送入磁盘的对换区。</p>
+<p>选择调出页面的算法就称为页面置换算法。</p>
+<p>好的页面置换算法应有较低的页面更换频率，也就是说，应将以后不会再访问或者以后较长时间内不会再访问的页面先调出。</p>
+<p>常见的置换算法有以下四种。</p>
+<h5 id="1-最佳置换算法-OPT"><a href="#1-最佳置换算法-OPT" class="headerlink" title="1. 最佳置换算法(OPT)"></a>1. 最佳置换算法(OPT)</h5><p>最佳(Optimal, OPT)置换算法所选择的被淘汰页面将是以后永不使用的，或者是在最长时间内不再被访问的页面,这样可以保证获得最低的缺页率。</p>
+<h5 id="2-先进先出-FIFO-页面置换算法"><a href="#2-先进先出-FIFO-页面置换算法" class="headerlink" title="2. 先进先出(FIFO)页面置换算法"></a>2. 先进先出(FIFO)页面置换算法</h5><p>优先淘汰最早进入内存的页面，亦即在内存中驻留时间最久的页面。</p>
+<p>FIFO算法还会产生，当所分配的物理块数增大而页故障数不减反增的异常现象，这是由 Belady于1969年发现，故称为Belady异常，只有FIFO算法可能出现Belady 异常，而LRU和OPT算法永远不会出现Belady异常。</p>
+<h5 id="3-最近最久未使用-LRU-置换算法"><a href="#3-最近最久未使用-LRU-置换算法" class="headerlink" title="3. 最近最久未使用(LRU)置换算法"></a>3. 最近最久未使用(LRU)置换算法</h5><p>选择最近最长时间未访问过的页面予以淘汰，它认为过去一段时间内未访问过的页面，在最近的将来可能也不会被访问。</p>
+<h5 id="4-时钟-CLOCK-置换算法"><a href="#4-时钟-CLOCK-置换算法" class="headerlink" title="4.时钟(CLOCK)置换算法"></a>4.时钟(CLOCK)置换算法</h5><p>LRU算法的性能接近于OPT,但是实现起来比较困难，且开销大；FIFO算法实现简单，但性能差。</p>
+<p>所以操作系统的设计者尝试了很多算法，试图用比较小的开销接近LRU的性能，这类算法都是CLOCK算法的变体。</p>
+<h6 id="简单版本"><a href="#简单版本" class="headerlink" title="简单版本"></a>简单版本</h6><p>简单的CLOCK算法是给每一帧关联一个附加位，称为使用位。</p>
+<p>当某一页首次装入主存时，该帧的使用位设置为1;当该页随后再被访问到时，它的使用位也被置为1。</p>
+<p>对于页替换算法，用于替换的候选帧集合看做一个循环缓冲区，并且有一个指针与之相关联。</p>
+<p>当某一页被替换时，该指针被设置成指向缓冲区中的下一帧。当需要替换一页时，操作系统扫描缓冲区，以查找使用位被置为0的一帧。</p>
+<p>每当遇到一个使用位为1的帧时，操作系统就将该位重新置为0；如果在这个过程开始时，缓冲区中所有帧的使用位均为0，则选择遇到的第一个帧替换；如果所有帧的使用位均为1,则指针在缓冲区中完整地循环一周，把所有使用位都置为0，并且停留在最初的位置上，替换该帧中的页。</p>
+<p>由于该算法循环地检查各页面的情况，故称为CLOCK算法，又称为最近未用(Not Recently Used, NRU)算法。</p>
+<h6 id="改进型的-clock-算法"><a href="#改进型的-clock-算法" class="headerlink" title="改进型的 clock 算法"></a>改进型的 clock 算法</h6><p>CLOCK算法的性能比较接近LRU，而通过增加使用的位数目，可以使得CLOCK算法更加高效。在使用位的基础上再增加一个修改位，则得到改进型的CLOCK置换算法。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">最近未被访问，也未被修改(<span class="attribute">u</span>=0, <span class="attribute">m</span>=0)。</span><br><span class="line">最近被访问，但未被修改(<span class="attribute">u</span>=1, <span class="attribute">m</span>=0)。</span><br><span class="line">最近未被访问，但被修改(<span class="attribute">u</span>=0, <span class="attribute">m</span>=1)。</span><br><span class="line">最近被访问，被修改(<span class="attribute">u</span>=1, <span class="attribute">m</span>=1)。</span><br></pre></td></tr></table></figure>
+
+<p>从指针的当前位置开始，扫描帧缓冲区。在这次扫描过程中，对使用位不做任何修改。选择遇到的第一个帧(u&#x3D;0, m&#x3D;0)用于替换。</p>
+<p>如果第1)步失败，则重新扫描，查找(u&#x3D;0, m&#x3D;1)的帧。选择遇到的第一个这样的帧用于替换。在这个扫描过程中，对每个跳过的帧，把它的使用位设置成0。</p>
+<p>如果第2)步失败，指针将回到它的最初位置，并且集合中所有帧的使用位均为0。重复第1步，并且如果有必要，重复第2步。这样将可以找到供替换的帧。</p>
+<p>改进型的CLOCK算法优于简单CLOCK算法之处在于替换时首选没有变化的页。由于修改过的页在被替换之前必须写回，因而这样做会节省时间。</p>
+
     </div>
 
     
@@ -331,7 +417,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="nav-text">汇编语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF"><span class="nav-text">数据总线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81java8%E6%B5%81%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-text">二、java8流式编程</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%80%BB%E7%BA%BF"><span class="nav-text">数据总线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GDT%E5%92%8CLDT"><span class="nav-text">GDT和LDT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E4%BE%8B"><span class="nav-text">二、实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89GDT%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89LDT"><span class="nav-text">三、为什么会有GDT，为什么会有LDT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%A1%B5"><span class="nav-text">内存分页</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8D%95%E7%BA%A7%E9%A1%B5%E8%A1%A8"><span class="nav-text">一、单级页表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E7%BA%A7%E9%A1%B5%E8%A1%A8"><span class="nav-text">二、多级页表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%BF%AB%E8%A1%A8"><span class="nav-text">三、快表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="nav-text">四、页面置换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%9C%80%E4%BD%B3%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95-OPT"><span class="nav-text">1. 最佳置换算法(OPT)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA-FIFO-%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="nav-text">2. 先进先出(FIFO)页面置换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%9C%80%E8%BF%91%E6%9C%80%E4%B9%85%E6%9C%AA%E4%BD%BF%E7%94%A8-LRU-%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="nav-text">3. 最近最久未使用(LRU)置换算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E6%97%B6%E9%92%9F-CLOCK-%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="nav-text">4.时钟(CLOCK)置换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%89%88%E6%9C%AC"><span class="nav-text">简单版本</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E5%9E%8B%E7%9A%84-clock-%E7%AE%97%E6%B3%95"><span class="nav-text">改进型的 clock 算法</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
