@@ -176,6 +176,197 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/web_icon.jpg">
+      <meta itemprop="name" content="薛旭涛">
+      <meta itemprop="description" content="描述">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="薛旭涛">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/14/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/" class="post-title-link" itemprop="url">图像分割</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-14 16:02:06 / 修改时间：16:07:43" itemprop="dateCreated datePublished" datetime="2023-08-14T16:02:06+08:00">2023-08-14</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="图像分割Segment"><a href="#图像分割Segment" class="headerlink" title="图像分割Segment"></a>图像分割Segment</h1><h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p><strong>1.FCN系列</strong></p>
+<p>三种模型FCN-32S, FCN-16S, FCN-8S</p>
+<p>与经典的CNN在卷积层之后使用全连接层得到固定长度的特征向量进行分类（全联接层＋softmax输出）不同，<strong>FCN可以接受任意尺寸的输入图像</strong>，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，</p>
+<p>FCN与CNN的区域在把于CNN最后的全连接层换成卷积层，输出的是一张已经Label好的图片。</p>
+<img src="https://pic2.zhimg.com/80/v2-aba0ed4df95c206bb1fc00b463d33649_720w.webp" alt="img" style="zoom:50%;" />
+
+<blockquote>
+<p>主要贡献：</p>
+</blockquote>
+<ul>
+<li>不含全连接层(fc)的全卷积(fully conv)网络。可适应<strong>任意尺寸输入</strong>。</li>
+<li>增大数据尺寸的反卷积(deconv)层。能够输出精细的结果。</li>
+<li>结合不同深度层结果的<strong>跳级(skip)结构</strong>。同时确保鲁棒性和精确性。</li>
+</ul>
+<p><strong>2.SegNet</strong></p>
+<p>SegNet和FCN思路十分相似，只是Encoder,Decoder(Upsampling)使用的技术不一致。此外SegNet的编码器部分使用的是VGG16的前13层卷积网络，每个编码器层都对应一个解码器层，最终解码器的输出被送入soft-max分类器以独立的为每个像素产生类概率。</p>
+<p><strong>3.Unet及各种变体</strong></p>
+<p>在生物医学图像处理中，得到图像中的每一个细胞的类别标签是非常关键的。生物医学中最大的挑战就是用于训练的图像是不容易获取的，数据量也不会很大。U-Net 是非常著名的解决方案，它在全连接卷积层上构建模型，对其做了修改使得它能够在少量的训练图像数据上运行，得到了更加精确的分割。</p>
+<p><strong>4.Deeplab系列</strong></p>
+<p><strong>主要有模型Deeplabv1,Deeplabv2,Deeplabv3,Deeplabv3+。</strong></p>
+<p>将 CNN 编码器-解码器和 CRF 精炼过程相结合以产生目标标签（作者强调了解码器的上采样）。空洞卷积（也称扩张卷积）在每一层都使用大小不同的卷积核，使每一层都能捕获各种比例的特征。</p>
+<p>V3+使用深度分离卷积替代了pooling，并且使用了Xception，Xception的核心是使用了Depthwise separable convolution。Depthwise separable convolution的思想来自inception结构，是inception结构的一种极限情况。Inception 首先给出了一种假设：卷积层通道间的相关性和空间相关性是可以退耦合的，将它们分开映射，能达到更好的效果。在inception结构中，先对输入进行1<em>1的卷积，之后将通道分组，分别使用不同的3</em>3卷积提取特征，最后将各组结果串联在一起作为输出。</p>
+<p>主要贡献：</p>
+<ul>
+<li>为密集预测任务使用具有上采样的卷积</li>
+<li>在多尺度上为分割对象进行带洞空间金字塔池化（ASPP）</li>
+<li>通过使用 DCNNs 提升了目标边界的定位</li>
+</ul>
+<p>解决了语义分割的主要挑战，包括：</p>
+<ul>
+<li>由重复的最大池化和下采样导致的特征分辨率降低</li>
+<li>检测多尺度目标</li>
+<li>因为以目标为中心的分类器需要对空间变换具有不变性，因而降低了由 DCNN 的不变性导致的定位准确率。</li>
+</ul>
+<p><strong>5.Unet++</strong></p>
+<p>**UNet ++**（嵌套U-Net架构）用于更精确的分割。我们引入中间层来跳过U-Net的连接，这自然形成了来自不同深度的多个新的上采样路径，集合了各种感受域的U-Nets。</p>
+<p><strong>6.PSPNet</strong></p>
+<p>金字塔场景解析网络是建立在FCN之上的基于像素级分类网络。特性映射来自网络被转换成不同分辨率的激活，并经过多尺度处理池层，稍后向上采样并与原始层连接进行分割的feature map(见图)。学习的过程利用辅助分类器进一步优化了像ResNet这样的深度网络。不同类型的池模块侧重于激活的不同区域地图。将大小不同的内核集中在一起激活地图的不同区域创建空间池金字塔。</p>
+<p><strong>7.RefineNet</strong></p>
+<p>使用CNN最后一层的特性可以生成soft对象段的边界。在DeepLab算法中避免了这个问题深黑色的卷曲。RefineNet采用了另一种方法通过细化中间激活映射并分层地将其连接到结合多尺度激活，同时防止锐度损失。网络由独立的RefineNet模块组成，每个模块对应于ResNet。每个RefineNet模块由三个主要模块组成，即:剩余卷积单元(RCU)，多分辨率融合(MRF)和链剩余池(CRP)。RCU块由一个自适应块组成卷积集，微调预训练的ResNet权重对于分割问题。MRF层融合不同的激活物使用卷积和上采样层来创建更高的分辨率地图。最后，在CRP层池中使用多种大小的内核用于从较大的图像区域捕获背景上下文。RefineNet在Person-Part数据集上进行了测试68.6，与DeepLab-v2的64.9相比，两者都使用了ResNet-101作为特征提取器。</p>
+<p><strong>8.FastFCN</strong></p>
+<p>此模型提出了一种被称作联合金字塔上采样（Joint Pyramid Upsampling&#x2F;JPU）的联合上采样模块来代替消耗大量时间和内存的带洞卷积。它通过把抽取高分辨率图的方法形式化，并构建成一个上采样问题来取得很好的效果。</p>
+<p>此模型在 Pascal Context 数据集上实现了 53.13% 的 mIoU，并且具有三倍的运行速度。</p>
+<p>该模型以全卷积网络（FCN）作为主体架构，同时应用 JPU 对低分辨率的最终特征图进行上采样，得到了高分辨率的特征图。使用 JPU 代替带洞卷积并不会造成任何性能损失。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/14/%E6%95%B0%E6%8D%AE%E5%BA%93DB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/web_icon.jpg">
+      <meta itemprop="name" content="薛旭涛">
+      <meta itemprop="description" content="描述">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="薛旭涛">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/14/%E6%95%B0%E6%8D%AE%E5%BA%93DB/" class="post-title-link" itemprop="url">数据库DB</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-14 15:40:40 / 修改时间：15:42:00" itemprop="dateCreated datePublished" datetime="2023-08-14T15:40:40+08:00">2023-08-14</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>35</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Mysql数据库"><a href="#Mysql数据库" class="headerlink" title="Mysql数据库"></a>Mysql数据库</h1><p>从整个数据库中查找字段位于哪个表中（很有用）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema,table_name from information_schema.columns where column_name = &#x27;字段名&#x27;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/09/HTTPS%E6%B3%84%E9%9C%B2%E4%B8%AA%E4%BA%BA%E9%9A%90%E7%A7%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1139,186 +1330,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/Network/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/web_icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="描述">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/21/Network/" class="post-title-link" itemprop="url">计网</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-21 15:55:41" itemprop="dateCreated datePublished" datetime="2023-07-21T15:55:41+08:00">2023-07-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-08 16:36:14" itemprop="dateModified" datetime="2023-08-08T16:36:14+08:00">2023-08-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>39 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>考研计算机网络知识点小总结</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/21/Network/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/web_icon.jpg">
-      <meta itemprop="name" content="薛旭涛">
-      <meta itemprop="description" content="描述">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="薛旭涛">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-07-21 13:02:29 / 修改时间：16:28:43" itemprop="dateCreated datePublished" datetime="2023-07-21T13:02:29+08:00">2023-07-21</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span></span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>NaN:aN</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/21/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1385,7 +1401,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1398,7 +1414,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
