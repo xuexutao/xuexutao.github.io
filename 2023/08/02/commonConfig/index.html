@@ -29,11 +29,15 @@
 <meta property="og:site_name" content="薛旭涛">
 <meta property="og:description" content="1、安装java 安装步骤：  执行命令yum -y list java*查看可安装java版本 yum install -y java-1.8.0-openjdk-devel.x86_64， 一键安装 安装位置：&#x2F;usr&#x2F;lib&#x2F;jvm   ~&#x2F;bigdata&#x2F;hadoop-2.7.5&#x2F;tmp">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:\Blog\source\_posts\commonConfig.assets\image-20230816105338255.png">
+<meta property="og:image" content="d:\Blog\source_posts\commonConfig.assets\image-20230816105433236.png">
+<meta property="og:image" content="d:\Blog\source_posts\commonConfig.assets\image-20230816105858196.png">
 <meta property="article:published_time" content="2023-08-02T09:58:28.000Z">
-<meta property="article:modified_time" content="2023-08-10T07:08:45.452Z">
+<meta property="article:modified_time" content="2023-08-16T02:59:23.302Z">
 <meta property="article:author" content="薛旭涛">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\Blog\source\_posts\commonConfig.assets\image-20230816105338255.png">
 
 <link rel="canonical" href="http://example.com/2023/08/02/commonConfig/">
 
@@ -209,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-10 15:08:45" itemprop="dateModified" datetime="2023-08-10T15:08:45+08:00">2023-08-10</time>
+                <time title="修改时间：2023-08-16 10:59:23" itemprop="dateModified" datetime="2023-08-16T10:59:23+08:00">2023-08-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,14 +231,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>388</span>
+              <span>440</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -315,6 +319,18 @@
 <p>如果拉取缓慢配置国内源：<a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/mirror">https://yeasy.gitbook.io/docker_practice/install/mirror</a></p>
 <p>CentOS8 额外设置<br>由于CentOS8 防火墙使用了nftables，但Docker尚未支持nftables，可以使用如下设置使用iptables：</p>
 <p>更改 <code>/etc/firewalld/firewalld.conf</code>中的<code>FirewallBackend=nftables</code>改为<code>FirewallBackend=iptables</code></p>
+<h1 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h1><h3 id="CMD命令"><a href="#CMD命令" class="headerlink" title="CMD命令"></a>CMD命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -aon|findstr 8080  # 查找占用8080的进程号</span><br></pre></td></tr></table></figure>
+
+<img src="D:\Blog\source\_posts\commonConfig.assets\image-20230816105338255.png" alt="image-20230816105338255" style="zoom:100%;" />
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist|findstr &quot;10460&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\Blog\source_posts\commonConfig.assets\image-20230816105433236.png" alt="image-20230816105433236"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /f /t /im WeChat.exe  # 强制停止</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="D:\Blog\source_posts\commonConfig.assets\image-20230816105858196.png" alt="image-20230816105858196"></p>
 <h1 id="教程篇"><a href="#教程篇" class="headerlink" title="教程篇"></a>教程篇</h1><h2 id="一、Git教程"><a href="#一、Git教程" class="headerlink" title="一、Git教程"></a>一、Git教程</h2><p>猴子都能懂的GIT入门：<a target="_blank" rel="noopener" href="https://backlog.com/git-tutorial/cn/contents/%EF%BC%88%E5%BE%88%E6%A3%92%EF%BC%8C%E5%BE%88%E9%80%9A%E4%BF%97%EF%BC%89">https://backlog.com/git-tutorial/cn/contents/（很棒，很通俗）</a></p>
 
     </div>
@@ -399,7 +415,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85java"><span class="nav-text">1、安装java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85redis"><span class="nav-text">2、安装redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85docker"><span class="nav-text">3、安装docker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%99%E7%A8%8B%E7%AF%87"><span class="nav-text">教程篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Git%E6%95%99%E7%A8%8B"><span class="nav-text">一、Git教程</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85java"><span class="nav-text">1、安装java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85redis"><span class="nav-text">2、安装redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85docker"><span class="nav-text">3、安装docker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Window"><span class="nav-text">Window</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CMD%E5%91%BD%E4%BB%A4"><span class="nav-text">CMD命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%99%E7%A8%8B%E7%AF%87"><span class="nav-text">教程篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Git%E6%95%99%E7%A8%8B"><span class="nav-text">一、Git教程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -415,7 +431,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -428,7 +444,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
