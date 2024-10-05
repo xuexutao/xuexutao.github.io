@@ -274,7 +274,7 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：850</span>
+                     <span>字数总计：847</span>
                 
                 
                     
@@ -296,27 +296,27 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cuda"><span class="post-toc-text">CUDA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0kernel-function"><span class="post-toc-text">核函数（Kernel function）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">⭐️线程模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%85%A8%E5%B1%80%E7%B4%A2%E5%BC%95%E8%AE%A1%E7%AE%97"><span class="post-toc-text">线程全局索引计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvcc%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B%E4%B8%8Egpu%E8%AE%A1%E7%AE%97%E8%83%BD%E5%8A%9B"><span class="post-toc-text">NVCC编译流程与GPU计算能力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%A9%E9%98%B5%E5%8A%A0%E6%B3%95"><span class="post-toc-text">矩阵加法</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cuda"><span class="post-toc-text">CUDA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#kernel-function"><span class="post-toc-text">Kernel function</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">⭐️ 线程模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%85%A8%E5%B1%80%E7%B4%A2%E5%BC%95%E8%AE%A1%E7%AE%97"><span class="post-toc-text">线程全局索引计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvcc%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B%E4%B8%8Egpu%E8%AE%A1%E7%AE%97%E8%83%BD%E5%8A%9B"><span class="post-toc-text">NVCC编译流程与GPU计算能力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%A9%E9%98%B5%E5%8A%A0%E6%B3%95"><span class="post-toc-text">矩阵加法</span></a></li></ol></li></ol></li></ol>
             
         
         <div class=".article-gallery"><h1 id="cuda">CUDA</h1>
 <p>CPU上的主机代码</p>
 <p>GPU上的设备代码</p>
 <p>主机对设备的调用通过核函数//</p>
-<h2 id="核函数kernel-function">核函数（Kernel function）</h2>
+<h2 id="kernel-function">Kernel function</h2>
 <p>1、核函数在GPU上并行执行</p>
 <p>2、注意：</p>
 <p>​ （1）限定词 <code>__global__</code>修饰</p>
 <p>​ （2）返回值必须为void</p>
 <p>3、形式</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">kernel_function</span><span class="params">(arg)</span></span>{</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello world from the GPU"</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----</span></span><br><span class="line"><span class="function"><span class="type">void</span> __global__ <span class="title">kernel_function</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"hello world from the GPU"</span>);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">kernel_function</span><span class="params">(arg)</span></span>{</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello world from the GPU"</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> __global__ <span class="title">kernel_function</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"hello world from the GPU"</span>);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>核函数只能访问GPU内存</p>
 <p>核函数不能使用变长参数（明确参数_<strong>个数</strong>_），不能使用静态变量、不能使用函数指针，不支持iostream</p>
 <p>核函数具有异步性（调用时只是启动了kernel函数）</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	hello_from_gpu&lt;&lt;&lt;<span class="number">1</span>,<span class="number">1</span>&gt;&gt;&gt;();</span><br><span class="line">  <span class="built_in">cudaDeviceSynchronize</span>(); <span class="comment">// 等上面的CUDA进程执行完毕   主机与设备的同步</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h2 id="线程模型">⭐️线程模型</h2>
+<h2 id="线程模型">⭐️ 线程模型</h2>
 <p>线程模型结构</p>
 <p>​ （1）grid。网格（2）block。线程块</p>
 <p><a href="image-20240608234810614.png" class="gallery-item" style="box-shadow: none;"> <img src="image-20240608234810614.png" style="zoom:30%;"></a></p>
