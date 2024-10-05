@@ -1,12 +1,12 @@
 .post-md pre,
 .post-md .highlight {
-  background: #2d2d2d;
+  background: #f6f8fa;
   padding: 15px article-padding;
   border-style: solid;
   border-color: color-border;
-  border-width: 1px 0;
+  border-width: 1px 1px;
   overflow: auto;
-  color: #ccc;
+  color: #234512;
   line-height: 20.480000000000004px;
 }
 .post-md .highlight .gutter pre,
@@ -121,7 +121,7 @@
 }
 pre .comment,
 pre .title {
-  color: #999;
+  color: #8c6827;
 }
 pre .variable,
 pre .attribute,
@@ -173,5 +173,5 @@ pre .coffeescript .title {
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c9c;
+  color: #cb4538;
 }
