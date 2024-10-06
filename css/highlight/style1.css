@@ -131,7 +131,9 @@
 .post-md .gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
-pre .comment,
+pre .comment {
+  color: #61924f;
+}
 pre .title {
   color: #8c6827;
 }
@@ -149,9 +151,13 @@ pre .css .class,
 pre .css .pseudo {
   color: #f2777a;
 }
+pre .built_in {
+  color: #800080;
+  font-weight: bold;
+  font-family: monospace;
+}
 pre .number,
 pre .preprocessor,
-pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
@@ -162,7 +168,10 @@ pre .ruby .class .title,
 pre .css .rules .attribute {
   color: #9c9;
 }
-pre .string,
+pre .string {
+  color: #cd9f89;
+  font-family: monospace;
+}
 pre .value,
 pre .inheritance,
 pre .header,
@@ -186,4 +195,9 @@ pre .coffeescript .title {
 pre .keyword,
 pre .javascript .function {
   color: #cb4538;
+}
+pre .keyword {
+  color: #cb4538;
+  font-family: monospace;
+  font-weight: bold;
 }
