@@ -13,25 +13,25 @@
 .post-md h5,
 .post-md h6 {
     color: var(--font-color-1);
-    margin: 12px 0;
+    margin: 0px 0;
 }
 
 .post-md h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1.2;
-    padding: 24px 0;
+    padding: 10px 0px;
 }
 
 .post-md h2 {
-    font-size: 2rem;
-    line-height: 1.2;
-    padding: 20px 0;
+    font-size: 1.9rem;
+    line-height: 1;
+    padding: 10px 0;
 }
 
 .post-md h3 {
-    font-size: 1.75rem;
-    line-height: 1.2;
-    padding: 18px 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 12px 0;
 }
 
 .post-md h4 {
@@ -54,7 +54,7 @@
 
 .post-md a {
     color: var(--font-color-2);
-    box-shadow: 0 2px 0 var(--line-1);
+    /* box-shadow: 0 2px 0 var(--line-1); */
     /* transition: color ease-in-out .65s, box-shadow ease-in-out .65s; */
     display: flex;
 }
@@ -106,13 +106,14 @@
 .post-md p,
 .post-md blockquote {
     width: 100%;
-    margin: 12px 0;
+    margin: 10px 0;
 }
 
 .post-md blockquote {
-    border-left: 2px solid var(--line-2);
+    border-left: 6px solid #d97540;
     padding-left: 12px;
     word-wrap: break-word;
+    background-color: #eeeeee
 }
 
 .post-md .video-container {
