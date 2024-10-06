@@ -17,6 +17,7 @@
 .post-md pre,
 .post-md code {
   font-family: font-mono;
+  font-size: 12px;
 }
 .post-md code {
   background: color-background;

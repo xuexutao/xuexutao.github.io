@@ -17,6 +17,7 @@
 .post-md pre,
 .post-md code {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace, sans-serif, "notoserifsc-medium", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei";
+  font-size: 12px;
 }
 .post-md code {
   background: #eee;
