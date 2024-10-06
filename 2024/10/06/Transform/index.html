@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Transform" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">beihang University</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Transform
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2024-10-06</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.5k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：7分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#transform"><span class="post-toc-text">Transform</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86"><span class="post-toc-text">代码部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#embedding"><span class="post-toc-text">Embedding</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#positional-embedding"><span class="post-toc-text">Positional Embedding</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wordembedding-%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90"><span class="post-toc-text">WordEmbedding 深度解析</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="transform">Transform</h1>
+<h2 id="代码部分">代码部分</h2>
+<h3 id="embedding">Embedding</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">tokenEmbedding</span>(nn.Embedding):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, vocab_size, embedding_dim</span>):</span><br><span class="line">        <span class="built_in">super</span>(tokenEmbedding, <span class="variable language_">self</span>).__init__(vocab_size, embedding_dim, padding_idx=<span class="number">1</span>) </span><br><span class="line">        <span class="comment">#这里是在长度不一的时候，用1去填充</span></span><br><span class="line">        </span><br><span class="line"><span class="comment"># 用时</span></span><br><span class="line">vocab_size = <span class="number">1000</span>    <span class="comment"># 是总的词汇表的长度，不是输入token的长度</span></span><br><span class="line">embedding_dim = <span class="number">200</span>  <span class="comment"># 嵌入vertor dim</span></span><br><span class="line"></span><br><span class="line">embedding_layer = tokenEmbedding(vocab_size, embedding_dim)</span><br><span class="line">input_indices = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], dtype = torch.long)</span><br><span class="line"></span><br><span class="line">embedded_vectors = embedding_layer(input_indices)</span><br><span class="line"><span class="built_in">print</span>(embedded_vectors)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>embedding_layer有一个可学习的参数，既<strong>嵌入矩阵weight</strong>，shape=(vocab_size, embedding_dim)。每一行代表词汇表中一个元素的向量表示（所以直接查表就能得到 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="9.902ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4376.6 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(389,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(989,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(1433.7,0)"><g data-mml-node="mi"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="TeXAtom" transform="translate(553,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mi" transform="translate(466,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(1344,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="mi" transform="translate(1773,0)"><path data-c="1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mi" transform="translate(2239,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g></g></g><g data-mml-node="mo" transform="translate(3987.6,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span> 的矩阵）。</p>
+<h3 id="positional-embedding">Positional Embedding</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PositionalEncoding</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, d_embed, max_len, device</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :param d_embed: input_embedding的维度</span></span><br><span class="line"><span class="string">        :param max_len: 输入序列的最大长度</span></span><br><span class="line"><span class="string">        :param device: hardware device setting</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="built_in">super</span>(PositionalEncoding, <span class="variable language_">self</span>).__init__()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输入序列的最大长度</span></span><br><span class="line">        <span class="variable language_">self</span>.encoding = torch.zeros(max_len, d_embed, device=device)</span><br><span class="line">        <span class="variable language_">self</span>.encoding.requires_grad = <span class="literal">False</span>  <span class="comment"># we don't need to compute gradient</span></span><br><span class="line"></span><br><span class="line">        pos = torch.arange(<span class="number">0</span>, max_len, device=device)</span><br><span class="line">        pos = pos.<span class="built_in">float</span>().unsqueeze(dim=<span class="number">1</span>)   <span class="comment"># 1D =&gt; 2D pos = [[0],[1],[2],...,[max_len]]</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        _2i = torch.arange(<span class="number">0</span>, d_embed, step=<span class="number">2</span>, device=device).<span class="built_in">float</span>()</span><br><span class="line">        <span class="comment"># 'i' means index of d_embed(e.g. embedding size = 50, 'i' = [0,50])</span></span><br><span class="line">        <span class="comment"># "step=2" means 'i' multiplied with two (same with 2 * i)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 得到[max_len, d_embed/2]大小的矩阵, 利用了python的逐元素运算</span></span><br><span class="line">        <span class="variable language_">self</span>.encoding[:, <span class="number">0</span>::<span class="number">2</span>] = torch.sin(pos / (<span class="number">10000</span> ** (_2i / d_embed)))</span><br><span class="line">        <span class="variable language_">self</span>.encoding[:, <span class="number">1</span>::<span class="number">2</span>] = torch.cos(pos / (<span class="number">10000</span> ** (_2i / d_embed)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># self.encoding [max_len = 512, d_embed= 512]</span></span><br><span class="line">        batch_size, seq_len = x.size()</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.encoding[:seq_len, :] <span class="comment">#返回对应长度的位置编码</span></span><br></pre></td></tr></table></figure>
+<p>Self.encoding是一个矩阵类似于：</p>
+<p><a href="image-20241006224518020.png" title="image-20241006224518020" class="gallery-item" style="box-shadow: none;"> <img src="image-20241006224518020.png" alt="image-20241006224518020" style="zoom:50%;"></a></p>
+<p>有上面两个就可以得到transform embedding为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TransformerEmbedding</span>(nn.Module):</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    token embedding + positional encoding (sinusoid)</span></span><br><span class="line"><span class="string">    positional encoding can give positional information to network</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, vocab_size, d_embed, max_len, drop_prob, device</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :param vocab_size: size of vocabulary</span></span><br><span class="line"><span class="string">        :param d_model: dimensions of model</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="built_in">super</span>(TransformerEmbedding, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.device = device</span><br><span class="line">        <span class="variable language_">self</span>.tok_emb = TokenEmbedding(vocab_size, d_embed)</span><br><span class="line">        <span class="variable language_">self</span>.pos_emb = PositionalEncoding(d_embed, max_len, device)</span><br><span class="line">        <span class="variable language_">self</span>.drop_out = nn.Dropout(p=drop_prob)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        tok_emb = <span class="variable language_">self</span>.tok_emb(x).to(<span class="variable language_">self</span>.device)</span><br><span class="line">        pos_emb = <span class="variable language_">self</span>.pos_emb(x)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.drop_out(tok_emb + pos_emb)</span><br></pre></td></tr></table></figure>
+<h2 id="wordembedding-深度解析">WordEmbedding 深度解析</h2>
+<p>这部分WordEmbedding的代码实践！首先导入相关库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch.optim <span class="keyword">import</span> Adam</span><br><span class="line"><span class="keyword">from</span> torch.distributions.uniform <span class="keyword">import</span> Uniform</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> TensorDataset, DataLoader</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lightning <span class="keyword">as</span> L</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
+<p>主要思想就是，首先需要对输入的句子：“Troll2 is great”和“Gymkata is great” token化，也就是先做个one-hot编码。总共四个不一样的单词，所以onehot编码为4*4方格。<strong>Troll2</strong>的编码为[1,0,0,0]，经过神经网络之后，理想的输出是[0,1,0,0]，也就是输出<strong>is</strong>的onehot编码。所以由此可以构造出<strong><u>input和output</u></strong>。构造完之后记得使用TensorDataset和DataLoader转为Loader格式，方便后面的batch训练。</p>
+<p><a href="wordEmbedding.png" title="image-20241006211311257" class="gallery-item" style="box-shadow: none;"> <img src="wordEmbedding.png" alt="image-20241006211311257" style="zoom:30%;"></a></p>
+<p>下面是复杂版本的代码，没有使用nn.Linear()简化的代码，相对来说比较杂乱。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">intputs = torch.tensor([[<span class="number">1.</span>,<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">0.</span>],</span><br><span class="line">                       [<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">0.</span>,<span class="number">0.</span>],</span><br><span class="line">                       [<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">0.</span>],</span><br><span class="line">                       [<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">1.</span>]])</span><br><span class="line"></span><br><span class="line">labels = torch.tensor([[<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">0.</span>,<span class="number">0.</span>],</span><br><span class="line">                       [<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">0.</span>],</span><br><span class="line">                       [<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">0.</span>,<span class="number">1.</span>],</span><br><span class="line">                       [<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">0.</span>,<span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line">dataset = TensorDataset(intputs, labels)</span><br><span class="line">dataLoader = DataLoader(dataset)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WordEmbeddingFromScratch</span>(L.LightningModule):</span><br><span class="line">    <span class="comment"># create and initialize weight tensors and create the loss function</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        min_value = -<span class="number">0.5</span></span><br><span class="line">        max_value = <span class="number">0.5</span></span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.input1_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input1_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input2_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input2_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input3_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input3_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input4_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.input4_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.output1_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output1_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output2_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output2_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output3_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output3_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output4_w1 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line">        <span class="variable language_">self</span>.output4_w2 = nn.Parameter(Uniform(min_value, max_value).sample())</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.loss = nn.CrossEntropyLoss()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, <span class="built_in">input</span></span>): <span class="comment"># origin input will be embedding a list ==&gt; [[1,0,0,0]]</span></span><br><span class="line">        <span class="built_in">input</span> = <span class="built_in">input</span>[<span class="number">0</span>]      <span class="comment"># erase the outside list</span></span><br><span class="line"></span><br><span class="line">        input_to_top_hidden = ((<span class="built_in">input</span>[<span class="number">0</span>] * <span class="variable language_">self</span>.input1_w1) + </span><br><span class="line">                               (<span class="built_in">input</span>[<span class="number">1</span>] * <span class="variable language_">self</span>.input2_w1) + </span><br><span class="line">                               (<span class="built_in">input</span>[<span class="number">2</span>] * <span class="variable language_">self</span>.input3_w1) + </span><br><span class="line">                               (<span class="built_in">input</span>[<span class="number">3</span>] * <span class="variable language_">self</span>.input4_w1))</span><br><span class="line">        input_to_bottom_hidden = ((<span class="built_in">input</span>[<span class="number">0</span>] * <span class="variable language_">self</span>.input1_w2) + </span><br><span class="line">                               (<span class="built_in">input</span>[<span class="number">1</span>] * <span class="variable language_">self</span>.input2_w2) + </span><br><span class="line">                               (<span class="built_in">input</span>[<span class="number">2</span>] * <span class="variable language_">self</span>.input3_w2) + </span><br><span class="line">                               (<span class="built_in">input</span>[<span class="number">3</span>] * <span class="variable language_">self</span>.input4_w2))</span><br><span class="line">        </span><br><span class="line">        output1 = (input_to_top_hidden * <span class="variable language_">self</span>.output1_w1 + </span><br><span class="line">                   input_to_bottom_hidden * <span class="variable language_">self</span>.output1_w2)</span><br><span class="line">        output2 = (input_to_top_hidden * <span class="variable language_">self</span>.output2_w1 + </span><br><span class="line">                   input_to_bottom_hidden * <span class="variable language_">self</span>.output2_w2)</span><br><span class="line">        output3 = (input_to_top_hidden * <span class="variable language_">self</span>.output3_w1 + </span><br><span class="line">                   input_to_bottom_hidden * <span class="variable language_">self</span>.output3_w2)</span><br><span class="line">        output4 = (input_to_top_hidden * <span class="variable language_">self</span>.output4_w1 + </span><br><span class="line">                   input_to_bottom_hidden * <span class="variable language_">self</span>.output4_w2)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># if not torch.stack，just have the [], the graph of gradient will disappeared</span></span><br><span class="line">        output_presoftmax = torch.stack([output1, output2, output3, output4])</span><br><span class="line">        <span class="keyword">return</span> output_presoftmax</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">configure_optimizers</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> Adam(<span class="variable language_">self</span>.parameters(), lr = <span class="number">0.1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">training_step</span>(<span class="params">self, batch, batch_idx</span>):</span><br><span class="line">        intput_i, label_i = batch</span><br><span class="line">        output_i = <span class="variable language_">self</span>.forward(intput_i)</span><br><span class="line">        loss  = <span class="variable language_">self</span>.loss(output_i, label_i[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> loss</span><br><span class="line">    </span><br><span class="line">modelFromScratch = WordEmbeddingFromScratch()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Before optimization, the parameters are ..."</span>)</span><br><span class="line"><span class="comment"># print the initialize all the named parameters</span></span><br><span class="line"><span class="keyword">for</span> name, param <span class="keyword">in</span> modelFromScratch.named_parameters():</span><br><span class="line">    <span class="built_in">print</span>(name, param.data)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出结果为：</p>
+<p>input1_w1 tensor(0.4502) ...</p>
+<p>output4_w1 tensor(-0.4579)</p>
+<p>output4_w2 tensor(0.3754)</p>
+</blockquote>
+<p>为了更好的查看w1和w2进行下面的操作，【表格展示和图表展示】</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">data = {</span><br><span class="line">    <span class="string">"w1"</span>: [modelFromScratch.input1_w1.item(),</span><br><span class="line">           modelFromScratch.input2_w1.item(),</span><br><span class="line">           modelFromScratch.input3_w1.item(),</span><br><span class="line">           modelFromScratch.input4_w1.item()],</span><br><span class="line">    <span class="string">"w2"</span>: [modelFromScratch.input1_w2.item(),</span><br><span class="line">           modelFromScratch.input2_w2.item(),</span><br><span class="line">           modelFromScratch.input3_w2.item(),</span><br><span class="line">           modelFromScratch.input4_w2.item()],</span><br><span class="line">    <span class="string">"token"</span>: [<span class="string">"Troll2"</span>, <span class="string">"is"</span>, <span class="string">"great"</span>, <span class="string">"Gym"</span>],</span><br><span class="line">    <span class="string">"input"</span>: [<span class="string">"input1"</span>,<span class="string">"input2"</span>,<span class="string">"input3"</span>,<span class="string">"input4"</span>]</span><br><span class="line">}</span><br><span class="line">df = pd.DataFrame(data=data)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br><span class="line"></span><br><span class="line">sns.scatterplot(df, x =<span class="string">"w1"</span>, y= <span class="string">"w2"</span>)</span><br><span class="line"></span><br><span class="line">plt.text(df.w1[<span class="number">0</span>], df.w2[<span class="number">0</span>],df.token[<span class="number">0</span>],</span><br><span class="line">         horizontalalignment = <span class="string">"left"</span>,</span><br><span class="line">         size = <span class="string">"medium"</span>, </span><br><span class="line">         color = <span class="string">"black"</span>,</span><br><span class="line">         weight = <span class="string">"semibold"</span>)</span><br><span class="line"></span><br><span class="line">plt.text(df.w1[<span class="number">1</span>], df.w2[<span class="number">1</span>],df.token[<span class="number">1</span>],</span><br><span class="line">         horizontalalignment = <span class="string">"left"</span>,</span><br><span class="line">         size = <span class="string">"medium"</span>, </span><br><span class="line">         color = <span class="string">"black"</span>,</span><br><span class="line">         weight = <span class="string">"semibold"</span>)</span><br><span class="line"></span><br><span class="line">plt.text(df.w1[<span class="number">2</span>], df.w2[<span class="number">2</span>],df.token[<span class="number">2</span>],</span><br><span class="line">         horizontalalignment = <span class="string">"left"</span>,</span><br><span class="line">         size = <span class="string">"medium"</span>, </span><br><span class="line">         color = <span class="string">"black"</span>,</span><br><span class="line">         weight = <span class="string">"semibold"</span>)</span><br><span class="line"></span><br><span class="line">plt.text(df.w1[<span class="number">3</span>], df.w2[<span class="number">3</span>],df.token[<span class="number">3</span>],</span><br><span class="line">         horizontalalignment = <span class="string">"left"</span>,</span><br><span class="line">         size = <span class="string">"medium"</span>, </span><br><span class="line">         color = <span class="string">"black"</span>,</span><br><span class="line">         weight = <span class="string">"semibold"</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a trainer</span></span><br><span class="line">trainer = L.Trainer(max_epochs=<span class="number">100</span>) <span class="comment"># max epochs = 100</span></span><br><span class="line">trainer.fit(modelFromScratch, train_dataloaders=dataLoader)   </span><br></pre></td></tr></table></figure>
+<p>可视化结果如下，当然每次的结果都应该是不一样的：</p>
+<p><a href="image-20241006214611884.png" title="image-20241006214611884" class="gallery-item" style="box-shadow: none;"> <img src="image-20241006214611884.png" alt="image-20241006214611884" style="zoom:50%;"></a></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr>
+<th></th>
+<th>w1</th>
+<th>w2</th>
+<th>token</th>
+<th>input</th>
+<th>w1'</th>
+<th>w2'</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.115312</td>
+<td>-0.237109</td>
+<td>Troll2</td>
+<td>input1</td>
+<td>-1.538855</td>
+<td>-1.861845</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0.127418</td>
+<td>0.372505</td>
+<td>is</td>
+<td>input2</td>
+<td>-2.131814</td>
+<td>1.852834</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.253114</td>
+<td>0.034632</td>
+<td>a</td>
+<td>input3</td>
+<td>2.612083</td>
+<td>0.616395</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-0.067604</td>
+<td>-0.073453</td>
+<td>Gymkata</td>
+<td>input4</td>
+<td>-1.189931</td>
+<td>-2.070752</td>
+</tr>
+</tbody>
+</table>
+<p>接下来通过nn.Linear()函数对model进行简化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">WordEmbeddingWithLinear</span>(L.LightningModule):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.input_to_hidden = nn.Linear(in_features=<span class="number">4</span>, out_features=<span class="number">2</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.hidden_to_output = nn.Linear(in_features=<span class="number">2</span>, out_features=<span class="number">4</span>, bias=<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.loss = nn.CrossEntropyLoss()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, <span class="built_in">input</span></span>):</span><br><span class="line">        hidden = <span class="variable language_">self</span>.input_to_hidden(<span class="built_in">input</span>)</span><br><span class="line">        output_values = <span class="variable language_">self</span>.hidden_to_output(hidden)</span><br><span class="line">        <span class="keyword">return</span> output_values</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">configure_optimizers</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> Adam(<span class="variable language_">self</span>.parameters(), lr = <span class="number">0.1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">training_step</span>(<span class="params">self, batch, batch_idx</span>):</span><br><span class="line">        input_i, label_1 = batch</span><br><span class="line">        output_i = <span class="variable language_">self</span>.forward(input_i)</span><br><span class="line">        loss = <span class="variable language_">self</span>.loss(output_i, label_1)</span><br><span class="line">        <span class="keyword">return</span> loss</span><br><span class="line">modelLinear = WordEmbeddingWithLinear()</span><br><span class="line">data = {</span><br><span class="line">    <span class="string">"w1"</span>: modelLinear.input_to_hidden.weight.detach()[<span class="number">0</span>].numpy(),</span><br><span class="line">    <span class="string">"w2"</span>: modelLinear.input_to_hidden.weight.detach()[<span class="number">1</span>].numpy(),</span><br><span class="line">    <span class="string">"token"</span>: [<span class="string">"Troll2"</span>, <span class="string">"is"</span>, <span class="string">"great"</span>, <span class="string">"Gym"</span>],</span><br><span class="line">    <span class="string">"input"</span>: [<span class="string">"input1"</span>,<span class="string">"input2"</span>,<span class="string">"input3"</span>,<span class="string">"input4"</span>]</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>modelLinear.input_to_hidden.weight是一个2*4的tensor，也就是第一行是w1权重。<strong><span style="color: red">从这也可以看出，nn.Linear之后产生的对象的weight中，行向量对应的输出的一个hidden神经元</span></strong>。列就是每个输入单词对所有的hidden的权重</p></li>
+<li><p>.detach()函数是去除梯度函数</p></li>
+</ul>
+<p>在之后的话就是需要使用nn.Embedding对训练出来的参数进行使用了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">word_embeddings = nn.Embedding.from_pretrained(modelLinear.input_to_hidden.weight.T)</span><br><span class="line">word_embeddings.weight <span class="comment"># 4 * 2</span></span><br></pre></td></tr></table></figure>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-10-06</span>
+            
+                <span>该篇文章被 Xue xt</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/transform/'>
+                            transform
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/06/ReinforcementLearning/">ReinforcementLearning</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2024 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
