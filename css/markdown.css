@@ -136,21 +136,23 @@
     width: 100%;
     text-align: left;
     border-spacing: 0;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .post-md table th {
-    padding: 12px 0;
+    padding: 8px 0;
     border-bottom: 2px solid var(--line-1);
 }
 
 .post-md table tr:nth-child(odd) td {
-    padding: 12px 0;
+    padding: 8px 0;
     border-bottom: 1px solid var(--line-1);
     background: #fafafa;
 }
 
 .post-md table tr:nth-child(even) td {
-    padding: 12px 0;
+    padding: 8px 0;
     border-bottom: 1px solid var(--line-1);
     background: #fff;
 }
