@@ -214,6 +214,9 @@ mjx-container[display="true"] + br {
     <div style="text-align: center;"> 
 
         <a class="index-logo" href="/">Xuext</a>
+        <div style="margin-bottom: 15px;"> 
+            <span style="font-weight: bold; color: #597cd7;">🎊本站已运行：<span id="nowtime"> </span> 🎊 </span> 
+        </div>
         <div style="margin-bottom: 12px;"> 
             
                 
@@ -231,10 +234,40 @@ mjx-container[display="true"] + br {
         </div>
     </div>
 
+
+    <script>
+        function calculateTimeDifference() {
+            const now = new Date();
+            const targetDate = new Date('2024-09-30T00:00:00');
+            const timeDifference = now - targetDate;
+    
+            if (timeDifference < 0) {
+                return '时间不合法';
+            }
+    
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    
+            return `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+        }
+    
+        function updateNowTime() {
+            const nowTimeElement = document.getElementById('nowtime');
+            nowTimeElement.innerText = calculateTimeDifference();
+        }
+    
+        // 每秒更新一次时间
+        setInterval(updateNowTime, 1000);
+    
+        // 初始调用
+        updateNowTime();
+    </script>
+    
                     <div class="post-main">
     
     
-       
        
             <div class="post-md">
                 <div class=".article-gallery"><p>首页就先占个坑吧，以后再写</p>
