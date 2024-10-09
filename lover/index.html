@@ -156,7 +156,39 @@
             
         
         <div class=".article-gallery"><p>这个就是甜甜的爱情 ❤️</p>
+<p>我们在一起已经：</p>
+<div style="text-align: center;">
+<span id="timer" style="color : #cb4538; font-weight: bold;"></span>
+</div>
 <p><a href="yjy.jpg" class="gallery-item" style="box-shadow: none;"> <img src="yjy.jpg" style="zoom: 40%;border: solid #f9dbb0 30px;"></a></p>
+<script>
+       function calculateTimeDifference() {
+    // 当前时间
+    const now = new Date();
+    
+    // 指定的目标时间 2024年9月30日 00:00:00
+    const targetDate = new Date('2021-12-09T00:00:00');
+
+    // 计算时间差（以毫秒为单位）
+    const timeDifference = now - targetDate ;
+
+    // 将时间差转换为天、小时、分钟和秒
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    // 格式化输出
+    return `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+}
+
+// 每秒更新一次时间间隔
+setInterval(function() {
+    const result = calculateTimeDifference();
+    console.log(result); // 可以在页面中显示结果，例如用 
+    document.getElementById('timer').innerText = result;
+}, 1000);
+</script>
 </div>
     </div>
 
@@ -212,7 +244,7 @@
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
     
 </div>
