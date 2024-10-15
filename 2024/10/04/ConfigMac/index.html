@@ -272,13 +272,13 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-10-06</span> 
+                    <span>最近更新：2024-10-15</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：178</span>
+                     <span>字数总计：214</span>
                 
                 
                     
@@ -300,7 +300,7 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3"><span class="post-toc-text">配置相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mac%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="post-toc-text">mac全局配置</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3"><span class="post-toc-text">配置相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mac%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="post-toc-text">mac全局配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#colmap-%E9%83%A8%E5%88%86"><span class="post-toc-text">colmap 部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#colmap-%E6%9E%84%E9%80%A0%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="post-toc-text">colmap 构造数据集:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#colmap%E7%9A%84bin2txt"><span class="post-toc-text">colmap的bin2txt:</span></a></li></ol></li></ol></li></ol>
             
         
         <div class=".article-gallery"><h1 id="配置相关">配置相关</h1>
@@ -312,6 +312,11 @@ mjx-container[display="true"] + br {
 <p>我配置的这个，需要写在～/.zshrc，然后source ~/.zshrc即可配置全局代理 - export http_proxy=socks5://127.0.0.1:7897 - export https_proxy=socks5://127.0.0.1:7897</p>
 </blockquote>
 <p>这样从mac 终端发出的请求就可以利用我的vpn了，下载github这些东西再也不会卡了～</p>
+<h2 id="colmap-部分">colmap 部分</h2>
+<h3 id="colmap-构造数据集">colmap 构造数据集:</h3>
+<p>colmap automatic_reconstructor --workspace_path . --image_path ./images --sparse 1 --dense 0 --camera_model SIMPLE_PINHOLE</p>
+<h3 id="colmap的bin2txt">colmap的bin2txt:</h3>
+<p>colmap model_converter --input_path /path/to/your/model --output_path /path/to/your/output --output_type TXT</p>
 </div>
     </div>
 
