@@ -115,6 +115,7 @@
 .post-md blockquote {
     border-left: 6px solid #d97540;
     padding-left: 12px;
+    padding-right: 12px;
     padding-top: 2px;
     padding-bottom: 2px;
     word-wrap: break-word;

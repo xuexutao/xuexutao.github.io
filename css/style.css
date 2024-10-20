@@ -588,7 +588,8 @@ a {
 }
 
 .archive-main a:visited {
-    color: #9c9caf;
+    /* color: #9c9caf; */
+    color: #4f7dde;
     text-decoration: underline;
 }
 
