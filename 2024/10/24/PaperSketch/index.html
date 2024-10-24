@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="PaperSketch" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -206,119 +206,172 @@ mjx-container[display="true"] + br {
             
             
             
-                <div class="shadow-drop-2-bottom index-main">
-                    <!-- 这个header就是特指index的头部 -->
+                <div class="shadow-drop-2-bottom paper-main">
+                    
 
 
-
-    <div style="text-align: center;"> 
-
-        <a class="index-logo" href="/">Xuext</a>
-        <div style="margin-bottom: 15px;"> 
-            <span style="font-weight: bold; color: #597cd7;">🎊本站已运行：<span id="nowtime"> </span> 🎊 </span> 
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
         </div>
-        <div style="margin-bottom: 12px;"> 
-            
-                
-                    首页
-                
-            
-                
-                    &nbsp / &nbsp<a href="/list/">⛰️文章</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/categories/">🌬️分类</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/lover/">💗💗</a>
-                
-            
-        </div>
+        
     </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
 
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
 
-    <script>
-        function calculateTimeDifference() {
-            const now = new Date();
-            const targetDate = new Date('2024-09-30T00:00:00');
-            const timeDifference = now - targetDate;
     
-            if (timeDifference < 0) {
-                return '时间不合法';
-            }
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    PaperSketch
+                </div>
+            
+        
+      
     
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
     
-            return `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
-        }
-    
-        function updateNowTime() {
-            const nowTimeElement = document.getElementById('nowtime');
-            nowTimeElement.innerText = calculateTimeDifference();
-        }
-    
-        // 每秒更新一次时间
-        setInterval(updateNowTime, 1000);
-    
-        // 初始调用
-        updateNowTime();
-    </script>
-    
-                    <div class="post-main">
-    
-    
-       
-       
-       
-            <div class="post-md">
-                <div class=".article-gallery"><p>首页就先占个坑吧，以后再写</p>
-<p>放上我的头像吧 😄</p>
-<p>👋 有点不像情侣头像的情侣头像 👋</p>
-<p><a href="index/weixin.png" class="gallery-item" style="box-shadow: none;"> <img src="index/weixin.png" style = "border-radius: 20px; box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);"></a> </img></p>
-<p style="text-align : center;">
-@ 不爱恰西瓜 🤝 @ 洛希极限
-</p>
-<p>爆个照骗</p>
-<p><a href="index/image2.jpg" class="gallery-item" style="box-shadow: none;"> <img src="index/image2.jpg" style = " width: 40% ;border-radius: 20px; box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);"></a> </img></p>
-</div>
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2024-10-24</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：14</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：1分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
             </div>
     
-</div> 
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian-splatting"><span class="post-toc-text">Gaussian splatting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pixelgs"><span class="post-toc-text">Pixelgs</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>This is PaperSketch that I had seen and deserved deeply impression;</p>
+<h2 id="gaussian-splatting">Gaussian splatting</h2>
+<p><a href="GS.png" class="gallery-item" style="box-shadow: none;"> <img src="GS.png" style="border: 1px black sloid"></a></p>
+<h2 id="pixelgs">Pixelgs</h2>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-10-24</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/17/3DMath/">3DMath</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
                     <div class="footer">
     
+        <span> 
+            © 2001-2024 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
 </div>
 
-
-    <div class="footer-last-without-line">
-        
-        <span>本站总字数：14.6k</span>
-        
-        
-            <div class="footer-last-span-right">
-        
-        
-                <span id="busuanzi_container_site_pv" class="">
-                    本站总访问：<span id="busuanzi_value_site_pv"></span>次
-                </span>
-            </div>
-        
-    </div>
 
 
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-         
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                
-                <span class="index-footer-last-span">Email:<a href="mailto:xuexutao0120@gmail.com" title="xuexutao0120@gmail.com">xuexutao0120@gmail.com</a></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
-        
     
 </div>
 
