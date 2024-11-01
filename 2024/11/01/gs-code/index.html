@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="Algorithm" />
+    <meta name="description" content="gs_code" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -147,7 +147,7 @@
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    Algorithm
+                    gs_code
                 </div>
             
         
@@ -160,13 +160,13 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-10-07</span> 
+                    <span>最近更新：2024-11-02</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：116</span>
+                     <span>字数总计：291</span>
                 
                 
                     
@@ -188,39 +188,36 @@
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95"><span class="post-toc-text">算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#easy"><span class="post-toc-text">easy</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#find"><span class="post-toc-text">find</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE"><span class="post-toc-text">1、折半查找</span></a></li></ol></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian_model"><span class="post-toc-text">gaussian_model</span></a></li></ol>
             
         
-        <div class=".article-gallery"><h1 id="算法">算法</h1>
-<p>🌟众所周知，数据结构和算法是非常重要的🌟，这篇blog主要记录一些leetcode的算法</p>
-<h2 id="easy">easy</h2>
-<h3 id="find">find</h3>
-<h4 id="折半查找">1、折半查找</h4>
+        <div class=".article-gallery"><h2 id="gaussian_model">gaussian_model</h2>
+<ul>
+<li><code>prune_points</code>输入一个要剔除的mask，长度为n * 1，第一步是取反操作，得到有效点的mask</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">prune_points</span>(<span class="params">self, mask</span>):</span><br><span class="line">    valid_points_mask = ~mask</span><br><span class="line">    optimizable_tensors = <span class="variable language_">self</span>._prune_optimizer(valid_points_mask)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>._xyz = optimizable_tensors[<span class="string">&quot;xyz&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_dc = optimizable_tensors[<span class="string">&quot;f_dc&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_rest = optimizable_tensors[<span class="string">&quot;f_rest&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._opacity = optimizable_tensors[<span class="string">&quot;opacity&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._scaling = optimizable_tensors[<span class="string">&quot;scaling&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._rotation = optimizable_tensors[<span class="string">&quot;rotation&quot;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum = <span class="variable language_">self</span>.xyz_gradient_accum[valid_points_mask]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.denom = <span class="variable language_">self</span>.denom[valid_points_mask]</span><br><span class="line">    <span class="variable language_">self</span>.max_radii2D = <span class="variable language_">self</span>.max_radii2D[valid_points_mask]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>add_densification_stats作用：在循环中累积梯度和视角数</li>
+</ul>
+<p>以一个batch为一轮回，一个batch就是所有图片都轮一遍。</p>
+<p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom + 1，梯度是通过把backward中计算的tensor的grad经过norm，从viewspace_point_tensor的<span style="color : red">【N * 3】</span>变为self.xyz_gradient_accum的<span style="color : red">【N * 1】</red></p>
+<p>更新间隔是self.densification_interval控制，如果达到interval之后，无论是梯度还是denom都从零开始</p>
 <blockquote>
-<p>给定一个target，需要在nums数组中查找到target，要求时间为O(logn)</p>
+<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的 ？</p>
 </blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Search</span>{</span><br><span class="line">  <span class="keyword">public</span> :</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">BinSearch</span><span class="params">(vector&lt;<span class="type">int</span>&gt; nums, <span class="type">int</span> target)</span></span>{</span><br><span class="line">      <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">      <span class="type">int</span> right = n - <span class="number">1</span>, left = <span class="number">0</span>, ans = n;</span><br><span class="line">      <span class="keyword">while</span>(left &lt;= right){</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> mid = ((right - left + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>) + left; <span class="comment">// 中位数</span></span><br><span class="line">        <span class="keyword">if</span> (target &lt;= nums[mid] ){</span><br><span class="line">          ans = mid;</span><br><span class="line">          right = mid - <span class="number">1</span>;</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">          left = mid + <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>self.denom的取值是 【0 --&gt; self.densification_interval】</p>
+<p>self.xyz_gradient_accum 也是有最多有interval个数叠加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_densification_stats</span>(<span class="params">self, viewspace_point_tensor, update_filter</span>):</span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum[update_filter] += torch.norm(viewspace_point_tensor.grad[update_filter,:<span class="number">2</span>], dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">    <span class="variable language_">self</span>.denom[update_filter] += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2024-10-04</span>
-            
-                <span>该篇文章被 Xue xt</span>
+            <span>2024-11-01</span>
             
             
              
-                <span>归为分类:
-                    
-                    
-                        <a href='/categories/ALG/'>
-                            ALG
-                        </a>
-                    
-                </span>
-            
         
         </i>
     </div>
@@ -232,11 +229,9 @@
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2024/10/05/paperRding1005/'>paperRding1005</a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/04/ConfigMac/">ConfigMac</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/30/Linux/">Linux</a>
                     </span>
                 
             </div>
