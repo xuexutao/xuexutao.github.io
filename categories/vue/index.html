@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="Algorithm" />
+    <meta name="description" content="" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -122,7 +122,11 @@
             
         
             
-                <li><a href="/categories/">🌬️分类</a></li>
+                <li><i>
+                    
+                        <a style="color: #4e7dde;" href="/categories/">🌬️分类</a>
+                    
+                </i></li>
             
         
             
@@ -137,122 +141,38 @@
 
                     
                     
+                        
+
+<div class="archive-list">
+  <ul class="archive">
+
+    
+    <span><span class="darkmode-ignore">🔖</span><i>vue</i></span>
+          
+    
+
+    
+    
+
+    
+    
+
+  
+    
+        <li>
+          <span class="archive-date">2024/11/03</span>
+          <div class="archive-main">
+              <a class="archive-title" href="/2024/11/03/vue/">vue</a>
+          </div>
+        </li>
+    
+  
+  </ul>
+</div>
+ 
+                    
                     
                     <!--说明是文章post页面-->
-                    
-                        <div class="post-main">
-    
-
-    
-        
-            
-                <div class="post-main-title" style="text-align: center;">
-                    Algorithm
-                </div>
-            
-        
-      
-    
-
-    
-
-        
-            <div class="post-head-meta-center">
-        
-                
-                    <span>最近更新：2024-10-07</span> 
-                
-                
-                    
-                        &nbsp; | &nbsp;
-                    
-                     <span>字数总计：126</span>
-                
-                
-                    
-                        &nbsp; | &nbsp;
-                    
-                    <span>阅读估时：1分钟</span>
-                
-                
-                    
-                        &nbsp; | &nbsp;
-                    
-                    <span id="busuanzi_container_page_pv">
-                        阅读量：<span id="busuanzi_value_page_pv"></span>次
-                    </span>
-                
-            </div>
-    
-
-    <div class="post-md">
-        
-            
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95"><span class="post-toc-text">算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#easy"><span class="post-toc-text">easy</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#find"><span class="post-toc-text">find</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE"><span class="post-toc-text">1、折半查找</span></a></li></ol></li></ol></li></ol></li></ol>
-            
-        
-        <div class=".article-gallery"><h1 id="算法">算法</h1>
-<p>🌟众所周知，数据结构和算法是非常重要的🌟，这篇blog主要记录一些leetcode的算法</p>
-<h2 id="easy">easy</h2>
-<h3 id="find">find</h3>
-<h4 id="折半查找">1、折半查找</h4>
-<blockquote>
-<p>给定一个target，需要在nums数组中查找到target，要求时间为O(logn)</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Search</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> :</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">BinSearch</span><span class="params">(vector&lt;<span class="type">int</span>&gt; nums, <span class="type">int</span> target)</span></span>&#123;</span><br><span class="line">      <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">      <span class="type">int</span> right = n - <span class="number">1</span>, left = <span class="number">0</span>, ans = n;</span><br><span class="line">      <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> mid = ((right - left + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>) + left; <span class="comment">// 中位数</span></span><br><span class="line">        <span class="keyword">if</span> (target &lt;= nums[mid] )&#123;</span><br><span class="line">          ans = mid;</span><br><span class="line">          right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div>
-    </div>
-
-    <div class="post-meta">
-        <i>
-        
-            <span>2024-10-04</span>
-            
-                <span>该篇文章被 Xue xt</span>
-            
-            
-             
-                <span>归为分类:
-                    
-                    
-                        <a href='/categories/ALG/'>
-                            ALG
-                        </a>
-                    
-                </span>
-            
-        
-        </i>
-    </div>
-    <br>
-    
-    
-        
-            
-    
-            <div class="post-footer-pre-next">
-                
-                    <span>上一篇：<a href='/2024/10/05/paperRding1005/'>paperRding1005</a></span>
-                
-
-                
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/04/ConfigMac/">ConfigMac</a>
-                    </span>
-                
-            </div>
-    
-        
-    
-
-    
-        
-
-     
-</div>
-
-
-
-                                      
                     
                     
                     <div class="footer">
