@@ -160,7 +160,7 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-10-20</span> 
+                    <span>最近更新：2024-11-04</span> 
                 
                 
                     
@@ -281,13 +281,12 @@ p^T_c [ T_{\times}] Rp&#39;_c = 0 = p^T K^{-T} [ T_{\times}]K&#39;^{-1} Rp&#39;
 <h2 id="camera-models">Camera Models</h2>
 <h3 id="pinhole-camera">Pinhole Camera</h3>
 <p>Add a barrier to block off most of the rays! This reduces blurring<strong>(Aperture)</strong></p>
-<a href="image-20241013160602516.png" title="image-20241013160602516" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013160602516.png" alt="image-20241013160602516" style="zoom:40%;" /></a> $$ P =
-<span class="math display">\[\begin{bmatrix} x \\ y \\ z \end{bmatrix}\]</span>
-P' =
-<span class="math display">\[\begin{bmatrix} x&#39; \\ y&#39; \end{bmatrix}\]</span>
-
-<span class="math display">\[\begin{cases} x&#39; = f \frac{x}{z}  \\ y&#39; = f \frac{y}{z}\end{cases}\]</span>
-<p>$$ Derived using similar triangles</p>
+<p><a href="image-20241013160602516.png" title="image-20241013160602516" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013160602516.png" alt="image-20241013160602516" style="zoom:40%;" /></a></p>
+<p><span class="math display">\[
+P = \begin{bmatrix} x \\ y \\ z \end{bmatrix}  \to P&#39; = \begin{bmatrix} x&#39; \\ y&#39; \end{bmatrix}
+\to \begin{cases} x&#39; = f \frac{x}{z}  \\ y&#39; = f \frac{y}{z}\end{cases}
+\]</span></p>
+<p>Derived using similar triangles</p>
 <p>Cameras + Lenses</p>
 <p><a href="image-20241013161747092.png" title="image-20241013161747092" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013161747092.png" alt="image-20241013161747092" style="zoom:40%;" /></a></p>
 <ul>
@@ -295,7 +294,8 @@ P' =
 <li><p>There is a specific distance at which objects are “in focus” (depth of field)</p></li>
 </ul>
 <p><a href="image-20241013162103114.png" title="Paraxial refraction model" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013162103114.png" alt="Paraxial refraction model" style="zoom:40%;" /></a></p>
-<p><span style="text-align: center;">Paraxial refraction model</span> <span class="math display">\[
+<p><span style="text-align: center;">Paraxial refraction model</span></p>
+<p><span class="math display">\[
 \begin{cases}z&#39; = f+ z_o \\ f = \frac{R}{2(n - 1)}\end{cases}  \to \begin{cases}x&#39; = z&#39; \frac{x}{z}  \\ y&#39; = z&#39; \frac{y}{z} \end{cases}
 \]</span></p>
 <h3 id="radial-distortion">Radial Distortion</h3>
@@ -304,11 +304,15 @@ P' =
 <h3 id="models">models</h3>
 <p><a href="image-20241013163223535.png" title="image-20241013163223535" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013163223535.png" alt="image-20241013163223535" style="zoom:40%;" /></a></p>
 <p>1、Off set</p>
-<p><span class="math inline">\(\mathbb{R}^3 \to \mathbb{R}^2\)</span> <span class="math display">\[
+<p><span class="math inline">\(\mathbb{R}^3 \to \mathbb{R}^2\)</span></p>
+<p><span class="math display">\[
 (x,y,z) \to (f \frac{x}{z} + c_x ,f \frac{y}{z} + c_y )
-\]</span> 2、from metric to pixels <span class="math display">\[
+\]</span></p>
+<p>2、from metric to pixels</p>
+<p><span class="math display">\[
 P = (x,y,z) \to (f \text{k} \frac{x}{z} + c_x ,f \text{l} \frac{y}{z} + c_y ) \to P&#39; = (\alpha \frac{x}{z} + c_x ,\beta \frac{y}{z} + c_y )
-\]</span> Units:</p>
+\]</span></p>
+<p>Units:</p>
 <ul>
 <li><span class="math inline">\(\text{k, l} : pixel/m\)</span></li>
 <li><span class="math inline">\(f : m\)</span>​</li>
@@ -316,9 +320,12 @@ P = (x,y,z) \to (f \text{k} \frac{x}{z} + c_x ,f \text{l} \frac{y}{z} + c_y ) \t
 </ul>
 <p>Is this a linear transformation? No --&gt; division by <span class="math inline">\(z\)</span> is nonlinear</p>
 <h3 id="homogeneous-coordinates">Homogeneous coordinates</h3>
-<p><span class="math inline">\(E \to H\)</span> : <span class="math display">\[
+<p><span class="math inline">\(E \to H\)</span> :</p>
+<p><span class="math display">\[
 (x, y) \Rightarrow \begin{bmatrix}x \\ y \\ 1 \end{bmatrix} -- (x, y, z) \Rightarrow \begin{bmatrix}x \\ y \\ z\\ 1 \end{bmatrix} == P_h
-\]</span> <span class="math inline">\(H \to E\)</span> : <span class="math display">\[
+\]</span></p>
+<p><span class="math inline">\(H \to E\)</span> :</p>
+<p><span class="math display">\[
 \begin{bmatrix}x \\ y \\ w \end{bmatrix}   \Rightarrow  (\frac{x}{w}, \frac{y}{w})--\begin{bmatrix}x \\ y \\ z\\ w  \end{bmatrix} \Rightarrow (\frac{x}{w}, \frac{y}{w},\frac{z}{w})
 \]</span></p>
 <p><span class="math display">\[
@@ -328,31 +335,37 @@ P_h&#39; = \begin{bmatrix}  \alpha x + c_x z \\ \beta y + c_y z \\ z \end{bmatri
 P&#39; = MP = K \begin{bmatrix} &amp;I &amp; 0 &amp;\end{bmatrix} P \to  K =\begin{bmatrix}  \alpha &amp;0&amp;c_x \\ 0 &amp; \beta &amp; c_y \\ 0&amp;0&amp;1 \end{bmatrix}
 \]</span></p>
 <h3 id="scale-rotation-translation">Scale + Rotation + Translation</h3>
-<p><strong>2D</strong> <span class="math display">\[
+<p><strong>2D</strong></p>
+<p><span class="math display">\[
 P&#39;  \to \begin{bmatrix} 1 &amp;0&amp;t_x \\ 0&amp;1&amp;t_y \\ 0&amp;0&amp;1 \end{bmatrix}  \begin{bmatrix} cos \theta &amp;-sin \theta&amp; 0 \\ sin \theta &amp; con \theta &amp; 0 \\ 0&amp;0&amp;1 \end{bmatrix} \begin{bmatrix} s_x &amp;0 &amp; 0 \\ 0 &amp; s_y &amp; 0 \\ 0&amp;0&amp;1 \end{bmatrix}  \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} cos \theta &amp;-sin \theta&amp; t_x \\ sin \theta &amp; con \theta &amp; t_y \\ 0&amp;0&amp;1 \end{bmatrix} \begin{bmatrix} s_x &amp;0 &amp; 0 \\ 0 &amp; s_y &amp; 0 \\ 0&amp;0&amp;1 \end{bmatrix}  \begin{bmatrix} x \\ y \\ 1 \end{bmatrix}
 \]</span></p>
 <p><span class="math display">\[
 \begin{bmatrix} \mathbf{R} &amp; \mathbf{t}  \\ \mathbf{0} &amp; 1\end{bmatrix} \begin{bmatrix} \mathbf{S} &amp; \mathbf{0}  \\ \mathbf{0} &amp; 1\end{bmatrix} \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} \mathbf{R S} &amp; \mathbf{t}  \\ \mathbf{0} &amp; 1\end{bmatrix}  \begin{bmatrix} x \\ y \\ 1 \end{bmatrix}
 \]</span></p>
-<p>If <span class="math inline">\(s_x = s_y\)</span>, this is a similarity transformation</p>
+<p>If <span class="math inline">\(s_x = s_y\)</span> , this is a similarity transformation</p>
 <p><strong>3D Translation of points</strong></p>
 <p>A translation vector in 3D has 3 degrees of freedom <span class="math inline">\(T =  \begin{bmatrix} T_x \\ T_y \\ T_z \end{bmatrix}\)</span> and <span class="math inline">\(P&#39; = \begin{bmatrix} \mathbf{I} &amp; \mathbf{T} \\ \mathbf{0} &amp; 1 \end{bmatrix}_{4\times 4} \begin{bmatrix} x \\ y \\ z  \\ 1\end{bmatrix}\)</span></p>
-<p><a href="image-20241013172936082.png" title="image-20241013172936082" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013172936082.png" alt="image-20241013172936082" style="zoom:40%;" /></a> <span class="math display">\[
+<p><a href="image-20241013172936082.png" title="image-20241013172936082" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013172936082.png" alt="image-20241013172936082" style="zoom:40%;" /></a></p>
+<p><span class="math display">\[
 P = \begin{bmatrix}  \mathbf{R} &amp; \mathbf{T}  \\ \mathbf{0} &amp; 1\end{bmatrix} \begin{bmatrix} x_w \\ y_w \\ z_w  \\ 1\end{bmatrix}
 \]</span></p>
 <p><span class="math display">\[
 P&#39; = K [ I  , 0 ] P = K \begin{bmatrix}  \mathbf{I}  &amp; 0 \end{bmatrix} \begin{bmatrix}  \mathbf{R} &amp; \mathbf{T}  \\ \mathbf{0} &amp; 1\end{bmatrix}_{4\times 4} \begin{bmatrix} x_w \\ y_w \\ z_w  \\ 1\end{bmatrix} = K_{3\times 3} \begin{bmatrix}  \mathbf{R} &amp; \mathbf{T} \end{bmatrix}_{3\times 4} P_w = M_{3\times 4} P_w
 \]</span></p>
 <p><strong><span class="math inline">\(R\)</span> is <span style="color: red">Internal parameters</span> and <span class="math inline">\([R, T]\)</span> is<span style="color: red"> External parameters</span></strong></p>
-<p><span class="math inline">\(M\)</span> has <span class="math inline">\(5 + 3  + 3 = 11\)</span> degrees of freedom <span class="math display">\[
+<p><span class="math inline">\(M\)</span> has <span class="math inline">\(5 + 3  + 3 = 11\)</span> degrees of freedom</p>
+<p><span class="math display">\[
 P&#39;_{3 \times 1} = M P_w = \begin{bmatrix} \mathbf{m_1} \\ \mathbf{m_2} \\ \mathbf{m_3}  \end{bmatrix} P_w = \begin{bmatrix} \mathbf{m_1} P_w\\ \mathbf{m_2}P_w \\ \mathbf{m_3} P_w \end{bmatrix} \to \left (\frac{\mathbf{m_1} P_w}{\mathbf{m_3} P_w} , \frac{\mathbf{m_2} P_w}{\mathbf{m_3} P_w}  \right)
 \]</span></p>
 <h2 id="camera-calibration">Camera Calibration</h2>
 <p>Estimate intrinsic and extrinsic parameters from 1 or multiple images</p>
 <p><a href="image-20241013174526482.png" title="image-20241013174526482" class="gallery-item" style="box-shadow: none;"> <img src="image-20241013174526482.png" alt="image-20241013174526482" style="zoom:40%;" /></a></p>
 <p>How many correspondences do we need?</p>
-<p>• M has 11 unknowns • We need 11 equations • <strong>6</strong> correspondences would do it</p>
-<p>In practice, using more than 6 correspondences enables more robust results <span class="math display">\[
+<ul>
+<li>M has 11 unknowns • We need 11 equations • <strong>6</strong> correspondences would do it</li>
+</ul>
+<p>In practice, using more than 6 correspondences enables more robust results</p>
+<p><span class="math display">\[
 p_i =\begin{bmatrix} u_i \\ v_i \end{bmatrix}  = \begin{bmatrix} \frac{\mathbf{m_1} P_w}{\mathbf{m_3} P_w} \\  \frac{\mathbf{m_2} P_w}{\mathbf{m_3} P_w}  \end{bmatrix} = M P_i
 \]</span></p>
 <p><span class="math display">\[
