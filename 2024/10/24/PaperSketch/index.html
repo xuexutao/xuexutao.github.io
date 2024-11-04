@@ -160,19 +160,19 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-10-28</span> 
+                    <span>最近更新：2024-11-04</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：1.4k</span>
+                     <span>字数总计：1.7k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：7分钟</span>
+                    <span>阅读估时：9分钟</span>
                 
                 
                     
@@ -188,7 +188,7 @@
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian-splatting"><span class="post-toc-text">Gaussian splatting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dgs"><span class="post-toc-text">2DGS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dhgs"><span class="post-toc-text">3DHGS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pixelgs"><span class="post-toc-text">Pixelgs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian-splatting-slam"><span class="post-toc-text">Gaussian Splatting SLAM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mip-splatting"><span class="post-toc-text">Mip-Splatting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spectral-gs"><span class="post-toc-text">Spectral-GS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stopthepop"><span class="post-toc-text">StopThePop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flashgs"><span class="post-toc-text">FlashGS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flashgs-design"><span class="post-toc-text">FlashGS Design</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian-splatting"><span class="post-toc-text">Gaussian splatting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dgs"><span class="post-toc-text">2DGS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dhgs"><span class="post-toc-text">3DHGS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pixelgs"><span class="post-toc-text">Pixelgs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian-splatting-slam"><span class="post-toc-text">Gaussian Splatting SLAM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mip-splatting"><span class="post-toc-text">Mip-Splatting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spectral-gs"><span class="post-toc-text">Spectral-GS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stopthepop"><span class="post-toc-text">StopThePop</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flashgs"><span class="post-toc-text">FlashGS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flashgs-design"><span class="post-toc-text">FlashGS Design</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sort-free-gaussian-splatting-via-weighted-sum-rendering"><span class="post-toc-text">SORT-FREE GAUSSIAN SPLATTING VIA WEIGHTED SUM RENDERING</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#weight-sum-rendering"><span class="post-toc-text">Weight Sum Rendering</span></a></li></ol></li></ol></li></ol>
             
         
         <div class=".article-gallery"><p>This is PaperSketch that I had seen and deserved deeply impression;</p>
@@ -352,6 +352,57 @@ r = \sqrt{2 ln(\frac{\alpha_0}{\tau} ) \lambda}
 </blockquote>
 <p><a href="FlashGS.png" class="gallery-item" style="box-shadow: none;"> <img src="FlashGS.png" /></a></p>
 <p>...</p>
+<h3 id="sort-free-gaussian-splatting-via-weighted-sum-rendering">SORT-FREE GAUSSIAN SPLATTING VIA WEIGHTED SUM RENDERING</h3>
+<p>Weighted Sum Rendering, which approximates alpha blending with <strong>weighted sums</strong>, thereby removing the need for sorting</p>
+<p><a href="image.png" class="gallery-item" style="box-shadow: none;"> <img src="image.png" style="zoom:50%"/></a></p>
+<p>3DGS needs to <em>tiling, replication, sorting, and rendering</em>. This method only needs to calculate the <strong>weight</strong> for each Gaussian, and independently sum their contributions per-pixel.</p>
+<p><code>alpha-blending</code>: non-commutative blending operations requiring a strict depth ordering 【非交换混合操作需要严格的排序】</p>
+<p><span class="math display">\[
+\alpha_i = t_i \text{exp} \left( -\frac{1}{2} (x - \mu_i)^T \Sigma^{-1} (x - \mu_i)\right)
+\]</span></p>
+<p><span class="math display">\[
+\mathbf{C} = \sum_{i=1}^{N} c_i \alpha_i \prod_{j = 1}^{i-1}(1 - \alpha_j)
+\]</span></p>
+<p>可以看出<span class="math inline">\(\alpha\)</span> 是<strong>不透明度</strong>。</p>
+<p>if the alpha value of the frontmost Gaussians is sufficiently high, the rendering process will skip subsequent Gaussians, reducing unnecessary computations and memory usage</p>
+<h4 id="weight-sum-rendering">Weight Sum Rendering</h4>
+<p>estimates the transparency of each Gaussian solely based on its depth and learnable parameters</p>
+<p>final image can be rendered using :</p>
+<p><span class="math display">\[
+\mathbf{C} = \frac{c_B w_B + \sum_{i=1}^{N} c_i \alpha_i w(d_i)}{w_B + \sum_{i=1}^{N}\alpha_iw(d_i)}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(c_B\)</span> : the color of the background</li>
+<li><span class="math inline">\(w_B\)</span> : learnable weight of the background</li>
+<li><span class="math inline">\(d_i\)</span> indicate the depth</li>
+</ul>
+<p>about <span class="math inline">\(w(d_i)\)</span> there are there Type class:</p>
+<ul>
+<li>Direct Weighted Sum Rendering(DIR-WSR)</li>
+</ul>
+<p>sum all contributions directly and <span class="math inline">\(w(d_i) = 1\)</span></p>
+<ul>
+<li>Exponential Weighted Sun Rendering(EXP-WSR)</li>
+</ul>
+<p>to assign larger weights to Gaussians closer to the camera, <span class="math inline">\(\alpha \beta\)</span> learnable parameters.</p>
+<p><span class="math display">\[
+w(d_i) = \text{exp} ( - \sigma d_i^\beta)
+\]</span></p>
+<p>distant Gaussians still contribute to the rendered image to some extent.</p>
+<ul>
+<li>Linear Correction Weighted Sun Rebdering(LC-WSR)</li>
+</ul>
+<p><span class="math display">\[
+w(d_i) = \text{max} \left(0, 1, - \frac{d_i}{\sigma} \right) v_i
+\]</span></p>
+<p>For distant Gaussians, the weight may be reduced to 0, depending on <span class="math inline">\(σ\)</span> or <span class="math inline">\(v_i\)</span></p>
+<p><a href="image-1.png" class="gallery-item" style="box-shadow: none;"> <img src="image-1.png" style="zoom: 50%" /></a></p>
+<p>opacity values for an <strong>additional set of spherical harmonic coefficients</strong> for viewdependency</p>
+<p>the maximum opacity :</p>
+<p><span class="math display">\[
+u_i = Y( \Vert \mathbf{f} - \mu_i \Vert , \mathbf{H}_i) 
+\]</span></p>
+<p><span class="math inline">\(H_i\)</span> indicates the learnable spherical harmonics coefficients for opacity</p>
 </div>
     </div>
 
