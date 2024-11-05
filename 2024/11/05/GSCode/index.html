@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="gs_code" />
+    <meta name="description" content="GSCode" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -59,7 +59,119 @@
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
     
     
         <style>
@@ -147,7 +259,7 @@
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    gs_code
+                    GSCode
                 </div>
             
         
@@ -160,13 +272,13 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-11-03</span> 
+                    <span>最近更新：2024-11-05</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：291</span>
+                     <span>字数总计：279</span>
                 
                 
                     
@@ -193,17 +305,22 @@
         
         <div class=".article-gallery"><h2 id="gaussian_model">gaussian_model</h2>
 <ul>
-<li><code>prune_points</code>输入一个要剔除的mask，长度为n * 1，第一步是取反操作，得到有效点的mask</li>
+<li><code>prune_points</code>输入一个要剔除的mask，长度为n *
+1，第一步是取反操作，得到有效点的mask</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">prune_points</span>(<span class="params">self, mask</span>):</span><br><span class="line">    valid_points_mask = ~mask</span><br><span class="line">    optimizable_tensors = <span class="variable language_">self</span>._prune_optimizer(valid_points_mask)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>._xyz = optimizable_tensors[<span class="string">&quot;xyz&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_dc = optimizable_tensors[<span class="string">&quot;f_dc&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_rest = optimizable_tensors[<span class="string">&quot;f_rest&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._opacity = optimizable_tensors[<span class="string">&quot;opacity&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._scaling = optimizable_tensors[<span class="string">&quot;scaling&quot;</span>]</span><br><span class="line">    <span class="variable language_">self</span>._rotation = optimizable_tensors[<span class="string">&quot;rotation&quot;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum = <span class="variable language_">self</span>.xyz_gradient_accum[valid_points_mask]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.denom = <span class="variable language_">self</span>.denom[valid_points_mask]</span><br><span class="line">    <span class="variable language_">self</span>.max_radii2D = <span class="variable language_">self</span>.max_radii2D[valid_points_mask]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">prune_points</span>(<span class="params">self, mask</span>):</span><br><span class="line">    valid_points_mask = ~mask</span><br><span class="line">    optimizable_tensors = <span class="variable language_">self</span>._prune_optimizer(valid_points_mask)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>._xyz = optimizable_tensors[<span class="string">"xyz"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_dc = optimizable_tensors[<span class="string">"f_dc"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_rest = optimizable_tensors[<span class="string">"f_rest"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._opacity = optimizable_tensors[<span class="string">"opacity"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._scaling = optimizable_tensors[<span class="string">"scaling"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._rotation = optimizable_tensors[<span class="string">"rotation"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum = <span class="variable language_">self</span>.xyz_gradient_accum[valid_points_mask]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.denom = <span class="variable language_">self</span>.denom[valid_points_mask]</span><br><span class="line">    <span class="variable language_">self</span>.max_radii2D = <span class="variable language_">self</span>.max_radii2D[valid_points_mask]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>add_densification_stats作用：在循环中累积梯度和视角数</li>
 </ul>
 <p>以一个batch为一轮回，一个batch就是所有图片都轮一遍。</p>
-<p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom + 1，梯度是通过把backward中计算的tensor的grad经过norm，从viewspace_point_tensor的<span style="color : red">【N * 3】</span>变为self.xyz_gradient_accum的<span style="color : red">【N * 1】</red></p>
+<p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom+1，梯度是通过把backward中计算的tensor的grad经过norm，</p>
+<p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span>
+变为self.xyz_gradient_accum的<span style="color : red">【N *
+1】</span></p>
 <p>更新间隔是self.densification_interval控制，如果达到interval之后，无论是梯度还是denom都从零开始</p>
 <blockquote>
-<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的 ？</p>
+<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的
+？</p>
 </blockquote>
 <p>self.denom的取值是 【0 --&gt; self.densification_interval】</p>
 <p>self.xyz_gradient_accum 也是有最多有interval个数叠加</p>
@@ -214,7 +331,7 @@
     <div class="post-meta">
         <i>
         
-            <span>2024-11-01</span>
+            <span>2024-11-05</span>
             
             
              
@@ -229,11 +346,9 @@
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2024/11/03/pytorch-c/'>pytorch_c</a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/30/Linux/">Linux</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/11/03/vue/">vue</a>
                     </span>
                 
             </div>
@@ -273,7 +388,7 @@
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
     
 </div>

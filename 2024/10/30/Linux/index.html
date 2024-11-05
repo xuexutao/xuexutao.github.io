@@ -59,7 +59,119 @@
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
     
     
         <style>
@@ -166,7 +278,7 @@
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：272</span>
+                     <span>字数总计：286</span>
                 
                 
                     
@@ -193,14 +305,22 @@
         
         <div class=".article-gallery"><p>在 Linux 虚拟机中安装并启动 SSH 服务（假设使用 OpenSSH）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="comment"># 可以通过以下命令检查 SSH 服务状态：</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查防火墙规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 22/tcp</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span>  <span class="comment"># 启用防火墙</span></span><br></pre></td></tr></table></figure>
-<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware 中将网络模式设置为 桥接模式 或 NAT 模式：</p>
+<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware
+中将网络模式设置为 桥接模式 或 NAT 模式：</p>
 <ul>
-<li>桥接模式：Linux 虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP 地址，方便 Windows 直接访问。</li>
-<li>NAT 模式：Linux 虚拟机会通过主机的 IP 地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如 2222）映射到虚拟机的 22 端口。</li>
+<li>桥接模式：Linux
+虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP
+地址，方便 Windows 直接访问。</li>
+<li>NAT 模式：Linux 虚拟机会通过主机的 IP
+地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如
+2222）映射到虚拟机的 22 端口。</li>
 </ul>
-<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp <本地文件路径> username@<Linux_VM_IP>:<目标路径></strong></p>
+<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp
+&lt;本地文件路径&gt; username@<linux_vm_ip>:&lt;目标路径&gt;</linux_vm_ip></strong></p>
 <blockquote>
-<p>C:&gt;scp C:_11.6.0_511.23_windows.exe xuext@192.168.119.128:/home/xuext/software xuext@192.168.119.128's password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
+<p>C:&gt;scp C:_11.6.0_511.23_windows.exe
+xuext@192.168.119.128:/home/xuext/software xuext@192.168.119.128's
+password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
 </blockquote>
 </div>
     </div>
@@ -223,7 +343,7 @@
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2024/11/01/gs-code/'>gs_code</a></span>
+                    <span>上一篇：<a href='/2024/11/03/pytorch-c/'>pytorch_c</a></span>
                 
 
                 
@@ -267,7 +387,7 @@
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
     
 </div>

@@ -191,7 +191,9 @@
                 <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#quick-start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-a-new-post"><span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#deploy-to-remote-sites"><span class="post-toc-text">Deploy to remote sites</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81latex"><span class="post-toc-text">支持latex：</span></a></li></ol></li></ol>
             
         
-        <div class=".article-gallery"><p>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.</p>
+        <div class=".article-gallery"><p>Welcome to Hexo! This is your very first post. Check documentation
+for more info. If you get any problems when using Hexo, you can find the
+answer in troubleshooting or you can ask me on GitHub.</p>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="create-a-new-post">Create a new post</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
@@ -207,9 +209,11 @@
 <p>More info: Deployment</p>
 <h3 id="支持latex">支持latex：</h3>
 <p>1、卸载原有的hexo-renderer-marked、安装pandoc插件</p>
-<p>npm uninstall hexo-renderer-marked --save npm install hexo-renderer-pandoc --save</p>
+<p>npm uninstall hexo-renderer-marked --save npm install
+hexo-renderer-pandoc --save</p>
 <p>很重要的一个就是原有的pandoc模块会自动换行！！</p>
-<p>解决：在node_modules-renderer-pandoc.js修改为var args = ['-M', 'pagetitle=dummy', '--wrap=none'];也就是添加上'--wrap=none'这个</p>
+<p>解决：在node_modules-renderer-pandoc.js修改为var args = ['-M',
+'pagetitle=dummy', '--wrap=none'];也就是添加上'--wrap=none'这个</p>
 <p>2、安装hexo-filter-mathjax就可以了，然后在hexo的_config.yml加入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">  tags: none # or &#x27;ams&#x27; or &#x27;all&#x27;</span><br><span class="line">  single_dollars: true # enable single dollar signs as in-line math delimiters</span><br><span class="line">  cjk_width: 0.9 # relative CJK char width</span><br><span class="line">  normal_width: 0.6 # relative normal (monospace) width</span><br><span class="line">  append_css: true # add CSS to pages rendered by MathJax</span><br><span class="line">  every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter</span><br><span class="line">  packages: # extra packages to load</span><br><span class="line">  extension_options: &#123;&#125;</span><br><span class="line">    # you can put your extension options here</span><br><span class="line">    # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail</span><br></pre></td></tr></table></figure>
 </div>
@@ -285,7 +289,7 @@
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
     
 </div>

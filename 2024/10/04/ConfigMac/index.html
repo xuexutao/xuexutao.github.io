@@ -59,7 +59,119 @@
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
     
     
         <style>
@@ -166,7 +278,7 @@
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：407</span>
+                     <span>字数总计：401</span>
                 
                 
                     
@@ -193,23 +305,31 @@
         
         <div class=".article-gallery"><h1 id="配置相关">配置相关</h1>
 <h2 id="mac全局配置">mac全局配置</h2>
-<p>之前一直用mac的终端去各种pip install 或者 git clone的时候总是特别慢，直到我在整blog时候真的忍受不了这样的龟速了。于是就有了vpn的全局配置，我只能说我好傻😭，怎么才知道！</p>
+<p>之前一直用mac的终端去各种pip install 或者 git
+clone的时候总是特别慢，直到我在整blog时候真的忍受不了这样的龟速了。于是就有了vpn的全局配置，我只能说我好傻😭，怎么才知道！</p>
 <p>1、我的是mac，所以直接添加配置即可</p>
 <p>我的端口是7897。https://blog.csdn.net/w8y56f/article/details/120630022</p>
 <blockquote>
-<p>我配置的这个，需要写在～/.zshrc，然后source ~/.zshrc即可配置全局代理 - export http_proxy=socks5://127.0.0.1:7897 - export https_proxy=socks5://127.0.0.1:7897</p>
+<p>我配置的这个，需要写在～/.zshrc，然后source ~/.zshrc即可配置全局代理
+- export http_proxy=socks5://127.0.0.1:7897 - export
+https_proxy=socks5://127.0.0.1:7897</p>
 </blockquote>
-<p>这样从mac 终端发出的请求就可以利用我的vpn了，下载github这些东西再也不会卡了～</p>
+<p>这样从mac
+终端发出的请求就可以利用我的vpn了，下载github这些东西再也不会卡了～</p>
 <h2 id="colmap-部分">colmap 部分</h2>
 <h3 id="colmap-构造数据集">colmap 构造数据集:</h3>
-<p>colmap automatic_reconstructor --workspace_path . --image_path ./images --sparse 1 --dense 0 --camera_model SIMPLE_PINHOLE</p>
+<p>colmap automatic_reconstructor --workspace_path . --image_path
+./images --sparse 1 --dense 0 --camera_model SIMPLE_PINHOLE</p>
 <h3 id="colmap的bin2txt">colmap的bin2txt:</h3>
-<p>colmap model_converter --input_path /path/to/your/model --output_path /path/to/your/output --output_type TXT</p>
+<p>colmap model_converter --input_path /path/to/your/model --output_path
+/path/to/your/output --output_type TXT</p>
 <h2 id="pip">PIP</h2>
 <ul>
 <li>-i https://pypi.tuna.tsinghua.edu.cn/simple package_name</li>
 </ul>
-<p>Download Gaussian splatting： - git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive - conda env create --file environment.yml</p>
+<p>Download Gaussian splatting： - git clone
+https://github.com/graphdeco-inria/gaussian-splatting --recursive -
+conda env create --file environment.yml</p>
 <h1 id="软件">软件</h1>
 <h2 id="安装mysql">安装mysql</h2>
 <ul>
@@ -218,13 +338,14 @@
 <li>配置 MySQL 服务器 终端使用：mysql_secure_installation</li>
 </ul>
 <blockquote>
-<p>在使用之前可以先进入mysql，看下 SHOW VARIABLES LIKE 'validate_password%';</p>
+<p>在使用之前可以先进入mysql，看下 SHOW VARIABLES LIKE
+'validate_password%';</p>
 <p>看一下全局变量，其中有一个validate_password_length默认为8；将它改为四就可以设置常用的密码啦，不然会说不够强度</p>
 <p>SET GLOBAL validate_password_length = 4;</p>
 </blockquote>
 <h1 id="使用mac方法">使用MAC方法</h1>
 <p>AppleScript</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AppleScript：将选中的pptx转为pdf</span></span><br><span class="line">on run &#123;<span class="built_in">input</span>, parameters&#125;</span><br><span class="line">	tell application <span class="string">&quot;Microsoft PowerPoint&quot;</span></span><br><span class="line">		repeat <span class="keyword">with</span> theFile <span class="keyword">in</span> <span class="built_in">input</span></span><br><span class="line">			<span class="built_in">set</span> filePath to theFile <span class="keyword">as</span> string</span><br><span class="line">			<span class="built_in">set</span> newFilePath to (text <span class="number">1</span> thru -<span class="number">6</span> of filePath) &amp; <span class="string">&quot;.pdf&quot;</span></span><br><span class="line">			<span class="built_in">open</span> theFile</span><br><span class="line">			save active presentation <span class="keyword">in</span> newFilePath <span class="keyword">as</span> save <span class="keyword">as</span> PDF</span><br><span class="line">			close active presentation</span><br><span class="line">		end repeat</span><br><span class="line">	end tell</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">input</span></span><br><span class="line">end run</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AppleScript：将选中的pptx转为pdf</span></span><br><span class="line">on run {<span class="built_in">input</span>, parameters}</span><br><span class="line">	tell application <span class="string">"Microsoft PowerPoint"</span></span><br><span class="line">		repeat <span class="keyword">with</span> theFile <span class="keyword">in</span> <span class="built_in">input</span></span><br><span class="line">			<span class="built_in">set</span> filePath to theFile <span class="keyword">as</span> string</span><br><span class="line">			<span class="built_in">set</span> newFilePath to (text <span class="number">1</span> thru -<span class="number">6</span> of filePath) &amp; <span class="string">".pdf"</span></span><br><span class="line">			<span class="built_in">open</span> theFile</span><br><span class="line">			save active presentation <span class="keyword">in</span> newFilePath <span class="keyword">as</span> save <span class="keyword">as</span> PDF</span><br><span class="line">			close active presentation</span><br><span class="line">		end repeat</span><br><span class="line">	end tell</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">input</span></span><br><span class="line">end run</span><br></pre></td></tr></table></figure>
 </div>
     </div>
 
@@ -301,7 +422,7 @@
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
             
     
 </div>
