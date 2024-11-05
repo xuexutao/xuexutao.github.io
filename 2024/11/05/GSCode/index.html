@@ -315,8 +315,7 @@ mjx-container[display="true"] + br {
 <p>以一个batch为一轮回，一个batch就是所有图片都轮一遍。</p>
 <p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom+1，梯度是通过把backward中计算的tensor的grad经过norm，</p>
 <p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span>
-变为self.xyz_gradient_accum的<span style="color : red">【N *
-1】</span></p>
+变为self.xyz_gradient_accum的<span style="color : red">【N*1】</span></p>
 <p>更新间隔是self.densification_interval控制，如果达到interval之后，无论是梯度还是denom都从零开始</p>
 <blockquote>
 <p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的

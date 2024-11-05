@@ -1,12 +1,12 @@
 .post-md pre,
 .post-md .highlight {
-  background: #2d2d2d;
+  background: #f6f8fa;
   padding: 15px article-padding;
   border-style: solid;
   border-color: color-border;
-  border-width: 1px 0;
+  border-width: 1px 1px;
   overflow: auto;
-  color: #ccc;
+  color: #234512;
   line-height: 20.480000000000004px;
 }
 .post-md .highlight .gutter pre,
@@ -16,7 +16,7 @@
 }
 .post-md pre,
 .post-md code {
-  font-family: font-mono;
+  font-size: 0.8em;
 }
 .post-md code {
   background: color-background;
@@ -119,9 +119,11 @@
 .post-md .gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
-pre .comment,
+pre .comment {
+  color: #61924f;
+}
 pre .title {
-  color: #999;
+  color: #8c6827;
 }
 pre .variable,
 pre .attribute,
@@ -137,9 +139,13 @@ pre .css .class,
 pre .css .pseudo {
   color: #f2777a;
 }
+pre .built_in {
+  color: #800080;
+  font-weight: bold;
+  font-family: monospace;
+}
 pre .number,
 pre .preprocessor,
-pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
@@ -150,7 +156,10 @@ pre .ruby .class .title,
 pre .css .rules .attribute {
   color: #9c9;
 }
-pre .string,
+pre .string {
+  color: #cd9f89;
+  font-family: monospace;
+}
 pre .value,
 pre .inheritance,
 pre .header,
@@ -173,5 +182,10 @@ pre .coffeescript .title {
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c9c;
+  color: #cb4538;
+}
+pre .keyword {
+  color: #cb4538;
+  font-family: monospace;
+  font-weight: bold;
 }
