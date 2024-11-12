@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="GSCode" />
+    <meta name="description" content="cudalearn" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -259,7 +259,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    GSCode
+                    cudalearn
                 </div>
             
         
@@ -272,13 +272,13 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-11-05</span> 
+                    <span>最近更新：2024-11-08</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：279</span>
+                     <span>字数总计：182</span>
                 
                 
                     
@@ -300,40 +300,32 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gaussian_model"><span class="post-toc-text">gaussian_model</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%BC%80%E5%A7%8B"><span class="post-toc-text">简单的开始</span></a></li></ol>
             
         
-        <div class=".article-gallery"><h2 id="gaussian_model">gaussian_model</h2>
-<ul>
-<li><code>prune_points</code>输入一个要剔除的mask，长度为n *
-1，第一步是取反操作，得到有效点的mask</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">prune_points</span>(<span class="params">self, mask</span>):</span><br><span class="line">    valid_points_mask = ~mask</span><br><span class="line">    optimizable_tensors = <span class="variable language_">self</span>._prune_optimizer(valid_points_mask)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>._xyz = optimizable_tensors[<span class="string">"xyz"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_dc = optimizable_tensors[<span class="string">"f_dc"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_rest = optimizable_tensors[<span class="string">"f_rest"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._opacity = optimizable_tensors[<span class="string">"opacity"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._scaling = optimizable_tensors[<span class="string">"scaling"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._rotation = optimizable_tensors[<span class="string">"rotation"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum = <span class="variable language_">self</span>.xyz_gradient_accum[valid_points_mask]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.denom = <span class="variable language_">self</span>.denom[valid_points_mask]</span><br><span class="line">    <span class="variable language_">self</span>.max_radii2D = <span class="variable language_">self</span>.max_radii2D[valid_points_mask]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>add_densification_stats作用：在循环中累积梯度和视角数</li>
-</ul>
-<p>以一个batch为一轮回，一个batch就是所有图片都轮一遍。</p>
-<p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom+1，梯度是通过把backward中计算的tensor的grad经过norm，</p>
-<p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span>
-变为self.xyz_gradient_accum的<span style="color : red">【N*1】</span></p>
-<p>更新间隔是self.densification_interval控制，如果达到interval之后，无论是梯度还是denom都从零开始</p>
-<blockquote>
-<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的
-？</p>
-</blockquote>
-<p>self.denom的取值是 【0 --&gt; self.densification_interval】</p>
-<p>self.xyz_gradient_accum 也是有最多有interval个数叠加</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_densification_stats</span>(<span class="params">self, viewspace_point_tensor, update_filter</span>):</span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum[update_filter] += torch.norm(viewspace_point_tensor.grad[update_filter,:<span class="number">2</span>], dim=-<span class="number">1</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">    <span class="variable language_">self</span>.denom[update_filter] += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+        <div class=".article-gallery"><h1 id="简单的开始">简单的开始</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cuda_runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">VecAdd</span><span class="params">(<span class="type">float</span> *A, <span class="type">float</span> *B, <span class="type">float</span> *C, <span class="type">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> i = threadIdx.x;</span><br><span class="line">    C[i] = A[i] + B[i];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2f = %.2f + %.2f\n"</span>, C[i], A[i], B[i]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> N = <span class="number">10</span>;</span><br><span class="line">    std::vector&lt;<span class="type">float</span>&gt; h_A = {<span class="number">1.0f</span>, <span class="number">3.0f</span>, <span class="number">4.0f</span>};</span><br><span class="line">    std::vector&lt;<span class="type">float</span>&gt; h_B = {<span class="number">1.0f</span>, <span class="number">3.0f</span>, <span class="number">4.0f</span>};</span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">float</span>&gt; <span class="title">h_C</span><span class="params">(N)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Allocate device memory</span></span><br><span class="line">    <span class="type">float</span> *d_A, *d_B, *d_C;</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span> **)&amp;d_A, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span> **)&amp;d_B, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span> **)&amp;d_C, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Copy data from host to device</span></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(d_A, h_A.<span class="built_in">data</span>(), N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyHostToDevice);</span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(d_B, h_B.<span class="built_in">data</span>(), N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Kernel invocation with N threads</span></span><br><span class="line">    VecAdd&lt;&lt;&lt;<span class="number">1</span>, N&gt;&gt;&gt;(d_A, d_B, d_C, N);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Copy result from device to host</span></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(h_C.<span class="built_in">data</span>(), d_C, N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Synchronize</span></span><br><span class="line">    <span class="built_in">cudaDeviceSynchronize</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Free device memory</span></span><br><span class="line">    <span class="built_in">cudaFree</span>(d_A);</span><br><span class="line">    <span class="built_in">cudaFree</span>(d_B);</span><br><span class="line">    <span class="built_in">cudaFree</span>(d_C);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2024-11-05</span>
+            <span>2024-11-08</span>
+            
+                <span>该篇文章被 Xue xt</span>
             
             
              
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/CUDA/'>
+                            CUDA
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -345,11 +337,11 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2024/11/08/cudalearn/'>cudalearn</a></span>
+                    <span>上一篇：<a href='/2024/11/12/1121TransformInImage/'>1121TransformInImage</a></span>
                 
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/11/03/vue/">vue</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/11/05/GSCode/">GSCode</a>
                     </span>
                 
             </div>
