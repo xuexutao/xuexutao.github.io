@@ -319,20 +319,14 @@ mjx-container[display="true"] + br {
 <li><code>npm install</code></li>
 </ul>
 <h2 id="路由router">路由Router</h2>
-<p>use <code>vue-router</code>, we use vue3 so the Router vision is 4
-<code>npm install vue-router@4</code> ， next create router and page, in
-<code>src</code> create <code>router/index.js</code> , so the router
-config will write into this file</p>
+<p>use <code>vue-router</code>, we use vue3 so the Router vision is 4 <code>npm install vue-router@4</code> ， next create router and page, in <code>src</code> create <code>router/index.js</code> , so the router config will write into this file</p>
 <h3 id="first_class">first_class</h3>
 <p><a href="file.png" class="gallery-item" style="box-shadow: none;"> <img src="file.png" style="zoom: 50%"></a></p>
 <p>在<code>router/index.js</code>写如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">'../views/Main.vue'</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Login</span> <span class="keyword">from</span> <span class="string">'../views/login/index.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> { createRouter, createWebHashHistory } <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    {</span><br><span class="line">        <span class="attr">path</span>: <span class="string">'/'</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Layout</span></span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        <span class="attr">path</span>: <span class="string">'/login'</span>,   <span class="comment">// 就是页面访问时的路由叫什么，直接转发到对应vue组件</span></span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Login</span>  <span class="comment">// component主要就是放置vue组件的， import后跟的名字可以自定义</span></span><br><span class="line">    }</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>({</span><br><span class="line">    <span class="comment">// 路由数据</span></span><br><span class="line">    routes,</span><br><span class="line">    <span class="comment">// 路由匹配模式  (以后可以学学，好几种，hashHistory偏向于开发模式)</span></span><br><span class="line">    <span class="attr">history</span>: <span class="title function_">createWebHashHistory</span>()</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
-<p>vue组件一般写在<code>views/**/index.vue</code>
-和<code>views/Main.vue</code>,
-这个Main.vue主要是<code>/</code>路径对应的，其实和其他的index.vue一样</p>
+<p>vue组件一般写在<code>views/**/index.vue</code> 和<code>views/Main.vue</code>, 这个Main.vue主要是<code>/</code>路径对应的，其实和其他的index.vue一样</p>
 <h2 id="ui-framework">UI framework</h2>
-<p>介绍使用Element-plus， 使用<code>npm install element-plus</code>,
-具体的引入看https://element-plus.org/zh-CN/guide/installation.html,使用按需导入。</p>
+<p>介绍使用Element-plus， 使用<code>npm install element-plus</code>, 具体的引入看https://element-plus.org/zh-CN/guide/installation.html,使用按需导入。</p>
 <h2 id="页面layout布局">页面layout布局</h2>
 <p>因为<code>views/Main.vue</code>是主要控制页面布局的，从ElementPlus中找一个Container容器，复制到template中。之后需要修改侧边框部分，可以看到<code>&lt;el-aside&gt;</code>是负责侧边框的，可以从ElementPlus中找一个Menu菜单栏。之后的话可以在(新建)<code>components/aside.vue</code>中，写入template，el-menu中的@符号定义了几个函数，handleOpen和handleClose，分别在script中实现他就好</p>
 <p>Main.vue如下：</p>
@@ -433,7 +427,7 @@ config will write into this file</p>
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
     
 </div>

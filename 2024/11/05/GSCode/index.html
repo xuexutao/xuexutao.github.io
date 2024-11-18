@@ -305,8 +305,7 @@ mjx-container[display="true"] + br {
         
         <div class=".article-gallery"><h2 id="gaussian_model">gaussian_model</h2>
 <ul>
-<li><code>prune_points</code>输入一个要剔除的mask，长度为n *
-1，第一步是取反操作，得到有效点的mask</li>
+<li><code>prune_points</code>输入一个要剔除的mask，长度为n * 1，第一步是取反操作，得到有效点的mask</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">prune_points</span>(<span class="params">self, mask</span>):</span><br><span class="line">    valid_points_mask = ~mask</span><br><span class="line">    optimizable_tensors = <span class="variable language_">self</span>._prune_optimizer(valid_points_mask)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>._xyz = optimizable_tensors[<span class="string">"xyz"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_dc = optimizable_tensors[<span class="string">"f_dc"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_rest = optimizable_tensors[<span class="string">"f_rest"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._opacity = optimizable_tensors[<span class="string">"opacity"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._scaling = optimizable_tensors[<span class="string">"scaling"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._rotation = optimizable_tensors[<span class="string">"rotation"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum = <span class="variable language_">self</span>.xyz_gradient_accum[valid_points_mask]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.denom = <span class="variable language_">self</span>.denom[valid_points_mask]</span><br><span class="line">    <span class="variable language_">self</span>.max_radii2D = <span class="variable language_">self</span>.max_radii2D[valid_points_mask]</span><br></pre></td></tr></table></figure>
 <ul>
@@ -314,13 +313,10 @@ mjx-container[display="true"] + br {
 </ul>
 <p>以一个batch为一轮回，一个batch就是所有图片都轮一遍。</p>
 <p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom+1，梯度是通过把backward中计算的tensor的grad经过norm，</p>
-<p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span>
-变为self.xyz_gradient_accum的
-<span style="color : red">【N*1】</span></p>
+<p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span> 变为self.xyz_gradient_accum的 <span style="color : red">【N*1】</span></p>
 <p>更新间隔是self.densification_interval控制，如果达到interval之后，无论是梯度还是denom都从零开始</p>
 <blockquote>
-<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的
-？</p>
+<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的 ？</p>
 </blockquote>
 <p>self.denom的取值是 【0 --&gt; self.densification_interval】</p>
 <p>self.xyz_gradient_accum 也是有最多有interval个数叠加</p>
@@ -390,7 +386,7 @@ mjx-container[display="true"] + br {
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
     
 </div>

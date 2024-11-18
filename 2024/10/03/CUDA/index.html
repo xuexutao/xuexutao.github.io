@@ -333,29 +333,20 @@ mjx-container[display="true"] + br {
 <blockquote>
 <p>### 一维模型</p>
 <ol type="1">
-<li>每个线程在核函数中都有一个唯一的身份标识: （线程块ID）<strong><span style="color:blue">Idx = threadIdx.x + blockIdx.x *
-blockDim.x</span></strong></li>
-<li>每个线程的唯一标识由这两个&lt;&lt;&lt;grid_size，block_size&gt;&gt;&gt;确定;grid
-size，block size保存在内建变量(build-in
-variable)，目前考虑的是一维的情况:
+<li>每个线程在核函数中都有一个唯一的身份标识: （线程块ID）<strong><span style="color:blue">Idx = threadIdx.x + blockIdx.x * blockDim.x</span></strong></li>
+<li>每个线程的唯一标识由这两个&lt;&lt;&lt;grid_size，block_size&gt;&gt;&gt;确定;grid size，block size保存在内建变量(build-in variable)，目前考虑的是一维的情况:
 <ol type="1">
-<li><span style="color:red"><strong>gridDim.x</strong></span>:该变量的数值等于执行配置中变量grid
-size的值</li>
-<li><span style="color:red"><strong>blockDim.x</strong></span>:该变量的数值等于执行配置中变量block
-size的值</li>
+<li><span style="color:red"><strong>gridDim.x</strong></span>:该变量的数值等于执行配置中变量grid size的值</li>
+<li><span style="color:red"><strong>blockDim.x</strong></span>:该变量的数值等于执行配置中变量block size的值</li>
 </ol></li>
-<li><strong>线程索引</strong>保存成内建变量( build-in
-variable)「只在核函数中使用，其他地方无用」
+<li><strong>线程索引</strong>保存成内建变量( build-in variable)「只在核函数中使用，其他地方无用」
 <ol type="1">
-<li><span style="color:red"><strong>blockldx.x</strong></span>:该变量指定一个线程在一个网格中的线程块索引值，范围为0~
-gridDim.x-1;</li>
-<li><span style="color:red"><strong>threadldx.x</strong></span>:该变量指定一个线程在一个线程块中的线程索引值，范围为0~
-blockDim.x-1。</li>
+<li><span style="color:red"><strong>blockldx.x</strong></span>:该变量指定一个线程在一个网格中的线程块索引值，范围为0~ gridDim.x-1;</li>
+<li><span style="color:red"><strong>threadldx.x</strong></span>:该变量指定一个线程在一个线程块中的线程索引值，范围为0~ blockDim.x-1。</li>
 </ol></li>
 </ol>
 <p>但是：</p>
-<p><strong>blockIdx, threadIdx</strong> 都是uint3的变量，支持.x. .y.
-.z，最多三维</p>
+<p><strong>blockIdx, threadIdx</strong> 都是uint3的变量，支持.x. .y. .z，最多三维</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">hello_from_GPU</span><span class="params">()</span></span>{</span><br><span class="line">  <span class="type">const</span> <span class="type">int</span> bid = blockIdx.x;</span><br><span class="line">  <span class="type">const</span> <span class="type">int</span> tid = threadIdx.x;</span><br><span class="line">  <span class="type">const</span> <span class="type">int</span> id = threadIdx + blockIdx.x * blockDim.x;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello world from block %d and thread %d, global id %d \n"</span>, bid, tid, id);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">  hello_from_GPU&lt;&lt;&lt;<span class="number">2</span>,<span class="number">4</span>&gt;&gt;&gt;();</span><br><span class="line">  <span class="built_in">cudaDeviceSynchronize</span>();</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -364,13 +355,10 @@ blockDim.x-1。</li>
 <p>​ dim3 block_size(Bx, By, Bz);</p>
 <p>标识都是横着的--》 <strong>block和grid同理</strong></p>
 <p>Dim3 grid_size(3,2,1); # x为3，y为2</p>
-<p>​ [(0,0), (1,0), (2,0), # x, y。
-<strong><em>横着为x竖着为y</em></strong></p>
+<p>​ [(0,0), (1,0), (2,0), # x, y。 <strong><em>横着为x竖着为y</em></strong></p>
 <p>​ (0,1), (1,1), (2,1)]</p>
-<p>int tid = threadIdx.y*blockDim.x + threadIdx.x; #
-在一个block中的threadID</p>
-<p>int bid = threadIdx.y*gridDim.x + blockIdx.x; #
-在一个grid的blockID</p>
+<p>int tid = threadIdx.y*blockDim.x + threadIdx.x; # 在一个block中的threadID</p>
+<p>int bid = threadIdx.y*gridDim.x + blockIdx.x; # 在一个grid的blockID</p>
 </blockquote>
 <h3 id="线程全局索引计算">线程全局索引计算</h3>
 一维网格
@@ -475,7 +463,7 @@ blockDim.x-1。</li>
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
     
 </div>

@@ -305,22 +305,14 @@ mjx-container[display="true"] + br {
         
         <div class=".article-gallery"><p>在 Linux 虚拟机中安装并启动 SSH 服务（假设使用 OpenSSH）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="comment"># 可以通过以下命令检查 SSH 服务状态：</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查防火墙规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 22/tcp</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span>  <span class="comment"># 启用防火墙</span></span><br></pre></td></tr></table></figure>
-<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware
-中将网络模式设置为 桥接模式 或 NAT 模式：</p>
+<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware 中将网络模式设置为 桥接模式 或 NAT 模式：</p>
 <ul>
-<li>桥接模式：Linux
-虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP
-地址，方便 Windows 直接访问。</li>
-<li>NAT 模式：Linux 虚拟机会通过主机的 IP
-地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如
-2222）映射到虚拟机的 22 端口。</li>
+<li>桥接模式：Linux 虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP 地址，方便 Windows 直接访问。</li>
+<li>NAT 模式：Linux 虚拟机会通过主机的 IP 地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如 2222）映射到虚拟机的 22 端口。</li>
 </ul>
-<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp
-&lt;本地文件路径&gt; username@<linux_vm_ip>:&lt;目标路径&gt;</linux_vm_ip></strong></p>
+<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp &lt;本地文件路径&gt; username@<linux_vm_ip>:&lt;目标路径&gt;</linux_vm_ip></strong></p>
 <blockquote>
-<p>C:&gt;scp C:_11.6.0_511.23_windows.exe
-xuext@192.168.119.128:/home/xuext/software xuext@192.168.119.128's
-password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
+<p>C:&gt;scp C:_11.6.0_511.23_windows.exe xuext@192.168.119.128:/home/xuext/software xuext@192.168.119.128's password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
 </blockquote>
 </div>
     </div>
@@ -387,7 +379,7 @@ password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
     
             <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
     
 </div>
