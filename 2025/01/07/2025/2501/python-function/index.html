@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="20250101" />
+    <meta name="description" content="python_function" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -259,7 +259,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    20250101
+                    python_function
                 </div>
             
         
@@ -272,13 +272,13 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-12-31</span> 
+                    <span>最近更新：2025-01-07</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：14</span>
+                     <span>字数总计：206</span>
                 
                 
                     
@@ -300,20 +300,33 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#autograd.function"><span class="post-toc-text">autograd.Function</span></a></li></ol>
             
         
-        <div class=".article-gallery"><p>去年辛苦啦～～～，新的一年继续努力啊💪</p>
+        <div class=".article-gallery"><h1 id="autograd.function">autograd.Function</h1>
+<p>类继承 <code>torch.autograd.Function</code> 后，这使得它可以<strong>自定义前向和反向传播的行为</strong>。可以通过调用 apply 方法来使用这个自定义的函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> NamedTuple</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> _C</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rasterize_gaussians</span>(<span class="params"></span></span><br><span class="line"><span class="params">    means3D,</span></span><br><span class="line"><span class="params">    means2D,</span></span><br><span class="line"><span class="params">    sh,</span></span><br><span class="line"><span class="params">    colors_precomp,</span></span><br><span class="line"><span class="params">    opacities,</span></span><br><span class="line"><span class="params">    scales,</span></span><br><span class="line"><span class="params">    rotations,</span></span><br><span class="line"><span class="params">    cov3Ds_precomp,</span></span><br><span class="line"><span class="params">    raster_settings,</span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">    <span class="comment"># 使用apply函数调用前后向</span></span><br><span class="line">    <span class="keyword">return</span> _RasterizeGaussians.apply(</span><br><span class="line">        means3D,</span><br><span class="line">        means2D,</span><br><span class="line">        sh,</span><br><span class="line">        colors_precomp,</span><br><span class="line">        opacities,</span><br><span class="line">        scales,</span><br><span class="line">        rotations,</span><br><span class="line">        cov3Ds_precomp,</span><br><span class="line">        raster_settings,</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">_RasterizeGaussians</span>(torch.autograd.Function):</span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params"></span></span><br><span class="line"><span class="params">        ctx,</span></span><br><span class="line"><span class="params">        means3D,</span></span><br><span class="line"><span class="params">        means2D,</span></span><br><span class="line"><span class="params">        sh,</span></span><br><span class="line"><span class="params">        colors_precomp,</span></span><br><span class="line"><span class="params">        opacities,</span></span><br><span class="line"><span class="params">        scales,</span></span><br><span class="line"><span class="params">        rotations,</span></span><br><span class="line"><span class="params">        cov3Ds_precomp,</span></span><br><span class="line"><span class="params">        raster_settings,</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ...</span></span><br><span class="line">        num_rendered, color, radii, geomBuffer, binningBuffer, imgBuffer, invdepths = _C.rasterize_gaussians(*args)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Keep relevant tensors for backward</span></span><br><span class="line">        ctx.raster_settings = raster_settings</span><br><span class="line">        ctx.num_rendered = num_rendered</span><br><span class="line">        ctx.save_for_backward(colors_precomp, means3D, scales, rotations, cov3Ds_precomp, radii, sh, opacities, geomBuffer, binningBuffer, imgBuffer)</span><br><span class="line">        <span class="keyword">return</span> color, radii, invdepths</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backward</span>(<span class="params">ctx, grad_out_color, _, grad_out_depth</span>):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Restore necessary values from context</span></span><br><span class="line">        num_rendered = ctx.num_rendered</span><br><span class="line">        raster_settings = ctx.raster_settings</span><br><span class="line">        colors_precomp, means3D, scales, rotations, cov3Ds_precomp, radii, sh, opacities, geomBuffer, binningBuffer, imgBuffer = ctx.saved_tensors</span><br><span class="line"></span><br><span class="line">        <span class="comment"># </span></span><br><span class="line">        grad_means2D, grad_colors_precomp, grad_opacities, grad_means3D, grad_cov3Ds_precomp, grad_sh, grad_scales, grad_rotations = _C.rasterize_gaussians_backward(*args)        </span><br><span class="line"></span><br><span class="line">        <span class="comment"># forward的参数的grad</span></span><br><span class="line">        grads = (</span><br><span class="line">            grad_means3D,</span><br><span class="line">            grad_means2D,</span><br><span class="line">            grad_sh,</span><br><span class="line">            grad_colors_precomp,</span><br><span class="line">            grad_opacities,</span><br><span class="line">            grad_scales,</span><br><span class="line">            grad_rotations,</span><br><span class="line">            grad_cov3Ds_precomp,</span><br><span class="line">            <span class="literal">None</span>,</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> grads</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2025-01-01</span>
+            <span>2025-01-07</span>
+            
+                <span>该篇文章被 Xue xt</span>
             
             
              
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/python/'>
+                            python
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -325,11 +338,9 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/01/07/2025/2501/python-function/'>python_function</a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/12/18/20241218/">20241218</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/01/01/20250101/">20250101</a>
                     </span>
                 
             </div>
