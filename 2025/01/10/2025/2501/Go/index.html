@@ -300,29 +300,146 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="post-toc-text">Go基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%A3%B0%E6%98%8E"><span class="post-toc-text">对象声明：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="post-toc-text">单变量声明：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="post-toc-text">多变量声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">值类型和引用类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%87%BA"><span class="post-toc-text">格式化字符串输出：</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="post-toc-text">Go基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">语言类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%A3%B0%E6%98%8E"><span class="post-toc-text">对象声明：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="post-toc-text">单变量声明：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="post-toc-text">多变量声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">值类型和引用类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%87%BA"><span class="post-toc-text">格式化字符串输出：</span></a></li></ol></li></ol></li></ol>
             
         
         <div class=".article-gallery"><h1 id="go基础知识">Go基础知识</h1>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">   fmt.Println(<span class="string">"Hello, World!"</span>)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>当标识符（包括常量、变量、类型、函数名、结构字段等等）以一个大写字母开头，如：Group1，那么使用这种形式的标识符的对象就可以被外部包的代码所使用（客户端程序需要先导入这个包），这被称为导出（像面向对象语言中的 public）；</p>
-<p>标识符如果以小写字母开头，则对包外是不可见的，但是他们在整个包的内部是可见并且可用的（像面向对象语言中的 protected ）</p>
+<p>当标识符（包括常量、变量、类型、函数名、结构字段等等）以<strong>一个大写字母开头</strong>，如：Group1，那么使用这种形式的标识符的对象就可以被外部包的代码所使用（客户端程序需要先导入这个包），这被称为导出（像面向对象语言中的 <strong>public</strong>）；</p>
+<p>标识符如果<strong>以小写字母开头</strong>，<strong>则对包外是不可见的</strong>，但是他们在整个包的内部是可见并且可用的（像面向对象语言中的 <strong>protected </strong>）</p>
 <p>每个语句不需要像 C 家族中的其它语言一样以分号 ; 结尾</p>
 <p>如果你打算将多个语句写在同一行，它们则必须使用 ; 人为区分，但在实际开发中我们并不鼓励这种做法。</p>
 <p>Go 语言的字符串连接可以通过 + 实现：</p>
-<p>break default func interface select case defer go map struct chan else goto package switch const fallthrough if range type continue for import return var</p>
-<p>append bool byte cap close complex complex64 complex128 uint16 copy false float32 float64 imag int int8 int16 uint32 int32 int64 iota len make new nil panic uint64 print println real recover string true uint uint8 uintptr</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">break</th>
+<th style="text-align: center;">default</th>
+<th style="text-align: center;">func</th>
+<th style="text-align: center;">interface</th>
+<th style="text-align: center;">select</th>
+<th>var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">case</td>
+<td style="text-align: center;">defer</td>
+<td style="text-align: center;">go</td>
+<td style="text-align: center;">map</td>
+<td style="text-align: center;">struct</td>
+<td>for</td>
+</tr>
+<tr>
+<td style="text-align: center;">chan</td>
+<td style="text-align: center;">else</td>
+<td style="text-align: center;">goto</td>
+<td style="text-align: center;">package</td>
+<td style="text-align: center;">switch</td>
+<td>import</td>
+</tr>
+<tr>
+<td style="text-align: center;">const</td>
+<td style="text-align: center;">fallthrough</td>
+<td style="text-align: center;">if</td>
+<td style="text-align: center;">range</td>
+<td style="text-align: center;">type</td>
+<td>return</td>
+</tr>
+<tr>
+<td style="text-align: center;">continue</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">append</th>
+<th style="text-align: center;">bool</th>
+<th style="text-align: center;">byte</th>
+<th style="text-align: center;">cap</th>
+<th style="text-align: center;">close</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">complex</td>
+<td style="text-align: center;">complex64</td>
+<td style="text-align: center;">complex128</td>
+<td style="text-align: center;">uint16</td>
+<td style="text-align: center;">copy</td>
+</tr>
+<tr>
+<td style="text-align: center;">false</td>
+<td style="text-align: center;">float32</td>
+<td style="text-align: center;">float64</td>
+<td style="text-align: center;">imag</td>
+<td style="text-align: center;">int</td>
+</tr>
+<tr>
+<td style="text-align: center;">int8</td>
+<td style="text-align: center;">int16</td>
+<td style="text-align: center;">uint32</td>
+<td style="text-align: center;">int32</td>
+<td style="text-align: center;">int64</td>
+</tr>
+<tr>
+<td style="text-align: center;">iota</td>
+<td style="text-align: center;">len</td>
+<td style="text-align: center;">make</td>
+<td style="text-align: center;">new</td>
+<td style="text-align: center;">nil</td>
+</tr>
+<tr>
+<td style="text-align: center;">panic</td>
+<td style="text-align: center;">uint64</td>
+<td style="text-align: center;">print</td>
+<td style="text-align: center;">println</td>
+<td style="text-align: center;">real</td>
+</tr>
+<tr>
+<td style="text-align: center;">recover</td>
+<td style="text-align: center;">string</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;">uint</td>
+<td style="text-align: center;">uint8</td>
+</tr>
+<tr>
+<td style="text-align: center;">uintptr</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="语言类型">语言类型</h3>
+<p>1、布尔型： var b bool = true</p>
+<p>2、数字类型： 整型 int 和浮点型 float32、float64</p>
+<p>3、字符串类型: 使用 UTF-8 编码标识 Unicode 文本</p>
+<p>4、派生类型: 指针、数组、结构化类型（struct）、函数、Channel、切片、借口、Map</p>
 <h3 id="对象声明">对象声明：</h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x <span class="type">int</span>   <span class="comment">// 使用var， 也可以一次声明多个，var a,b,c int</span></span><br><span class="line"><span class="keyword">const</span> Pi <span class="type">float64</span> = <span class="number">3.14159265358979323846</span>   <span class="comment">// var b, c int = 1, 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在关键字和表达式之间要使用空格</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> x &gt; <span class="number">0</span> {</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在函数调用时，函数名和左边等号之间要使用空格，参数之间也要使用空格</span></span><br><span class="line"></span><br><span class="line">result := add(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>变量为声明时的默认值： - 数值类型（包括complex64/128）为 0 - 布尔类型为 false - 字符串为 ""（空字符串） - 以下未声明时为null &gt; var a *int &gt; var a []int &gt; var a map[string] int &gt; var a chan int &gt; var a func(string) int &gt; var a error // error 是接口</p>
+<p>变量为声明时的默认值： - 数值类型（包括complex64/128）为 0 - 布尔类型为 false - 字符串为 ""（空字符串） - 以下未声明时为null</p>
+<blockquote>
+<p>var a *int var a []int var a map[string] int var a chan int var a func(string) int var a error // error 是接口</p>
+</blockquote>
 <h4 id="单变量声明">单变量声明：</h4>
-<p>1、第一种，指定变量类型，没有初始化，即为默认值 var a int = 3 2、第二种，根据值自行判定变量类型 var v_name = value； eg： var d = true 3、如果变量已经使用 var 声明过了，再使用 := 声明变量，就产生编译错误</p>
+<p>1、第一种，指定变量类型，没有初始化，即为默认值 var a int = 3</p>
+<p>2、第二种，根据值自行判定变量类型 var v_name = value； eg： var d = true</p>
+<p>3、如果变量已经使用 var 声明过了，再使用 := 声明变量，就产生编译错误</p>
 <p>也就是在相同的代码块中，:=左侧的不能是已经声明过的，不然报错例如：a:=20，之后再出现是不行的，但是a=20是可以的，这是对a值的重新赋值</p>
 <blockquote>
 <p>简短形式，使用 <span style="color:red">:=</span> 赋值操作符,但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。 intVal := 1 相等于： var intVal int intVal =1 eg: 可以将：var f string = "Runoob" 简写为 f := "Runoob"</p>
 </blockquote>
 <h4 id="多变量声明">多变量声明</h4>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类型相同多个变量, 非全局变量</span></span><br><span class="line"><span class="keyword">var</span> vname1, vname2, vname3 <span class="keyword">type</span></span><br><span class="line">vname1, vname2, vname3 = v1, v2, v3</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> vname1, vname2, vname3 = v1, v2, v3 <span class="comment">// 和 python 很像,不需要显示声明类型，自动推断</span></span><br><span class="line"></span><br><span class="line">vname1, vname2, vname3 := v1, v2, v3 <span class="comment">// 出现在 := 左侧的变量不应该是已经被声明过的，否则会导致编译错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这种因式分解关键字的写法一般用于声明全局变量</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    vname1 v_type1</span><br><span class="line">    vname2 v_type2</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>想要交换两个变量的值，则可以简单地使用 a, b = b, a，两个变量的类型必须是相同</p>
 <h4 id="值类型和引用类型">值类型和引用类型</h4>
 <p>所有像 int、float、bool 和 string 这些基本类型都属于值类型，使用这些类型的变量直接指向存在内存中的值，当使用等号 = 将一个变量的值赋值给另一个变量时，如：j = i，实际上是在内存中将 i 的值进行了拷贝</p>
 <blockquote>
@@ -340,11 +457,6 @@ mjx-container[display="true"] + br {
 <li><p>Printf 根据格式化参数生成格式化的字符串并<strong>写入</strong>标准输出</p></li>
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">   <span class="comment">// %d 表示整型数字，%s 表示字符串</span></span><br><span class="line">    <span class="keyword">var</span> stockcode=<span class="number">123</span></span><br><span class="line">    <span class="keyword">var</span> enddate=<span class="string">"2020-12-31"</span></span><br><span class="line">    <span class="keyword">var</span> url=<span class="string">"Code=%d&amp;endDate=%s"</span></span><br><span class="line">    <span class="keyword">var</span> target_url=fmt.Sprintf(url,stockcode,enddate)</span><br><span class="line">    fmt.Println(target_url)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第二个</span></span><br><span class="line">    <span class="keyword">var</span> stockcode2=<span class="number">123</span></span><br><span class="line">    <span class="keyword">var</span> enddate2=<span class="string">"2020-12-31"</span></span><br><span class="line">    <span class="keyword">var</span> url2=<span class="string">"Code=%d&amp;endDate=%s"</span></span><br><span class="line">    fmt.Printf(url2,stockcode2,enddate2)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>语言类型</p>
-<p>1、布尔型： var b bool = true</p>
-<p>2、数字类型： 整型 int 和浮点型 float32、float64</p>
-<p>3、字符串类型: 使用 UTF-8 编码标识 Unicode 文本</p>
-<p>4、派生类型: 指针、数组、结构化类型（struct）、函数、Channel、切片、借口、Map</p>
 </div>
     </div>
 
