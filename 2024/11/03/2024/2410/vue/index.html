@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="vue" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    vue
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2024-11-18</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：9分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="post-toc-text">准备阶段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B7%AF%E7%94%B1router"><span class="post-toc-text">路由Router</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#first_class"><span class="post-toc-text">first_class</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ui-framework"><span class="post-toc-text">UI framework</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A1%B5%E9%9D%A2layout%E5%B8%83%E5%B1%80"><span class="post-toc-text">页面layout布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#aside%E6%A0%B7%E5%BC%8F"><span class="post-toc-text">Aside样式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C"><span class="post-toc-text">登录页面制作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8axios"><span class="post-toc-text">异步调用axios</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h2 id="准备阶段">准备阶段</h2>
+<p>使用nvm管理node版本：</p>
+<p>使用 <code>brew install nvm</code> ; # 安装nvm</p>
+<ul>
+<li>nvm list；<br>
+</li>
+<li>nvm install 20.16.0;</li>
+<li>nvm use 20.16.0</li>
+<li>nvm -v</li>
+</ul>
+<p>使用vite</p>
+<ul>
+<li><code>npm create vite@latest pzadmin -- --template vue</code></li>
+<li><code>npm install</code></li>
+</ul>
+<h2 id="路由router">路由Router</h2>
+<p>use <code>vue-router</code>, we use vue3 so the Router vision is 4 <code>npm install vue-router@4</code> ， next create router and page, in <code>src</code> create <code>router/index.js</code> , so the router config will write into this file</p>
+<h3 id="first_class">first_class</h3>
+<p><a href="file.png" class="gallery-item" style="box-shadow: none;"> <img src="file.png" style="zoom: 50%"></a></p>
+<p>在<code>router/index.js</code>写如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">'../views/Main.vue'</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Login</span> <span class="keyword">from</span> <span class="string">'../views/login/index.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> { createRouter, createWebHashHistory } <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    {</span><br><span class="line">        <span class="attr">path</span>: <span class="string">'/'</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Layout</span></span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">        <span class="attr">path</span>: <span class="string">'/login'</span>,   <span class="comment">// 就是页面访问时的路由叫什么，直接转发到对应vue组件</span></span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Login</span>  <span class="comment">// component主要就是放置vue组件的， import后跟的名字可以自定义</span></span><br><span class="line">    }</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>({</span><br><span class="line">    <span class="comment">// 路由数据</span></span><br><span class="line">    routes,</span><br><span class="line">    <span class="comment">// 路由匹配模式  (以后可以学学，好几种，hashHistory偏向于开发模式)</span></span><br><span class="line">    <span class="attr">history</span>: <span class="title function_">createWebHashHistory</span>()</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<p>vue组件一般写在<code>views/**/index.vue</code> 和<code>views/Main.vue</code>, 这个Main.vue主要是<code>/</code>路径对应的，其实和其他的index.vue一样</p>
+<h2 id="ui-framework">UI framework</h2>
+<p>介绍使用Element-plus， 使用<code>npm install element-plus</code>, 具体的引入看https://element-plus.org/zh-CN/guide/installation.html,使用按需导入。</p>
+<h2 id="页面layout布局">页面layout布局</h2>
+<p>因为<code>views/Main.vue</code>是主要控制页面布局的，从ElementPlus中找一个Container容器，复制到template中。之后需要修改侧边框部分，可以看到<code>&lt;el-aside&gt;</code>是负责侧边框的，可以从ElementPlus中找一个Menu菜单栏。之后的话可以在(新建)<code>components/aside.vue</code>中，写入template，el-menu中的@符号定义了几个函数，handleOpen和handleClose，分别在script中实现他就好</p>
+<p>Main.vue如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"common-layout"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-container</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;el-aside width="200px"&gt;Aside&lt;/el-aside&gt; --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Aside</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-container</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-header</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">el-header</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-main</span>&gt;</span>Main<span class="tag">&lt;/<span class="name">el-main</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-container</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-container</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 将侧边栏的样式导入到Main.vue中</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> <span class="title class_">Aside</span> <span class="keyword">from</span> <span class="string">'../components/aside.vue'</span> </span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>components/aside.vue 如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-menu</span> <span class="attr">active-text-color</span>=<span class="string">"#ffd04b"</span> <span class="attr">background-color</span>=<span class="string">"#545c64"</span> <span class="attr">class</span>=<span class="string">"el-menu-vertical-demo"</span> <span class="attr">default-active</span>=<span class="string">"2"</span> <span class="attr">text-color</span>=<span class="string">"#fff"</span> @<span class="attr">open</span>=<span class="string">"handleOpen"</span> @<span class="attr">close</span>=<span class="string">"handleClose"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-menu</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">handleOpen</span> = (<span class="params"></span>) =&gt; {}</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">handleClose</span> = (<span class="params"></span>) =&gt; { }</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="aside样式">Aside样式</h3>
+<blockquote>
+<p>使用<code>less</code>, 重启生效</p>
+<ul>
+<li>npm install less@4.2.0</li>
+</ul>
+<p>然后只用在style中加入一点lang="less"：<code>&lt;style lang="less" scoped&gt;&lt;/style&gt;</code></p>
+</blockquote>
+<h2 id="登录页面制作">登录页面制作</h2>
+<p>有几个知识点需要注意下：构造reactive对象准备数据，如何使用rule做表单校验，导入图片主要使用的是<code>new URL('url.png', import.meta.url).href</code>，还有使用vue组件的<strong>ref</strong>对象做判断条件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-row</span> <span class="attr">class</span>=<span class="string">"login-container"</span> <span class="attr">justify</span>=<span class="string">"center"</span> <span class="attr">:align</span>=<span class="string">"'middle'"</span> &gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- :align 在vue中属于动态绑定，意味着将JavaScript表达式的结果绑定到属性上，如果要是：align="middle"，那么就是需要在javascript中查找middle的属性 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-card</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">template</span> #<span class="attr">header</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card-header"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"imgUrl"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"jump-link"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-link</span> <span class="attr">type</span>=<span class="string">"primary"</span> @<span class="attr">click</span>=<span class="string">"handleChange"</span>&gt;</span>{{ formType ? '返回登陆' : '注册账号' }}<span class="tag">&lt;/<span class="name">el-link</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-form</span> <span class="attr">:model</span>=<span class="string">"loginForm"</span> <span class="attr">label-width</span>=<span class="string">"20px"</span> <span class="attr">:rules</span>=<span class="string">"rules"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">prop</span>=<span class="string">"userName"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"loginForm.userName"</span> <span class="attr">placeholder</span>=<span class="string">"手机号"</span> <span class="attr">:prefix-icon</span>=<span class="string">"UserFilled"</span>&gt;</span> <span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">prop</span>=<span class="string">"passWord"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"loginForm.passWord"</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"密码"</span> <span class="attr">:prefix-icon</span>=<span class="string">"Lock"</span>&gt;</span> <span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">v-if</span>=<span class="string">"formType"</span> <span class="attr">prop</span>=<span class="string">"validCode"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"loginForm.validCode"</span> <span class="attr">placeholder</span>=<span class="string">"验证码"</span> <span class="attr">:prefix-icon</span>=<span class="string">"Lock"</span>&gt;</span><span class="tag">&lt;<span class="name">template</span> #<span class="attr">append</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">"countDownChange"</span>&gt;</span> {{ countdown.validText }}<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">:style</span>=<span class="string">"{width:'100%'}"</span> @<span class="attr">click</span>=<span class="string">"submitForm"</span>&gt;</span></span><br><span class="line">                        {{ formType ? "注册账号" : "登陆" }}</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-card</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> {ref, reactive} <span class="keyword">from</span> <span class="string">'vue'</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 0 登陆 ， 1 注册</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> formType = <span class="title function_">ref</span>(<span class="number">0</span>)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> imgUrl = <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">'../../../public/login.png'</span>, <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>).<span class="property">href</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 表单数据</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> loginForm = <span class="title function_">reactive</span>({</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">userName</span>: <span class="string">''</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">passWord</span>: <span class="string">''</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">validCode</span>: <span class="string">''</span></span></span><br><span class="line"><span class="language-javascript">})</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//账号校验</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">validateUser</span> = (<span class="params">rule, value, callback</span>)=&gt;{</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(value ===<span class="string">''</span>){</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">'请输入账号'</span>))</span></span><br><span class="line"><span class="language-javascript">    }<span class="keyword">else</span>{</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> phoneReg = <span class="regexp">/^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/</span></span></span><br><span class="line"><span class="language-javascript">        phoneReg.<span class="title function_">test</span>(value)? <span class="title function_">callback</span>() : <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">'手机号格式不对'</span>))</span></span><br><span class="line"><span class="language-javascript">    }</span></span><br><span class="line"><span class="language-javascript">}</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//密码校验</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">validatePass</span> = (<span class="params">rule, value, callback</span>) =&gt;{</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(value ===<span class="string">''</span>){</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">'请输入密码'</span>))</span></span><br><span class="line"><span class="language-javascript">    }<span class="keyword">else</span>{</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> reg = <span class="regexp">/^[a-zA-Z0-9_-]{4,16}/</span></span></span><br><span class="line"><span class="language-javascript">        reg.<span class="title function_">test</span>(value)? <span class="title function_">callback</span>() : <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">'密码格式不正确，需要4-16位字符'</span>))</span></span><br><span class="line"><span class="language-javascript">    }</span></span><br><span class="line"><span class="language-javascript">}</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//表达校验</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> rules = <span class="title function_">reactive</span>({</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">userName</span>: [{validator : validateUser, <span class="attr">triggle</span>: <span class="string">'blur'</span>}],</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">passWord</span>: [{validator : validatePass, <span class="attr">triggle</span>: <span class="string">'blur'</span>}]</span></span><br><span class="line"><span class="language-javascript">})</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//表达提交</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">submitForm</span> = (<span class="params"></span>) =&gt;{</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">}</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//短信倒计时60秒</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> countdown = <span class="title function_">reactive</span>({</span></span><br><span class="line"><span class="language-javascript">    validText : <span class="string">'获取验证码'</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">time</span>: <span class="number">60</span></span></span><br><span class="line"><span class="language-javascript">})</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params"></span>) =&gt;{</span></span><br><span class="line"><span class="language-javascript">    formType.<span class="property">value</span> = formType.<span class="property">value</span> ? <span class="number">0</span> : <span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">}</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">let</span> flag = <span class="literal">false</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">countDownChange</span> = (<span class="params"></span>)=&gt;{</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>(flag) <span class="keyword">return</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 检查手机号：</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> phoneReg = <span class="regexp">/^1(3[0-9]|4[01456879]|5[0-35-9]|6[2567]|7[0-8]|8[0-9]|9[0-35-9])\d{8}$/</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>( !loginForm.<span class="property">userName</span> || !phoneReg.<span class="title function_">test</span>(loginForm.<span class="property">userName</span>)){</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> <span class="title class_">ElMessage</span>({</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">message</span>: <span class="string">"请检查手机号是否正确"</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">type</span>:<span class="string">"warning"</span></span></span><br><span class="line"><span class="language-javascript">        })</span></span><br><span class="line"><span class="language-javascript">    }</span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setInterval</span>(<span class="function">()=&gt;</span>{</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>(countdown.<span class="property">time</span> &lt; <span class="number">0</span>){</span></span><br><span class="line"><span class="language-javascript">            countdown.<span class="property">time</span> = <span class="number">60</span></span></span><br><span class="line"><span class="language-javascript">            countdown.<span class="property">validText</span> = <span class="string">"获取验证码"</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">        countdown.<span class="property">time</span> -= <span class="number">1</span></span></span><br><span class="line"><span class="language-javascript">        countdown.<span class="property">validText</span> = <span class="string">`剩余<span class="subst">${countdown.time}</span>s`</span></span></span><br><span class="line"><span class="language-javascript">    }, <span class="number">1000</span>)</span></span><br><span class="line"><span class="language-javascript">    flag = <span class="literal">true</span></span></span><br><span class="line"><span class="language-javascript">}</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">"less"</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">:<span class="built_in">deep</span>(.el-card_header){</span></span><br><span class="line"><span class="language-css">    <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">}</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.login-container</span>{</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.card-header</span>{</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: <span class="number">#899fe1</span>;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">img</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">430px</span>;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">    }</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.jump-link</span>{</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: right;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">     }</span></span><br><span class="line"><span class="language-css">}</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="异步调用axios">异步调用axios</h2>
+<p>首先安装<code>npm install axios</code>,在使用中主要还是将utils封装到<code>utils/request.js</code>中，其他的Api都放到<code>api</code>文件夹中,一般是需要二次开发axios，所以就必须要了解axios的<strong>拦截器[也就是之前之后必须要做什么]</strong>，响应后、设置统一的前缀,在request.js中，可以设置白名单，就是在执行这些请求时不进行拦截器处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> { <span class="title class_">ElMessage</span> } <span class="keyword">from</span> <span class="string">'Element-plus'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> http = axios.<span class="title function_">create</span>({</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="string">'https:/v3pz.itndedu.com/v3pz'</span>, <span class="comment">// 创建一个统一的前缀</span></span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">10000</span></span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加请求拦截器</span></span><br><span class="line">http.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) {</span><br><span class="line">    <span class="comment">// 请求之前做什么</span></span><br><span class="line">    <span class="keyword">const</span> token = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">'pz_token'</span>)<span class="comment">// 鉴权</span></span><br><span class="line">    <span class="comment">// 不需要添加token对api， 添加白名单，将有些接口排除出去，例如获取验证码就不需要token</span></span><br><span class="line">    <span class="keyword">const</span> whiteUrl = [<span class="string">'/get/code'</span>, <span class="string">'/user/authentication'</span>, <span class="string">'/login'</span>]</span><br><span class="line">    <span class="keyword">if</span> (token &amp;&amp; !whiteUrl.<span class="title function_">includes</span>(config.<span class="property">url</span>)) {</span><br><span class="line">        config.<span class="property">headers</span>[<span class="string">'x-token'</span>] = token</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">}, <span class="keyword">function</span> (<span class="params">error</span>) {</span><br><span class="line">    <span class="comment">// 对请求错误做什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加响应拦截器</span></span><br><span class="line">http.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) {</span><br><span class="line">    <span class="comment">// 2xx 范围内的状态码都会触发该函数</span></span><br><span class="line">    <span class="comment">// 对响应数据做些什么</span></span><br><span class="line">    <span class="comment">// 接口异常的给出提示</span></span><br><span class="line">    <span class="keyword">if</span> (response.<span class="property">data</span>.<span class="property">code</span> === -<span class="number">1</span>) {</span><br><span class="line">        <span class="title class_">ElMessage</span>.<span class="title function_">warning</span>(response.<span class="property">data</span>.<span class="property">message</span>)</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line"></span><br><span class="line">}, <span class="keyword">function</span> (<span class="params">error</span>) {</span><br><span class="line">    <span class="comment">// 超出 2xx 范围内的状态码都会触发该函数</span></span><br><span class="line">    <span class="comment">// 对相应错误做点什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> http</span><br></pre></td></tr></table></figure>
+<p>与此同时，需要<em>【新建】</em>在<code>api/index.js</code>写入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'../utils/request'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getCode</span> = (<span class="params">data</span>) =&gt; {</span><br><span class="line">    <span class="keyword">return</span> request.<span class="title function_">post</span>(<span class="string">'/get/code'</span>, data)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">userAuthentication</span> = (<span class="params">data</span>) =&gt; {</span><br><span class="line">    <span class="keyword">return</span> request.<span class="title function_">post</span>(<span class="string">'/user/authentication'</span>, data)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">login</span> = (<span class="params">data</span>) =&gt; {</span><br><span class="line">    <span class="keyword">return</span> request.<span class="title function_">post</span>(<span class="string">'/login'</span>, data)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>接下来想要在login.js中使用这些api的话(三个都是post请求，所以基本上格式都一样)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> { getCode, userAuthentication, login } <span class="keyword">from</span> <span class="string">'../../api'</span>;</span><br><span class="line"></span><br><span class="line">{<span class="comment">/* // const router = useRoute() */</span>}</span><br><span class="line"></span><br><span class="line">{<span class="comment">/* loginFormRef是submitForm的参数，也是el-form这个表单对应的ref=“loingFormRef”, 所以这里使用ref()对象代表*/</span>}</span><br><span class="line"><span class="keyword">const</span> loginFormRef = <span class="title function_">ref</span>(<span class="params"></span>)</span><br><span class="line"></span><br><span class="line">{<span class="comment">/* // 表单提交 submitForm时el-button按钮的点击函数*/</span>}</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">submitForm</span> = <span class="keyword">async</span> (<span class="params">formEl</span>) =&gt;{</span><br><span class="line">    <span class="keyword">if</span>(!formEl) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// 手动触发校验</span></span><br><span class="line">    <span class="keyword">await</span> formEl.<span class="title function_">validate</span>(<span class="function">(<span class="params">valid, fields</span>) =&gt;</span> {</span><br><span class="line">        <span class="keyword">if</span>(valid){</span><br><span class="line">            <span class="comment">// console.log(loginForm, 'submit!')</span></span><br><span class="line">            <span class="comment">// 如果是注册界面</span></span><br><span class="line">            <span class="keyword">if</span>(formType.<span class="property">value</span>){</span><br><span class="line">                <span class="title function_">userAuthentication</span>(loginForm).<span class="title function_">then</span>(<span class="function">(<span class="params">{data}</span>) =&gt;</span> {</span><br><span class="line">                    <span class="keyword">if</span>(data.<span class="property">code</span> === <span class="number">10000</span>){</span><br><span class="line">                        <span class="title class_">ElMessage</span>.<span class="title function_">success</span>(<span class="string">'注册成功，请登录'</span>)</span><br><span class="line">                        formType.<span class="property">value</span> = <span class="number">0</span></span><br><span class="line">                    }</span><br><span class="line">                })</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                <span class="title function_">login</span>(loginForm).<span class="title function_">then</span>(<span class="function">(<span class="params">{data}</span>)=&gt;</span>{</span><br><span class="line">                    <span class="keyword">if</span>(data.<span class="property">code</span> === <span class="number">10000</span>){</span><br><span class="line">                        <span class="title class_">ElMessage</span>.<span class="title function_">success</span>(<span class="string">'登录成功'</span>)</span><br><span class="line">                        <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line"></span><br><span class="line">                        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">'pz_token'</span>, data.<span class="property">data</span>.<span class="property">token</span>)</span><br><span class="line">                        <span class="comment">// localStorage没法直接存储引用类型数据，所以需要使用JSON的stringify转换</span></span><br><span class="line">                        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">'pz_userInfo'</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data.<span class="property">data</span>.<span class="property">userInfo</span>))</span><br><span class="line">                        router.<span class="title function_">push</span>(<span class="string">'/'</span>)</span><br><span class="line">                    }</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">'pz_token'</span>))</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">'pz_userInfo'</span>))</span><br><span class="line">                })</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'error submit!'</span>, fields)</span><br><span class="line">        }</span><br><span class="line">    })</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-11-03</span>
+            
+                <span>该篇文章被 Xue xt</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/vue/'>
+                            vue
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2024/11/05/2024/GSCode/'>GSCode</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/30/2024/Linux/">Linux</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2024 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>

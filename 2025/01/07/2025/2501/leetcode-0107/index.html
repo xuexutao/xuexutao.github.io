@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="leetcode-0107" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    leetcode-0107
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-01-08</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：6分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                
+            
+        
+        <div class=".article-gallery"><blockquote>
+<p>1、在一场经典的德州扑克游戏中，有一种牌型叫做“葫芦”。“葫芦”由五张牌组成，其中包括三张相同牌面值的牌 a 和另外两张相同牌面值的牌 b。如果两个人同时拥有“葫芦”，我们会优先比较牌 a 的大小，若牌 a 相同则再比较牌 b 的大小，<strong>牌面值的大小</strong>规则为：1 (A) &gt; K &gt; Q &gt; J &gt; 10 &gt; 9 &gt; ... &gt; 2，其中 1 (A) 的牌面值为1，K 为13，依此类推。</p>
+<p>在这个问题中，我们对“葫芦”增加了一个限制：组成“葫芦”的五张牌牌面值之和不能超过给定的最大值 m a x max。 给定一组牌，你需要找到符合规则的最大的“葫芦”组合，并输出其中三张相同的牌面和两张相同的牌面。如果找不到符合条件的“葫芦”，则输出 “0, 0”。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">solution</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> max, <span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt; &amp;array)</span> </span>{</span><br><span class="line">    <span class="comment">// 统计每种牌面值的频率</span></span><br><span class="line">    std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; freq;</span><br><span class="line">    <span class="keyword">for</span> (std::vector&lt;<span class="type">int</span>&gt;::const_iterator it = array.<span class="built_in">begin</span>(); it!= array.<span class="built_in">end</span>(); ++it) {</span><br><span class="line">        <span class="type">int</span> card = *it;</span><br><span class="line">        <span class="keyword">if</span> (freq.<span class="built_in">find</span>(card)!= freq.<span class="built_in">end</span>()) {</span><br><span class="line">            freq[card]++;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            freq[card] = <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 存储所有可能的“葫芦”组合</span></span><br><span class="line">    std::vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; possible_full_houses;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历哈希表，找出所有可能的三张相同牌面值</span></span><br><span class="line">    std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span> (it = freq.<span class="built_in">begin</span>(); it!= freq.<span class="built_in">end</span>(); ++it) {</span><br><span class="line">        <span class="type">int</span> card = it-&gt;first;</span><br><span class="line">        <span class="type">int</span> count = it-&gt;second;</span><br><span class="line">        <span class="keyword">if</span> (count &gt;= <span class="number">3</span>) {</span><br><span class="line">            <span class="comment">// 对于每一个可能的三张相同牌面值，找出所有可能的两张相同牌面值</span></span><br><span class="line">            std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::iterator it2;</span><br><span class="line">            <span class="keyword">for</span> (it2 = freq.<span class="built_in">begin</span>(); it2!= freq.<span class="built_in">end</span>(); ++it2) {</span><br><span class="line">                <span class="type">int</span> card2 = it2-&gt;first;</span><br><span class="line">                <span class="type">int</span> count2 = it2-&gt;second;</span><br><span class="line">                <span class="keyword">if</span> (card2!= card &amp;&amp; count2 &gt;= <span class="number">2</span>) {</span><br><span class="line">                    <span class="comment">// 检查牌面值之和是否符合条件</span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="number">3</span> * card + <span class="number">2</span> * card2 &lt;= max) {</span><br><span class="line">                        possible_full_houses.<span class="built_in">push_back</span>(std::<span class="built_in">make_pair</span>(card, card2));</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果没有找到符合条件的“葫芦”组合，返回 {0, 0}</span></span><br><span class="line">    <span class="keyword">if</span> (possible_full_houses.<span class="built_in">empty</span>()) {</span><br><span class="line">        <span class="keyword">return</span> {<span class="number">0</span>, <span class="number">0</span>};</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 选择最大的“葫芦”组合</span></span><br><span class="line">    std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; best_full_house = possible_full_houses[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (std::vector&lt;std::pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;::iterator iter = possible_full_houses.<span class="built_in">begin</span>();</span><br><span class="line">         iter!= possible_full_houses.<span class="built_in">end</span>(); ++iter) {</span><br><span class="line">        <span class="type">int</span> a = iter-&gt;first;</span><br><span class="line">        <span class="type">int</span> b = iter-&gt;second;</span><br><span class="line">        <span class="keyword">if</span> (a == <span class="number">1</span>) {</span><br><span class="line">            a = <span class="number">14</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">1</span>) {</span><br><span class="line">            b = <span class="number">14</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (a &gt; best_full_house.first ||</span><br><span class="line">            (a == best_full_house.first &amp;&amp; b &gt; best_full_house.second)) {</span><br><span class="line">            best_full_house = std::<span class="built_in">make_pair</span>(a, b);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (best_full_house.first == <span class="number">14</span>) {</span><br><span class="line">        best_full_house.first = <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (best_full_house.second == <span class="number">14</span>) {</span><br><span class="line">        best_full_house.second = <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> {best_full_house.first, best_full_house.second};</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// Add your test cases here</span></span><br><span class="line"></span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; result1 = <span class="built_in">solution</span>(<span class="number">9</span>, <span class="number">34</span>, {<span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>});</span><br><span class="line">    std::cout &lt;&lt; (result1 == std::vector&lt;<span class="type">int</span>&gt;{<span class="number">8</span>, <span class="number">5</span>}) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; result2 = <span class="built_in">solution</span>(<span class="number">9</span>, <span class="number">37</span>, {<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">13</span>});</span><br><span class="line">    std::cout &lt;&lt; (result2 == std::vector&lt;<span class="type">int</span>&gt;{<span class="number">6</span>, <span class="number">9</span>}) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; result3 = <span class="built_in">solution</span>(<span class="number">9</span>, <span class="number">40</span>, {<span class="number">1</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">5</span>, <span class="number">6</span>});</span><br><span class="line">    std::cout &lt;&lt; (result3 == std::vector&lt;<span class="type">int</span>&gt;{<span class="number">0</span>, <span class="number">0</span>}) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2、小F面临一个有趣的挑战：给定一个数组，她需要将数组中的数字分为两组。分组的目标是使得一组数字的和的个位数等于给定的 A，另一组数字的和的个位数等于给定的 B。除此之外，还有一种特殊情况允许其中一组为空，但剩余数字和的个位数必须等于 A 或 B。小F需要计算所有可能的划分方式。</p>
+</blockquote>
+<blockquote>
+<p>例如，对于数组 [1, 1, 1] 和目标 A = 1，B = 2，可行的划分包括三种：每个 1 单独作为一组，其余两个 1 形成另一组。如果 A = 3，B = 5，当所有数字加和的个位数为 3 或 5 时，可以有一组为非空，另一组为空。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">solution</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> A, <span class="type">int</span> B, std::vector&lt;<span class="type">int</span>&gt; array_a)</span> </span>{</span><br><span class="line">  <span class="type">int</span> totalSum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> num : array_a)</span><br><span class="line">    totalSum += num;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// DP: dp[i][x] 表示前 i 个数字能否组成个位数为 x 的和</span></span><br><span class="line">  std::vector&lt;std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(n + <span class="number">1</span>);</span><br><span class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// 初始条件</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) {</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp;entry : dp[i - <span class="number">1</span>]) {</span><br><span class="line">      <span class="type">int</span> modSum = entry.first; <span class="comment">// 当前模 10 的和</span></span><br><span class="line">      <span class="type">int</span> count = entry.second; <span class="comment">// 当前方案数</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不选第 i 个数字</span></span><br><span class="line">      dp[i][modSum] += count;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 选择第 i 个数字</span></span><br><span class="line">      <span class="type">int</span> newModSum = (modSum + array_a[i - <span class="number">1</span>]) % <span class="number">10</span>;</span><br><span class="line">      dp[i][newModSum] += count;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 特殊情况：一组为空</span></span><br><span class="line">  <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (totalSum % <span class="number">10</span> == A || totalSum % <span class="number">10</span> == B)</span><br><span class="line">    result = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 普通情况：两组和分别是 A 和 B</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> modSumA = <span class="number">0</span>; modSumA &lt; <span class="number">10</span>; ++modSumA) {</span><br><span class="line">    <span class="type">int</span> modSumB = (totalSum - modSumA + <span class="number">10</span>) % <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">if</span> (modSumA == A &amp;&amp; modSumB == B) {</span><br><span class="line">      result += dp[n][modSumA];</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3、 小M想要通过查看往届游戏比赛的排名来确定自己比赛的目标分数。他希望找到往届比赛中排名第三的分数，作为自己的目标。具体规则如下： - 如果分数中有三个或以上不同的分数，返回其中第三大的分数。 - 如果不同的分数只有两个或更少，那么小M将选择最大的分数作为他的目标。 请你帮小M根据给定的分数数组计算目标分数。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">solution</span><span class="params">(<span class="type">int</span> n, std::vector&lt;<span class="type">int</span>&gt; nums)</span> </span>{</span><br><span class="line">    <span class="comment">// 使用 set 来存储不同的分数，并保持降序排列</span></span><br><span class="line">    std::set&lt;<span class="type">int</span>, std::greater&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">uniqueScores</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果不同分数小于 3，返回最大的分数</span></span><br><span class="line">    <span class="keyword">if</span> (uniqueScores.<span class="built_in">size</span>() &lt; <span class="number">3</span>) {</span><br><span class="line">        <span class="keyword">return</span> *uniqueScores.<span class="built_in">begin</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 否则返回第三大的分数</span></span><br><span class="line">    <span class="keyword">auto</span> it = uniqueScores.<span class="built_in">begin</span>();</span><br><span class="line">    std::<span class="built_in">advance</span>(it, <span class="number">2</span>); <span class="comment">// 移动到第三大的分数</span></span><br><span class="line">    <span class="keyword">return</span> *it;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-01-07</span>
+            
+                <span>该篇文章被 Xue xt</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/leetcode/'>
+                            leetcode
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/01/10/2025/2501/SpacetimeGS/'>SpacetimeGS</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/01/07/2025/2501/LSTM/">LSTM</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2024 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
