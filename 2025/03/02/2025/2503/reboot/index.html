@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="git" />
+    <meta name="description" content="reboot" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -259,7 +259,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    git
+                    reboot
                 </div>
             
         
@@ -272,19 +272,19 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-02-26</span> 
+                    <span>最近更新：2025-03-02</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：459</span>
+                     <span>字数总计：326</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：2分钟</span>
+                    <span>阅读估时：1分钟</span>
                 
                 
                     
@@ -300,88 +300,60 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%87%BA%E7%8E%B0git-clone-git%E6%B2%A1%E6%9C%89ssh%E6%97%B6%E5%A6%82%E4%BD%95%E5%81%9A"><span class="post-toc-text">出现git clone git@没有ssh时，如何做</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="post-toc-text">✅ 解决方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%B7%B2%E6%9C%89-ssh-key"><span class="post-toc-text">1. 检查是否已有 SSH Key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%9F%E6%88%90%E6%96%B0%E7%9A%84-ssh-key"><span class="post-toc-text">2. 生成新的 SSH Key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0-ssh-key-%E5%88%B0-github"><span class="post-toc-text">3. 添加 SSH Key 到 GitHub</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95-ssh-%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">4. 测试 SSH 连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%A3%E7%90%86"><span class="post-toc-text">代理</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%81%87%E5%88%B0%E9%9A%BE%E4%BB%A5%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E6%97%B6%E5%A6%82%E6%9E%9C%E7%9F%A5%E9%81%93url"><span class="post-toc-text">遇到难以下载的文件时，如果知道URL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85-aria2c"><span class="post-toc-text">1. 安装 aria2c</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8-aria2c-%E4%B8%8B%E8%BD%BD"><span class="post-toc-text">2. 使用 aria2c 下载</span></a></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BB%8Elinux%E9%BB%98%E8%AE%A4%E4%B8%80%E6%AC%A1%E5%88%87%E6%8D%A2%E5%88%B0windows"><span class="post-toc-text">从Linux默认一次切换到windows</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95-1%E4%BD%BF%E7%94%A8-grub-reboot%E6%8E%A8%E8%8D%90"><span class="post-toc-text">方法 1：使用 grub-reboot（推荐）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95-2%E4%BD%BF%E7%94%A8-grub_defaultsaved-%E9%85%8D%E5%90%88-grub-set-default"><span class="post-toc-text">方法 2：使用 GRUB_DEFAULT&#x3D;saved 配合 grub-set-default</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A5%E9%AA%A4-1"><span class="post-toc-text">步骤</span></a></li></ol></li></ol></li></ol>
             
         
-        <div class=".article-gallery"><h1 id="出现git-clone-git没有ssh时如何做">出现git clone git@没有ssh时，如何做</h1>
-<h2 id="解决方法"><strong>✅ 解决方法</strong></h2>
-<h3 id="检查是否已有-ssh-key"><strong>1. 检查是否已有 SSH Key</strong></h3>
-<p>在 <strong>Git Bash 或 CMD</strong> 运行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ~/.ssh/id_rsa.pub  # Linux/macOS</span><br></pre></td></tr></table></figure>
-<p>或</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir C:\Users\xuext\.ssh\id_rsa.pub  # Windows</span><br></pre></td></tr></table></figure>
-<p><strong>如果没有 <code>id_rsa.pub</code>，则需要生成 SSH Key</strong>（执行 <strong>第 2 步</strong>）。 <strong>如果有 <code>id_rsa.pub</code>，执行 </strong>第 3 步** 绑定 GitHub。</p>
-<hr>
-<h3 id="生成新的-ssh-key"><strong>2. 生成新的 SSH Key</strong></h3>
-<p>如果你没有 SSH Key，运行：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>注意</strong>：<code>your_email@example.com</code> 请替换成你的 GitHub 账号邮箱。 生成时直接回车，不要修改默认路径 <code>C:\Users\xuext\.ssh\id_rsa</code>。</p>
-</blockquote>
-<p><strong>成功后，你的 SSH Key 会存放在：</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\xuext\.ssh\id_rsa</span><br><span class="line">C:\Users\xuext\.ssh\id_rsa.pub</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="添加-ssh-key-到-github"><strong>3. 添加 SSH Key 到 GitHub</strong></h3>
-<p>运行：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> C:\Users\xuext\.ssh\id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>复制 <strong>整个 SSH 公钥</strong>（以 <code>ssh-rsa</code> 开头），然后：</p>
+        <div class=".article-gallery"><h1 id="从linux默认一次切换到windows">从Linux默认一次切换到windows</h1>
+<h2 id="方法-1使用-grub-reboot推荐"><strong>方法 1：使用 <code>grub-reboot</code>（推荐）</strong></h2>
+<p><code>grub-reboot</code> 允许 <strong>只修改下一次启动的 GRUB 选项</strong>，不会影响后续启动。</p>
+<h3 id="步骤"><strong>步骤</strong></h3>
 <ol type="1">
-<li>打开 GitHub
-<ul>
-<li>进入 <a target="_blank" rel="noopener" href="https://github.com/settings/keys">GitHub SSH Key 页面</a></li>
-<li>点击 <strong>New SSH Key</strong></li>
-<li><strong>Title</strong> 随便填，比如 <code>"My Laptop"</code></li>
-<li><strong>Key</strong> 粘贴 SSH 公钥内容</li>
-<li><strong>点击 "Add SSH Key"</strong> 保存</li>
-</ul></li>
+<li><p><strong>列出可用的 GRUB 启动项</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -E <span class="string">"submenu|menuentry"</span> /boot/grub/grub.cfg | <span class="built_in">cut</span> -d <span class="string">"'"</span> -f2</span><br></pre></td></tr></table></figure>
+<p>这会输出类似：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ubuntu, with Linux 5.15.0-91-generic</span><br><span class="line">Advanced options <span class="keyword">for</span> Ubuntu</span><br><span class="line">Ubuntu, with Linux 5.15.0-91-generic (recovery mode)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>设置下一次启动使用某个选项</strong> 假设你想让系统在下次启动时进入恢复模式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> grub-reboot <span class="string">"Ubuntu, with Linux 5.15.0-91-generic (recovery mode)"</span></span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> grub-reboot 2  <span class="comment"># 数字表示对应的菜单索引</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>重启系统</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure>
+<p><strong>效果</strong>：<strong>这次启动会生效，下次启动会恢复默认 GRUB 配置</strong>。</p></li>
 </ol>
 <hr>
-<h3 id="测试-ssh-连接"><strong>4. 测试 SSH 连接</strong></h3>
-<p>测试 SSH 是否连接成功：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>如果成功，应该返回：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi xuexutao! You've successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
-<h3 id="代理">代理</h3>
-<p>git ssh默认不会走 http_proxy，需要手动配置 SOCKS5 代理：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.sshCommand "ssh -o ProxyCommand='connect -S 127.0.0.1:7897 %h %p'"</span><br></pre></td></tr></table></figure>
-<h1 id="遇到难以下载的文件时如果知道url">遇到难以下载的文件时，如果知道URL</h1>
-<p>使用aria2c工具：</p>
-<h3 id="安装-aria2c"><strong>1. 安装 <code>aria2c</code></strong></h3>
+<h2 id="方法-2使用-grub_defaultsaved-配合-grub-set-default"><strong>方法 2：使用 <code>GRUB_DEFAULT=saved</code> 配合 <code>grub-set-default</code></strong></h2>
+<p>如果 <code>grub-reboot</code> 无法使用，你可以修改 <code>GRUB_DEFAULT</code>，然后临时设置默认启动项。</p>
+<h3 id="步骤-1"><strong>步骤</strong></h3>
+<ol type="1">
+<li><p><strong>确保 GRUB 允许使用 <code>saved</code> 方式</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/default/grub</span><br></pre></td></tr></table></figure>
+<p>确保 <code>GRUB_DEFAULT=saved</code> 存在：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">GRUB_DEFAULT</span>=saved</span><br></pre></td></tr></table></figure>
+<p>然后更新 GRUB：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-grub  <span class="comment"># Ubuntu/Debian</span></span><br><span class="line"><span class="built_in">sudo</span> grub-mkconfig -o /boot/grub/grub.cfg  <span class="comment"># Arch Linux</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>临时修改 GRUB 启动项</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> grub-set-default <span class="string">"Ubuntu, with Linux 5.15.0-91-generic (recovery mode)"</span></span><br></pre></td></tr></table></figure>
+<p><strong>（仅限下次启动生效）</strong></p></li>
+<li><p><strong>重启</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> reboot</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>验证是否恢复默认</strong></p>
 <ul>
-<li><p>Windows 从官网（https://github.com/aria2/aria2/releases）下载 aria2c.exe</p></li>
-<li><p>Linux/macOS</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install aria2  # Ubuntu/Debian</span><br><span class="line">brew install aria2      # macOS</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="使用-aria2c-下载"><strong>2. 使用 <code>aria2c</code> 下载</strong></h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -x 16 -s 16 --http-proxy="http://127.0.0.1:7897" https://omnomnom.vision.rwth-aachen.de/data/Dynamic3DGaussians/output.zip</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>-x 16</code>：最多 16 个连接（多线程下载）</li>
-<li><code>-s 16</code>：分 16 片下载</li>
-<li><code>--http-proxy="http://127.0.0.1:7897"</code>：使用你的 <strong>HTTP 代理</strong></li>
-</ul>
-<p><strong>如果 <code>aria2c</code> 报错，可以尝试 <code>--check-certificate=false</code> 选项：</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -x 16 -s 16 --http-proxy="http://127.0.0.1:7897" --check-certificate=false https://omnomnom.vision.rwth-aachen.de/data/Dynamic3DGaussians/output.zip</span><br></pre></td></tr></table></figure>
+<li><p>启动后，你可以检查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-editenv list</span><br></pre></td></tr></table></figure></li>
+<li><p>如果需要恢复默认：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> grub-set-default 0</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2025-02-26</span>
-            
-                <span>该篇文章被 Xue xt</span>
+            <span>2025-03-02</span>
             
             
              
-                <span>归为分类:
-                    
-                    
-                        <a href='/categories/git/'>
-                            git
-                        </a>
-                    
-                </span>
-            
         
         </i>
     </div>
@@ -393,11 +365,9 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/03/02/2025/2503/reboot/'>reboot</a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/01/10/2025/2501/Go/">Go</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/02/26/2025/2502/git/">git</a>
                     </span>
                 
             </div>
