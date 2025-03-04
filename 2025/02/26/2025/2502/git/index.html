@@ -272,13 +272,13 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-02-26</span> 
+                    <span>最近更新：2025-03-04</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：459</span>
+                     <span>字数总计：504</span>
                 
                 
                     
@@ -361,6 +361,8 @@ mjx-container[display="true"] + br {
 </ul>
 <p><strong>如果 <code>aria2c</code> 报错，可以尝试 <code>--check-certificate=false</code> 选项：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -x 16 -s 16 --http-proxy="http://127.0.0.1:7897" --check-certificate=false https://omnomnom.vision.rwth-aachen.de/data/Dynamic3DGaussians/output.zip</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 禁用SSL检查</span></span><br><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7897</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7897</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新submodule使用这个： </span></span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
 </div>
     </div>
 
