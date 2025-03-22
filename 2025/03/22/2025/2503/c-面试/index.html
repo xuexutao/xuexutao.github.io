@@ -790,7 +790,7 @@ mjx-container[display="true"] + br {
 <ul>
 <li>printf格式输出</li>
 </ul>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205212341869.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205212341869.png"></a></p>
+<p><a href="202205212341869.png" class="gallery-item" style="box-shadow: none;"> <img src="202205212341869.png"></a></p>
 <p>上述代码中，使用%d控制整型数字的输出，没有问题，但是改成%f时，明显输出错误，再改成%s时，运行直接报segmentation fault错误</p>
 <ul>
 <li>malloc函数的返回值</li>
@@ -807,7 +807,7 @@ mjx-container[display="true"] + br {
 <li><p>C++提供了<strong>dynamic_cast</strong>关键字，使得转换过程更加安全，因为dynamic_cast比static_cast涉及更多具体的类型检查。</p>
 <p>例1：使用void*进行类型转换</p></li>
 </ul>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205212341679.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205212341679.png"></a></p>
+<p><a href="202205212341679.png" class="gallery-item" style="box-shadow: none;"> <img src="202205212341679.png"></a></p>
 <pre><code>例2：不同类型指针之间转换</code></pre>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span>{};</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child1</span> : <span class="keyword">public</span> Parent</span><br><span class="line">{</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="built_in">Child1</span>(<span class="type">int</span> e):<span class="built_in">i</span>(e){}</span><br><span class="line">};</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child2</span> : <span class="keyword">public</span> Parent</span><br><span class="line">{</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">double</span> d;</span><br><span class="line">	<span class="built_in">Child2</span>(<span class="type">double</span> e):<span class="built_in">d</span>(e){}</span><br><span class="line">};</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="function">Child1 <span class="title">c1</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">	<span class="function">Child2 <span class="title">c2</span><span class="params">(<span class="number">4.1</span>)</span></span>;</span><br><span class="line">	Parent* pp;</span><br><span class="line">	Child1* pc1;</span><br><span class="line"> 	</span><br><span class="line">	pp=&amp;c1; </span><br><span class="line">	pc1=(Child1*)pp;  <span class="comment">// 类型向下转换 强制转换，由于类型仍然为Child1*，不造成错误</span></span><br><span class="line">	cout&lt;&lt;pc1-&gt;i&lt;&lt;endl; <span class="comment">//输出：5</span></span><br><span class="line"> </span><br><span class="line">	pp=&amp;c2;</span><br><span class="line">	pc1=(Child1*)pp;  <span class="comment">//强制转换，且类型发生变化，将造成错误</span></span><br><span class="line">	cout&lt;&lt;pc1-&gt;i&lt;&lt;endl;<span class="comment">// 输出：1717986918</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>上面两个例子之所以引起类型不安全的问题，是因为程序员使用不得当。第一个例子用到了空类型指针void*，第二个例子则是在两个类型指针之间进行强制转换。因此，想保证程序的类型安全性，应尽量避免使用空类型指针void*，尽量不对两种类型指针做强制转换。</p>
@@ -902,7 +902,7 @@ mjx-container[display="true"] + br {
 </ul>
 <p>（一）访问权限</p>
 <p>派生类可以继承基类中除了构造/析构、赋值运算符重载函数之外的成员，但是这些成员的访问属性在派生过程中也是可以调整的，三种派生方式的访问权限如下表所示：注意外部访问并不是真正的外部访问，而是在通过派生类的对象对基类成员的访问。</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205212341241.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205212341241.png"></a></p>
+<p><a href="202205212341241.png" class="gallery-item" style="box-shadow: none;"> <img src="202205212341241.png"></a></p>
 <p>派生类对基类成员的访问形象有如下两种：</p>
 <ul>
 <li>内部访问：由派生类中新增的成员函数对从基类继承来的成员的访问</li>
@@ -913,10 +913,10 @@ mjx-container[display="true"] + br {
 <p>公有继承的特点是基类的公有成员和保护成员作为派生类的成员时，都保持原有的状态，而基类的私有成员任然是私有的，不能被这个派生类的子类所访问</p>
 <p><strong>protected继承</strong></p>
 <p>保护继承的特点是基类的所有公有成员和保护成员都成为派生类的保护成员，并且只能被它的派生类成员函数或友元函数访问，基类的私有成员仍然是私有的，访问规则如下表</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205212341074.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205212341074.png"></a></p>
+<p><a href="202205212341074.png" class="gallery-item" style="box-shadow: none;"> <img src="202205212341074.png"></a></p>
 <p><strong>private继承</strong></p>
 <p>私有继承的特点是基类的所有公有成员和保护成员都成为派生类的私有成员，并不被它的派生类的子类所访问，基类的成员只能由自己派生类访问，无法再往下继承，访问规则如下表</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205212341430.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205212341430.png"></a></p>
+<p><a href="202205212341430.png" class="gallery-item" style="box-shadow: none;"> <img src="202205212341430.png"></a></p>
 <blockquote>
 <p>update1：感谢微信好友“李宇杰”指出方式二中代码错误，感谢。</p>
 </blockquote>
@@ -978,9 +978,9 @@ mjx-container[display="true"] + br {
 <p>例如：32bit的数字0x12345678</p>
 <p><strong>所以在Socket编程中，往往需要将操作系统所用的小端存储的IP地址转换为大端存储，这样才能进行网络传输</strong></p>
 <p>小端模式中的存储方式为：</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205071832785.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205071832785.png"></a></p>
+<p><a href="202205071832785.png" class="gallery-item" style="box-shadow: none;"> <img src="202205071832785.png"></a></p>
 <p>大端模式中的存储方式为：</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205071832707.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205071832707.png"></a></p>
+<p><a href="202205071832707.png" class="gallery-item" style="box-shadow: none;"> <img src="202205071832707.png"></a></p>
 <p>了解了大小端存储的方式，如何在代码中进行判断呢？下面介绍两种判断方式：</p>
 <p><strong>方式一：使用强制类型转换</strong>-这种法子不错</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0x1234</span>;</span><br><span class="line">    <span class="comment">//由于int和char的长度不同，借助int型转换成char型，只会留下低地址的部分</span></span><br><span class="line">    <span class="type">char</span> c = (<span class="type">char</span>)(a);</span><br><span class="line">    <span class="keyword">if</span> (c == <span class="number">0x12</span>)</span><br><span class="line">        cout &lt;&lt; <span class="string">"big endian"</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="number">0x34</span>)</span><br><span class="line">        cout &lt;&lt; <span class="string">"little endian"</span> &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -1084,7 +1084,7 @@ mjx-container[display="true"] + br {
 <p>这种写法表名函数可能会抛出int,double型或者A、B、C三种类型的异常，如果throw中为空，表明不会抛出任何异常，如果没有throw则可能抛出任何异常</p>
 <p><strong>（3）C++标准异常类 exception</strong></p>
 <p>C++ 标准库中有一些类代表异常，这些类都是从 exception 类派生而来的，如下图所示</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205212342667.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205212342667.png"></a></p>
+<p><a href="202205212342667.png" class="gallery-item" style="box-shadow: none;"> <img src="202205212342667.png"></a></p>
 <ul>
 <li>bad_typeid：使用typeid运算符，如果其操作数是一个多态类的指针，而该指针的值为 NULL，则会拋出此异常，例如：</li>
 </ul>
@@ -1471,7 +1471,7 @@ mjx-container[display="true"] + br {
 <p>当然了，如果加上 #pragma pack(4) 指定4字节对齐方式就可以了。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack(4)</span></span><br><span class="line"><span class="keyword">struct</span>  <span class="title class_">S</span></span><br><span class="line">{</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="type">char</span> y;</span><br><span class="line">	<span class="type">int</span> z;</span><br><span class="line">	<span class="type">double</span> a;</span><br><span class="line">};</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test02</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">cout &lt;&lt; <span class="built_in">offsetof</span>(S, x) &lt;&lt; endl; <span class="comment">// 0</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">offsetof</span>(S, y) &lt;&lt; endl; <span class="comment">// 4</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">offsetof</span>(S, z) &lt;&lt; endl; <span class="comment">// 8</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">offsetof</span>(S, a) &lt;&lt; endl; <span class="comment">// 12</span></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
 <p>S结构体中各个数据成员的内存空间划分如下所示，需要注意内存对齐</p>
-<p><a href="./c++%E9%9D%A2%E8%AF%95.assets/202205220035079.png" class="gallery-item" style="box-shadow: none;"> <img src="./c++%E9%9D%A2%E8%AF%95.assets/202205220035079.png"></a></p>
+<p><a href="202205220035079.png" class="gallery-item" style="box-shadow: none;"> <img src="202205220035079.png"></a></p>
 <p id="静态类型和动态类型，静态绑定和动态绑定的介绍">
 </p>
 <h3 id="静态类型和动态类型静态绑定和动态绑定的介绍">71、静态类型和动态类型，静态绑定和动态绑定的介绍</h3>
