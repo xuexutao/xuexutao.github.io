@@ -159,11 +159,13 @@
 }
 
 .post-md code {
-    border-radius: 4px;
-    background: #e4e4e4;
+    border-radius: 0px;
+    background: #ffffff;
+    border: 1px #82ff04 solid;
     padding: 2px 4px;
-    color: #2d2d2d;
-    font-size: 1rem;
+    color: #b61600;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 .post-md .hljs-ln-numbers {
