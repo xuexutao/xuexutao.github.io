@@ -299,10 +299,6 @@ mjx-container[display="true"] + br {
 
     <div class="post-md">
         
-            
-                
-            
-        
         <div class=".article-gallery"><p>在 Linux 虚拟机中安装并启动 SSH 服务（假设使用 OpenSSH）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="comment"># 可以通过以下命令检查 SSH 服务状态：</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查防火墙规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 22/tcp</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span>  <span class="comment"># 启用防火墙</span></span><br></pre></td></tr></table></figure>
 <p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware 中将网络模式设置为 桥接模式 或 NAT 模式：</p>
@@ -361,7 +357,7 @@ mjx-container[display="true"] + br {
                     <div class="footer">
     
         <span> 
-            © 2001-2024 Xuext 
+            © 2001-2025 Xuext 
 
             
                 
