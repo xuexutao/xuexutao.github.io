@@ -286,13 +286,13 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：46k</span>
+                     <span>字数总计：45.7k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：169分钟</span>
+                    <span>阅读估时：168分钟</span>
                 
                 
                     
@@ -391,7 +391,7 @@ mjx-container[display="true"] + br {
 <colgroup>
 <col style="width: 3%">
 <col style="width: 60%">
-<col style="width: 35%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr>
@@ -408,18 +408,18 @@ mjx-container[display="true"] + br {
 </tr>
 <tr>
 <td style="text-align: left;"><strong>内存管理机制</strong></td>
-<td>系统有一个记录空闲内存地址的链表，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删 除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存空间，另外系统会将多余的部分重新放入空闲链表中）</td>
+<td>系统有一个<code>记录空闲内存地址的链表</code>，当系统收到程序申请时，遍历该链表，寻找第一个空间大于申请空间的堆结点，删除空闲结点链表中的该结点，并将该结点空间分配给程序（大多数系统会在这块内存空间首地址记录本次分配的大小，这样delete才能正确释放本内存空间，另外系统会将多余的部分重新放入空闲链表中）</td>
 <td>只要栈的剩余空间大于所申请空间，系统为程序提供内存，否则报异常提示栈溢出。（这一块理解一下链表和队列的区别，不连续空间和连续空间的区别，应该就比较好理解这两种机制的区别了）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>空间大小</strong></td>
 <td>堆是不连续的内存区域（因为系统是用链表来存储空闲内存地址，自然不是连续的），堆大小受限于计算机系统中有效的虚拟内存（32bit 系统理论上是4G），所以堆的空间比较灵活，比较大</td>
-<td>栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在 编译时确定，VC中可设置）</td>
+<td>栈是一块连续的内存区域，大小是操作系统预定好的，windows下栈大小是2M（也有是1M，在 <code>编译时确定</code>，VC中可设置）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>碎片问题</strong></td>
 <td>对于堆，频繁的new/delete会造成大量碎片，使程序效率降低</td>
-<td>对于栈，它是有点类似于数据结构上的一个先进后出的栈，进出一一对应，不会产生碎片。（看到这里我突然明白了为什么面试官在问我堆和栈的区别之前先问了我栈和队列的区别）</td>
+<td>对于栈，类似于数据结构上的一个先进后出的栈，进出一一对应，不会产生碎片。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>生长方向</strong></td>
@@ -429,36 +429,31 @@ mjx-container[display="true"] + br {
 <tr>
 <td style="text-align: left;"><strong>分配方式</strong></td>
 <td>堆都是动态分配（没有静态分配的堆）</td>
-<td>栈有静态分配和动态分配，静态分配由编译器完成（如局部变量分配），动态分配由alloca函数分配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
+<td><code>栈有静态分配和动态分配</code>，静态分配由编译器完成（如局部变量分配），动态分配由<code>alloca</code>函数分配，但栈的动态分配的资源由编译器进行释放，无需程序员实现。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>分配效率</strong></td>
-<td>堆由C/C++函数库提供，机制很复杂。所以堆的效率比栈低很多。</td>
-<td>栈是其系统提供的数据结构，计算机在底层对栈提供支持，分配专门 寄存器存放栈地址，栈操作有专门指令。</td>
+<td>堆由C/C++函数库提供，机制很复杂。所以堆的效率比栈<code>低很多</code>。</td>
+<td>栈是其<code>系统提供的数据结构</code>，计算机在底层对栈提供支持，分配专门 寄存器存放栈地址，栈操作有专门指令。</td>
 </tr>
 </tbody>
 </table>
-<p><strong>形象的比喻</strong></p>
-<p>栈就像我们去饭馆里吃饭，只管点菜（发出申请）、付钱、和吃（使用），吃饱了就走，不必理会切菜、洗菜等准备工作和洗碗、刷锅等扫尾工作，他的好处是快捷，但是自由度小。</p>
-<p>堆就象是自己动手做喜欢吃的菜肴，比较麻烦，但是比较符合自己的口味，而且自由度大。</p>
 <p id="你觉得堆快一点还是栈快一点">
 </p>
 <h3 id="你觉得堆快一点还是栈快一点">6、你觉得堆快一点还是栈快一点？</h3>
-<p>毫无疑问是栈快一点。</p>
-<p>因为操作系统会在底层对栈提供支持，会分配专门的寄存器存放栈的地址，栈的入栈出栈操作也十分简单，并且有专门的指令执行，所以栈的效率比较高也比较快。</p>
-<p>而堆的操作是由C/C++函数库提供的，在分配堆内存的时候需要一定的算法寻找合适大小的内存。并且获取堆的内容需要两次访问，第一次访问指针，第二次根据指针保存的地址访问内存，因此堆比较慢。</p>
+<p>毫无疑问是<code>栈快</code>一点。</p>
+<p>因为操作系统会在底层对栈提供支持，会分配<code>专门的寄存器存放栈的地址</code>，栈的入栈出栈操作也十分简单，并且有专门的指令执行，所以栈的效率比较高也比较快。</p>
+<p>而堆的操作是由C/C++函数库提供的，在分配堆内存的时候需要一定的算法寻找合适大小的内存。并且<strong>获取堆的内容需要两次访问，第一次访问指针，第二次根据指针保存的地址访问内存，因此堆比较慢</strong>。</p>
 <p id="区别以下指针类型">
 </p>
 <h3 id="区别以下指针类型">7、区别以下指针类型？</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p[<span class="number">10</span>]</span><br><span class="line"><span class="built_in">int</span> (*p)[<span class="number">10</span>]</span><br><span class="line"><span class="function"><span class="type">int</span> *<span class="title">p</span><span class="params">(<span class="type">int</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">int</span> <span class="params">(*p)</span><span class="params">(<span class="type">int</span>)</span></span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>int *p[10]表示指针数组，强调数组概念，是一个数组变量，数组大小为10，数组内每个元素都是指向int类型的指针变量。</p></li>
-<li><p>int (*p)[10]表示数组指针，强调是指针，只有一个变量，是指针类型，不过指向的是一个int类型的数组，这个数组大小是10。</p></li>
-<li><p>int <em>p(int)是函数声明，函数名是p，参数是int类型的，返回值是int </em>类型的。</p></li>
-<li><p>int (*p)(int)是函数指针，强调是指针，该指针指向的函数具有int类型参数，并且返回值是int类型的。</p></li>
+<li><p>int *p[10]表示<code>指针数组</code>，强调数组概念，是一个数组变量，数组大小为10，数组内每个元素都是指向int类型的指针变量。</p></li>
+<li><p>int (*p)[10]表示<code>数组指针</code>,也叫<code>行指针</code>，强调是指针，只有一个变量，是指针类型，不过指向的是一个int类型的数组，这个数组大小是10。</p></li>
+<li><p>int <em>p(int)是<code>函数声明</code>，函数名是p，参数是int类型的，返回值是int </em>类型的。</p></li>
+<li><p>int (*p)(int)是<code>函数指针</code>，强调是指针，该指针指向的函数具有int类型参数，并且返回值是int类型的。</p></li>
 </ul>
-<p id="newdelete与mallocfree的异同">
-</p>
 <h3 id="new-delete-与-malloc-free的异同">8、new / delete 与 malloc / free的异同</h3>
 <p><strong>相同点</strong></p>
 <ul>
@@ -476,37 +471,24 @@ mjx-container[display="true"] + br {
 <li>后者需要库文件支持，前者不用</li>
 <li>new是封装了malloc，直接free不会报错，但是这只是释放内存，而不会析构对象</li>
 </ul>
-<p id="new和delete是如何实现的">
-</p>
 <h3 id="new和delete是如何实现的">9、new和delete是如何实现的？</h3>
 <ul>
 <li>new的实现过程是：首先调用名为<strong>operator new</strong>的标准库函数，分配足够大的原始为类型化的内存，以保存指定类型的一个对象；接下来运行该类型的一个构造函数，用指定初始化构造对象；最后返回指向新分配并构造后的的对象的指针</li>
 <li>delete的实现过程：对指针指向的对象运行适当的析构函数；然后通过调用名为<strong>operator delete</strong>的标准库函数释放该对象所用内存</li>
 </ul>
-<p id="malloc和new的区别">
-</p>
 <h3 id="malloc和new的区别">10、malloc和new的区别？</h3>
 <ul>
 <li><p>malloc和free是标准库函数，支持覆盖；new和delete是运算符，支持重载。</p></li>
 <li><p>malloc仅仅分配内存空间，free仅仅回收空间，不具备调用构造函数和析构函数功能，用malloc分配空间存储类的对象存在风险；new和delete除了分配回收功能外，还会调用构造函数和析构函数。</p></li>
-<li><p>malloc和free返回的是void类型指针（必须进行类型转换），new和delete返回的是具体类型指针。</p>
-<blockquote>
-<p>update1:感谢微信好友“猿六学算法”指出错误，已修正！</p>
-</blockquote></li>
+<li><p>malloc和free返回的是void类型指针（必须进行类型转换），new和delete返回的是具体类型指针。</p></li>
 </ul>
-<p id="既然有了为什么还需要呢？直接用不好吗">
-</p>
 <h3 id="既然有了mallocfreec中为什么还需要newdelete呢直接用mallocfree不好吗">11、既然有了malloc/free，C++中为什么还需要new/delete呢？直接用malloc/free不好吗？</h3>
 <ul>
 <li>malloc/free和new/delete都是用来申请内存和回收内存的。</li>
 <li>在对非基本数据类型的对象使用的时候，对象创建的时候还需要执行构造函数，销毁的时候要执行析构函数。而malloc/free是库函数，是已经编译的代码，所以不能把构造函数和析构函数的功能强加给malloc/free，所以new/delete是必不可少的。</li>
 </ul>
-<p id="被free回收的内存是立即返还给操作系统吗">
-</p>
 <h3 id="被free回收的内存是立即返还给操作系统吗">12、被free回收的内存是立即返还给操作系统吗？</h3>
 <p>不是的，被free回收的内存会首先被ptmalloc使用双链表保存起来，当用户下一次申请内存的时候，会尝试从这些内存中寻找合适的返回。这样就避免了频繁的系统调用，占用过多的系统资源。同时ptmalloc也会尝试对小块内存进行合并，避免过多的内存碎片。</p>
-<p id="宏定义和函数有何区别">
-</p>
 <h3 id="宏定义和函数有何区别">13、宏定义和函数有何区别？</h3>
 <ul>
 <li>宏在预处理阶段完成替换，之后被替换的文本参与编译，相当于直接插入了代码，运行时不存在函数调用，执行起来更快；函数调用在运行时需要跳转到具体调用函数。</li>
@@ -514,8 +496,6 @@ mjx-container[display="true"] + br {
 <li>宏定义参数没有类型，不进行类型检查；函数参数具有类型，需要检查类型。</li>
 <li>宏定义不要在最后加分号。</li>
 </ul>
-<p id="宏定义和typedef区别">
-</p>
 <h3 id="宏定义和typedef区别">14、宏定义和typedef区别？</h3>
 <ul>
 <li><p>宏主要用于定义常量及书写复杂的内容；typedef主要用于定义类型别名。</p></li>
@@ -524,49 +504,34 @@ mjx-container[display="true"] + br {
 <li><p>宏不是语句，不在在最后加分号；typedef是语句，要加分号标识结束。</p></li>
 <li><p>注意对指针的操作，typedef char * p_char和#define p_char char *区别巨大。</p></li>
 </ul>
-<p id="变量声明和定义区别">
-</p>
+<blockquote>
+<p>很大的区别是：typedef是真正的类型定义，而<code>#define</code>只是一个文本替换的操作。所以在一定程度上会引起一些歧义。 像是：</p>
+</blockquote>
 <h3 id="变量声明和定义区别">15、变量声明和定义区别？</h3>
 <ul>
-<li><p>声明仅仅是把变量的声明的位置及类型提供给编译器，并不分配内存空间；定义要在定义的地方为其分配存储空间。</p></li>
-<li><p>相同变量可以在多处声明（外部变量extern），但只能在一处定义。</p></li>
+<li><p>声明仅仅是把变量的<code>声明的位置及类型</code>提供给编译器，并<code>不分配内存空间</code>；定义要在定义的地方为其分配存储空间。</p></li>
+<li><p>相同变量可以在多处声明（外部变量extern），但<code>只能在一处定义</code>。</p></li>
 </ul>
-<p id="strlen和sizeof区别">
-</p>
 <h3 id="strlen和sizeof区别">16、strlen和sizeof区别？</h3>
 <ul>
-<li><p>sizeof是运算符，并不是函数，结果在编译时得到而非运行中获得；strlen是字符处理的库函数。</p></li>
-<li><p>sizeof参数可以是任何数据的类型或者数据（sizeof参数不退化）；strlen的参数只能是字符指针且结尾是'\0'的字符串。</p></li>
+<li><p><code>sizeof</code> 是运算符，并不是函数，结果在编译时得到而非运行中获得；strlen是字符处理的库函数。</p></li>
+<li><p><code>sizeof</code>参数可以是任何数据的类型或者数据（<code>sizeof</code>参数不退化）；<code>strlen</code>的参数只能是字符指针且结尾是'\0'的字符串。</p></li>
 <li><p>因为sizeof值在编译时确定，所以不能用来得到动态分配（运行时分配）存储空间的大小。</p></li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span>{</span><br><span class="line">    </span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* str = <span class="string">"name"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sizeof</span>(str); <span class="comment">// 取的是指针str的长度，是8</span></span><br><span class="line">    <span class="built_in">strlen</span>(str); <span class="comment">// 取的是这个字符串的长度，不包含结尾的 \0。大小是4</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h3 id="补充题一个指针占多少字节">16.2、（补充题）一个指针占多少字节？</h3>
-<p>在16题中有提到sizeof（str）的值为8，是在64位的编译环境下的，指针的占用大小为8字节；</p>
+<h4 id="一个指针占多少字节">一个指针占多少字节？</h4>
+<p>sizeof（str）的值为8，是在64位的编译环境下的，指针的占用大小为8字节；</p>
 <p>而在32位环境下，指针占用大小为4字节。</p>
 <p>一个指针占内存的大小跟编译环境有关，而与机器的位数无关。</p>
-<p>还有疑问的，可以自行打开Visual Studio编译器自己实验一番。</p>
-<blockquote>
-<p>感谢微信好友“轻与重”提出补充，已采纳！-2021.07.01</p>
-</blockquote>
-<p id="常量指针和指针常量区别">
-</p>
-<h3 id="常量指针和指针常量区别">17、常量指针和指针常量区别？</h3>
+<h3 id="常量指针和指针常量区别">17🌟、常量指针和指针常量区别？</h3>
 <ul>
-<li><p>指针常量是一个指针，读成常量的指针，指向一个只读变量，也就是后面所指明的int const 和 const int，都是一个常量，可以写作int const <em>p或const int </em>p。</p></li>
-<li><p>常量指针是一个不能给改变指向的指针。指针是个常量，必须初始化，一旦初始化完成，它的值（也就是存放在指针中的地址）就不能在改变了，即不能中途改变指向，如int *const p。</p>
-<blockquote>
-<p>update1:https://www.nowcoder.com/discuss/597948 ，网友“ 牛客191489444号 ”指出笔误，感谢！</p>
-<p>update2:《C++ Primer 5th》 P56页有明确说明常量指针和指针常量，阿秀特意去确认了-20210521。</p>
-<p>多说一句，网上关于指针常量和常量指针的说法很多跟书本上都不一致，甚至百度百科上跟《C++ Primer 5th》书上在指针常量和常量指针的说法刚好相反，鉴于百度百科是人人都可以去编辑，因此我信书。</p>
-<p>也希望各位遇到问题时要多去查阅资料，多去确认，不要因为某些博客或者文章说了就确认无疑。</p>
-</blockquote></li>
+<li><p><strong>指针常量</strong>是一个指针，读成<code>常量的指针</code>，指向一个<code>只读变量</code>，也就是后面所指明的int const 和 const int，都是一个常量，可以写作int const <em>p或const int </em>p， 可以理解为const int是一个常量，后面的 *p是一个指针，所以叫做指针常量</p></li>
+<li><p><strong>常量指针</strong>是一个不能给改变指向的指针。指针是个常量，必须初始化，一旦初始化完成，它的值（也就是存放在指针中的地址）就不能在改变了，即不能中途改变指向，如int *const p。</p></li>
 </ul>
-<p id="哎和爱有什么区别">
-</p>
 <h3 id="a和a有什么区别">18、a和&amp;a有什么区别？</h3>
 <p>假设数组int a[10]; int (*p)[10] = &amp;a;其中：</p>
 <ul>
-<li>a是数组名，是数组首元素地址，+1表示地址值加上一个int类型的大小，如果a的值是0x00000001，加1操作后变为0x00000005。*(a + 1) = a[1]。</li>
+<li>a是数组名，是数组首元素地址，<strong>+1表示地址值加上一个int类型的大小</strong>，如果a的值是0x00000001，加1操作后变为0x00000005。*(a + 1) = a[1]。</li>
 <li>&amp;a是数组的指针，其类型为int (*)[10]（就是前面提到的数组指针），其加1时，系统会认为是数组首地址加上整个数组的偏移（10个int型变量），值为数组a尾元素后一个元素的地址。</li>
 <li>若(int <em>)p ，此时输出 </em>p时，其值为a[0]的值，因为被转为int *类型，解引用时按照int类型大小来读取。</li>
 </ul>
@@ -625,7 +590,7 @@ mjx-container[display="true"] + br {
 </ul>
 <p><strong>不同点</strong></p>
 <ul>
-<li><p>两者中如果不对成员不指定公私有，struct默认是公有的，class则默认是私有的</p></li>
+<li><p>两者中如果不对成员不指定<strong>公私有</strong>，<code>struct默认是公有的，class则默认是私有的</code></p></li>
 <li><p>class默认是private继承， 而struct默认是public继承</p></li>
 </ul>
 <p><strong>引申</strong>：C++和C的struct区别</p>
