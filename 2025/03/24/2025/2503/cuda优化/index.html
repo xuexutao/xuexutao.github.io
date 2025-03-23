@@ -223,7 +223,7 @@
 <p>首先对于，其中最重要的一段规约reduce代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tid &lt; s)&#123;</span><br><span class="line">        sdata[tid] += sdata[tid + s];</span><br><span class="line">    &#125;</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对于blocks中的每个线程，都携带一个tid变量，也就是每个线程都会执行for循环，所以整个blocks里的线程们执行for循环是，会将sdata中的0--blocksize / 2的空间变为：本身 + [本身 + s]索引的值</p>
-<p><a href="image-20250323193354909.png" title="image-20250323193354909" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323193354909.png" alt="image-20250323193354909" style="zoom:50%;" /></a></p>
+<p><a href="image-20250323193354909.png" title="image-20250323193354909" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323193354909.png" alt="image-20250323193354909" style="zoom:40%;" /></a></p>
 <p>对于数量部分，数组长度为32M长，blocksize = 512， 所以gridsize=65536。</p>
 <p>最终产生的结果为blocksize = 512长度。找到原因是因为，在global函数中的最后一句，d_b[blockIdx.x] = sdata[0]; 导致只有blcokIdx的0-511个数据不断覆盖。global函数将一个block中的数据进行reduce，最后只剩下一个数，所以最终的d_b应该是<code>gridsize</code>大小！！</p>
 <blockquote>
@@ -244,7 +244,7 @@
 <p>假设存在512个线程，共16个wrap。当进行第一次迭代时，0-3号warp的index计算。第二次0、1号warp计算。第三次只有0号warp计算</p>
 <p>对于同一个线程束内的线程，在给定的迭代中，<code>tid</code> （线程在块内的索引）是连续的，并且<code>blockDim.x</code> 是线程块内的线程数量。由于<code>index</code> 的计算方式，在同一个线程束内的线程，对于给定的<code>s</code> 值，它们的<code>index</code> 计算结果要么都满足<code>index &lt; blockDim.x</code> ，要么都不满足。</p>
 <p>例如，假设一个线程块有 512 个线程（16 个线程束），在某一次迭代中，对于一个线程束内的 32 个线程，它们的<code>tid</code> 是从<code>threadIdx.x</code> 为 <strong>0 到 31</strong>。如果根据计算，对于这个线程束内的所有线程，<code>index</code> 都小于<code>blockDim.x</code> ，那么它们都会进入<code>if</code> 分支执行<code>sdata[index] += sdata[index + s];</code> ；如果<code>index</code> 都大于等于<code>blockDim.x</code> ，则都不会进入<code>if</code> 分支。</p>
-<p><a href="image-20250323233731124.png" title="image-20250323233731124" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323233731124.png" alt="image-20250323233731124" style="zoom:50%;" /></a></p>
+<p><a href="image-20250323233731124.png" title="image-20250323233731124" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323233731124.png" alt="image-20250323233731124" style="zoom:40%;" /></a></p>
 <p>例如，分析这个表格可以看出：</p>
 <p><a href="image-20250323234508168.png" title="image-20250323234508168" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323234508168.png" alt="image-20250323234508168" style="zoom:50%;" /></a></p>
 <p>对于前31个也就是一个warp内的线程做分析，可以看出。在s=1-8时，他们的index都是小于blocksize = 512的，也就是说，这个时候都是执行的sdata[index] += sdata[index+s]，同样的判逻辑，直到s=16时 tid=16及之后的线程的index会大于等于512，也就是不再执行这个语句，但这是一种比较理想的情况，因为在前面的多次迭代中，<code>大部分情况下同一个 warp 内的线程执行路径是相同的，减少了线程束发散的概率</code></p>
