@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="cuda优化" />
+    <meta name="description" content="" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -59,119 +59,7 @@
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
     
     
         <style>
@@ -267,7 +155,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    cuda优化
+                    
                 </div>
             
         
@@ -286,13 +174,13 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：2k</span>
+                     <span>字数总计：2.6k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：8分钟</span>
+                    <span>阅读估时：11分钟</span>
                 
                 
                     
@@ -309,12 +197,12 @@ mjx-container[display="true"] + br {
         
         <div class=".article-gallery"><h1 id="reduce">reduce</h1>
 <p>CPU中，reduce使用了一种树形计算方法：</p>
-<p><a href="image-20250323183608139.png" title="image-20250323183608139" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323183608139.png" alt="image-20250323183608139" style="zoom:50%;"></a></p>
+<p><a href="image-20250323183608139.png" title="image-20250323183608139" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323183608139.png" alt="image-20250323183608139" style="zoom:50%;" /></a></p>
 <p>从上至下，将数据不断地累加，直到得出最后的结果，即25</p>
 <p>对于非常大的数组，没有一个全局synchronize的操作。</p>
 <blockquote>
 <p>如果有：在每一个block产生结果后，全局同步一下，等到所有blocks都同步了，再继续recursively</p>
-<hr>
+<hr />
 <p>为什么没有global synchronize？</p>
 <ul>
 <li>为具有高处理器数量的GPU内置硬件<code>成本高昂</code></li>
@@ -322,7 +210,7 @@ mjx-container[display="true"] + br {
 </ul>
 </blockquote>
 <p>solution：将reduce分为两个阶段</p>
-<p><a href="image-20250323184137540.png" title="image-20250323184137540" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323184137540.png" alt="image-20250323184137540" style="zoom:50%;"></a></p>
+<p><a href="image-20250323184137540.png" title="image-20250323184137540" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323184137540.png" alt="image-20250323184137540" style="zoom:50%;" /></a></p>
 <blockquote>
 <p>设给定一个长度为N的数组，需要计算该数组的所有元素之和</p>
 <p>首先需要将数组分为m个小份。而后，在第一阶段中，开启<strong>m</strong>个block计算出m个小份的reduce值。最后，在第二阶段中，使用一个block将m个小份再次进行reduce，得到最终的结果</p>
@@ -331,46 +219,65 @@ mjx-container[display="true"] + br {
 <p>GPU 优化目标是努力达到 <code>GPU 峰值性能</code>。需选择合适指标，对于<strong>计算受限内核</strong>用 <code>GFLOP/s</code>衡量，<strong>内存受限内核</strong>用<code>带宽</code>衡量。归约操作算术强度低，每个加载元素仅 1 次浮点运算，属带宽最优情况，因此应<code>追求峰值带宽</code>。</p>
 <p>计算受限内核：意味着在运行过程中，其性能瓶颈主要在于计算能力</p>
 <p>内存受限内核：性能瓶颈主要在于内存的读取和写入速度，<strong>带宽表示单位时间内可以传输的数据量</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cuda_runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="keyword">define</span> blocksize 512</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此函数将一个block中的数据进行reduce，最后只剩下一个数，所以最终的d_b应该是gridsize大小</span></span><br><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">reduce0</span><span class="params">(<span class="type">float</span> *d_a, <span class="type">float</span> *d_b)</span></span>{</span><br><span class="line">    <span class="type">int</span> tid = threadIdx.x;</span><br><span class="line">    <span class="type">int</span> i = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="comment">// __shared__ float sdata[blockDim]; //错误</span></span><br><span class="line">    __shared__ <span class="type">float</span> sdata[blocksize]; <span class="comment">//正确</span></span><br><span class="line">    sdata[tid] = d_a[i];   <span class="comment">// 全局内存 d_a 中的数据加载到共享内存 sdata 中</span></span><br><span class="line">    __syncthreads();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>){</span><br><span class="line">        <span class="keyword">if</span>(tid &lt; s){</span><br><span class="line">            sdata[tid] += sdata[tid + s];</span><br><span class="line">        }</span><br><span class="line">        __syncthreads();</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// reduce后只剩下sdata[0]为整个block的和</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tid == <span class="number">0</span>){</span><br><span class="line">        <span class="comment">// 这里比较关键，显示了gridsize的用法</span></span><br><span class="line">        <span class="comment">// d_b[blockIdx.x % blocksize] += sdata[0];</span></span><br><span class="line">        d_b[blockIdx.x] = sdata[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"blockIdx.x = %d, sdata[0] = %f\n"</span>, blockIdx.x, sdata[<span class="number">0</span>]);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> N = <span class="number">32</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> gridsize = (N + blocksize - <span class="number">1</span>) / blocksize;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"gridsize = "</span> &lt;&lt; gridsize &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *A = <span class="keyword">new</span> <span class="type">float</span>[N];</span><br><span class="line">    <span class="type">float</span> *B = <span class="keyword">new</span> <span class="type">float</span>[gridsize];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        A[i] = <span class="built_in">rand</span>() % <span class="number">10</span>;</span><br><span class="line">        <span class="comment">// A[i] = 1.0;</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *d_a, *d_b;</span><br><span class="line">    <span class="built_in">cudaMalloc</span>(&amp;d_a, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">cudaMalloc</span>(&amp;d_b, gridsize * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(d_a, A, N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">    reduce0&lt;&lt;&lt;gridsize, blocksize&gt;&gt;&gt;(d_a, d_b);  <span class="comment">// 参数一定是gridsize, blocksize</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(B, d_b, gridsize * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaFree</span>(d_a);</span><br><span class="line">    <span class="built_in">cudaFree</span>(d_b);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// for (int i = 0; i &lt; gridsize; i++){</span></span><br><span class="line">    <span class="comment">//     std::cout &lt;&lt; "B[" &lt;&lt; i &lt;&lt; "] = " &lt;&lt; B[i] &lt;&lt; std::endl;</span></span><br><span class="line">    <span class="comment">// }</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cuda_runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="keyword">define</span> blocksize 512</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此函数将一个block中的数据进行reduce，最后只剩下一个数，所以最终的d_b应该是gridsize大小</span></span><br><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">reduce0</span><span class="params">(<span class="type">float</span> *d_a, <span class="type">float</span> *d_b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> tid = threadIdx.x;</span><br><span class="line">    <span class="type">int</span> i = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="comment">// __shared__ float sdata[blockDim]; //错误</span></span><br><span class="line">    __shared__ <span class="type">float</span> sdata[blocksize]; <span class="comment">//正确</span></span><br><span class="line">    sdata[tid] = d_a[i];   <span class="comment">// 全局内存 d_a 中的数据加载到共享内存 sdata 中</span></span><br><span class="line">    __syncthreads();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tid &lt; s)&#123;</span><br><span class="line">            sdata[tid] += sdata[tid + s];</span><br><span class="line">        &#125;</span><br><span class="line">        __syncthreads();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// reduce后只剩下sdata[0]为整个block的和</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tid == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">// 这里比较关键，显示了gridsize的用法</span></span><br><span class="line">        <span class="comment">// d_b[blockIdx.x % blocksize] += sdata[0];</span></span><br><span class="line">        d_b[blockIdx.x] = sdata[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;blockIdx.x = %d, sdata[0] = %f\n&quot;</span>, blockIdx.x, sdata[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> N = <span class="number">32</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> gridsize = (N + blocksize - <span class="number">1</span>) / blocksize;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;gridsize = &quot;</span> &lt;&lt; gridsize &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *A = <span class="keyword">new</span> <span class="type">float</span>[N];</span><br><span class="line">    <span class="type">float</span> *B = <span class="keyword">new</span> <span class="type">float</span>[gridsize];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">        A[i] = <span class="built_in">rand</span>() % <span class="number">10</span>;</span><br><span class="line">        <span class="comment">// A[i] = 1.0;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *d_a, *d_b;</span><br><span class="line">    <span class="built_in">cudaMalloc</span>(&amp;d_a, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">cudaMalloc</span>(&amp;d_b, gridsize * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(d_a, A, N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">    reduce0&lt;&lt;&lt;gridsize, blocksize&gt;&gt;&gt;(d_a, d_b);  <span class="comment">// 参数一定是gridsize, blocksize</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(B, d_b, gridsize * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaFree</span>(d_a);</span><br><span class="line">    <span class="built_in">cudaFree</span>(d_b);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// for (int i = 0; i &lt; gridsize; i++)&#123;</span></span><br><span class="line">    <span class="comment">//     std::cout &lt;&lt; &quot;B[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot; &lt;&lt; B[i] &lt;&lt; std::endl;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首先对于，其中最重要的一段规约reduce代码</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>){</span><br><span class="line">    <span class="keyword">if</span>(tid &lt; s){</span><br><span class="line">        sdata[tid] += sdata[tid + s];</span><br><span class="line">    }</span><br><span class="line">    __syncthreads();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tid &lt; s)&#123;</span><br><span class="line">        sdata[tid] += sdata[tid + s];</span><br><span class="line">    &#125;</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对于blocks中的每个线程，都携带一个tid变量，也就是每个线程都会执行for循环，所以整个blocks里的线程们执行for循环是，会将sdata中的0--blocksize / 2的空间变为：本身 + [本身 + s]索引的值</p>
-<p><a href="image-20250323193354909.png" title="image-20250323193354909" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323193354909.png" alt="image-20250323193354909" style="zoom:50%;"></a></p>
+<p><a href="image-20250323193354909.png" title="image-20250323193354909" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323193354909.png" alt="image-20250323193354909" style="zoom:50%;" /></a></p>
 <p>对于数量部分，数组长度为32M长，blocksize = 512， 所以gridsize=65536。</p>
 <p>最终产生的结果为blocksize = 512长度。找到原因是因为，在global函数中的最后一句，d_b[blockIdx.x] = sdata[0]; 导致只有blcokIdx的0-511个数据不断覆盖。global函数将一个block中的数据进行reduce，最后只剩下一个数，所以最终的d_b应该是<code>gridsize</code>大小！！</p>
 <blockquote>
 <p>计算cuda函数时间</p>
-<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录时间</span></span><br><span class="line">cudaEvent_t start, stop;</span><br><span class="line"><span class="built_in">cudaEventCreate</span>(&amp;start);</span><br><span class="line"><span class="built_in">cudaEventCreate</span>(&amp;stop);</span><br><span class="line"></span><br><span class="line"><span class="built_in">cudaEventRecord</span>(start, <span class="number">0</span>);   <span class="comment">// 赋值start</span></span><br><span class="line">reduce0&lt;&lt;&lt;gridsize, blocksize&gt;&gt;&gt;(d_a, d_b);</span><br><span class="line"><span class="built_in">cudaEventRecord</span>(stop, <span class="number">0</span>);    <span class="comment">// 赋值stop</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cudaEventSynchronize</span>(stop);</span><br><span class="line"></span><br><span class="line"><span class="type">float</span> elapsedTime;</span><br><span class="line"><span class="built_in">cudaEventElapsedTime</span>(&amp;elapsedTime, start, stop);</span><br><span class="line">std::cout &lt;&lt; <span class="string">"Time: "</span> &lt;&lt; elapsedTime &lt;&lt; <span class="string">"ms"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算带宽</span></span><br><span class="line"><span class="type">size_t</span> total_bytes = N * <span class="built_in">sizeof</span>(<span class="type">float</span>) + gridsize * <span class="built_in">sizeof</span>(<span class="type">float</span>) + <span class="number">1</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>);</span><br><span class="line"><span class="type">float</span> bandwidth = (total_bytes / (elapsedTime * <span class="number">1e6</span>)) / <span class="number">1024</span> / <span class="number">1024</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="string">"Bandwidth: "</span> &lt;&lt; bandwidth &lt;&lt; <span class="string">"GB/s"</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录时间</span></span><br><span class="line">cudaEvent_t start, stop;</span><br><span class="line"><span class="built_in">cudaEventCreate</span>(&amp;start);</span><br><span class="line"><span class="built_in">cudaEventCreate</span>(&amp;stop);</span><br><span class="line"></span><br><span class="line"><span class="built_in">cudaEventRecord</span>(start, <span class="number">0</span>);   <span class="comment">// 赋值start</span></span><br><span class="line">reduce0&lt;&lt;&lt;gridsize, blocksize&gt;&gt;&gt;(d_a, d_b);</span><br><span class="line"><span class="built_in">cudaEventRecord</span>(stop, <span class="number">0</span>);    <span class="comment">// 赋值stop</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cudaEventSynchronize</span>(stop);</span><br><span class="line"></span><br><span class="line"><span class="type">float</span> elapsedTime;</span><br><span class="line"><span class="built_in">cudaEventElapsedTime</span>(&amp;elapsedTime, start, stop);</span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;Time: &quot;</span> &lt;&lt; elapsedTime &lt;&lt; <span class="string">&quot;ms&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算带宽</span></span><br><span class="line"><span class="type">size_t</span> total_bytes = N * <span class="built_in">sizeof</span>(<span class="type">float</span>) + gridsize * <span class="built_in">sizeof</span>(<span class="type">float</span>) + <span class="number">1</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>);</span><br><span class="line"><span class="type">float</span> bandwidth = (total_bytes / (elapsedTime * <span class="number">1e6</span>)) / <span class="number">1024</span> / <span class="number">1024</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="string">&quot;Bandwidth: &quot;</span> &lt;&lt; bandwidth &lt;&lt; <span class="string">&quot;GB/s&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>回归正题，我使用的规约方法是类似于折半查找的方式，一次规约reduce所需要的时间和带宽是：Time: 0.40608ms、Bandwidth: 0.000315824GB/s</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>){</span><br><span class="line">    <span class="keyword">if</span>(tid &lt; s){</span><br><span class="line">        sdata[tid] += sdata[tid + s];</span><br><span class="line">    }</span><br><span class="line">    __syncthreads();</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 0.413536ms</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> s = blocksize / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tid &lt; s)&#123;</span><br><span class="line">        sdata[tid] += sdata[tid + s];</span><br><span class="line">    &#125;</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0.413536ms</span></span><br></pre></td></tr></table></figure>
 <p>教程上使用的另外一种</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> s=<span class="number">1</span>; s&lt;blockDim.x; s*=<span class="number">2</span>){</span><br><span class="line">    <span class="keyword">if</span>(tid % (<span class="number">2</span>*s) == <span class="number">0</span>){</span><br><span class="line">        sdata[tid]+=sdata[tid+s];</span><br><span class="line">    }</span><br><span class="line">    __syncthreads();</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 0.428288ms</span></span><br></pre></td></tr></table></figure>
-<p><a href="image-20250323215519665.png" title="image-20250323215519665" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323215519665.png" alt="image-20250323215519665" style="zoom:50%;"></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> s=<span class="number">1</span>; s&lt;blockDim.x; s*=<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tid % (<span class="number">2</span>*s) == <span class="number">0</span>)&#123;  <span class="comment">// % operator is very slow</span></span><br><span class="line">        sdata[tid]+=sdata[tid+s];</span><br><span class="line">    &#125;</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0.428288ms</span></span><br></pre></td></tr></table></figure>
+<p><a href="image-20250323215519665.png" title="image-20250323215519665" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323215519665.png" alt="image-20250323215519665" style="zoom:50%;" /></a></p>
 <p>示意图如上；在执行一次循环的代价，两个时间差不多～</p>
 <p>第tid号线程将第i号的数据从global中取出，放到shared memory的第tid元素中。比如在第0号block中，0号线程将0号元素取出，放到shared memory的第0号位置</p>
 <p>对于GPU来说，需要分配两种资源：存储资源<code>（global memory中申请的32M * sizeof(float) 和shared memory中分配的512 * sizof(float)）</code>和计算资源<code>（一个block中分配512个block，32个thread为一组，绑定在一个SIMD单元，所以512共分配16组SIMD单元）</code> <span style="color : green">（但实际的硬件资源分配不是这样，因为一个SM的计算资源有限，不可能真的给每一个block都分配这么多的SIMD单元。）</span></p>
-<p>==&gt;</p>
-<h2 id="解决warp-divergencewarp发散现象">解决warp divergence（warp发散现象）</h2>
+<h2 id="优化1解决warp-divergencewarp发散现象">优化1:解决warp divergence（warp发散现象）</h2>
 <p>第一个阶段，就是tid号线程将i号数据从global memory中取出，再放进shared memory中，严谨一点的话，中间是<code>走一遍寄存器</code>再到shared memory中</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">reduce1</span><span class="params">(<span class="type">float</span> *d_a,<span class="type">float</span> *d_b)</span></span>{</span><br><span class="line">    __shared__ <span class="type">float</span> sdata[THREAD_PER_BLOCK];</span><br><span class="line"></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> i=blockIdx.x*blockDim.x+threadIdx.x;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> tid=threadIdx.x;</span><br><span class="line">    sdata[tid]=d_a[i];</span><br><span class="line">    __syncthreads();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> s = <span class="number">1</span>; s &lt; blockDim.x; s *= <span class="number">2</span>){</span><br><span class="line">        <span class="type">int</span> index = <span class="number">2</span> * s * tid ;</span><br><span class="line">        <span class="keyword">if</span>(index &lt; blockDim.x){</span><br><span class="line">            sdata[index] += sdata[index+s];</span><br><span class="line">        }</span><br><span class="line">        __syncthreads();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tid == <span class="number">0</span>) d_b[blockIdx.x] = sdata[tid];</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">reduce1</span><span class="params">(<span class="type">float</span> *d_a,<span class="type">float</span> *d_b)</span></span>&#123;</span><br><span class="line">    __shared__ <span class="type">float</span> sdata[THREAD_PER_BLOCK];</span><br><span class="line"></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> i=blockIdx.x*blockDim.x+threadIdx.x;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> tid=threadIdx.x;</span><br><span class="line">    sdata[tid]=d_a[i];</span><br><span class="line">    __syncthreads();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> s = <span class="number">1</span>; s &lt; blockDim.x; s *= <span class="number">2</span>)&#123;</span><br><span class="line">		<span class="comment">// 线程运行层次顺序和上一个一样</span></span><br><span class="line">        <span class="comment">// 改变了wrap分散现象</span></span><br><span class="line">        <span class="type">int</span> index = <span class="number">2</span> * s * tid ; </span><br><span class="line">        <span class="keyword">if</span>(index &lt; blockDim.x)&#123;</span><br><span class="line">            sdata[index] += sdata[index+s];</span><br><span class="line">        &#125;</span><br><span class="line">        __syncthreads();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(tid == <span class="number">0</span>) d_b[blockIdx.x] = sdata[tid];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>假设存在512个线程，共16个wrap。当进行第一次迭代时，0-3号warp的index计算。第二次0、1号warp计算。第三次只有0号warp计算</p>
 <p>对于同一个线程束内的线程，在给定的迭代中，<code>tid</code> （线程在块内的索引）是连续的，并且<code>blockDim.x</code> 是线程块内的线程数量。由于<code>index</code> 的计算方式，在同一个线程束内的线程，对于给定的<code>s</code> 值，它们的<code>index</code> 计算结果要么都满足<code>index &lt; blockDim.x</code> ，要么都不满足。</p>
 <p>例如，假设一个线程块有 512 个线程（16 个线程束），在某一次迭代中，对于一个线程束内的 32 个线程，它们的<code>tid</code> 是从<code>threadIdx.x</code> 为 <strong>0 到 31</strong>。如果根据计算，对于这个线程束内的所有线程，<code>index</code> 都小于<code>blockDim.x</code> ，那么它们都会进入<code>if</code> 分支执行<code>sdata[index] += sdata[index + s];</code> ；如果<code>index</code> 都大于等于<code>blockDim.x</code> ，则都不会进入<code>if</code> 分支。</p>
-<p><a href="image-20250323233731124.png" title="image-20250323233731124" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323233731124.png" alt="image-20250323233731124" style="zoom:50%;"></a></p>
+<p><a href="image-20250323233731124.png" title="image-20250323233731124" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323233731124.png" alt="image-20250323233731124" style="zoom:50%;" /></a></p>
 <p>例如，分析这个表格可以看出：</p>
-<p><a href="image-20250323234508168.png" title="image-20250323234508168" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323234508168.png" alt="image-20250323234508168" style="zoom:50%;"></a></p>
+<p><a href="image-20250323234508168.png" title="image-20250323234508168" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323234508168.png" alt="image-20250323234508168" style="zoom:50%;" /></a></p>
 <p>对于前31个也就是一个warp内的线程做分析，可以看出。在s=1-8时，他们的index都是小于blocksize = 512的，也就是说，这个时候都是执行的sdata[index] += sdata[index+s]，同样的判逻辑，直到s=16时 tid=16及之后的线程的index会大于等于512，也就是不再执行这个语句，但这是一种比较理想的情况，因为在前面的多次迭代中，<code>大部分情况下同一个 warp 内的线程执行路径是相同的，减少了线程束发散的概率</code></p>
 <p>基于此分析下之前的情况：</p>
-<p><a href="image-20250324000641398.png" title="image-20250324000641398" class="gallery-item" style="box-shadow: none;"> <img src="image-20250324000641398.png" alt="image-20250324000641398" style="zoom:50%;"></a></p>
+<p><a href="image-20250324012728092.png" title="image-20250324012728092" class="gallery-item" style="box-shadow: none;"> <img src="image-20250324012728092.png" alt="image-20250324012728092" style="zoom:50%;" /></a></p>
 <p>可以看出，按照同一个s来看，在前32个线程中，不断的变换逻辑，导致warp divergence很严重，对于</p>
+<h2 id="优化2解决bank冲突">优化2:解决bank冲突</h2>
+<p>对于上一个策略，<code>index = 2 * s * tid  &lt; 512</code> ，最大的缺点在于bank冲突，<strong>0号warp</strong>中，第一次iteration，0号thread去load shared memory的<strong>0号地址以及1号地址</strong>的数，然后写回到0号地址。而此时16号线程，会load 32和33号地址的数，而第一个shared memory 0-31 已经读完，此时的32和1号产生了<code>2路bank冲突</code>。此外，第二次iteration时产生4路冲突。。一直下去8路冲突、16路冲突等等</p>
+<blockquote>
+<p>这点可以理解为 warp的大小是32线程，shared memory也是32个存储体，但是index变化是呈2倍变化（第二轮是4倍，第三轮是8倍。。），也就导致了，第一轮必须访问两个shared memory才满足一个warp。这也就导致了<strong>2路bank冲突</strong>～～</p>
+<p><code>共享内存：</code></p>
+<p>比global、local memory有更高的传输带宽。一般情况，shared memory的带宽是global memory的7-10倍，</p>
+<p>容量小，nvidia官方：计算能力1.x的设备中，每一个流多处理器（streaming Multiprocessor）上共享内存为16K（16个存储体），计算能力2.x、3.0及3.5的参数为48k（32个存储体），相邻两块32bit的数据分别属于相邻的两个存储体，存储体每两个时钟周期可以传输32位数据</p>
+</blockquote>
+<p><a href="reduce-Page-4-2750371.jpg" title="bank冲突示意图" class="gallery-item" style="box-shadow: none;"> <img src="reduce-Page-4-2750371.jpg" alt="bank冲突示意图" style="zoom:50%;" /></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> s = blockDim.x / <span class="number">2</span>; s &gt; <span class="number">0</span>; s &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(tid &lt; s)&#123;</span><br><span class="line">        sdata[tid] += sdata[tid+s];</span><br><span class="line">    &#125;</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决bank冲突的方式就是把for循环逆着来~，可以解决bank冲突！！</p>
+<p><a href="image-20250324012909030.png" title="image-20250324012909030" class="gallery-item" style="box-shadow: none;"> <img src="image-20250324012909030.png" alt="image-20250324012909030" style="zoom:50%;" /></a></p>
+<p>官方教程中也将其叫做Sequential Addressing</p>
+<p><a href="image-20250324013119547.png" title="image-20250324013119547" class="gallery-item" style="box-shadow: none;"> <img src="image-20250324013119547.png" alt="image-20250324013119547" style="zoom:50%;" /></a></p>
+<p>但是这样也就引入了idle进程（空闲进程），可以从图中看到，step 1 只有一半的线程工作，step 2就只有1/4。。。每次干活的线程都会减少一半。</p>
+<h2 id="优化3-解决idle线程">优化3 解决idle线程</h2>
+<p>为了解决idle问题，可以让那些idle进程出了加载数据到shared memory之外，额外进行一次加法操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> tid = threadIdx.x;</span><br><span class="line"><span class="comment">// int i = blockIdx.x * blockDim.x + threadIdx.x;</span></span><br><span class="line"><span class="comment">// sdata[tid]=d_a[i];</span></span><br><span class="line"><span class="type">int</span> i = blockIdx.x * (blockDim.x * <span class="number">2</span>) + threadIdx.x;</span><br><span class="line">sdata[tid]=d_a[i] + d_a[i+blockDim.x];</span><br><span class="line">__syncthreads();</span><br></pre></td></tr></table></figure>
+<p>提前做了一步加法，也就是吧i代表的这一个shared memory所管理的数据，现在管理两倍于他的数据，直接加起来，一个shared memory直接管两倍于原来的内存</p>
+<p>https://www.cvmart.net/community/detail/6864</p>
 <h1 id="下载nsight-system">下载nsight system</h1>
-<p><a href="image-20250323222741054.png" title="image-20250323222741054" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323222741054.png" alt="image-20250323222741054" style="zoom:50%;"></a></p>
+<p><a href="image-20250323222741054.png" title="image-20250323222741054" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323222741054.png" alt="image-20250323222741054" style="zoom:50%;" /></a></p>
 <p>下载macos版本，连接上远程的linux</p>
-<p><a href="image-20250323223504634.png" title="image-20250323223504634" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323223504634.png" alt="image-20250323223504634" style="zoom:50%;"></a></p>
+<p><a href="image-20250323223504634.png" title="image-20250323223504634" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323223504634.png" alt="image-20250323223504634" style="zoom:50%;" /></a></p>
 <p>中间遇到了无法使用<code>collect GPU metrics</code>情况(GPU的权限问题):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/modprobe.d</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">touch</span> allowgpu.conf</span><br><span class="line">vi allowgpu.conf</span><br><span class="line"><span class="comment"># 文件内添加下面一行</span></span><br><span class="line">options nvidia NVreg_RestrictProfilingToAdminUsers=0</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> update-initramfs -u -k all <span class="comment"># 针对ubuntu系统</span></span><br><span class="line"><span class="built_in">sudo</span> reboot  <span class="comment"># 重启一下</span></span><br></pre></td></tr></table></figure>
-<p><a href="image-20250323232858065.png" title="image-20250323232858065" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323232858065.png" alt="image-20250323232858065" style="zoom:50%;"></a></p>
+<p><a href="image-20250323232858065.png" title="image-20250323232858065" class="gallery-item" style="box-shadow: none;"> <img src="image-20250323232858065.png" alt="image-20250323232858065" style="zoom:50%;" /></a></p>
 </div>
     </div>
 
