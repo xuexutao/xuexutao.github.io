@@ -280,19 +280,19 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-11-08</span> 
+                    <span>最近更新：2025-03-23</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：847</span>
+                     <span>字数总计：1.7k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：3分钟</span>
+                    <span>阅读估时：7分钟</span>
                 
                 
                     
@@ -308,31 +308,64 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
         <div class=".article-gallery"><h1 id="cuda">CUDA</h1>
+<p>https://docs.nvidia.com/cuda/cuda-c-programming-guide/#c-compatibility</p>
 <p>CPU上的主机代码</p>
 <p>GPU上的设备代码</p>
 <p>主机对设备的调用通过核函数//</p>
 <h2 id="kernel-function">Kernel function</h2>
+<h3 id="global__函数"><code>__global__函数</code></h3>
 <p>1、核函数在GPU上并行执行</p>
 <p>2、注意：</p>
 <p>​ （1）限定词 <code>__global__</code>修饰</p>
-<p>​ （2）返回值必须为void</p>
+<p>（2）返回值必须为void，不能有返回值</p>
+<p>（3） 仅可以从<code>主机</code>上调用，在<code>设备上执行</code></p>
+<p>（4） 可以调用device函数</p>
 <p>3、形式</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">kernel_function</span><span class="params">(arg)</span></span>{</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello world from the GPU"</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> __global__ <span class="title">kernel_function</span><span class="params">()</span></span>{</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"hello world from the GPU"</span>);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>核函数只能访问GPU内存</p>
+<p>核函数<strong>只能访问GPU内存</strong></p>
 <p>核函数不能使用变长参数（明确参数_<strong>个数</strong>_），不能使用静态变量、不能使用函数指针，不支持iostream</p>
-<p>核函数具有异步性（调用时只是启动了kernel函数）</p>
+<p>核函数具有<code>异步性</code>（调用时只是启动了kernel函数,异步执行，比较重要，device函数也是异步的）</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">  hello_from_gpu&lt;&lt;&lt;<span class="number">1</span>,<span class="number">1</span>&gt;&gt;&gt;();</span><br><span class="line">  <span class="built_in">cudaDeviceSynchronize</span>(); <span class="comment">// 等上面的CUDA进程执行完毕   主机与设备的同步</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="device__函数"><code>__device__函数</code></h3>
+<p>在设备上执行，仅可以从设备上调用</p>
+<ul>
+<li>device 可以有返回值，类似于int...</li>
+<li>device 函数内部可以调用 device 函数</li>
+<li>不需要尖括号</li>
+</ul>
+<h3 id="host__函数"><code>__host__函数</code></h3>
+<p>在主机上执行，仅可以从主机上调用</p>
+<p><code>__host__ __device__</code> 可以在GPU和CPU上执行</p>
+<h2 id="threadblockgrid与spsm硬件关系">thread、block、grid与SP、SM硬件关系</h2>
+<p>SP：Streaming Processor：流处理器，是GPU最基本的处理单元，也就是CUDA core， 对应于<code>Thread</code></p>
+<p>SM：Streaming MultiProcessor：由多个CUDA core组成</p>
+<p>此时的SM硬件与block的软件层面相对应，因为同一个SM中有一个shared memory，可以进行block间的通信</p>
+<p><a href="relationship.png" class="gallery-item" style="box-shadow: none;"> <img src="relationship.png"></a></p>
+<h2 id="简单的加法操作">简单的加法操作</h2>
+<p>首先在CPU端建立三个内存，ABC，将AB的内存对应位置加到C</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">VecAdd</span><span class="params">(<span class="type">float</span> *A, <span class="type">float</span> *B, <span class="type">float</span> *C)</span></span>{</span><br><span class="line">    <span class="type">int</span> i = threadIdx.x;</span><br><span class="line">    C[i] = A[i] + B[i];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"threadIdx.x = %d, A[i] = %f, B[i] = %f, C[i] = %f\n"</span>, i, A[i], B[i], C[i]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> N = <span class="number">10</span>;</span><br><span class="line">    <span class="type">float</span> A[N], B[N], C[N];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        A[i] = i;</span><br><span class="line">        B[i] = i;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"A[%d] = %f, B[%d] = %f\n"</span>, i, A[i], i, B[i]);</span><br><span class="line">    }</span><br><span class="line">    VecAdd&lt;&lt;&lt;<span class="number">1</span>, N&gt;&gt;&gt;(A, B, C);</span><br><span class="line">    <span class="built_in">cudaDeviceSynchronize</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"C[%d] = %f\n"</span>, i, C[i]);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>代码上出了很多错误，首先就是VecAdd内核是使用的GPU端线程，而ABC是CPU端内存，<code>CUDA设备无法访问主机内存的数据</code>，导致VecAdd运行时访问的ABC其实是不合法地址，肯定错误</p>
+<p>必须使用 <code>cudaMalloc</code> 和 <code>cudaMemcpy</code> 正确传递</p>
+<p>修改后的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cuda_runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">VecAdd</span><span class="params">(<span class="type">float</span> *A, <span class="type">float</span> *B, <span class="type">float</span> *C)</span></span>{</span><br><span class="line">    <span class="type">int</span> i = threadIdx.x;</span><br><span class="line">    C[i] = A[i] + B[i];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"threadIdx.x = %d, A[i] = %f, B[i] = %f, C[i] = %f\n"</span>, i, A[i], B[i], C[i]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> N = <span class="number">10</span>;</span><br><span class="line">    <span class="type">float</span> A[N], B[N], C[N];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        A[i] = i;</span><br><span class="line">        B[i] = i;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"A[%d] = %f, B[%d] = %f\n"</span>, i, A[i], i, B[i]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *d_A, *d_B, *d_C; <span class="comment">// 设备端指针</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 分配设备端内存</span></span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span>**)&amp;d_A, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span>**)&amp;d_B, N * <span class="built_in">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span>**)&amp;d_C, N * <span class="built_in">sizeof</span>(<span class="type">float</span>)); </span><br><span class="line">    <span class="comment">// 以上是传统C风格的。下面是c++风格的，推荐使用下面</span></span><br><span class="line">    <span class="comment">// cudaMalloc(&amp;d_a, N * sizeof(float));</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(d_A, A, N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyHostToDevice);</span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(d_B, B, N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyHostToDevice);  </span><br><span class="line"></span><br><span class="line">    VecAdd&lt;&lt;&lt;<span class="number">1</span>, N&gt;&gt;&gt;(d_A, d_B,d_C);</span><br><span class="line">    <span class="built_in">cudaDeviceSynchronize</span>();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(C, d_C, N * <span class="built_in">sizeof</span>(<span class="type">float</span>), cudaMemcpyDeviceToHost);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"C[%d] = %f\n"</span>, i, C[i]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaFree</span>(d_A);</span><br><span class="line">    <span class="built_in">cudaFree</span>(d_B);</span><br><span class="line">    <span class="built_in">cudaFree</span>(d_C);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>主要加上的就是，在CPU端赋值AB数组之后，需要在GPU端开辟ABC内存，使用 cudaMalloc((void**)&amp;d_a, N*sizeof(float));即可。</p>
+<p>开辟完之后，需要将AB的数据拷贝到GPU上，也就是使用cudaMemcpy(d_a, A, N * sizeof(float), cudaMemcpyHostToDevice), 这个函数可以理解为，将第二个参数的值赋值给第一个参数，也就是A-&gt;d_a。</p>
+<p>计算完之后，还要再次使用cudaMemcpy将d_c的值赋值回C数组。cudaMemcpy(C, d_C, ...);</p>
+<blockquote>
+<p>cudaMalloc函数声明： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">cudaError_t <span class="title">cudaMalloc</span> <span class="params">(<span class="type">void</span>** devPtr, <span class="type">size_t</span> size)</span></span>;</span><br></pre></td></tr></table></figure> devPtr 是 指向指针的指针（void**），用于返回分配的设备内存地址。</p>
+</blockquote>
+<hr>
 <h2 id="线程模型">⭐️ 线程模型</h2>
 <p>线程模型结构</p>
-<p>​ （1）grid。网格（2）block。线程块</p>
+<p>​ （1）grid网格（2）block线程块</p>
 <p><a href="image-20240608234810614.png" class="gallery-item" style="box-shadow: none;"> <img src="image-20240608234810614.png" style="zoom:30%;"></a></p>
 <ul>
-<li><p>线程分块是逻辑上分块，物理上不分块</p></li>
-<li><p>配置线程&lt;&lt;&lt;grid_size, block_size&gt;&gt;&gt;</p></li>
-<li><p>最大允许线程块大小1024</p></li>
-<li><p>最大允许网格大小<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="6.816ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 3012.6 915.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(500,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(1512.3,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(2512.6,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>（针对一维线程模型）</p></li>
+<li>线程分块是逻辑上分块，物理上不分块</li>
+<li>配置线程&lt;&lt;&lt;grid_size, block_size&gt;&gt;&gt;</li>
+<li>最大允许线程块大小1024</li>
+<li>最大允许网格大小<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="6.816ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 3012.6 915.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(500,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(1512.3,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(2512.6,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></mjx-container></span>（针对一维线程模型）</li>
 </ul>
 <blockquote>
 <p>### 一维模型</p>
@@ -343,7 +376,7 @@ mjx-container[display="true"] + br {
 <li><span style="color:red"><strong>gridDim.x</strong></span>:该变量的数值等于执行配置中变量grid size的值</li>
 <li><span style="color:red"><strong>blockDim.x</strong></span>:该变量的数值等于执行配置中变量block size的值</li>
 </ol></li>
-<li><strong>线程索引</strong>保存成内建变量( build-in variable)「只在核函数中使用，其他地方无用」
+<li><strong>线程索引</strong>保存成内建变量( build-in variable)「只在<code>核函数</code>中使用，其他地方无用」
 <ol type="1">
 <li><span style="color:red"><strong>blockldx.x</strong></span>:该变量指定一个线程在一个网格中的线程块索引值，范围为0~ gridDim.x-1;</li>
 <li><span style="color:red"><strong>threadldx.x</strong></span>:该变量指定一个线程在一个线程块中的线程索引值，范围为0~ blockDim.x-1。</li>
