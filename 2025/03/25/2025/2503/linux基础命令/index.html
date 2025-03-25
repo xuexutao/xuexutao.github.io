@@ -286,7 +286,7 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：0</span>
+                     <span>字数总计：455</span>
                 
                 
                     
@@ -307,7 +307,48 @@ mjx-container[display="true"] + br {
 
     <div class="post-md">
         
-        <div class=".article-gallery">
+        <div class=".article-gallery"><h3 id="基础命令">基础命令</h3>
+<h4 id="ls">ls</h4>
+<p><code>ls</code>命令显示指定目录的内容，默认参数为当前目录。</p>
+<p><code>ls -l</code>显示详细的列表</p>
+<p><code>ls -F</code>显示文件类型信息</p>
+<h4 id="cp">cp</h4>
+<p>cp命令用来复制文件</p>
+<p><code>cp file1 file2</code>: 将文件file1复制到文件file2</p>
+<p><code>cp file1 ... fileN dir</code> : 将多个文件（file1 ... fileN）复制到目录dir</p>
+<h4 id="mv">mv</h4>
+<p>mv命令有点类似cp，用来重命名文件</p>
+<p><code>mv file1 file2</code> : 将文件名从file1重命名为file2</p>
+<p><code>mv file1 ... fileN dir</code> : 将多个文件移动到某个目录</p>
+<h4 id="torch">torch</h4>
+<p>touch命令用来创建文件。如果文件<strong>已经存在</strong>，则该命令会<code>更新文件的时间戳</code></p>
+<p><code>toch file</code></p>
+<h4 id="rm">rm</h4>
+<p><code>rm  file</code> : rm命令用来删除文件，文件一旦被删除通常无法恢复</p>
+<h4 id="rmdir">rmdir</h4>
+<p>rmdir命令用来删除目录：</p>
+<p><code>rmdir dir</code> : 删除dir<strong>【但是要注意，这个只能删除空文件夹】</strong></p>
+<p>可以使用<code>rm -rf</code>来删除一个目录以及其中的所有内容</p>
+<ul>
+<li><code>-r</code> 会依次删除dir中的所有文件和子目录</li>
+<li><code>-f</code> 代表强制删除</li>
+</ul>
+<h4 id="echo">echo</h4>
+<p>将它的参数显示到标准输出</p>
+<h4 id="grep">grep</h4>
+<p>grep命令显示文件和输入流中和参数匹配的行</p>
+<p><code>grep root /etc/passwd</code> : 显示文件/etc/passwd中包含文本root的所有行</p>
+<p><code>grep root /etc/*</code> :</p>
+<h4 id="shell通配符">shell通配符</h4>
+<p>shell可以使用通配符来匹配文件名和目录名，比如<code>*</code>代表任意字符和数字</p>
+<p><code>echo *</code> :列出当前目录中的所有文件</p>
+<ul>
+<li><code>at*</code>展开为所有以at开头的文件名</li>
+<li><code>*at</code>展开为所有以at结尾的文件名</li>
+<li><code>*at*</code>展开为所有包含at的文件名</li>
+</ul>
+<p>另外一个shell通配符问号（<code>?</code>）帮助shell确切匹配任意一个字符,如<strong>b?at</strong>与<strong>boat</strong>和<strong>brat</strong>相匹配</p>
+<p><span style="color : green"> 需要注意的是，shell是先展开通配符，然后执行命令行</span></p>
 </div>
     </div>
 
