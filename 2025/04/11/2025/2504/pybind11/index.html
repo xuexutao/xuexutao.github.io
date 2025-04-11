@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="pybind11" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/about/">🫙关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">⌚️标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    pybind11
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-04-11</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：551</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：2分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+        <div class=".article-gallery"><h1 id="初次使用">初次使用</h1>
+<p>有时候，我们需要编译型语言(C++)性能，以及解释型语言(Python)的灵活， 而 pybind11 则可以用作 C++ 和 Python 之间沟通的桥梁。Pybind11 是一个轻量级只包含头文件的库，用于 Python 和 C++ 之间接口转换，可以为现有的 C++ 代码创建 Python 接口绑定。</p>
+<h3 id="安装pybind11">1、安装Pybind11</h3>
+<p>先pip安装pybind：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pybind11</span><br></pre></td></tr></table></figure>
+<p>创建工程目录Project，从git上下载源码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pybind/pybind11</span><br></pre></td></tr></table></figure>
+<p>会产生一个pybind11的文件夹，然后使用以下构建：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> pybind11</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">cmake --build . --config Release --target check</span><br></pre></td></tr></table></figure>
+<p><a href="image-20250411125109102.png" title="image-20250411125109102" class="gallery-item" style="box-shadow: none;"> <img src="image-20250411125109102.png" alt="image-20250411125109102" style="zoom:50%;"></a></p>
+<p>安装完成！</p>
+<h3 id="编写代码文件">2、编写代码文件</h3>
+<p>在pybind11同级目录新建一个main.cpp文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;pybind11/pybind11.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> py = pybind11;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> i + j;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个很重要，这个PYBIND11_MODULE后跟的名称就是后续python中的模块名，要一致</span></span><br><span class="line"><span class="built_in">PYBIND11_MODULE</span>(test_pybind, m)</span><br><span class="line">{</span><br><span class="line">    <span class="comment">// optional module docstring</span></span><br><span class="line">    m.<span class="built_in">doc</span>() = <span class="string">"pybind11 example plugin"</span>;</span><br><span class="line">    <span class="comment">// expose add function, and add keyword arguments and default arguments</span></span><br><span class="line">    m.<span class="built_in">def</span>(<span class="string">"add"</span>, &amp;add, <span class="string">"A function which adds two numbers"</span>, py::<span class="built_in">arg</span>(<span class="string">"i"</span>)=<span class="number">1</span>, py::<span class="built_in">arg</span>(<span class="string">"j"</span>)=<span class="number">2</span>);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>写一个CMakeLists.txt文件，构建项目</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.1</span>) </span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="keyword">TRUE</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(test_pybind)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面这两句可以不要，是寻找opencv的</span></span><br><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">${OpenCV_INCLUDE_DIRS}</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加pybind11的路径，这个是在当前路径下</span></span><br><span class="line"><span class="keyword">add_subdirectory</span>(pybind11)</span><br><span class="line"></span><br><span class="line"><span class="comment"># SOURCE变量，为 main.cpp</span></span><br><span class="line"><span class="keyword">SET</span>(SOURCES <span class="variable">${CMAKE_CURRENT_SOURCE_DIR}</span>/main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里的 test_pybind 就是 python 中 import 后的名字</span></span><br><span class="line">pybind11_add_module(test_pybind <span class="variable">${SOURCES}</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个也是opencv的</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>( test_pybind PRIVATE <span class="variable">${OpenCV_LIBS}</span> )</span><br></pre></td></tr></table></figure>
+<p><a href="image-20250411130307175.png" title="image-20250411130307175" class="gallery-item" style="box-shadow: none;"> <img src="image-20250411130307175.png" alt="image-20250411130307175" style="zoom:50%;"></a></p>
+<p><strong>将生成的.so文件copy到上一级目录</strong>，整体文件构成如下：</p>
+<p><a href="image-20250411131618868.png" title="image-20250411131618868" class="gallery-item" style="box-shadow: none;"> <img src="image-20250411131618868.png" alt="image-20250411131618868" style="zoom:50%;"></a></p>
+<h3 id="测试部分">3、测试部分</h3>
+<p>一个test.py文件，运行后产生，成功了～</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> test_pybind</span><br><span class="line"><span class="built_in">print</span>(test_pybind.add(<span class="number">3</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<p>目前构建的.so文件。只有和python文件在统一目录下才能被import，可以使用setuptools将其安装为一个包到虚拟环境中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup, Extension</span><br><span class="line"><span class="keyword">import</span> pybind11</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">'test_pybind_package'</span>,</span><br><span class="line">    author=<span class="string">'xuext'</span>,</span><br><span class="line">    version=<span class="string">'0.1'</span>,</span><br><span class="line">    ext_modules=[</span><br><span class="line">        Extension(<span class="string">'test_pybind'</span>, </span><br><span class="line">                  [<span class="string">'main.cpp'</span>],</span><br><span class="line">                  include_dirs=[pybind11.get_include()],</span><br><span class="line">                  extra_compile_args=[<span class="string">'-std=c++11'</span>]</span><br><span class="line">                  )</span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>然后运行<code>python setup.py install</code> 安装到python标准库中</p>
+<blockquote>
+<p>可以看看3DGS中diff子模块的安装setup.py</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup</span><br><span class="line"><span class="keyword">from</span> torch.utils.cpp_extension <span class="keyword">import</span> CUDAExtension, BuildExtension</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.path.dirname(os.path.abspath(__file__))</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">"diff_gaussian_rasterization"</span>,</span><br><span class="line">    packages=[<span class="string">'diff_gaussian_rasterization'</span>],</span><br><span class="line">    ext_modules=[</span><br><span class="line">        CUDAExtension(</span><br><span class="line">            name=<span class="string">"diff_gaussian_rasterization._C"</span>,</span><br><span class="line">            sources=[</span><br><span class="line">                <span class="string">"cuda_rasterizer/rasterizer_impl.cu"</span>,</span><br><span class="line">                <span class="string">"cuda_rasterizer/forward.cu"</span>,</span><br><span class="line">                <span class="string">"cuda_rasterizer/backward.cu"</span>,</span><br><span class="line">                <span class="string">"rasterize_points.cu"</span>,</span><br><span class="line">                <span class="string">"ext.cpp"</span>],</span><br><span class="line">            extra_compile_args={<span class="string">"nvcc"</span>: [<span class="string">"-I"</span> + os.path.join(os.path.dirname(os.path.abspath(__file__)), <span class="string">"third_party/glm/"</span>)]})</span><br><span class="line">        ],</span><br><span class="line">    cmdclass={</span><br><span class="line">        <span class="string">'build_ext'</span>: BuildExtension</span><br><span class="line">    }</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-04-11</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/04/02/2025/2504/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8Bcs236-2representation/">深度生成模型cs236_2representation</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2025 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
