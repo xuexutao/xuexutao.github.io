@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="colmap" />
+    <meta name="description" content="Linux安装colmap" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -267,7 +267,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    colmap
+                    Linux安装colmap
                 </div>
             
         
@@ -280,13 +280,13 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-03-03</span> 
+                    <span>最近更新：2025-04-11</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：153</span>
+                     <span>字数总计：357</span>
                 
                 
                     
@@ -313,7 +313,13 @@ mjx-container[display="true"] + br {
 <p>源码安装命令</p>
 <p><code>CMAKE_CUDA_COMPILER</code> 和 <code>CMAKE_CUDA_ARCHITECTURES</code> 选项要根据自己的机器具体设置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/colmap/colmap.git</span><br><span class="line"><span class="built_in">cd</span> colmap</span><br><span class="line">git checkout dev</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"><span class="built_in">sudo</span> cmake .. \</span><br><span class="line">      -D CMAKE_CUDA_COMPILER=<span class="string">"/usr/local/cuda-11.8/bin/nvcc"</span> ../CMakeLists.txt \</span><br><span class="line">      -D CMAKE_CUDA_ARCHITECTURES=<span class="string">'89'</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">sudo</span> make -j24 </span><br><span class="line"><span class="built_in">sudo</span> make install</span><br></pre></td></tr></table></figure>
-<p>这些命令一个一个运行，其中89是GPU计算能力，可以通过得到：</p>
+<ul>
+<li><code>-D CMAKE_CUDA_COMPILER="/usr/local/cuda-11.8/bin/nvcc"</code> 用于指定 CUDA 编译器的路径为 /usr/local/cuda-11.8/bin/nvcc，告诉 cmake 在编译过程中使用这个 CUDA 编译器来处理 CUDA 相关的代码</li>
+<li><code>-D CMAKE_CUDA_ARCHITECTURES='89'</code> 用于指定 CUDA 架构为 89，这会影响到 CUDA 代码的编译和优化，89 通常对应 NVIDIA 特定的 GPU 架构（如 Ampere 架构的某些 GPU）</li>
+<li><code>-j24</code> 是 make 的一个选项，-j 表示<strong>并行编译</strong>，24 表示使用 24 个并行任务进行编译，这样可以加快编译速度，利用多核 CPU 的性能</li>
+<li><code>install</code> 是 make 的一个目标（target），这个命令会将编译好的项目安装到系统中，通常会将可执行文件、库文件和相关的配置文件等放置到系统的指定位置（如 /usr/local/bin、/usr/local/lib 等）</li>
+</ul>
+<p>其中89是GPU计算能力，可以通过得到：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi --query-gpu=compute_cap --format=csv</span><br></pre></td></tr></table></figure>
 </div>
     </div>
