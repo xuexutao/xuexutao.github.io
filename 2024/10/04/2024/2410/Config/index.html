@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="20241218" />
+    <meta name="description" content="ConfigMac" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -267,7 +267,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    20241218
+                    ConfigMac
                 </div>
             
         
@@ -280,19 +280,19 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-12-31</span> 
+                    <span>最近更新：2024-12-14</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：60</span>
+                     <span>字数总计：683</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：1分钟</span>
+                    <span>阅读估时：3分钟</span>
                 
                 
                     
@@ -307,22 +307,95 @@ mjx-container[display="true"] + br {
 
     <div class="post-md">
         
-        <div class=".article-gallery"><p>今天是2024年12月18日，临近这一年的末尾，感触颇多，这一年真的很多糟心事，很多次熬夜失眠，忧心这个、忧心那个。实在是目前为止感觉最差的一年体验。</p>
-<!-- 3月份考研、4月份调剂。晚睡失眠已经是常态，找工作、投简历、准备复试、担心复试。在网上冲浪，考到我这个成绩段的都会被刷、无一例外，线画到我分数附近就是为了捞本校学生。哎、流言蜚语太多我已无法判别，我一直处在信息的茧房中，我怕我自己没有复习下去的勇气，久停止了所有网上冲浪，专心复习我的一志愿。到了真正复试面试的时候，我感受到了前所未有的歧视，这是我在工作面试中都不曾遇到的、令人恶心的感觉，歧视我的本科学院，我知道本科的大数据管理与应用专业隶属于经济管理学院，给很多人一种一点不懂技术可言的样子（虽然这样的歧视我在本科遇到过几次，那是我大一下学期，面试一个不记得是什么的时候，经济管理学院的标签给了我极大的困难，【但不可否认那时候的我毫无技术可言，大一的程序设计考试，上机考试，我真的不会一道题，python部分的tutor就挖了几个空，我愣是一个不会写，整个考试，无论选择题填空还是最后的大体我几乎全抄了😭，我深刻反思】，也就是那时候开始，我心里一直憋着，从此一直深耕与技术）【扯远了哈哈哈，蠢货】 
-
-所以我到现在对6系的老师还是怀有很坏的印象，包括我今年选了6系的机器学习的课，老师的敷衍态度更加深了我对6系老师的坏感【从同门口中得知6系从来都是一副高高在上的样子..一言难尽..很多时候刷自媒体都能共情到骂6系的人....】 
-
-结果也不出意料，一志愿被刷，虽然我很早有准备，但是真的公布结果的那天晚上还是会有点绷不住【失眠】，晚上在找复试被刷之后有哪些做法，1、突然扩充名额【这也是我梦想中的结果】2、调剂 3、找工作，那一晚上我新建了一个工作群，里面发满了那天晚上boss直聘上的开发岗工作，1点 2点 3点 4点，具体到几点我已经忘了，反正那晚上我一直在找工作。之后我女朋友一志愿第一名上岸，我很开心，虽然不是我对我们未来最理想的规划【都一战成硕】但也至少保住了第二期待的结局【她研我工作】。 -->
+        <div class=".article-gallery"><h1 id="配置相关">配置相关</h1>
+<h2 id="mac全局配置">mac全局配置</h2>
+<p>之前一直用mac的终端去各种pip install 或者 git clone的时候总是特别慢，直到我在整blog时候真的忍受不了这样的龟速了。于是就有了vpn的全局配置，我只能说我好傻😭，怎么才知道！</p>
+<p>1、我的是mac，所以直接添加配置即可</p>
+<p>我的端口是7897。https://blog.csdn.net/w8y56f/article/details/120630022</p>
+<blockquote>
+<p>我配置的这个，需要写在～/.zshrc，然后source ~/.zshrc即可配置全局代理 - export http_proxy=socks5://127.0.0.1:7897 - export https_proxy=socks5://127.0.0.1:7897</p>
+</blockquote>
+<p>这样从mac 终端发出的请求就可以利用我的vpn了，下载github这些东西再也不会卡了～</p>
+<h2 id="colmap">colmap</h2>
+<h3 id="colmap-构造数据集">colmap 构造数据集:</h3>
+<p><code>colmap automatic_reconstructor --workspace_path . --image_path ./images  --sparse 1  --dense 0  --camera_model SIMPLE_PINHOLE</code></p>
+<h3 id="colmap的bin2txt">colmap的bin2txt:</h3>
+<p><code>colmap model_converter --input_path /path/to/your/model --output_path /path/to/your/output --output_type TXT</code></p>
+<h2 id="pip">PIP</h2>
+<ul>
+<li><code>-i https://pypi.tuna.tsinghua.edu.cn/simple package_name</code></li>
+</ul>
+<blockquote>
+<p><em>Download Gaussian splatting：</em> - git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive - conda env create --file environment.yml</p>
+</blockquote>
+<h3 id="windows配置cmd的vpn流量">Windows配置CMD的VPN流量：</h3>
+<p>在windows的cmd中：</p>
+<ul>
+<li><code>pip install xxx --proxy http://217.0.0.1:7890</code> 可以使用7890的VPN端口</li>
+</ul>
+<p>也可以全局配置：</p>
+<p>首先使用<code>pip config list</code>查看查看一下有没有配置文件，<code>pip.ini</code></p>
+<p>如果没有找到<code>“%APPDATA%\pip\pip.ini” == " pip 的用户配置文件路径"</code>这个文件夹pip下的pip.ini文件【没有就创建】，其实<code>%APPDATA% == C:\Users\xuext\AppData\Roaming\</code></p>
+<p>在<code>pip.ini</code>中输出：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">global</span>]</span><br><span class="line"><span class="string">proxy</span> <span class="string">=</span> <span class="string">http://127.0.0.1:7890</span></span><br><span class="line"><span class="string">index-url</span> <span class="string">=</span> <span class="string">https://pypi.tuna.tsinghua.edu.cn/simple</span></span><br></pre></td></tr></table></figure>
+<p>这样在cmd中输入<code>pip config list</code>就好了， 配置完用户配置文件之后，还需要给conda install 也配置下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">notepad</span> <span class="string">%USERPROFILE%\.condarc</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加以下内容</span></span><br><span class="line"><span class="attr">proxy_servers:</span></span><br><span class="line">  <span class="attr">http:</span> <span class="string">http://127.0.0.1:7890</span></span><br><span class="line">  <span class="attr">https:</span> <span class="string">http://127.0.0.1:7890</span></span><br></pre></td></tr></table></figure>
+<h2 id="如何在windows中创建超链接">如何在windows中创建超链接</h2>
+<p><code>主要是使用了Zerotier 之后，使用远程连接windows时可以创建超链接在本目录中</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在C:\Users\xuext\workspace\homework 创建一个文件夹连接着D:\homework</span></span><br><span class="line"><span class="string">mklink</span> <span class="string">/D</span> <span class="string">"C:\Users\xuext\workspace\homework"</span> <span class="string">"D:\homework"</span></span><br></pre></td></tr></table></figure>
+<h1 id="软件">软件</h1>
+<h2 id="安装mysql">安装mysql</h2>
+<ul>
+<li>安装 MySQL brew install mysql</li>
+<li>启动 MySQL 服务器 brew services start mysql</li>
+<li>配置 MySQL 服务器 终端使用：mysql_secure_installation</li>
+</ul>
+<blockquote>
+<p>在使用之前可以先进入mysql，看下 SHOW VARIABLES LIKE 'validate_password%';</p>
+<p>看一下全局变量，其中有一个validate_password_length默认为8；将它改为四就可以设置常用的密码啦，不然会说不够强度</p>
+<p>SET GLOBAL validate_password_length = 4;</p>
+</blockquote>
+<h1 id="使用mac方法">使用MAC方法</h1>
+<p>AppleScript</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># AppleScript：将选中的pptx转为pdf</span></span><br><span class="line">on run {<span class="built_in">input</span>, parameters}</span><br><span class="line">	tell application <span class="string">"Microsoft PowerPoint"</span></span><br><span class="line">		repeat <span class="keyword">with</span> theFile <span class="keyword">in</span> <span class="built_in">input</span></span><br><span class="line">			<span class="built_in">set</span> filePath to theFile <span class="keyword">as</span> string</span><br><span class="line">			<span class="built_in">set</span> newFilePath to (text <span class="number">1</span> thru -<span class="number">6</span> of filePath) &amp; <span class="string">".pdf"</span></span><br><span class="line">			<span class="built_in">open</span> theFile</span><br><span class="line">			save active presentation <span class="keyword">in</span> newFilePath <span class="keyword">as</span> save <span class="keyword">as</span> PDF</span><br><span class="line">			close active presentation</span><br><span class="line">		end repeat</span><br><span class="line">	end tell</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">input</span></span><br><span class="line">end run</span><br></pre></td></tr></table></figure>
+<h1 id="hexo-修复-bug">hexo 修复 bug</h1>
+<p>问题：</p>
+<p>莫名其妙的文章被换行：</p>
+<figure>
+<a href="image-1.png" title="alt text" class="gallery-item" style="box-shadow: none;"> <img src="image-1.png" alt="alt text"></a>
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<a href="image-2.png" title="alt text" class="gallery-item" style="box-shadow: none;"> <img src="image-2.png" alt="alt text"></a>
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>解决方案：</p>
+<p>强制pandoc在渲染时不要换行。</p>
+<figure>
+<a href="image.png" title="alt text" class="gallery-item" style="box-shadow: none;"> <img src="image.png" alt="alt text"></a>
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2024-12-18</span>
+            <span>2024-10-04</span>
+            
+                <span>该篇文章被 Xue xt</span>
             
             
              
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Config/'>
+                            Config
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -334,11 +407,11 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/01/01/2024/20250101/'>20250101</a></span>
+                    <span>上一篇：<a href='/2024/10/04/2024/2410/Algorithm/'>Algorithm</a></span>
                 
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/12/11/2024/2412/tutorial/">tutorial</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/04/2024/2410/3DGS/">3DGS</a>
                     </span>
                 
             </div>
