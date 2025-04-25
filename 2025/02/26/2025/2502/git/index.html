@@ -280,19 +280,19 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-03-04</span> 
+                    <span>最近更新：2025-04-25</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：504</span>
+                     <span>字数总计：731</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：2分钟</span>
+                    <span>阅读估时：3分钟</span>
                 
                 
                     
@@ -307,7 +307,19 @@ mjx-container[display="true"] + br {
 
     <div class="post-md">
         
-        <div class=".article-gallery"><h1 id="出现git-clone-git没有ssh时如何做">出现git clone git@没有ssh时，如何做</h1>
+        <div class=".article-gallery"><h4 id="核心操作add-commit-流程"><strong>核心操作：Add → Commit 流程</strong></h4>
+<ul>
+<li><p>步骤 1：初始化本地仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init  <span class="comment"># 在项目根目录执行，将普通文件夹转为 Git 仓库</span></span><br></pre></td></tr></table></figure></li>
+<li><p>步骤 2：添加文件到暂存区</p>
+<p><a href="image-20250425130313439.png" title="image-20250425130313439" class="gallery-item" style="box-shadow: none;"> <img src="image-20250425130313439.png" alt="image-20250425130313439" style="zoom:50%;"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名         <span class="comment"># 例：git add index.html（添加单个文件）</span></span><br><span class="line">git add .             <span class="comment"># 添加当前目录下所有变动文件（谨慎使用）</span></span><br><span class="line">git <span class="built_in">rm</span> --cached 文件名 <span class="comment"># 将暂存区的文件删掉</span></span><br></pre></td></tr></table></figure></li>
+<li><p>步骤 3：提交变更到仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"描述本次变更"</span>  </span><br><span class="line"><span class="comment"># 将本地暂存区的文件提交到远端</span></span><br><span class="line"><span class="comment"># 例：git commit -m "完成导航栏样式"</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>创建<code>.gitignore</code>，中间添加<code>*.txt</code> 所有txt文件后缀的都不提交到缓存区</p>
+<p>使用<code>git status</code>查看暂存区状态，每次提交都有一个小的版本控制，所以可以使用<code>git log</code>查看所有的提交记录。可以使用<code>git branch</code>查看当前仓库的所有分支。</p>
+<h1 id="出现git-clone-git没有ssh时如何做">出现git clone git@没有ssh时，如何做</h1>
 <h2 id="解决方法"><strong>✅ 解决方法</strong></h2>
 <h3 id="检查是否已有-ssh-key"><strong>1. 检查是否已有 SSH Key</strong></h3>
 <p>在 <strong>Git Bash 或 CMD</strong> 运行：</p>
