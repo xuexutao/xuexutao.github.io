@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="Linux的配置文件" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -206,96 +206,182 @@ mjx-container[display="true"] + br {
             
             
             
-                <div class="shadow-drop-2-bottom index-main">
-                    <!-- 这个header就是特指index的头部 -->
+                <div class="shadow-drop-2-bottom paper-main">
+                    
 
 
-
-    <div style="text-align: center;"> 
-
-        <a class="index-logo" href="/">Xuext</a>
-        <div style="margin-bottom: 12px;"> 
-            
-                
-                    首页
-                
-            
-                
-                    &nbsp / &nbsp<a href="/list/">⛰️文章</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/about/">🫙关于</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/tags/">⌚️标签</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/categories/">🌬️分类</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/gaussians/">📖论文</a>
-                
-            
-                
-                    &nbsp / &nbsp<a href="/lover/">💗💗</a>
-                
-            
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
         </div>
+        
     </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/about/">🫙关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">⌚️标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/gaussians/">📖论文</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
 
-                    <div class="post-main">
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
     
+
     
-       
-       
-       
-            <div class="post-md">
-                <div class=".article-gallery"><hr />
-<p>如果你真有丰富的精神世界，那就让它变成真实可感的作品，去传播、去售卖、去帮助他人......让它成为你的语言，而不是执着于别人能否 "懂" 你的深度。等待理解，不过是廉价的安慰——即使有人懂了，又能怎样？这种理解毫无意义，填不满精神的荒芜。真正值得做的，是用写作、创作、绘画、音乐、录制、拍摄、表达等等你认为最适合你的方式，把内心世界解剖出来，然后把你的世界抛向这片喧嚣的现实，让它在碰撞中被感知、被铭记，成为你精神的烙印......</p>
-<hr />
-<p><a href="index/weixin.png" class="gallery-item" style="box-shadow: none;"> <img src="index/weixin.png" style = "border-radius: 20px; box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);"></a> </img></p>
-<p style="text-align : center;">
-@ 不爱恰西瓜 🤝 @ 洛希极限 ⛽️
-</p>
-<p><a href="index/image2.jpg" class="gallery-item" style="box-shadow: none;"> <img src="index/image2.jpg" style = " width: 40% ;border-radius: 20px; box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);"></a> </img></p>
-</div>
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Linux的配置文件
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-05-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：128</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：1分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
             </div>
     
-</div> 
+
+    <div class="post-md">
+        
+        <div class=".article-gallery"><h2 id="bashrc">~/.bashrc</h2>
+<p>中间的miniconda环境配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span></span><br><span class="line"><span class="comment"># !! Contents within this block are managed by 'conda init' !!</span></span><br><span class="line">__conda_setup=<span class="string">"<span class="subst">$('/home/user/miniconda3/bin/conda' 'shell.bash' 'hook' 2&gt; /dev/null)</span>"</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">eval</span> <span class="string">"<span class="variable">$__conda_setup</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="string">"/home/user/miniconda3/etc/profile.d/conda.sh"</span> ]; <span class="keyword">then</span></span><br><span class="line">        . <span class="string">"/home/user/miniconda3/etc/profile.d/conda.sh"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">export</span> PATH=<span class="string">"/home/user/miniconda3/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">unset</span> __conda_setup</span><br><span class="line"><span class="comment"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span></span><br></pre></td></tr></table></figure>
+<p>cuda配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda-12.1/lib64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/cuda-12.1</span><br><span class="line"><span class="built_in">export</span> CUDA_HOME=<span class="variable">$CUDA_HOME</span>:/usr/local/cuda-12.1</span><br></pre></td></tr></table></figure>
+<p>别名 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># some more ls aliases</span></span><br><span class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -alFh'</span></span><br><span class="line"><span class="built_in">alias</span> la=<span class="string">'ls -A'</span></span><br><span class="line"><span class="built_in">alias</span> l=<span class="string">'ls -CF'</span></span><br></pre></td></tr></table></figure></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-05-21</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/04/25/2025/2504/cs236-3/">cs236_3</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
                     <div class="footer">
     
+        <span> 
+            © 2001-2025 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
 </div>
 
-
-    <div class="footer-last-without-line">
-        
-        <span>本站总字数：87.8k</span>
-        
-        
-            <div class="footer-last-span-right">
-        
-        
-                <span id="busuanzi_container_site_pv" class="">
-                    本站总访问：<span id="busuanzi_value_site_pv"></span>次
-                </span>
-            </div>
-        
-    </div>
 
 
 <!--这是指一条线往下的内容-->
 <div class="footer-last">
     
-         
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
             
-                
-                <span class="index-footer-last-span">Email:<a href="mailto:xuexutao0120@gmail.com" title="xuexutao0120@gmail.com">xuexutao0120@gmail.com</a></span>
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
             
-        
     
 </div>
 
