@@ -284,19 +284,19 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-05-21</span> 
+                    <span>最近更新：2025-05-29</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：263</span>
+                     <span>字数总计：466</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：1分钟</span>
+                    <span>阅读估时：2分钟</span>
                 
                 
                     
@@ -324,6 +324,12 @@ mjx-container[display="true"] + br {
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CUDA_HOME=/usr/local/cuda-12.1</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$CUDA_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$CUDA_HOME</span>/lib64:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
 <p>别名 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># some more ls aliases</span></span><br><span class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -alFh'</span></span><br><span class="line"><span class="built_in">alias</span> la=<span class="string">'ls -A'</span></span><br><span class="line"><span class="built_in">alias</span> l=<span class="string">'ls -CF'</span></span><br><span class="line"><span class="built_in">alias</span> <span class="built_in">df</span>=<span class="string">'df -h'</span></span><br></pre></td></tr></table></figure></p>
+<p>执行 <code>ls -l</code> 后输出的:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(base) user@user-System-Product-Name:~/workspace/demo/uav/TransGeo2022/result$ ll</span><br><span class="line">    total 886M</span><br><span class="line">    drwxrwxr-x 3 user user 4.0K  5月 28 22:15 ./</span><br><span class="line">    drwxrwxr-x 8 user user 4.0K  5月 28 21:36 ../</span><br><span class="line">    drwxrwxr-x 4 user user 4.0K  5月 28 21:36 attention/</span><br><span class="line">    -rw-rw-r-- 1 user user 172M  5月 29 09:31 checkpoint.pth.tar</span><br></pre></td></tr></table></figure>
+<p>从中可以看出，drwxrwxr-x 可以看为 d｜rwx｜rwx｜r-x 共10个字符。可以使用whoami和groups查看当前用户以及所在组</p>
+<p>rwx分别是可读、可写、可执行 ｜｜ <strong>r = 4，w = 2，x = 1，- = 0</strong> ｜｜ 所以drwxrwxr-x 对应的数字权限为 775</p>
+<p>常用数字：777（rwxrwxrwx） ｜｜ 755（rwxr-xr-x） ｜｜ 644（rw-r--r--）｜｜ 775（rwxrwxr-x）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d rwx rwx r-x</span><br><span class="line">│ │   │   └─── 第三组：其他用户（others）权限</span><br><span class="line">│ │   └─────── 第二组：所属组用户（group）权限</span><br><span class="line">│ └─────────── 第一组：文件所有者（owner）权限</span><br><span class="line">└───────────── 文件类型</span><br></pre></td></tr></table></figure>
 <h2 id="内存">内存</h2>
 <p>查看磁盘mounted 情况</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br><span class="line"><span class="built_in">du</span> -h -d 1 <span class="comment"># 查看当前文件夹和文件的大小</span></span><br></pre></td></tr></table></figure>
