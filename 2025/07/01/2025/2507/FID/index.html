@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="生成模型常见评价指标" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/about/">🫙关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">⌚️标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/gaussians/">📖论文</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    生成模型常见评价指标
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-07-01</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.4k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：6分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+        <div class=".article-gallery"><p>FID（Frechet Inception Distance）是一种衡量两组图像之间相似度的指标，常用于评估生成对抗网络（GAN）的性能。FID 分数越低，表示两组图像越相似。</p>
+<h3 id="fid-计算原理">FID 计算原理</h3>
+<p>FID 通过比较两组图像在特征空间中的统计特性（均值和协方差）来评估相似度。具体步骤如下：</p>
+<ol type="1">
+<li><p>将图像输入到预训练的 Inception-v3 网络中，提取中间层特征</p></li>
+<li><p>计算真实图像和生成图像特征的均值向量和协方差矩阵</p></li>
+<li><p>计算两个分布之间的 Frechet 距离： <span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="47.332ex" height="2.7ex" role="img" focusable="false" viewBox="0 -943.3 20920.9 1193.3"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path></g><g data-mml-node="mi" transform="translate(749,0)"><path data-c="1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path></g><g data-mml-node="mi" transform="translate(1253,0)"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></g><g data-mml-node="mo" transform="translate(2358.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mo" transform="translate(3414.6,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mo" transform="translate(3692.6,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="msub" transform="translate(3970.6,0)"><g data-mml-node="mi"><path data-c="1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path></g><g data-mml-node="mn" transform="translate(636,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="mo" transform="translate(5232.3,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="msub" transform="translate(6232.6,0)"><g data-mml-node="mi"><path data-c="1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path></g><g data-mml-node="mn" transform="translate(636,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mo" transform="translate(7272.1,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="msup" transform="translate(7550.1,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mn" transform="translate(311,413) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mo" transform="translate(8486.9,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(9487.1,0)"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></g><g data-mml-node="mi" transform="translate(10191.1,0)"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(10642.1,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(11031.1,0)"><g data-mml-node="mi"><path data-c="3A3" d="M666 247Q664 244 652 126T638 4V0H351Q131 0 95 0T57 5V6Q54 12 57 17L73 36Q89 54 121 90T182 159L305 299L56 644L55 658Q55 677 60 681Q63 683 351 683H638V679Q640 674 652 564T666 447V443H626V447Q618 505 604 543T559 605Q529 626 478 631T333 637H294H189L293 494Q314 465 345 422Q400 346 400 340Q400 338 399 337L154 57Q407 57 428 58Q476 60 508 68T551 83T575 103Q595 125 608 162T624 225L626 251H666V247Z"></path></g><g data-mml-node="mn" transform="translate(755,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="mo" transform="translate(12411.9,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="msub" transform="translate(13412.1,0)"><g data-mml-node="mi"><path data-c="3A3" d="M666 247Q664 244 652 126T638 4V0H351Q131 0 95 0T57 5V6Q54 12 57 17L73 36Q89 54 121 90T182 159L305 299L56 644L55 658Q55 677 60 681Q63 683 351 683H638V679Q640 674 652 564T666 447V443H626V447Q618 505 604 543T559 605Q529 626 478 631T333 637H294H189L293 494Q314 465 345 422Q400 346 400 340Q400 338 399 337L154 57Q407 57 428 58Q476 60 508 68T551 83T575 103Q595 125 608 162T624 225L626 251H666V247Z"></path></g><g data-mml-node="mn" transform="translate(755,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="mo" transform="translate(14792.9,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(15793.1,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(16293.1,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(16682.1,0)"><g data-mml-node="mi"><path data-c="3A3" d="M666 247Q664 244 652 126T638 4V0H351Q131 0 95 0T57 5V6Q54 12 57 17L73 36Q89 54 121 90T182 159L305 299L56 644L55 658Q55 677 60 681Q63 683 351 683H638V679Q640 674 652 564T666 447V443H626V447Q618 505 604 543T559 605Q529 626 478 631T333 637H294H189L293 494Q314 465 345 422Q400 346 400 340Q400 338 399 337L154 57Q407 57 428 58Q476 60 508 68T551 83T575 103Q595 125 608 162T624 225L626 251H666V247Z"></path></g><g data-mml-node="mn" transform="translate(755,-150) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g><g data-mml-node="msub" transform="translate(17840.7,0)"><g data-mml-node="mi"><path data-c="3A3" d="M666 247Q664 244 652 126T638 4V0H351Q131 0 95 0T57 5V6Q54 12 57 17L73 36Q89 54 121 90T182 159L305 299L56 644L55 658Q55 677 60 681Q63 683 351 683H638V679Q640 674 652 564T666 447V443H626V447Q618 505 604 543T559 605Q529 626 478 631T333 637H294H189L293 494Q314 465 345 422Q400 346 400 340Q400 338 399 337L154 57Q407 57 428 58Q476 60 508 68T551 83T575 103Q595 125 608 162T624 225L626 251H666V247Z"></path></g><g data-mml-node="mn" transform="translate(755,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g><g data-mml-node="msup" transform="translate(18999.2,0)"><g data-mml-node="mo"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="TeXAtom" transform="translate(422,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mn" transform="translate(1000,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g><g data-mml-node="mo" transform="translate(20531.9,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span> 其中，<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.489ex;" xmlns="http://www.w3.org/2000/svg" width="1.364ex" height="1.489ex" role="img" focusable="false" viewBox="0 -442 603 658"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path></g></g></g></svg></mjx-container></span> 是均值向量，<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.633ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 722 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="3A3" d="M666 247Q664 244 652 126T638 4V0H351Q131 0 95 0T57 5V6Q54 12 57 17L73 36Q89 54 121 90T182 159L305 299L56 644L55 658Q55 677 60 681Q63 683 351 683H638V679Q640 674 652 564T666 447V443H626V447Q618 505 604 543T559 605Q529 626 478 631T333 637H294H189L293 494Q314 465 345 422Q400 346 400 340Q400 338 399 337L154 57Q407 57 428 58Q476 60 508 68T551 83T575 103Q595 125 608 162T624 225L626 251H666V247Z"></path></g></g></g></svg></mjx-container></span> 是协方差矩阵，Tr 表示矩阵的迹</p></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_frechet_distance</span>(<span class="params">mu1, sigma1, mu2, sigma2, eps=<span class="number">1e-6</span></span>):</span><br><span class="line">    <span class="string">"""计算两个高斯分布之间的Frechet距离"""</span></span><br><span class="line">    <span class="comment"># 检查输入维度是否匹配</span></span><br><span class="line">    mu1 = np.atleast_1d(mu1)</span><br><span class="line">    mu2 = np.atleast_1d(mu2)</span><br><span class="line">    sigma1 = np.atleast_2d(sigma1)</span><br><span class="line">    sigma2 = np.atleast_2d(sigma2)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 检查均值向量维度是否相同</span></span><br><span class="line">    <span class="keyword">assert</span> mu1.shape == mu2.shape, <span class="string">'Mean vectors have different lengths'</span></span><br><span class="line">    <span class="comment"># 检查协方差矩阵维度是否相同</span></span><br><span class="line">    <span class="keyword">assert</span> sigma1.shape == sigma2.shape, <span class="string">'Covariances have different dimensions'</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算均值差的平方和</span></span><br><span class="line">    diff = mu1 - mu2</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算矩阵乘积的平方根</span></span><br><span class="line">    <span class="comment"># 参考: https://github.com/bioinf-jku/TTUR/blob/master/fid.py</span></span><br><span class="line">    covmean, _ = torch.linalg.sqrtm(torch.tensor(np.dot(sigma1, sigma2)), </span><br><span class="line">                                   hermitian=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 如果实部矩阵是奇异的，添加小的单位矩阵</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> torch.isfinite(covmean).<span class="built_in">all</span>():</span><br><span class="line">        msg = (<span class="string">'fid calculation produces singular product; '</span></span><br><span class="line">               <span class="string">'adding %s to diagonal of cov estimates'</span>) % eps</span><br><span class="line">        <span class="built_in">print</span>(msg)</span><br><span class="line">        offset = torch.eye(sigma1.shape[<span class="number">0</span>]) * eps</span><br><span class="line">        covmean = torch.linalg.sqrtm((torch.tensor(sigma1) + offset) @ </span><br><span class="line">                                    (torch.tensor(sigma2) + offset))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 确保实部计算</span></span><br><span class="line">    <span class="keyword">if</span> torch.is_complex(covmean):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> torch.allclose(torch.imag(covmean), torch.zeros_like(covmean)):</span><br><span class="line">            m = torch.<span class="built_in">max</span>(torch.<span class="built_in">abs</span>(torch.imag(covmean)))</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">f'Imaginary component <span class="subst">{m}</span>'</span>)</span><br><span class="line">        covmean = torch.real(covmean)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算最终的FID值</span></span><br><span class="line">    tr_covmean = torch.trace(covmean)</span><br><span class="line">    fid = (diff @ diff) + torch.trace(torch.tensor(sigma1)) + torch.trace(torch.tensor(sigma2)) - <span class="number">2</span> * tr_covmean</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> fid.item()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">InceptionV3</span>(nn.Module):</span><br><span class="line">    <span class="string">"""Inception-V3模型，用于提取图像特征"""</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, output_blocks=[<span class="number">3</span>], resize_input=<span class="literal">True</span>, normalize_input=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="comment"># 加载预训练的Inception-v3模型</span></span><br><span class="line">        inception = models.inception_v3(pretrained=<span class="literal">True</span>)</span><br><span class="line">        <span class="variable language_">self</span>.resize_input = resize_input</span><br><span class="line">        <span class="variable language_">self</span>.normalize_input = normalize_input</span><br><span class="line">        <span class="variable language_">self</span>.output_blocks = <span class="built_in">sorted</span>(output_blocks)</span><br><span class="line">        <span class="variable language_">self</span>.last_needed_block = <span class="built_in">max</span>(output_blocks)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 确保模型处于评估模式</span></span><br><span class="line">        inception.<span class="built_in">eval</span>()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 移除不需要的层</span></span><br><span class="line">        <span class="keyword">for</span> param <span class="keyword">in</span> inception.parameters():</span><br><span class="line">            param.requires_grad = <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.blocks = nn.ModuleList()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第一个块：输入到MaxPool2d</span></span><br><span class="line">        block0 = [</span><br><span class="line">            inception.Conv2d_1a_3x3,</span><br><span class="line">            inception.Conv2d_2a_3x3,</span><br><span class="line">            inception.Conv2d_2b_3x3,</span><br><span class="line">            nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>)</span><br><span class="line">        ]</span><br><span class="line">        <span class="variable language_">self</span>.blocks.append(nn.Sequential(*block0))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第二个块：到AvgPool2d</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.last_needed_block &gt;= <span class="number">1</span>:</span><br><span class="line">            block1 = [</span><br><span class="line">                inception.Conv2d_3b_1x1,</span><br><span class="line">                inception.Conv2d_4a_3x3,</span><br><span class="line">                nn.AvgPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>)</span><br><span class="line">            ]</span><br><span class="line">            <span class="variable language_">self</span>.blocks.append(nn.Sequential(*block1))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第三个块：到Mixed_5c</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.last_needed_block &gt;= <span class="number">2</span>:</span><br><span class="line">            block2 = [</span><br><span class="line">                inception.Mixed_5b,</span><br><span class="line">                inception.Mixed_5c,</span><br><span class="line">                inception.Mixed_5d</span><br><span class="line">            ]</span><br><span class="line">            <span class="variable language_">self</span>.blocks.append(nn.Sequential(*block2))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第四个块：到Mixed_6e</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.last_needed_block &gt;= <span class="number">3</span>:</span><br><span class="line">            block3 = [</span><br><span class="line">                inception.Mixed_6a,</span><br><span class="line">                inception.Mixed_6b,</span><br><span class="line">                inception.Mixed_6c,</span><br><span class="line">                inception.Mixed_6d,</span><br><span class="line">                inception.Mixed_6e</span><br><span class="line">            ]</span><br><span class="line">            <span class="variable language_">self</span>.blocks.append(nn.Sequential(*block3))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第五个块：到Mixed_7c（不包括辅助分类器）</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.last_needed_block &gt;= <span class="number">4</span>:</span><br><span class="line">            block4 = [</span><br><span class="line">                inception.Mixed_7a,</span><br><span class="line">                inception.Mixed_7b,</span><br><span class="line">                inception.Mixed_7c</span><br><span class="line">            ]</span><br><span class="line">            <span class="variable language_">self</span>.blocks.append(nn.Sequential(*block4))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 自适应平均池化层</span></span><br><span class="line">        <span class="variable language_">self</span>.adaptive_pool = nn.AdaptiveAvgPool2d((<span class="number">8</span>, <span class="number">8</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="string">"""前向传播，返回指定块的特征"""</span></span><br><span class="line">        <span class="comment"># 输入预处理</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.resize_input:</span><br><span class="line">            x = F.interpolate(x, size=(<span class="number">299</span>, <span class="number">299</span>), mode=<span class="string">'bilinear'</span>, align_corners=<span class="literal">False</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.normalize_input:</span><br><span class="line">            x = <span class="number">2</span> * x - <span class="number">1</span>  <span class="comment"># 将输入从[0,1]归一化到[-1,1]</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 存储中间输出</span></span><br><span class="line">        outputs = []</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> idx, block <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="variable language_">self</span>.blocks):</span><br><span class="line">            x = block(x)</span><br><span class="line">            <span class="keyword">if</span> idx <span class="keyword">in</span> <span class="variable language_">self</span>.output_blocks:</span><br><span class="line">                outputs.append(x)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> idx == <span class="variable language_">self</span>.last_needed_block:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 应用自适应池化并展平</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.last_needed_block &gt;= <span class="number">3</span>:</span><br><span class="line">            x = <span class="variable language_">self</span>.adaptive_pool(x)</span><br><span class="line">            x = torch.flatten(x, <span class="number">1</span>)</span><br><span class="line">            outputs.append(x)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> outputs</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_activations</span>(<span class="params">images, model, batch_size=<span class="number">32</span>, dims=<span class="number">2048</span>, device=<span class="string">'cpu'</span></span>):</span><br><span class="line">    <span class="string">"""计算图像的激活值（特征）"""</span></span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> batch_size &gt; <span class="built_in">len</span>(images):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f'警告: 批次大小(<span class="subst">{batch_size}</span>)大于图像数量(<span class="subst">{<span class="built_in">len</span>(images)}</span>)。将批次大小设为<span class="subst">{<span class="built_in">len</span>(images)}</span>'</span>)</span><br><span class="line">        batch_size = <span class="built_in">len</span>(images)</span><br><span class="line">    </span><br><span class="line">    pred_arr = np.empty((<span class="built_in">len</span>(images), dims))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(images), batch_size):</span><br><span class="line">        batch = torch.stack([img.to(device) <span class="keyword">for</span> img <span class="keyword">in</span> images[i:i+batch_size]])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 获取模型输出</span></span><br><span class="line">        <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">            pred = model(batch)[<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 如果是特征图，进行全局平均池化</span></span><br><span class="line">        <span class="keyword">if</span> pred.size(<span class="number">2</span>) != <span class="number">1</span> <span class="keyword">or</span> pred.size(<span class="number">3</span>) != <span class="number">1</span>:</span><br><span class="line">            pred = F.adaptive_avg_pool2d(pred, output_size=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 展平特征</span></span><br><span class="line">        pred = pred.squeeze(<span class="number">3</span>).squeeze(<span class="number">2</span>).cpu().numpy()</span><br><span class="line">        pred_arr[i:i+batch_size] = pred</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> pred_arr</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_activation_statistics</span>(<span class="params">images, model, batch_size=<span class="number">32</span>, dims=<span class="number">2048</span>, device=<span class="string">'cpu'</span></span>):</span><br><span class="line">    <span class="string">"""计算激活值的均值和协方差矩阵"""</span></span><br><span class="line">    act = get_activations(images, model, batch_size, dims, device)</span><br><span class="line">    mu = np.mean(act, axis=<span class="number">0</span>)</span><br><span class="line">    sigma = np.cov(act, rowvar=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">return</span> mu, sigma</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_images_from_folder</span>(<span class="params">folder_path, transform=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="string">"""从文件夹加载图像"""</span></span><br><span class="line">    images = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(folder_path):</span><br><span class="line">        <span class="keyword">if</span> filename.endswith((<span class="string">'.jpg'</span>, <span class="string">'.jpeg'</span>, <span class="string">'.png'</span>, <span class="string">'.bmp'</span>)):</span><br><span class="line">            img_path = os.path.join(folder_path, filename)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                img = Image.<span class="built_in">open</span>(img_path).convert(<span class="string">'RGB'</span>)</span><br><span class="line">                <span class="keyword">if</span> transform:</span><br><span class="line">                    img = transform(img)</span><br><span class="line">                images.append(img)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f"无法加载图像 <span class="subst">{img_path}</span>: <span class="subst">{e}</span>"</span>)</span><br><span class="line">    <span class="keyword">return</span> images</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_fid_given_paths</span>(<span class="params">paths, batch_size=<span class="number">50</span>, device=<span class="string">'cpu'</span>, dims=<span class="number">2048</span></span>):</span><br><span class="line">    <span class="string">"""计算两个图像文件夹之间的FID分数"""</span></span><br><span class="line">    <span class="comment"># 检查路径是否存在</span></span><br><span class="line">    <span class="keyword">for</span> path <span class="keyword">in</span> paths:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">            <span class="keyword">raise</span> FileNotFoundError(<span class="string">f"路径不存在: <span class="subst">{path}</span>"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义图像预处理</span></span><br><span class="line">    transform = transforms.Compose([</span><br><span class="line">        transforms.Resize((<span class="number">299</span>, <span class="number">299</span>)),</span><br><span class="line">        transforms.ToTensor(),</span><br><span class="line">    ])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 加载图像</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"加载图像..."</span>)</span><br><span class="line">    images1 = load_images_from_folder(paths[<span class="number">0</span>], transform)</span><br><span class="line">    images2 = load_images_from_folder(paths[<span class="number">1</span>], transform)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(images1) == <span class="number">0</span> <span class="keyword">or</span> <span class="built_in">len</span>(images2) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"至少有一个文件夹不包含有效的图像"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化Inception模型</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"初始化Inception模型..."</span>)</span><br><span class="line">    model = InceptionV3(output_blocks=[<span class="number">3</span>], normalize_input=<span class="literal">True</span>).to(device)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算统计量</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"计算统计量..."</span>)</span><br><span class="line">    m1, s1 = calculate_activation_statistics(images1, model, batch_size, dims, device)</span><br><span class="line">    m2, s2 = calculate_activation_statistics(images2, model, batch_size, dims, device)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算FID</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"计算FID分数..."</span>)</span><br><span class="line">    fid_value = calculate_frechet_distance(m1, s1, m2, s2)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> fid_value</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用示例</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 设置参数</span></span><br><span class="line">    paths = [<span class="string">'path/to/real/images'</span>, <span class="string">'path/to/generated/images'</span>]</span><br><span class="line">    batch_size = <span class="number">32</span></span><br><span class="line">    device = torch.device(<span class="string">'cuda'</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">'cpu'</span>)</span><br><span class="line">    dims = <span class="number">2048</span>  <span class="comment"># Inception-v3最后一层特征维度</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算FID</span></span><br><span class="line">    fid_score = calculate_fid_given_paths(paths, batch_size, device, dims)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"FID分数: <span class="subst">{fid_score:<span class="number">.4</span>f}</span>"</span>)</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>准备两个图像文件夹：一个包含真实图像，另一个包含生成的图像。</li>
+<li>修改代码中的<code>paths</code>变量，指向你的图像文件夹路径。</li>
+<li>运行脚本，即可得到 FID 分数。分数越低，表示生成图像与真实图像越相似。</li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-07-01</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/06/28/2025/2506/vae/">变分自编码器VAE</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2025 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
