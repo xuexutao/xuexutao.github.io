@@ -290,7 +290,7 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：157</span>
+                     <span>字数总计：235</span>
                 
                 
                     
@@ -318,6 +318,8 @@ mjx-container[display="true"] + br {
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -r 5 images/output_%03d.jpg</span><br><span class="line"><span class="comment"># -r 5：设置输出帧率为 5fps（每秒 5 帧）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 结合时间范围</span></span><br><span class="line"></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:01:00 -to 00:01:30 -r 5 images/output_%03d.jpg</span><br><span class="line"><span class="comment"># -ss：起始时间</span></span><br><span class="line"><span class="comment"># -to：结束时间</span></span><br></pre></td></tr></table></figure>
 <p>不考虑什么，只要150帧时：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -vframes 150 output_%03d.jpg</span><br></pre></td></tr></table></figure>
+<h2 id="colmap">Colmap</h2>
+<p>使用Colmap时： COLMAP 的 GUI 组件依赖 X11 显示系统，但服务器一般是没有图形界面的。可以通过 <code>Xvfb</code>（虚拟帧缓冲）创建一个虚拟显示环境： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Xvfb</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install xvfb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助 Xvfb 运行 COLMAP</span></span><br><span class="line">xvfb-run -a colmap automatic_reconstructor \</span><br><span class="line">    --workspace_path . \</span><br><span class="line">    --image_path ./images \</span><br><span class="line">    --sparse 1 \</span><br><span class="line">    --dense 0 \</span><br><span class="line">    --camera_model SIMPLE_PINHOLE</span><br></pre></td></tr></table></figure></p>
 </div>
     </div>
 
