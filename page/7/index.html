@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="ffmpeg" />
+    <meta name="description" content="" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -59,119 +59,7 @@
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
     
     
         <style>
@@ -268,68 +156,16 @@ mjx-container[display="true"] + br {
     
 
     
-        
-            
-                <div class="post-main-title" style="text-align: center;">
-                    ffmpeg
-                </div>
-            
-        
-      
-    
 
-    
-
-        
-            <div class="post-head-meta-center">
-        
-                
-                    <span>最近更新：2025-07-18</span> 
-                
-                
-                    
-                        &nbsp; | &nbsp;
-                    
-                     <span>字数总计：235</span>
-                
-                
-                    
-                        &nbsp; | &nbsp;
-                    
-                    <span>阅读估时：1分钟</span>
-                
-                
-                    
-                        &nbsp; | &nbsp;
-                    
-                    <span id="busuanzi_container_page_pv">
-                        阅读量：<span id="busuanzi_value_page_pv"></span>次
-                    </span>
-                
-            </div>
     
 
     <div class="post-md">
         
-        <div class=".article-gallery"><p>默认情况下，FFmpeg 会压缩图片。如需高质量输出，可添加 <code>-q:v 2</code> 参数（范围 1-31，数值越小质量越高）：</p>
-<p>ffmpeg 截取55s到1m02s视频</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -ss 55 -to 62 output.mp4 </span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:55 -to 00:01:02 output.mp4</span><br></pre></td></tr></table></figure>
-<p>ffmpeg一秒钟截取5帧图片</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -r 5 images/output_%03d.jpg</span><br><span class="line"><span class="comment"># -r 5：设置输出帧率为 5fps（每秒 5 帧）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 结合时间范围</span></span><br><span class="line"></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:01:00 -to 00:01:30 -r 5 images/output_%03d.jpg</span><br><span class="line"><span class="comment"># -ss：起始时间</span></span><br><span class="line"><span class="comment"># -to：结束时间</span></span><br></pre></td></tr></table></figure>
-<p>不考虑什么，只要150帧时：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -vframes 150 output_%03d.jpg</span><br></pre></td></tr></table></figure>
-<h2 id="colmap">Colmap</h2>
-<p>使用Colmap时： COLMAP 的 GUI 组件依赖 X11 显示系统，但服务器一般是没有图形界面的。可以通过 <code>Xvfb</code>（虚拟帧缓冲）创建一个虚拟显示环境： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Xvfb</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install xvfb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助 Xvfb 运行 COLMAP</span></span><br><span class="line">xvfb-run -a colmap automatic_reconstructor \</span><br><span class="line">    --workspace_path . \</span><br><span class="line">    --image_path ./images \</span><br><span class="line">    --sparse 1 \</span><br><span class="line">    --dense 0 \</span><br><span class="line">    --camera_model SIMPLE_PINHOLE</span><br></pre></td></tr></table></figure></p>
-</div>
+        
     </div>
 
     <div class="post-meta">
         <i>
-        
-            <span>2025-07-16</span>
-            
-            
-             
         
         </i>
     </div>
@@ -341,11 +177,11 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/07/17/2025/2507/opencv/'>opencv</a></span>
+                    <span>上一篇：<a href='/'></a></span>
                 
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/07/14/2025/2507/FlowGuide/">FlowGuide</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/"></a>
                     </span>
                 
             </div>

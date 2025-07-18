@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="ffmpeg" />
+    <meta name="description" content="opencv" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -271,7 +271,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    ffmpeg
+                    opencv
                 </div>
             
         
@@ -290,7 +290,7 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：235</span>
+                     <span>字数总计：429</span>
                 
                 
                     
@@ -311,22 +311,26 @@ mjx-container[display="true"] + br {
 
     <div class="post-md">
         
-        <div class=".article-gallery"><p>默认情况下，FFmpeg 会压缩图片。如需高质量输出，可添加 <code>-q:v 2</code> 参数（范围 1-31，数值越小质量越高）：</p>
-<p>ffmpeg 截取55s到1m02s视频</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -ss 55 -to 62 output.mp4 </span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:00:55 -to 00:01:02 output.mp4</span><br></pre></td></tr></table></figure>
-<p>ffmpeg一秒钟截取5帧图片</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -r 5 images/output_%03d.jpg</span><br><span class="line"><span class="comment"># -r 5：设置输出帧率为 5fps（每秒 5 帧）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 结合时间范围</span></span><br><span class="line"></span><br><span class="line">ffmpeg -i input.mp4 -ss 00:01:00 -to 00:01:30 -r 5 images/output_%03d.jpg</span><br><span class="line"><span class="comment"># -ss：起始时间</span></span><br><span class="line"><span class="comment"># -to：结束时间</span></span><br></pre></td></tr></table></figure>
-<p>不考虑什么，只要150帧时：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -vframes 150 output_%03d.jpg</span><br></pre></td></tr></table></figure>
-<h2 id="colmap">Colmap</h2>
-<p>使用Colmap时： COLMAP 的 GUI 组件依赖 X11 显示系统，但服务器一般是没有图形界面的。可以通过 <code>Xvfb</code>（虚拟帧缓冲）创建一个虚拟显示环境： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Xvfb</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install xvfb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助 Xvfb 运行 COLMAP</span></span><br><span class="line">xvfb-run -a colmap automatic_reconstructor \</span><br><span class="line">    --workspace_path . \</span><br><span class="line">    --image_path ./images \</span><br><span class="line">    --sparse 1 \</span><br><span class="line">    --dense 0 \</span><br><span class="line">    --camera_model SIMPLE_PINHOLE</span><br></pre></td></tr></table></figure></p>
+        <div class=".article-gallery"><p>使用Opencv2进行特征匹配</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">sift = cv2.SIFT_create()</span><br><span class="line">kps1, dp1 = sift.detectAndCompute(gray1, <span class="literal">None</span>)</span><br><span class="line">kps2, dp2 = sift.detectAndCompute(gray2, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#### 可视化</span></span><br><span class="line">img_with_point = cv2.drawKeypoints(img1, kps1, <span class="literal">None</span>, color = (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), flags = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">"image_with_keypoints"</span>, img_with_point)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>在一张灰度图上检测特征点，<code>detectAndCompute(gray, None)</code> 可以看到它是被SIFT掉用的，返回的是<strong>keypoints</strong>元组和descriptors的ndarray数组，</p>
+<ul>
+<li><p>keypoints是检测到的特征点，包含位置、大小、方向、响应强度等【N，】</p></li>
+<li><p>descriptors是特征点的描述符，SIFT默认是使用128个描述符描述一个点【N*128】</p></li>
+</ul>
+<p>其中cv2.drawKeypoints必须包括三个参数：image、keypoints、outImage（一般为None返回就好）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bf = cv2.BFMatcher()                         <span class="comment"># 初始化暴力匹配器</span></span><br><span class="line">matches = bf.knnMatch(dp1, dp2, <span class="number">2</span>)           <span class="comment"># 使用 knnMatch 进行匹配</span></span><br></pre></td></tr></table></figure>
+<p>这里调用了<code>knnMatch</code>方法，该方法会为第一组描述符（<code>dp1</code>）中的每个描述符，在第二组描述符（<code>dp2</code>）里找出<code>k</code>个最接近的匹配项。在这个例子中，<code>k=2</code>意味着为每个描述符找到两个最佳匹配。</p>
+<p>matches 是元组的元组((&lt; cv2.DMatch 0x11f27a290&gt;, &lt; cv2.DMatch 0x11f27a130&gt;), (&lt; cv2.DMatch 0x11f27a270&gt;, &lt; cv2.DMatch 0x11f27a070&gt;), ....)</p>
+<p>共有N个，每个dp1中的点的2匹配</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 手动去除不可靠的匹配点</span></span><br><span class="line">good_matches = []</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> matches:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(m) == <span class="number">2</span> <span class="keyword">and</span> m[<span class="number">0</span>].distance &lt; <span class="number">0.4</span> * m[<span class="number">1</span>].distance:</span><br><span class="line">        good_matches.append([m[<span class="number">0</span>].queryIdx, m[<span class="number">0</span>].trainIdx])</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 将可靠的匹配转为数据，去除可靠匹配的xy坐标</span></span><br><span class="line">kpsA = np.float32([kp.pt <span class="keyword">for</span> kp <span class="keyword">in</span> kps1])</span><br><span class="line">kpsB = np.float32([kp.pt <span class="keyword">for</span> kp <span class="keyword">in</span> kps2])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拿到好的匹配点</span></span><br><span class="line">kpsA = np.float32([kpsA[a[<span class="number">0</span>]] <span class="keyword">for</span> a <span class="keyword">in</span> good_matches])</span><br><span class="line">kpsB = np.float32([kpsB[a[<span class="number">1</span>]] <span class="keyword">for</span> a <span class="keyword">in</span> good_matches])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求解转换矩阵</span></span><br><span class="line">M, status = cv2.findHomography(kpsB, kpsA, cv2.RANSAC, <span class="number">4.0</span>)  <span class="comment"># 将B往A上投</span></span><br></pre></td></tr></table></figure>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2025-07-16</span>
+            <span>2025-07-17</span>
             
             
              
@@ -341,11 +345,9 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/07/17/2025/2507/opencv/'>opencv</a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/07/14/2025/2507/FlowGuide/">FlowGuide</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/07/16/2025/2507/ffmpeg/">ffmpeg</a>
                     </span>
                 
             </div>
