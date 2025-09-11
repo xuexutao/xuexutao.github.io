@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="ceres" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+                <li><a href="/about/">🫙关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">⌚️标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+                <li><a href="/gaussians/">📖论文</a></li>
+            
+        
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    ceres
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-09-11</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.1k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：10分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+        <div class=".article-gallery"><p>安装ceres-solve sudo apt-get update sudo apt-get install libceres-dev</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.31</span>)</span><br><span class="line"><span class="keyword">project</span>(ceres)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">find_package</span>(Ceres REQUIRED)</span><br><span class="line"><span class="keyword">find_package</span>(absl REQUIRED)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">${CERES_INCLUDE_DIRS}</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(ceres_app main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(ceres_app PRIVATE <span class="variable">${CERES_LIBRARIES}</span> absl::base absl::log_initialize)</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>构建优化问题Problem类</li>
+<li>构建优化的CostFunction</li>
+<li>最小二乘问题构建，在每次获取到数据后AddResidualBlock()</li>
+<li>solve最小二乘问题</li>
+</ol>
+<p>Ceres的求解过程包括构建立最小二乘和求解最小二乘问题两部分 其中构建最小二乘问题的相关方法均包含在Ceres::Problem类中，涉及的成员函数主要包括：</p>
+<h4 id="addxxxblock">AddxxxBlock</h4>
+<ul>
+<li>Problem::AddResidualBlock(): 向 Problem 类传递残差模块的信息
+<ul>
+<li>参数包括：代价函数模块、损失函数模块 和 参数模块； <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ResidualBlockId <span class="title">Problem::AddResidualBlock</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        CostFunction *cost_function,  <span class="comment">// 使用仿函数定义误差函数的计算方式</span></span></span></span><br><span class="line"><span class="params"><span class="function">        LossFunction *loss_function,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="type">const</span> vector&lt;<span class="type">double</span> *&gt; parameter_blocks</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">ResidualBlockId <span class="title">Problem::AddResidualBlock</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        CostFunction *cost_function,</span></span></span><br><span class="line"><span class="params"><span class="function">        LossFunction *loss_function,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="type">double</span> *x0, <span class="type">double</span> *x1, ...</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li>Problem::AddParameterBlock() <a href="image.png" class="gallery-item" style="box-shadow: none;"> <img src="image.png"></a></li>
+</ul>
+<p>推荐使用AutoDiffCostFunction <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ceres::<span class="built_in">AutoDiffCostFunction</span>&lt; CostFunctor,           <span class="comment">// 仿函数（functor）类型</span></span><br><span class="line">                             <span class="type">int</span> residualDim,       <span class="comment">// 残差维数</span></span><br><span class="line">                             <span class="type">int</span> paramDim           <span class="comment">// 参数维数（可以有多个）</span></span><br><span class="line">                           &gt; (CostFunctor* functor);<span class="comment">// CostFunctor: 仿函数指针</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="ceressolve">ceres::Solve</h4>
+<p>求解最小二乘问题，需要首先构建一个ceres::Problem对象，利用AddResidualBlock向其中添加残差模块。然后通过ceres::Solve函数是求解。函数原型如下： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Solve</span><span class="params">(<span class="type">const</span> Solver::Options&amp; options, <span class="comment">// 求解的核心,控制消元顺序、分解方法、收敛精度</span></span></span></span><br><span class="line"><span class="params"><span class="function">   Problem* problem,                       <span class="comment">// 构建的最小二乘问题</span></span></span></span><br><span class="line"><span class="params"><span class="function">   Solver::Summary* summary                <span class="comment">// 存储求解过程中的相关信息，不影响求解器性能</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>Solver::Options含有的参数种类繁多，是使用过程中需要着重设置的部分。这里列出一些常用参数：</p>
+<ul>
+<li>minimizer_type：迭代求解方法，可选LINEAR_SEARCH或TRUST_REGION(默认)。由于大多数情况选择LM或DOGLEG方法，因此该选项默认；</li>
+<li>trust_region_strategy_type：信赖域策略，可选LEVENBERG_MARQUARDT(默认)或DOGLEG，没有高斯牛顿选项；</li>
+<li>linear_solver_type：信赖域方法中，求解线性方程组所使用的求解器类型，默认为DENSE_QR；</li>
+<li>linear_solver_ordering：线性方程求解器的消元顺序，默认为NULL(即由Ceres自行决定)；在以BA为代表对消元顺序有特殊要求的应用中，可以通过成员函数reset设定消元顺序；</li>
+<li>min_linear_solver_iteration/max_linear_solver_iteration：意义如名，默认为0/500，一般不需要更改；</li>
+<li>max_num_iterations：求解器的最大迭代次数；</li>
+<li>max_solver_time_in_seconds：求解器的最大运行秒数；</li>
+<li>num_threads：Ceres求解时使用的线程数；</li>
+<li>minimizer_progress_to_stdout：是否向终端输出优化过程信息；</li>
+</ul>
+<p>对最终求解性能影响最大的就是linear_solver_type和线程数num_threads，如果发现最后的求解精度或求解效率不能满足要求，应首先尝试更换这两个参数。ceres solver定义了7种线性求解器：</p>
+<ol type="1">
+<li>DENSE_QR：默认，对于有100多个优化变量或不到1000个残差项的小优化问题，如果Jacobian是相对稠密的，那么使用QR分解；</li>
+<li>DENSE_NORMAL_CHOLESKY &amp; SPARSE_NORMAL_CHOLESKY：Cholesky分解，用于具有稀疏性的大规模非线性最小二乘问题求解； 对于BA问题，可以使用SPARSE_NORMAL_CHOLESKY来求解；</li>
+<li>DENSE_SCHUR &amp; SPARSE_SCHUR：SCHUR分解，用于BA问题求解；</li>
+<li>CGNR：使用共轭梯度法求解稀疏方程；</li>
+<li>ITERATIVE_SCHUR：使用共轭梯度SCHUR求解BA问题</li>
+</ol>
+<p>例子： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"absl/log/initialize.h"</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"ceres/ceres.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//残差函数</span></span><br><span class="line"><span class="comment">// Ceres 要求代价函数定义为仿函数（重载 operator()），并且写成模板以支持自动微分。</span></span><br><span class="line"><span class="comment">// Ceres 会自动把残差平方作为 cost，所以目标就是最小化</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">CostFunctor</span> {</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T* <span class="type">const</span> x, T* residual)</span> <span class="type">const</span> </span>{</span><br><span class="line">        residual[<span class="number">0</span>] = <span class="number">10.0</span> - x[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span> </span>{</span><br><span class="line">    <span class="comment">// Abseil 的日志初始化库   启动日志系统 Ceres 默认用 glog/absl 打印日志</span></span><br><span class="line">    absl::<span class="built_in">InitializeLog</span>();</span><br><span class="line">    <span class="type">double</span> x = <span class="number">0.5</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">double</span> initial_x = x;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建问题</span></span><br><span class="line">    ceres::Problem problem;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 优化问题容器， AutoDiff 自动微分</span></span><br><span class="line">    ceres::CostFunction* cost_function =</span><br><span class="line">            <span class="keyword">new</span> ceres::<span class="built_in">AutoDiffCostFunction</span>&lt;CostFunctor, <span class="number">1</span>, <span class="number">1</span>&gt;(<span class="keyword">new</span> CostFunctor);</span><br><span class="line">            <span class="comment">// 1 表示残差维度只有一个残差    1 表示参数维度变量x是标量</span></span><br><span class="line">    problem.<span class="built_in">AddResidualBlock</span>(cost_function, <span class="literal">nullptr</span>, &amp;x);</span><br><span class="line">    <span class="comment">// 把这个残差函数加到问题里，并且指定优化变量是 &amp;x</span></span><br><span class="line">    <span class="comment">// 第二个参数（nullptr）表示不使用鲁棒核函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 优化器选项</span></span><br><span class="line">    ceres::Solver::Options options;</span><br><span class="line">    options.minimizer_progress_to_stdout = <span class="literal">true</span>;  <span class="comment">// 在标准输出打印优化过程（</span></span><br><span class="line">    </span><br><span class="line">    ceres::Solver::Summary summary;</span><br><span class="line">    ceres::<span class="built_in">Solve</span>(options, &amp;problem, &amp;summary);</span><br><span class="line">    </span><br><span class="line">    std::cout &lt;&lt; summary.<span class="built_in">BriefReport</span>() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"x : "</span> &lt;&lt; initial_x &lt;&lt; <span class="string">" -&gt; "</span> &lt;&lt; x &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure> 输出日志： - iter：迭代次数 - cost：目标函数值（即残差平方和） - cost_change：本次迭代 cost 的下降量 - |gradient|：梯度的范数 - |step|：这一步参数更新的步长 - tr_ratio：信赖域(trust region)的比值，衡量模型预测和实际下降的匹配程度 - tr_radius：当前信赖域的半径 - ls_iter：line search 迭代次数（通常是步长调整次数） - iter_time / total_time：单次迭代耗时和累计耗时</p>
+<p><a href="image-1.png" class="gallery-item" style="box-shadow: none;"> <img src="image-1.png"></a></p>
+<ul>
+<li>总共 3 次迭代（包含初始状态）</li>
+<li>初始 cost = 45.125</li>
+<li>最终 cost = 5e-16，几乎完美收敛</li>
+<li>x 从初值 0.5 优化到 10，正好是理论最优解</li>
+</ul>
+<p>Ceres Solver 取决于能够在任意参数值下评估目标函数中每个项的值和导数。正确有效地做到这一点对于获得良好的结果至关重要。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ceres::CostFunction* cost_function =</span><br><span class="line">        <span class="keyword">new</span> ceres::<span class="built_in">NumericDiffCostFunction</span>&lt;NumericDiffCostFunctor, </span><br><span class="line">                                            ceres::CENTRAL, <span class="number">1</span>, <span class="number">1</span>&gt;</span><br><span class="line">                                            (<span class="keyword">new</span> <span class="built_in">NumericDiffCostFunctor</span>());</span><br><span class="line"><span class="comment">// 额外的模板参数指示用于计算数值导数的有限差分方案的类型</span></span><br></pre></td></tr></table></figure> <a href="image-2.png" class="gallery-item" style="box-shadow: none;"> <img src="image-2.png"></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by 旭涛薛 on 2025/9/9.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ceres/ceres.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;absl/log/initialize.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">F1</span>{</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T* <span class="type">const</span> x1, <span class="type">const</span> T* <span class="type">const</span> x2, T* residual)</span> <span class="type">const</span></span>{</span><br><span class="line">        residual[<span class="number">0</span>] = x1[<span class="number">0</span>] - <span class="number">10.0</span> * x2[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">F2</span>{</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T* <span class="type">const</span> x3, <span class="type">const</span> T* <span class="type">const</span> x4, T* residual)</span> <span class="type">const</span></span>{</span><br><span class="line">        residual[<span class="number">0</span>] = <span class="built_in">sqrt</span>(<span class="number">5.0</span>) * (x3[<span class="number">0</span>] - x4[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">F3</span>{</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T* <span class="type">const</span> x2, <span class="type">const</span> T* <span class="type">const</span> x3, T* residual)</span> <span class="type">const</span></span>{</span><br><span class="line">        residual[<span class="number">0</span>] = (x2[<span class="number">0</span>] - <span class="number">2.0</span> * x3[<span class="number">0</span>]) * (x2[<span class="number">0</span>] - <span class="number">2.0</span> * x3[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">F4</span>{</span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T* <span class="type">const</span> x1, <span class="type">const</span> T* <span class="type">const</span> x4, T* residual)</span> <span class="type">const</span></span>{</span><br><span class="line">        residual[<span class="number">0</span>] = <span class="built_in">sqrt</span>(<span class="number">10.0</span>) * (x1[<span class="number">0</span>] - x4[<span class="number">0</span>]) * (x1[<span class="number">0</span>] - x4[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span></span>{</span><br><span class="line">    absl::<span class="built_in">InitializeLog</span>();</span><br><span class="line">    <span class="type">double</span> x1 = <span class="number">1.0</span>;</span><br><span class="line">    <span class="type">double</span> x2 = <span class="number">1.0</span>;</span><br><span class="line">    <span class="type">double</span> x3 = <span class="number">1.0</span>;</span><br><span class="line">    <span class="type">double</span> x4 = <span class="number">1.0</span>;</span><br><span class="line"></span><br><span class="line">    ceres::Problem problem;</span><br><span class="line"></span><br><span class="line">    problem.<span class="built_in">AddResidualBlock</span>(</span><br><span class="line">            <span class="keyword">new</span> ceres::<span class="built_in">AutoDiffCostFunction</span>&lt;F1, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&gt;(<span class="keyword">new</span> F1),</span><br><span class="line">                    <span class="literal">nullptr</span>, &amp;x1, &amp;x2</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    problem.<span class="built_in">AddResidualBlock</span>(</span><br><span class="line">            <span class="keyword">new</span> ceres::<span class="built_in">AutoDiffCostFunction</span>&lt;F2, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&gt;(<span class="keyword">new</span> F2),</span><br><span class="line">            <span class="literal">nullptr</span>, &amp;x3, &amp;x4</span><br><span class="line">    );</span><br><span class="line">    problem.<span class="built_in">AddResidualBlock</span>(</span><br><span class="line">            <span class="keyword">new</span> ceres::<span class="built_in">AutoDiffCostFunction</span>&lt;F3, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&gt;(<span class="keyword">new</span> F3),</span><br><span class="line">            <span class="literal">nullptr</span>, &amp;x2, &amp;x3</span><br><span class="line">    );</span><br><span class="line">    problem.<span class="built_in">AddResidualBlock</span>(</span><br><span class="line">            <span class="keyword">new</span> ceres::<span class="built_in">AutoDiffCostFunction</span>&lt;F4, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&gt;(<span class="keyword">new</span> F4),</span><br><span class="line">            <span class="literal">nullptr</span>, &amp;x1, &amp;x4</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ceres::Solver::Options options;</span><br><span class="line">    options.minimizer_progress_to_stdout = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"Initial x1 = "</span> &lt;&lt; x1</span><br><span class="line">              &lt;&lt; <span class="string">", x2 = "</span> &lt;&lt; x2</span><br><span class="line">              &lt;&lt; <span class="string">", x3 = "</span> &lt;&lt; x3</span><br><span class="line">              &lt;&lt; <span class="string">", x4 = "</span> &lt;&lt; x4</span><br><span class="line">              &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// run</span></span><br><span class="line"></span><br><span class="line">    ceres::Solver::Summary summary;</span><br><span class="line">    ceres::<span class="built_in">Solve</span>(options, &amp;problem, &amp;summary);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; summary.<span class="built_in">FullReport</span>() &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"优化 x1 = "</span> &lt;&lt; x1</span><br><span class="line">              &lt;&lt; <span class="string">", x2 = "</span> &lt;&lt; x2</span><br><span class="line">              &lt;&lt; <span class="string">", x3 = "</span> &lt;&lt; x3</span><br><span class="line">              &lt;&lt; <span class="string">", x4 = "</span> &lt;&lt; x4</span><br><span class="line">              &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>SLAM <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ceres/ceres.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;absl/log/initialize.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv4/opencv2/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv4/opencv2/core/base.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">LinearFunction</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">double</span> _x, _y;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">LinearFunction</span>(<span class="type">double</span> x, <span class="type">double</span> y): _x(x), _y(y){}</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function">    <span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">const</span> T* <span class="type">const</span> abc, T * residual)</span> <span class="type">const</span> </span>{  <span class="comment">// 常量成员函数,不修改类的成员变量</span></span><br><span class="line">        <span class="comment">// y - exp(ax^2 + bx + c)</span></span><br><span class="line">        residual[<span class="number">0</span>] = <span class="built_in">T</span>(_y) - ceres::<span class="built_in">exp</span>(abc[<span class="number">0</span>] * <span class="built_in">T</span>(_x) * <span class="built_in">T</span>(_x) + abc[<span class="number">1</span>] * <span class="built_in">T</span>(_x) + abc[<span class="number">2</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span></span>{</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> N = <span class="number">100</span>;</span><br><span class="line">    <span class="type">double</span> ar = <span class="number">1.0</span>, br = <span class="number">2.0</span>, cr = <span class="number">1.5</span>;</span><br><span class="line">    <span class="type">double</span> w_sigma = <span class="number">1.0</span>;                   <span class="comment">// 噪声Sigma值</span></span><br><span class="line">    <span class="type">double</span> inv_sigma = <span class="number">1.0</span> / w_sigma;</span><br><span class="line">    cv::RNG rng;</span><br><span class="line"></span><br><span class="line">    vector&lt;<span class="type">double</span>&gt; x_data, y_data;</span><br><span class="line">    <span class="keyword">for</span>( <span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++){</span><br><span class="line">        <span class="type">double</span> xx = i / <span class="number">100.0</span>;</span><br><span class="line">        x_data.<span class="built_in">push_back</span>(xx);</span><br><span class="line">        y_data.<span class="built_in">push_back</span>(<span class="built_in">exp</span>(ar * xx * xx + br * xx + cr) + rng.<span class="built_in">gaussian</span>(w_sigma * w_sigma));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">double</span> ae = <span class="number">1.0</span>, be = <span class="number">1.0</span>, ce = <span class="number">1.0</span>;</span><br><span class="line">    <span class="type">double</span> abc[<span class="number">3</span>] = {ae, be, ce};</span><br><span class="line"></span><br><span class="line">    ceres::Problem problem;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( <span class="type">int</span> i = <span class="number">0</span>; i &lt; N ; i ++){</span><br><span class="line">        problem.<span class="built_in">AddResidualBlock</span>(</span><br><span class="line">            <span class="keyword">new</span> ceres::<span class="built_in">AutoDiffCostFunction</span>&lt;LinearFunction, <span class="number">1</span>, <span class="number">3</span>&gt;(<span class="keyword">new</span> <span class="built_in">LinearFunction</span>(x_data[i], y_data[i])),</span><br><span class="line">            <span class="literal">nullptr</span>,</span><br><span class="line">            abc</span><br><span class="line">        );</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    ceres::Solver::Options options;</span><br><span class="line">    options.linear_solver_type = ceres::DENSE_NORMAL_CHOLESKY;</span><br><span class="line">    options.minimizer_progress_to_stdout = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    ceres::Solver::Summary summmary;</span><br><span class="line">    ceres::<span class="built_in">Solve</span>(options, &amp;problem, &amp;summmary);</span><br><span class="line">    cout &lt;&lt; summmary.<span class="built_in">BriefReport</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++){</span><br><span class="line">        cout &lt;&lt; abc[i] &lt;&lt; endl;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>解得的结果如下：</p>
+<p><a href="image-3.png" class="gallery-item" style="box-shadow: none;"> <img src="image-3.png"></a></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.28</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(ceres_demo)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(ceres_app curlfit.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1、Eigen3</span></span><br><span class="line"><span class="keyword">find_package</span>(Eigen3 REQUIRED)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、Opencv</span></span><br><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</span><br><span class="line"><span class="keyword">if</span>(OpenCV_FOUND)</span><br><span class="line">    <span class="keyword">target_include_directories</span>(ceres_app PRIVATE <span class="variable">${OpenCV_INCLUDE_DIRS}</span>)</span><br><span class="line">    <span class="keyword">target_link_libraries</span>(ceres_app PRIVATE <span class="variable">${OpenCV_LIBS}</span>)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">    <span class="keyword">message</span>(FATAL_ERROR <span class="string">"OpenCV not found"</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、absl</span></span><br><span class="line"><span class="comment"># 配置Abseil（使用正确的目标名称）</span></span><br><span class="line"><span class="keyword">find_package</span>(absl REQUIRED COMPONENTS base log log_internal_check_op log_internal_conditions strings)</span><br><span class="line"><span class="keyword">if</span>(absl_FOUND)</span><br><span class="line">    <span class="comment"># 链接Abseil的核心模块（根据错误信息补充必要模块）</span></span><br><span class="line">    <span class="keyword">target_link_libraries</span>(ceres_app PRIVATE </span><br><span class="line">        absl::base </span><br><span class="line">        absl::log </span><br><span class="line">        absl::log_internal_check_op </span><br><span class="line">        absl::log_internal_conditions </span><br><span class="line">        absl::strings</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">    <span class="keyword">message</span>(FATAL_ERROR <span class="string">"Abseil not found. Please install Abseil 20240116 first."</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4、Ceres</span></span><br><span class="line"><span class="keyword">find_package</span>(Ceres REQUIRED)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(ceres_app PRIVATE Ceres::ceres)</span><br><span class="line"></span><br><span class="line"><span class="comment"># eigen是一个head-only，所以需要include  而不是link</span></span><br><span class="line"><span class="keyword">target_include_directories</span>(ceres_app PRIVATE <span class="variable">${EIGEN3_INCLUDE_DIRS}</span> )</span><br></pre></td></tr></table></figure>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-09-11</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/09/11/2025/2509/cmake/'>find_package 部分使用</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/09/06/2025/2509/clip2/">Siglip</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2025 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<b style="color: #333333;">余金悦女士</b>亲情支持 👏 </i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
