@@ -313,30 +313,33 @@ mjx-container[display="true"] + br {
         
         <div class=".article-gallery"><h4 id="find_package">find_package</h4>
 <p>在 CMake 中找到某个包后，会导出哪些变量/target 可以用? 这个问题的答案其实跟 包的 CMake 配置方式 有关：</p>
-<table style="width:6%;">
-<colgroup>
-<col style="width: 5%">
-</colgroup>
-<tbody>
-<tr>
-<td>🔹 两种情况 1. 老式的 FindXXX.cmake 模块 这种包是通过 CMake 自带的 Modules/FindXXX.cmake 找到的（比如 find_package(OpenCV REQUIRED) 在某些版本下）。 它们通常会设置一堆 全局变量，常见规则是： - <pkgname>_FOUND - <pkgname>_INCLUDE_DIRS - <pkgname>_LIBRARIES - <pkgname>_VERSION 例如：</pkgname></pkgname></pkgname></pkgname></td>
-</tr>
-<tr>
-<td><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"OpenCV include dirs: ${OpenCV_INCLUDE_DIRS}"</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"OpenCV libs: ${OpenCV_LIBS}"</span>)</span><br></pre></td></tr></table></figure></td>
-</tr>
-<tr>
-<td>这就是为什么能写：</td>
-</tr>
-<tr>
-<td><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_include_directories</span>(myapp PRIVATE <span class="variable">${OpenCV_INCLUDE_DIRS}</span>)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(myapp PRIVATE <span class="variable">${OpenCV_LIBS}</span>)</span><br></pre></td></tr></table></figure></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li>现代的 Config 模式（推荐） 很多库（<strong>Eigen3, Ceres, Abseil, fmt, spdlog, OpenCV4+ 等</strong>）会自带一个 XXXConfig.cmake 文件。 这种方式更现代，通常不会设置很多全局变量，而是导出 CMake target。 例如：</li>
+<hr>
+<p>🔹 两种情况 1. 老式的 FindXXX.cmake 模块 这种包是通过 CMake 自带的 Modules/FindXXX.cmake 找到的（比如 find_package(OpenCV REQUIRED) 在某些版本下）。</p>
+<p>它们通常会设置一堆 全局变量，常见规则是：</p>
+<ul>
+<li><pkgname>_FOUND</pkgname></li>
+<li><pkgname>_INCLUDE_DIRS</pkgname></li>
+<li><pkgname>_LIBRARIES</pkgname></li>
+<li><pkgname>_VERSION</pkgname></li>
+</ul>
+<p>例如：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"OpenCV include dirs: ${OpenCV_INCLUDE_DIRS}"</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"OpenCV libs: ${OpenCV_LIBS}"</span>)</span><br></pre></td></tr></table></figure>
+<p>这就是为什么能写：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_include_directories</span>(myapp PRIVATE <span class="variable">${OpenCV_INCLUDE_DIRS}</span>)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(myapp PRIVATE <span class="variable">${OpenCV_LIBS}</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<ol type="1">
+<li>现代的 Config 模式（推荐）</li>
 </ol>
+<p>很多库（<strong>Eigen3, Ceres, Abseil, fmt, spdlog, OpenCV4+ 等</strong>）会自带一个 XXXConfig.cmake 文件。</p>
+<p>这种方式更现代，通常不会设置很多全局变量，而是导出 CMake target。 例如：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(Eigen3 REQUIRED)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(myapp PRIVATE Eigen3::Eigen)</span><br><span class="line"><span class="keyword">find_package</span>(Ceres REQUIRED)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(myapp PRIVATE Ceres::ceres)</span><br></pre></td></tr></table></figure>
-<p>在这种模式下，CMake 官方更推荐用 target_link_libraries 直接链接 target，而不是手动拼 ${XXX_INCLUDE_DIRS}。 不过有些库也会兼容性地设置变量，比如： - EIGEN3_INCLUDE_DIRS - CERES_INCLUDE_DIRS 但更推荐用 target，因为 target 会自动带上 include path、编译选项、依赖等。</p>
+<p>在这种模式下，CMake 官方更推荐用 target_link_libraries 直接链接 target，而不是手动拼 <code>${XXX_INCLUDE_DIRS}</code></p>
+<p>不过有些库也会兼容性地设置变量，比如：</p>
+<ul>
+<li>EIGEN3_INCLUDE_DIRS</li>
+<li>CERES_INCLUDE_DIRS</li>
+</ul>
+<p>但更推荐用 target，因为 target 会自动带上 include path、编译选项、依赖等。</p>
 </div>
     </div>
 
