@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="" />
+    <meta name="description" content="Vim的mac配置" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -268,16 +268,67 @@ mjx-container[display="true"] + br {
     
 
     
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Vim的mac配置
+                </div>
+            
+        
+      
+    
 
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-11-16</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：240</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：1分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
     
 
     <div class="post-md">
         
-        
+        <div class=".article-gallery"><h1 id="vim的mac配置">Vim的mac配置</h1>
+<ol type="1">
+<li>安装Vim</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install vim</span><br></pre></td></tr></table></figure>
+<p>先安装插件管理器<code>vim-plug</code> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure></p>
+<p>编辑 <code>~/.vimrc</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin()                 <span class="string">" vim-plug开始(必须)</span></span><br><span class="line"><span class="string">Plug 'rrethy/vim-illuminate'      "</span> 这里写插件名称，例如 Plug <span class="string">'scrooloose/nerdtree'</span></span><br><span class="line">call plug#end()                   <span class="string">" vim-plug结束(必须)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">hi illuminatedWord ctermfg=white ctermbg=241</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">syntax on             "</span> 自动语法高亮</span><br><span class="line"><span class="built_in">set</span> number            <span class="string">" 显示行号</span></span><br><span class="line"><span class="string">set clipboard=unnamedplus  "</span> 让 Vim 复制的内容同步到系统剪贴板（关键！）</span><br><span class="line"><span class="built_in">set</span> tabstop=4         <span class="string">" tab缩进4空格</span></span><br><span class="line"><span class="string">set cindent           "</span> 针对C语言的自动缩进功能,比autoindent更加精准</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> cc=0              <span class="string">" 设置高亮的列，这里设置为0，代表关闭</span></span><br><span class="line"><span class="string">set cursorline        "</span> 突出显示当前行</span><br><span class="line"><span class="built_in">set</span> smartindent       <span class="string">" 开启新行时使用智能自动缩进</span></span><br><span class="line"><span class="string">set showmatch         "</span> 插入括号时，短暂地跳转到匹配的对应括号</span><br><span class="line"><span class="built_in">set</span> ruler             <span class="string">" 打开状态栏标尺</span></span><br><span class="line"><span class="string">set mouse=a           "</span> 在vim所有模式下开鼠标，复制文档就可以不包含行号了</span><br><span class="line">                      <span class="string">" :source ~/.vimrc</span></span><br></pre></td></tr></table></figure>
+</div>
     </div>
 
     <div class="post-meta">
         <i>
+        
+            <span>2025-11-16</span>
+            
+            
+             
         
         </i>
     </div>
@@ -289,11 +340,9 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/'></a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/"></a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/11/16/2025/2511/tmux-config/">tmux的mac配置</a>
                     </span>
                 
             </div>
