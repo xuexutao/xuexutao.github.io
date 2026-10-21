@@ -1,61 +1,25 @@
 $(document).ready(function() {
-    var headingCount1 = $("h1").length;
-    var headingCount2 = $("h2").length;
-    var headingCount3 = $("h3").length;
-    var headingCount4 = $("h4").length;
-    var headingCount5 = $("h5").length;
-    var headingCount6 = $("h6").length;
-    var headingCount7 = $("h7").length;
-    var tocHeading = "";
+    var $postMd = $(".post-md");
+    if ($postMd.length === 0) return;
 
-    if (headingCount1 > 1) {
-      if(tocHeading == "") {
-        tocHeading = "h1";
-      } else {
-        tocHeading += ",h1"
-      }
-    }
-
-    if (headingCount2 > 1) {
-        if(tocHeading == "") {
-          tocHeading = "h2";
-        } else {
-          tocHeading += ",h2"
+    var selectors = [];
+    for (var level = 1; level <= 6; level++) {
+        if ($postMd.find("h" + level).length > 0) {
+            selectors.push("h" + level);
         }
     }
 
-    if (headingCount3 > 1) {
-        if(tocHeading == "") {
-          tocHeading = "h3";
-        } else {
-          tocHeading += ",h3"
-        }
-    }
-
-    if (headingCount4 > 1) {
-        if(tocHeading == "") {
-          tocHeading = "h4";
-        } else {
-          tocHeading += ",h4"
-        }
-    }
-    if (headingCount5 > 1) {
-        if(tocHeading == "") {
-          tocHeading = "h5";
-        } else {
-          tocHeading += ",h5"
-        }
-    }
-
-    if (headingCount6 > 1) {
-        if(tocHeading == "") {
-          tocHeading = "h6";
-        } else {
-          tocHeading += ",h6"
-        }
+    if (selectors.length === 0) {
+        $(".left-toc-container").hide();
+        return;
     }
 
     $("#toc").tocify({
-        selectors: tocHeading
-      });
-  });
+        context: ".post-md",
+        selectors: selectors.join(","),
+        showAndHide: true,
+        smoothScroll: true,
+        scrollTo: 24,
+        extendPage: false
+    });
+});

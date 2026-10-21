@@ -212,35 +212,39 @@ mjx-container[display="true"] + br {
 
 <div class="header">
     <div class="header-container">
-        <img style="
-        width: 56px;
-        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <a href="/" class="header-avatar-link">
+            <img alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" />
+        </a>
         <div class="header-content">
             <a class="logo" href="/">Xuext</a> 
             <span class="description">Beihang University</span> 
         </div>
-        
     </div>
     
-   
+    
     <ul class="nav">
         
+            
             
                 <li><a href="/">首页</a></li>
             
         
             
+            
                 <li><a href="/list/">⛰️文章</a></li>
             
         
+            
             
                 <li><a href="/categories/">🌬️分类</a></li>
             
         
             
+            
                 <li><a href="/papers/index.html">📚论文精读</a></li>
             
         
+            
             
                 <li><a href="/lover/">💗💗</a></li>
             
@@ -276,13 +280,13 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2026-07-13</span> 
+                    <span>最近更新：2026-10-22</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：286</span>
+                     <span>字数总计：291</span>
                 
                 
                     
@@ -309,22 +313,18 @@ mjx-container[display="true"] + br {
         
         <div class=".article-gallery"><p>在 Linux 虚拟机中安装并启动 SSH 服务（假设使用 OpenSSH）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="comment"># 可以通过以下命令检查 SSH 服务状态：</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查防火墙规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 22/tcp</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span>  <span class="comment"># 启用防火墙</span></span><br></pre></td></tr></table></figure>
-<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware
-中将网络模式设置为 桥接模式 或 NAT 模式：</p>
+<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware 中将网络模式设置为 桥接模式 或 NAT 模式：</p>
 <ul>
-<li>桥接模式：Linux
-虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP
-地址，方便 Windows 直接访问。</li>
-<li>NAT 模式：Linux 虚拟机会通过主机的 IP
-地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如
-2222）映射到虚拟机的 22 端口。</li>
+<li>桥接模式：Linux 虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP 地址，方便 Windows 直接访问。</li>
+<li>NAT 模式：Linux 虚拟机会通过主机的 IP 地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如 2222）映射到虚拟机的 22 端口。</li>
 </ul>
-<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp
-&lt;本地文件路径&gt; username@<linux_vm_ip>:&lt;目标路径&gt;</linux_vm_ip></strong></p>
+<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp &lt;本地文件路径&gt; username@<linux_vm_ip>:&lt;目标路径&gt;</linux_vm_ip></strong></p>
 <blockquote>
-<p>C:&gt;scp C:_11.6.0_511.23_windows.exe
-xuext@192.168.119.128:/home/xuext/software xuext@192.168.119.128's
-password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
+<ul>
+<li><code>C:\Users\TSingSV&gt;scp C:\Users\TSingSV\Downloads\cuda_11.6.0_511.23_windows.exe xuext@192.168.119.128:/home/xuext/software</code></li>
+<li><code>xuext@192.168.119.128's password:</code></li>
+<li><code>cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</code></li>
+</ul>
 </blockquote>
 </div>
     </div>
@@ -397,12 +397,9 @@ password: cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</p>
 </div>
 
 
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!--目录-->
     
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
         

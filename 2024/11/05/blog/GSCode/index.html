@@ -212,35 +212,39 @@ mjx-container[display="true"] + br {
 
 <div class="header">
     <div class="header-container">
-        <img style="
-        width: 56px;
-        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" width="10%"></img>
+        <a href="/" class="header-avatar-link">
+            <img alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" />
+        </a>
         <div class="header-content">
             <a class="logo" href="/">Xuext</a> 
             <span class="description">Beihang University</span> 
         </div>
-        
     </div>
     
-   
+    
     <ul class="nav">
         
+            
             
                 <li><a href="/">首页</a></li>
             
         
             
+            
                 <li><a href="/list/">⛰️文章</a></li>
             
         
+            
             
                 <li><a href="/categories/">🌬️分类</a></li>
             
         
             
+            
                 <li><a href="/papers/index.html">📚论文精读</a></li>
             
         
+            
             
                 <li><a href="/lover/">💗💗</a></li>
             
@@ -276,7 +280,7 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2026-07-13</span> 
+                    <span>最近更新：2026-10-22</span> 
                 
                 
                     
@@ -309,8 +313,7 @@ mjx-container[display="true"] + br {
         
         <div class=".article-gallery"><h2 id="gaussian_model">gaussian_model</h2>
 <ul>
-<li><code>prune_points</code>输入一个要剔除的mask，长度为n *
-1，第一步是取反操作，得到有效点的mask</li>
+<li><code>prune_points</code>输入一个要剔除的mask，长度为n * 1，第一步是取反操作，得到有效点的mask</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">prune_points</span>(<span class="params">self, mask</span>):</span><br><span class="line">    valid_points_mask = ~mask</span><br><span class="line">    optimizable_tensors = <span class="variable language_">self</span>._prune_optimizer(valid_points_mask)</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>._xyz = optimizable_tensors[<span class="string">"xyz"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_dc = optimizable_tensors[<span class="string">"f_dc"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._features_rest = optimizable_tensors[<span class="string">"f_rest"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._opacity = optimizable_tensors[<span class="string">"opacity"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._scaling = optimizable_tensors[<span class="string">"scaling"</span>]</span><br><span class="line">    <span class="variable language_">self</span>._rotation = optimizable_tensors[<span class="string">"rotation"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.xyz_gradient_accum = <span class="variable language_">self</span>.xyz_gradient_accum[valid_points_mask]</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">self</span>.denom = <span class="variable language_">self</span>.denom[valid_points_mask]</span><br><span class="line">    <span class="variable language_">self</span>.max_radii2D = <span class="variable language_">self</span>.max_radii2D[valid_points_mask]</span><br></pre></td></tr></table></figure>
 <ul>
@@ -318,12 +321,10 @@ mjx-container[display="true"] + br {
 </ul>
 <p>以一个batch为一轮回，一个batch就是所有图片都轮一遍。</p>
 <p>在一次batch中，xyz的梯度不断累积，同时如果在这一张图片中看到该高斯点，则该高斯点的denom+1，梯度是通过把backward中计算的tensor的grad经过norm，</p>
-<p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span>
-变为self.xyz_gradient_accum的<span style="color : red">【N*1】</span></p>
+<p>从viewspace_point_tensor的 <span style="color : red">【N * 3】</span> 变为self.xyz_gradient_accum的<span style="color : red">【N*1】</span></p>
 <p>更新间隔是self.densification_interval控制，如果达到interval之后，无论是梯度还是denom都从零开始</p>
 <blockquote>
-<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的
-？</p>
+<p>还有一点就是viewspace_point_tensor的第三列都为0，也就是backward时候，只有二维图片的 ？</p>
 </blockquote>
 <p>self.denom的取值是 【0 --&gt; self.densification_interval】</p>
 <p>self.xyz_gradient_accum 也是有最多有interval个数叠加</p>
@@ -336,8 +337,19 @@ mjx-container[display="true"] + br {
         
             <span>2024-11-05</span>
             
+                <span>该篇文章被 Xue xt</span>
+            
             
              
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/GS/'>
+                            GS
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -397,12 +409,9 @@ mjx-container[display="true"] + br {
 </div>
 
 
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!--目录-->
     
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
         
