@@ -25,7 +25,10 @@
     <div class="brand-bar">
       <div class="brand-top">
         <div class="brand-title"><span class="brand-icon">∑</span><span id="vaultName">知识库</span></div>
-        <button class="btn btn-icon" id="themeBtn" title="切换深浅色">🌓</button>
+        <div class="brand-actions">
+          <button class="btn btn-icon" id="themeBtn" title="切换深浅色">🌓</button>
+          <button class="btn" id="sidebarCollapseBtn" title="收起左侧列表" aria-label="收起左侧列表" aria-controls="sidebar">收起</button>
+        </div>
       </div>
       <a class="back-home" href="/">← 返回博客首页</a>
       <div class="vault-path-badge" id="vaultPath" title="">-</div>
@@ -60,7 +63,7 @@
   <main class="main-pane">
     <header class="top-header">
       <div class="header-left">
-        <button class="btn btn-icon" id="sidebarBtn" title="收起/展开侧边栏">☰</button>
+        <button class="btn btn-icon" id="sidebarBtn" title="收起左侧列表" aria-label="收起左侧列表" aria-controls="sidebar" aria-expanded="true">☰</button>
         <div class="breadcrumbs" id="breadcrumbs"></div>
       </div>
 

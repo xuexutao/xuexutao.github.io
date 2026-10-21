@@ -139,6 +139,13 @@ html, body {
   gap: 8px;
 }
 
+.brand-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
 .brand-title {
   display: flex;
   align-items: center;

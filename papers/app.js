@@ -645,8 +645,17 @@
     $('hljs-light').disabled = t === 'dark'; $('hljs-dark').disabled = t !== 'dark';
     try { localStorage.setItem('md-reader-theme', t); } catch (e) { /* ignore */ }
   }
+  function setSidebarCollapsed(isCollapsed) {
+    const sidebarBtn = $('sidebarBtn');
+    const actionLabel = isCollapsed ? '展开左侧列表' : '收起左侧列表';
+    el.sidebar.classList.toggle('collapsed', isCollapsed);
+    sidebarBtn.title = actionLabel;
+    sidebarBtn.setAttribute('aria-label', actionLabel);
+    sidebarBtn.setAttribute('aria-expanded', String(!isCollapsed));
+  }
   $('themeBtn').addEventListener('click', function () { applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'); });
-  $('sidebarBtn').addEventListener('click', function () { el.sidebar.classList.toggle('collapsed'); });
+  $('sidebarBtn').addEventListener('click', function () { setSidebarCollapsed(!el.sidebar.classList.contains('collapsed')); });
+  $('sidebarCollapseBtn').addEventListener('click', function () { setSidebarCollapsed(true); });
   $('expandAllBtn').addEventListener('click', function () {
     el.tree.querySelectorAll('.tree-folder').forEach(function (f) { setFolderOpen(f, true); });
   });
@@ -1192,7 +1201,7 @@
     // 1. Cmd + K：搜索
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
-      el.sidebar.classList.remove('collapsed');
+      setSidebarCollapsed(false);
       el.search.focus();
       el.search.select();
       return;
