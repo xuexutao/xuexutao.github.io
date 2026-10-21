@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>论文精读 · Xuext</title>
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="vendor/hljs-light.min.css" id="hljs-light">
+  <link rel="stylesheet" href="vendor/hljs-dark.min.css" id="hljs-dark" disabled>
+  <link rel="stylesheet" href="styles.css">
+
+<style>
+  #topEditorBar, #saveIndicator, #openFolderBtn, #pickFolderBtn, #pickFilesBtn,
+  #commentPanel { display: none !important; }
+  .vault-path-badge { cursor: default !important; }
+  .back-home { display: inline-block; margin: 6px 0 2px; font-size: 13px; color: #2563eb; text-decoration: none; }
+  .back-home:hover { text-decoration: underline; }
+</style>
+<script>window.READER_READONLY = true;</script>
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-bar">
+      <div class="brand-top">
+        <div class="brand-title"><span class="brand-icon">∑</span><span id="vaultName">知识库</span></div>
+        <button class="btn btn-icon" id="themeBtn" title="切换深浅色">🌓</button>
+      </div>
+      <a class="back-home" href="/">← 返回博客首页</a>
+      <div class="vault-path-badge" id="vaultPath" title="">-</div>
+      <div class="action-row">
+        <button class="btn btn-primary" id="pickFolderBtn" style="flex:1">📂 读入本地文件夹</button>
+        <button class="btn" id="pickFilesBtn" title="读入单个或多个 md 文件">📄 md</button>
+        <button class="btn btn-icon" id="resetBtn" title="恢复默认知识库">↺</button>
+      </div>
+      <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+      <input type="file" id="filesInput" accept=".md,.markdown,text/markdown" multiple hidden>
+    </div>
+
+    <div class="search-box">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" id="searchInput" type="text" placeholder="搜索标题 / 路径 / 标签，回车全文搜索">
+        <button class="search-clear" id="searchClear">✕</button>
+      </div>
+      <div class="tree-toolbar">
+        <span class="tree-stat" id="treeStat">-</span>
+        <div class="tree-toolbar-actions">
+          <button class="link-btn" id="expandAllBtn">展开</button>
+          <button class="link-btn" id="collapseAllBtn">折叠</button>
+          <button class="link-btn active" id="hideAssetBtn" title="隐藏 assets 附件目录里的辅助文档">隐藏附件文档</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tree-container" id="tree"></div>
+  </aside>
+
+  <main class="main-pane">
+    <header class="top-header">
+      <div class="header-left">
+        <button class="btn btn-icon" id="sidebarBtn" title="收起/展开侧边栏">☰</button>
+        <div class="breadcrumbs" id="breadcrumbs"></div>
+      </div>
+
+      <!-- 固定在页面顶部的快捷编辑工具栏 -->
+      <div class="top-editor-bar" id="topEditorBar">
+        <button class="sel-btn sel-btn-bold" id="selBoldBtn" title="加粗选中文字 (** **) · 快捷键 ⌘B">
+          <b>B</b><span>加粗</span><kbd class="kbd-hint">⌘B</kbd>
+        </button>
+        <span class="sel-divider"></span>
+        <div class="sel-colors" id="selColors" title="设置文字颜色 · 快捷键 Option + 1~6 (⌥1~⌥6)">
+          <button class="color-dot" data-color="red" style="background:#ef4444" title="红色 (red) · 快捷键 ⌥1"><span>1</span></button>
+          <button class="color-dot" data-color="#e67e22" style="background:#e67e22" title="橙色 (#e67e22) · 快捷键 ⌥2"><span>2</span></button>
+          <button class="color-dot" data-color="#d97706" style="background:#d97706" title="琥珀色 (#d97706) · 快捷键 ⌥3"><span>3</span></button>
+          <button class="color-dot" data-color="#16a34a" style="background:#16a34a" title="绿色 (#16a34a) · 快捷键 ⌥4"><span>4</span></button>
+          <button class="color-dot" data-color="#2563eb" style="background:#2563eb" title="蓝色 (#2563eb) · 快捷键 ⌥5"><span>5</span></button>
+          <button class="color-dot" data-color="#9333ea" style="background:#9333ea" title="紫色 (#9333ea) · 快捷键 ⌥6"><span>6</span></button>
+        </div>
+        <button class="sel-btn" id="selClearColorBtn" title="取消选中文字颜色 · 快捷键 ⌥0 或 ⌘⇧X">
+          🚫<span>取消色</span><kbd class="kbd-hint">⌥0</kbd>
+        </button>
+        <span class="sel-divider"></span>
+        <button class="sel-btn sel-btn-comment" id="selCommentBtn" title="对选中文字添加批注评论 · 快捷键 ⌘M (或 ⌘⇧M)">
+          ➕<span>评论</span><kbd class="kbd-hint">⌘M</kbd>
+        </button>
+        <button class="sel-btn sel-btn-edit" id="selBlockEditBtn" title="原位编辑鼠标所在段落（保持渲染效果，仅加边框直接改字，按 ⌘Enter 或失焦保存） · 快捷键 ⌘E">
+          ✏️<span>段落编辑</span><kbd class="kbd-hint">⌘E</kbd>
+        </button>
+        <span class="sel-divider"></span>
+        <button class="sel-btn" id="headerUndoBtn" disabled title="撤销上一步对原文档的修改 · 快捷键 ⌘Z">
+          ↩<span>撤销</span><kbd class="kbd-hint">⌘Z</kbd>
+        </button>
+        <span class="sel-divider"></span>
+        <span class="save-indicator" id="saveIndicator" role="status" aria-live="polite" title="编辑会实时写入原文件">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <circle class="si-track" cx="12" cy="12" r="9.5"></circle>
+            <circle class="si-ring" cx="12" cy="12" r="9.5"></circle>
+            <path class="si-check" d="M7.6 12.6l3 3 5.8-6.4"></path>
+            <path class="si-warn" d="M12 7.2v5.6M12 16.4v.1"></path>
+          </svg>
+        </span>
+
+        <!-- 顶部工具栏下方的评论下拉面板 -->
+        <div class="comment-dropdown hidden" id="commentPanel">
+          <div class="comment-quote-preview" id="commentQuotePreview">请先选中正文中的文字</div>
+          <textarea class="comment-textarea" id="commentInput" rows="2" placeholder="输入批注评论（将高亮选中文字并在该段下方插入 > 引用块，按 ⌘+Enter 写入原文档）"></textarea>
+          <div class="comment-actions">
+            <button class="btn" id="commentCancelBtn">取消 (Esc)</button>
+            <button class="btn btn-primary" id="commentSubmitBtn">💬 写入原文档 (⌘↵)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="btn" id="openFolderBtn" title="在 Finder 中打开当前文档所在的源文件夹（未打开文档时打开知识库根目录）">📂 源文件夹</button>
+        <div class="header-stats-wrap" id="headerStats"></div>
+      </div>
+    </header>
+
+    <div class="content-workspace">
+      <div class="article-scroll" id="articleScroll">
+        <div class="article-container" id="article"></div>
+      </div>
+      <aside class="toc-pane hidden" id="tocPane">
+        <div class="toc-header"><span>目录</span></div>
+        <ul class="toc-list" id="tocList"></ul>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<!-- 实时回写状态轻提示 -->
+<div class="toast-notice" id="toastNotice"></div>
+
+<div class="lightbox" id="lightbox"><img id="lightboxImg" alt=""></div>
+
+<script src="vendor/marked.min.js"></script>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/highlight.min.js"></script>
+<script src="render.js"></script>
+<script src="editor.js"></script>
+<script src="vault-manifest.js"></script>
+<script src="vault-docs.js" onerror="window.OBSIDIAN_VAULT_DOCS=null"></script>
+<script src="app.js"></script>
+</body>
+</html>

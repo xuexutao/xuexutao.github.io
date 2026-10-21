@@ -1,7 +1,6 @@
 /**
  * A4 主题自定义前端增强
  * 1. 列表页：按年份分组折叠（默认最新一年展开，其余收起）
- * 2. 文章页：按 A4 纸高度显示纸张分隔，模拟一张张 A4 纸
  * 注：纯前端 DOM 处理，不改动主题模板。
  */
 (function () {
@@ -17,7 +16,6 @@
 
   ready(function () {
     initArchiveFold();
-    initA4Pages();
   });
 
   /* ============ 1. 列表页 年份分组折叠 ============ */
@@ -73,48 +71,5 @@
         group.header.classList.remove('is-collapsed');
       }
     }
-  }
-
-  /* ============ 2. 文章页 A4 纸分隔 ============ */
-  function initA4Pages() {
-    var paper = document.querySelector('.paper-main');
-    var content = paper && paper.querySelector('.post-md');
-    if (!paper || !content) return; // 仅在有正文的内容页生效
-
-    paper.classList.add('a4-paper');
-
-    var overlay = document.createElement('div');
-    overlay.className = 'a4-page-guides';
-    paper.appendChild(overlay);
-
-    function render() {
-      var w = paper.clientWidth; // 整张纸宽度（含内边距）
-      if (w <= 0) return;
-      var pageH = w * (297 / 210); // A4 比例
-      var total = paper.scrollHeight;
-      var count = Math.floor(total / pageH);
-
-      overlay.innerHTML = '';
-      for (var i = 1; i <= count; i++) {
-        var brk = document.createElement('div');
-        brk.className = 'a4-page-break';
-        brk.style.top = (pageH * i) + 'px';
-        overlay.appendChild(brk);
-      }
-    }
-
-    render();
-    window.addEventListener('resize', debounce(render, 200));
-    window.addEventListener('load', render);
-    // 图片/公式加载后高度可能变化，延迟再算一次
-    setTimeout(render, 600);
-  }
-
-  function debounce(fn, wait) {
-    var t;
-    return function () {
-      clearTimeout(t);
-      t = setTimeout(fn, wait);
-    };
   }
 })();

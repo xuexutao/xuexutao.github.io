@@ -1,8 +1,563 @@
 /* ============================================================
-   A4 主题自定义样式（通过 scripts/custom-inject.js 注入）
+   A4 主题自定义样式（通过 scripts/custom-inject.js 注入，最后加载，覆盖主题默认样式）
+   文件位置：themes/A4/source/css/custom.css（随主仓库 blog_all_origin 提交）
+   想整体换色调，只需改下面 :root 里的变量。
    ============================================================ */
 
-/* ---------- 1. 列表页 年份分组折叠 ---------- */
+/* ---------- 0. 设计变量 ---------- */
+:root {
+    --site-bg: #ecebe7;          /* 纸张外的桌面底色 */
+    --paper-bg: #ffffff;         /* 纸张颜色 */
+    --text-main: #2b2b2b;        /* 正文 */
+    --text-soft: #5f6368;        /* 次要文字 */
+    --text-mute: #9a9ea6;        /* 弱化文字（日期、页脚） */
+    --accent: #3d6fb6;           /* 主题强调色 */
+    --accent-soft: rgba(61, 111, 182, 0.10);
+    --visited: #8a7fb0;          /* 已访问链接 */
+    --line: #e6e4df;
+    --code-bg: #f4f3f0;
+    --radius: 10px;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 28px rgba(0, 0, 0, .07);
+
+    /* 让主题自带变量也走同一套颜色 */
+    --font-color-0: var(--accent);
+    --font-color-1: var(--text-main);
+    --font-color-2: var(--text-soft);
+    --font-color-3: var(--text-mute);
+    --line-1: var(--line);
+    --line-2: var(--line);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Times New Roman", "LXGW WenKai", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--text-main);
+    background: var(--site-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: rgba(61, 111, 182, .18);
+}
+
+a {
+    color: var(--accent);
+    transition: color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+/* ---------- 1. 纸张容器 ---------- */
+.paper {
+    background: var(--site-bg);
+    padding: 48px 4vw 64px;
+}
+
+.paper-main,
+.index-main {
+    background: var(--paper-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.paper-main {
+    max-width: 860px;
+    padding: 40px 64px 0;
+}
+
+.index-main {
+    max-width: 720px !important;
+    padding: 56px 56px 0;
+}
+
+/* ---------- 2. 首页 ---------- */
+.index-logo {
+    display: inline-block;
+    font-size: 2.8rem;
+    letter-spacing: .5px;
+    color: var(--text-main);
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.index-logo::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 36px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--accent);
+    transform: translateX(-50%);
+    transition: width .3s ease;
+}
+
+.index-logo:hover::after {
+    width: 72px;
+}
+
+/* 首页菜单：标题下方那一行，改成胶囊按钮 */
+.index-main > div[style*="text-align"] > div {
+    margin: 20px 0 8px !important;
+    color: var(--accent);
+    font-size: .95rem;
+    line-height: 2.6;
+    word-spacing: -4px;          /* 吃掉模板里的 &nbsp; / &nbsp; 空白 */
+}
+
+.index-main > div[style*="text-align"] > div a {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 2px 14px;
+    line-height: 1.9;
+    word-spacing: normal;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-soft);
+    background: #fafaf8;
+}
+
+.index-main > div[style*="text-align"] > div a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* 首页正文：居中、图片统一样式 */
+.index-main .post-main {
+    margin-top: 16px;
+}
+
+.index-main .post-md {
+    text-align: center;
+    color: var(--text-soft);
+}
+
+.index-main .post-md img {
+    display: block;
+    max-width: 100%;
+    margin: 18px auto;
+    border-radius: 14px !important;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, .12) !important;
+    transition: transform .3s ease;
+}
+
+.index-main .post-md img:hover {
+    transform: translateY(-3px);
+}
+
+/* ---------- 3. 内页页头（头像 + 站名 + 导航） ---------- */
+.header {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.header-img {
+    width: 52px !important;
+    height: 52px !important;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+}
+
+.header-content {
+    margin-left: 14px;
+}
+
+.logo {
+    margin-bottom: 4px;
+}
+
+.header a.logo:link,
+.header a.logo:visited {
+    color: var(--text-main);
+}
+
+.description {
+    margin-top: 0;
+    color: var(--text-mute);
+}
+
+.nav {
+    margin-top: 14px;
+    gap: 6px;
+}
+
+.nav li {
+    margin-right: 0;
+    padding: 0;
+}
+
+.nav li a,
+.nav li i a {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-style: normal;
+    color: var(--text-soft) !important;
+    text-decoration: none !important;
+}
+
+.nav li a:hover {
+    color: var(--accent) !important;
+    background: var(--accent-soft);
+}
+
+/* 当前所在页面 */
+.nav li i a {
+    color: var(--accent) !important;
+    background: var(--accent-soft);
+}
+
+.post-header {
+    margin-bottom: 32px;
+}
+
+/* ---------- 4. 文章页标题与元信息 ---------- */
+.post-main-title {
+    margin-top: 8px;
+    font-size: 2rem;
+    line-height: 1.35;
+    letter-spacing: .3px;
+}
+
+.post-head-meta-center,
+.post-head-meta-left {
+    margin-top: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed var(--line);
+    font-size: .82rem;
+}
+
+/* ---------- 5. 正文排版 ---------- */
+.post-md {
+    font-size: 16.5px;
+    line-height: 1.85;
+}
+
+.post-md p {
+    margin: 14px 0;
+}
+
+.post-md h1,
+.post-md h2,
+.post-md h3,
+.post-md h4,
+.post-md h5,
+.post-md h6 {
+    font-weight: 700;
+    line-height: 1.35;
+    scroll-margin-top: 24px;
+}
+
+.post-md h1 {
+    font-size: 1.85rem;
+    padding: 28px 0 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.post-md h2 {
+    font-size: 1.5rem;
+    padding: 22px 0 6px 14px;
+    position: relative;
+}
+
+.post-md h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 28px;
+    bottom: 10px;
+    width: 4px;
+    border-radius: 4px;
+    background: var(--accent);
+}
+
+.post-md h3 {
+    font-size: 1.25rem;
+    padding: 16px 0 4px;
+}
+
+.post-md h4 {
+    font-size: 1.1rem;
+    padding: 12px 0 2px;
+}
+
+.post-md h5,
+.post-md h6 {
+    font-size: 1rem;
+    padding: 8px 0 0;
+    color: var(--text-soft);
+}
+
+.post-md a {
+    color: var(--accent);
+    box-shadow: 0 1px 0 rgba(61, 111, 182, .35);
+}
+
+.post-md a:hover {
+    color: var(--accent);
+    background: var(--accent-soft);
+    box-shadow: 0 2px 0 var(--accent);
+}
+
+.post-md ul,
+.post-md ol {
+    padding-left: 1.6em;
+    margin: 10px 0;
+}
+
+.post-md li {
+    margin: 4px 0;
+}
+
+.post-md li::marker {
+    color: var(--accent);
+}
+
+.post-md blockquote {
+    margin: 18px 0;
+    padding: 10px 18px;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    background: #f6f8fb;
+    color: var(--text-soft);
+}
+
+.post-md blockquote p {
+    margin: 6px 0;
+}
+
+.post-md hr {
+    margin: 36px auto;
+    width: 60%;
+    background: linear-gradient(to right, transparent, var(--line) 20%, var(--line) 80%, transparent);
+}
+
+.post-md img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 18px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .08);
+}
+
+/* 行内代码 */
+.post-md code {
+    background: var(--code-bg);
+    color: #c7254e;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: .88em;
+    font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* 代码块 */
+.post-md pre {
+    margin: 18px 0;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .10);
+}
+
+.post-md pre code {
+    color: inherit;
+    background: transparent;
+    padding: 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+
+/* 表格：可横向滚动 + 带边框表头 */
+.post-md table {
+    display: block;
+    overflow-x: auto;
+    width: max-content;
+    max-width: 100%;
+    margin: 18px auto;
+    border-collapse: collapse;
+    font-size: .92em;
+}
+
+.post-md table th,
+.post-md table td,
+.post-md table tr:nth-child(odd) td,
+.post-md table tr:nth-child(even) td {
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+}
+
+.post-md table th {
+    background: #f5f6f8;
+    font-weight: 600;
+}
+
+.post-md table tr:nth-child(even) td {
+    background: #fbfbfa;
+}
+
+/* 代码块（带行号的 highlight 也是 table）不继承普通表格样式 */
+.post-md figure table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    border: none;
+}
+
+.post-md figure table td,
+.post-md figure table tr:nth-child(odd) td,
+.post-md figure table tr:nth-child(even) td {
+    display: table-cell;
+    vertical-align: top;
+    border: none;
+    background: transparent;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.post-md figure td.gutter {
+    width: 1%;
+    white-space: nowrap;
+    padding-left: 14px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.post-md figure td.code {
+    padding-left: 10px;
+    padding-right: 14px;
+}
+
+.post-md figure {
+    margin: 18px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .10);
+}
+
+/* MathJax 公式过宽时横向滚动 */
+.post-md mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0;
+}
+
+/* 顶部目录 */
+.post-md .post-toc {
+    margin: 8px 0 28px;
+    padding: 14px 20px;
+    background: #fafaf8;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: .9rem;
+}
+
+.post-md .post-toc a {
+    box-shadow: none;
+    color: var(--text-soft);
+}
+
+.post-md .post-toc a:hover {
+    color: var(--accent);
+    background: none;
+    box-shadow: none;
+}
+
+/* 文末信息 & 上一篇/下一篇 */
+.post-meta {
+    margin-top: 28px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-size: .82rem;
+}
+
+.post-meta a {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    font-style: normal;
+}
+
+.post-footer-pre-next {
+    gap: 12px;
+    padding: 12px 0 8px;
+    font-size: .9rem;
+    color: var(--text-mute);
+}
+
+/* ---------- 6. 文章列表 / 归档 ---------- */
+.archive li {
+    padding: 9px 12px;
+    border-radius: 8px;
+    align-items: baseline;
+    transition: background-color .15s ease;
+}
+
+.archive li:nth-child(odd),
+.archive li:nth-child(even) {
+    background: transparent;
+}
+
+.archive li:hover {
+    background: #f6f7f9;
+}
+
+.archive li span.archive-date {
+    width: 80px;
+    flex: 0 0 80px;
+    color: var(--text-mute);
+    font-size: .88rem;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    white-space: nowrap;
+}
+
+.archive-main {
+    flex: 1 1 auto;
+}
+
+.archive-main a:link {
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.archive-main a:visited {
+    color: var(--visited);
+    text-decoration: none;
+}
+
+.archive-main a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* 年份分组标题 */
+.archive li span.year-font-color {
+    width: auto !important;
+    flex: 0 1 auto;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main) !important;
+}
+
+.archive li:has(.year-font-color) {
+    margin-top: 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+}
+
+.archive li:has(.year-font-color):hover {
+    background: transparent;
+}
+
+/* ---------- 7. 列表页 年份分组折叠 ---------- */
 .archive .archive-fold-header {
     cursor: pointer;
     user-select: none;
@@ -13,13 +568,15 @@
     opacity: 0.72;
 }
 
-.archive-fold-arrow {
+.archive li span.archive-fold-arrow {
     display: inline-block;
+    flex: 0 0 auto;
     width: 1em;
-    margin-right: 4px;
-    color: var(--font-color-3, #aaa);
+    margin-right: 6px;
+    color: var(--accent);
     font-size: 0.9em;
-    transition: transform 0.15s ease;
+    text-align: center;
+    transition: transform 0.2s ease;
 }
 
 /* 收起时箭头朝右，展开时朝下 */
@@ -34,39 +591,83 @@
     content: "\25B8"; /* ▸ */
 }
 
-/* ---------- 2. 文章页 A4 纸分隔 ---------- */
-.a4-paper {
-    position: relative;
+/* ---------- 8. 左侧浮动目录 ---------- */
+.left-toc-container {
+    left: 12px;
+    max-width: 240px;
 }
 
-/* 覆盖层：铺满整张纸，不拦截鼠标事件 */
-.a4-page-guides {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 5;
-    overflow: hidden;
+.tocify {
+    font-size: 13px;
 }
 
-/* 每一道“纸缝”：与站点背景同色，形成两张 A4 之间的间隙 + 上下阴影 */
-.a4-page-break {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 26px;
-    transform: translateY(-13px);
-    background: #e4e4e4;
-    box-shadow:
-        0 -7px 9px -5px rgba(0, 0, 0, 0.30),
-        inset 0 8px 9px -8px rgba(0, 0, 0, 0.18);
+.tocify li a {
+    color: var(--text-mute);
+}
+
+.tocify li a:hover,
+.tocify .active > a,
+.tocify-item.active a {
+    color: var(--accent) !important;
+}
+
+/* ---------- 9. 页脚 ---------- */
+.footer-last {
+    margin-top: 12px;
+    padding: 12px 0 28px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    gap: 8px;
+}
+
+.footer-last-without-line {
+    padding-top: 12px;
+    font-size: 11px;
+    gap: 8px;
+}
+
+/* ---------- 10. 响应式 ---------- */
+@media only screen and (max-width: 1100px) {
+    .left-toc-container {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .paper {
+        padding: 16px 10px 32px;
+    }
+    .paper-main {
+        padding: 24px 20px 0;
+    }
+    .index-main {
+        padding: 36px 20px 0;
+    }
+    .index-logo {
+        font-size: 2.2rem;
+    }
+    .post-main-title {
+        font-size: 1.6rem;
+    }
+    .post-md {
+        font-size: 16px;
+    }
+    .post-md h1 { font-size: 1.55rem; }
+    .post-md h2 { font-size: 1.3rem; }
+    .post-md h3 { font-size: 1.15rem; }
 }
 
 @media only screen and (max-width: 600px) {
-    .a4-page-break {
-        height: 18px;
-        transform: translateY(-9px);
+    .archive li span.archive-date {
+        width: 64px;
+        flex-basis: 64px;
+    }
+}
+
+@media print {
+    .paper-main,
+    .index-main {
+        box-shadow: none;
+        border-radius: 0;
     }
 }

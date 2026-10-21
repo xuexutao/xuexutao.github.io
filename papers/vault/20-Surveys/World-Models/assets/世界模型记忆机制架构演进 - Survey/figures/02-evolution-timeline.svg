@@ -1,0 +1,25 @@
+<svg viewBox="0 0 680 470" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>世界模型记忆机制的演进时间线</title>
+<desc>从固定长度视频扩散到循环隐状态与训练对齐，共五个演进阶段。</desc>
+<line x1="62" y1="52" x2="62" y2="428" stroke="#888780" stroke-width="0.5"/>
+<circle cx="62" cy="72" r="7" fill="#185FA5"/>
+<rect x="92" y="44" width="548" height="56" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="112" y="64" dominant-baseline="central" font-size="13" font-weight="500" fill="#0C447C">2023 前 · 固定长度视频扩散</text>
+<text x="112" y="84" dominant-baseline="central" font-size="12" fill="#185FA5">Phenaki · LVDM —— 无需记忆，只生成一段固定视频</text>
+<circle cx="62" cy="156" r="7" fill="#185FA5"/>
+<rect x="92" y="128" width="548" height="56" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="112" y="148" dominant-baseline="central" font-size="13" font-weight="500" fill="#0C447C">2023–2024初 · 滑动窗口自回归</text>
+<text x="112" y="168" dominant-baseline="central" font-size="12" fill="#185FA5">Genie1 · DIAMOND · UniSim —— 记忆 = context window + KV cache</text>
+<circle cx="62" cy="240" r="7" fill="#378ADD"/>
+<rect x="92" y="212" width="548" height="56" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="112" y="232" dominant-baseline="central" font-size="13" font-weight="500" fill="#0C447C">2024.10–12 · 实时交互 + 长时记忆爆发</text>
+<text x="112" y="252" dominant-baseline="central" font-size="12" fill="#185FA5">Oasis · Genie2 —— 暴露重访漂移、KV 成本爆炸</text>
+<circle cx="62" cy="324" r="7" fill="#378ADD"/>
+<rect x="92" y="296" width="548" height="56" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="112" y="316" dominant-baseline="central" font-size="13" font-weight="500" fill="#0C447C">2025 · 显式几何 + 检索 + 压缩</text>
+<text x="112" y="336" dominant-baseline="central" font-size="12" fill="#185FA5">VMem · Spmem · Context-as-Memory · RELIC · Infinite-World</text>
+<circle cx="62" cy="408" r="7" fill="#534AB7"/>
+<rect x="92" y="380" width="548" height="56" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="112" y="400" dominant-baseline="central" font-size="13" font-weight="500" fill="#3C3489">2025末–2026 · 循环隐状态 + 训练对齐</text>
+<text x="112" y="420" dominant-baseline="central" font-size="12" fill="#534AB7">SSM · TTT · LIVE · Genie3 —— 走向分钟级一致性</text>
+</svg>

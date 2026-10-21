@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 470" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6368"/>
+    </marker>
+    <marker id="arrDown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#188038"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="680" height="470" fill="#ffffff"/>
+
+  <text x="340" y="32" text-anchor="middle" font-size="17" font-weight="700" fill="#202124">因果视频蒸馏路线：从「慢双向」到「快因果自回归」</text>
+
+  <!-- 泳道背景 -->
+  <rect x="8" y="55" width="664" height="100" rx="8" fill="#f3f7fd"/>
+  <rect x="8" y="175" width="664" height="100" rx="8" fill="#fdf6ec"/>
+  <rect x="8" y="310" width="664" height="100" rx="8" fill="#f0f8f2"/>
+
+  <!-- 泳道标签 -->
+  <text x="24" y="88" font-size="12" font-weight="700" fill="#1a73e8">① 教师层</text>
+  <text x="24" y="106" font-size="12" font-weight="700" fill="#1a73e8">双向扩散</text>
+  <text x="24" y="208" font-size="12" font-weight="700" fill="#e37400">② 蒸馏思想</text>
+  <text x="24" y="226" font-size="12" font-weight="700" fill="#e37400">DMD 家族</text>
+  <text x="24" y="343" font-size="12" font-weight="700" fill="#188038">③ 主线</text>
+  <text x="24" y="361" font-size="12" font-weight="700" fill="#188038">因果自回归</text>
+
+  <!-- 泳道1 节点 -->
+  <rect x="110" y="68" width="330" height="74" rx="10" fill="#ffffff" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="275" y="94" text-anchor="middle" font-size="14" font-weight="700" fill="#1a73e8">双向扩散视频模型（教师）</text>
+  <text x="275" y="116" text-anchor="middle" font-size="11.5" fill="#202124">Wan2.1 · LTX-2</text>
+  <text x="275" y="134" text-anchor="middle" font-size="10.5" fill="#5f6368">全双向注意力 · 慢 · 质量高</text>
+
+  <!-- 泳道2 节点 -->
+  <rect x="110" y="188" width="150" height="70" rx="10" fill="#ffffff" stroke="#e37400" stroke-width="1.5"/>
+  <text x="185" y="214" text-anchor="middle" font-size="13.5" font-weight="700" fill="#e37400">DMD</text>
+  <text x="185" y="234" text-anchor="middle" font-size="10.5" fill="#202124">分布匹配蒸馏</text>
+  <text x="185" y="250" text-anchor="middle" font-size="10" fill="#5f6368">KL · 真实/生成分数差</text>
+
+  <rect x="275" y="188" width="150" height="70" rx="10" fill="#ffffff" stroke="#e37400" stroke-width="1.5"/>
+  <text x="350" y="214" text-anchor="middle" font-size="13.5" font-weight="700" fill="#e37400">DMD2</text>
+  <text x="350" y="234" text-anchor="middle" font-size="10.5" fill="#202124">改进分布匹配</text>
+  <text x="350" y="250" text-anchor="middle" font-size="10" fill="#5f6368">GAN + TTUR</text>
+
+  <rect x="440" y="188" width="150" height="70" rx="10" fill="#ffffff" stroke="#e37400" stroke-width="1.5"/>
+  <text x="515" y="214" text-anchor="middle" font-size="13.5" font-weight="700" fill="#e37400">SiD</text>
+  <text x="515" y="234" text-anchor="middle" font-size="10.5" fill="#202124">分数恒等蒸馏</text>
+  <text x="515" y="250" text-anchor="middle" font-size="10" fill="#5f6368">MESM · 数据无关</text>
+
+  <!-- 泳道3 节点 -->
+  <rect x="110" y="328" width="122" height="64" rx="10" fill="#ffffff" stroke="#188038" stroke-width="1.5"/>
+  <text x="171" y="352" text-anchor="middle" font-size="12.5" font-weight="700" fill="#188038">CausVid</text>
+  <text x="171" y="370" text-anchor="middle" font-size="10" fill="#5f6368">块间因果</text>
+  <text x="171" y="384" text-anchor="middle" font-size="10" fill="#5f6368">非对称蒸馏</text>
+
+  <rect x="244" y="328" width="122" height="64" rx="10" fill="#ffffff" stroke="#188038" stroke-width="1.5"/>
+  <text x="305" y="352" text-anchor="middle" font-size="12.5" font-weight="700" fill="#188038">Self-Forcing</text>
+  <text x="305" y="370" text-anchor="middle" font-size="10" fill="#5f6368">Self-Rollout</text>
+  <text x="305" y="384" text-anchor="middle" font-size="10" fill="#5f6368">滚动 KV</text>
+
+  <rect x="378" y="328" width="122" height="64" rx="10" fill="#ffffff" stroke="#188038" stroke-width="1.5"/>
+  <text x="439" y="352" text-anchor="middle" font-size="12.5" font-weight="700" fill="#188038">Self-Forcing++</text>
+  <text x="439" y="370" text-anchor="middle" font-size="10" fill="#5f6368">BNI 初始化</text>
+  <text x="439" y="384" text-anchor="middle" font-size="10" fill="#5f6368">分钟级</text>
+
+  <rect x="512" y="328" width="122" height="64" rx="10" fill="#ffffff" stroke="#188038" stroke-width="1.5"/>
+  <text x="573" y="352" text-anchor="middle" font-size="12.5" font-weight="700" fill="#188038">OmniForcing</text>
+  <text x="573" y="370" text-anchor="middle" font-size="10" fill="#5f6368">音视频联合</text>
+  <text x="573" y="384" text-anchor="middle" font-size="10" fill="#5f6368">实时流式</text>
+
+  <!-- 泳道2 横向箭头 -->
+  <line x1="262" y1="223" x2="273" y2="223" stroke="#e37400" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="427" y1="223" x2="438" y2="223" stroke="#e37400" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- 泳道3 横向箭头 -->
+  <line x1="234" y1="360" x2="242" y2="360" stroke="#188038" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="368" y1="360" x2="376" y2="360" stroke="#188038" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="502" y1="360" x2="510" y2="360" stroke="#188038" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- 泳道1 → 泳道3 蒸馏箭头 -->
+  <path d="M 380 144 L 380 326" stroke="#188038" stroke-width="1.8" fill="none" marker-end="url(#arrDown)"/>
+  <text x="390" y="240" font-size="10.5" fill="#188038" font-weight="600">蒸馏教师</text>
+
+  <!-- 泳道2 → 泳道3 思想下沉箭头 -->
+  <path d="M 515 260 L 515 326" stroke="#188038" stroke-width="1.8" fill="none" marker-end="url(#arrDown)"/>
+  <text x="524" y="300" font-size="10.5" fill="#188038" font-weight="600">思想迁移到视频</text>
+
+  <!-- 底部能力轴 -->
+  <text x="110" y="434" font-size="10.5" fill="#5f6368">慢 · 双向 · 高质量</text>
+  <text x="340" y="434" font-size="10.5" fill="#5f6368" text-anchor="middle">快 · 因果 · 长视频</text>
+  <text x="573" y="434" font-size="10.5" fill="#5f6368" text-anchor="end">实时 · 流式 · 多模态</text>
+  <line x1="110" y1="424" x2="634" y2="424" stroke="#dadce0" stroke-width="1"/>
+</svg>
