@@ -56,6 +56,21 @@ p,
     white-space: normal !important;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    word-break: normal;
+}
+
+/* 文章正文两端对齐（排除首页居中介绍区） */
+.post-md:not(.index-post-md) p,
+.post-md:not(.index-post-md) li {
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+
+/* 仅包含图片或独立块级公式的段落保持居中，不受两端对齐拉伸影响 */
+.post-md p:has(> a.gallery-item:only-child),
+.post-md p:has(> .math.display:only-child),
+.post-md p:has(> mjx-container[display="true"]:only-child) {
+    text-align: center;
 }
 
 ::selection {
@@ -689,21 +704,28 @@ a {
     display: inline;
 }
 
-.post-md .math.inline mjx-container {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 1px;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+.post-md mjx-container:not([display="true"]) {
+    display: inline !important;
+    margin: 0 2px;
+    padding: 0;
 }
 
+.post-md mjx-container:not([display="true"]) > svg {
+    display: inline !important;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.post-md .math.display,
 .post-md mjx-container[display="true"] {
-    display: block;
+    display: block !important;
+    width: 100%;
+    text-align: center;
     overflow-x: auto;
     overflow-y: hidden;
-    margin: 16px 0 !important;
-    padding: 6px 4px;
+    margin: 14px 0 !important;
+    padding: 4px 0;
 }
 
 /* 顶部目录卡片 (.post-toc) */

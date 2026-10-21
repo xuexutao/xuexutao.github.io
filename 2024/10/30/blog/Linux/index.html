@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="Linux" />
+    <meta name="description" content="Windows/macOS 连接 VMware Ubuntu：SSH、SCP 与密钥认证" />
     <meta name="hexo-theme-A4" content="v1.9.6" />
     <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
     <title>Xuext</title>
@@ -59,119 +59,7 @@
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
     
     
         <style>
@@ -267,7 +155,7 @@ mjx-container[display="true"] + br {
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    Linux
+                    Windows/macOS 连接 VMware Ubuntu：SSH、SCP 与密钥认证
                 </div>
             
         
@@ -286,13 +174,13 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：291</span>
+                     <span>字数总计：3.2k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：1分钟</span>
+                    <span>阅读估时：12分钟</span>
                 
                 
                     
@@ -308,24 +196,181 @@ mjx-container[display="true"] + br {
     <div class="post-md">
         
             
-                
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%8E%E6%9C%80%E7%BB%88%E7%9B%AE%E6%A0%87"><span class="post-toc-text">使用场景与最终目标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%88%E9%80%89%E5%AF%B9-vmware-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F"><span class="post-toc-text">先选对 VMware 网络模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nat"><span class="post-toc-text">NAT</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A1%A5%E6%8E%A5"><span class="post-toc-text">桥接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="post-toc-text">端口转发</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9C%A8-ubuntu-%E5%AE%89%E8%A3%85%E5%B9%B6%E6%A3%80%E6%9F%A5-openssh-server"><span class="post-toc-text">在 Ubuntu 安装并检查 OpenSSH Server</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E6%89%BE%E8%99%9A%E6%8B%9F%E6%9C%BA-ip"><span class="post-toc-text">查找虚拟机 IP</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%A8%E6%85%8E%E9%85%8D%E7%BD%AE-ubuntu-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="post-toc-text">谨慎配置 Ubuntu 防火墙</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8E-windows-%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">从 Windows 连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8E-macos-%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">从 macOS 连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8-scp-%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="post-toc-text">使用 SCP 传输文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#windows-powershell"><span class="post-toc-text">Windows PowerShell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#macos"><span class="post-toc-text">macOS</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5%E8%AE%A4%E8%AF%81"><span class="post-toc-text">配置密钥认证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="post-toc-text">1. 在宿主机生成密钥</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%8A%E5%85%AC%E9%92%A5%E5%8A%A0%E5%85%A5-ubuntu"><span class="post-toc-text">2. 把公钥加入 Ubuntu</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%8C%E8%AF%81%E5%B9%B6%E7%AE%80%E5%8C%96%E8%BF%9E%E6%8E%A5"><span class="post-toc-text">3. 验证并简化连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%AF%E9%80%89%E5%85%B3%E9%97%AD%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="post-toc-text">4. 可选：关闭密码登录</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%94%A8-sha-256-%E6%A0%A1%E9%AA%8C%E4%BC%A0%E8%BE%93%E7%BB%93%E6%9E%9C"><span class="post-toc-text">用 SHA-256 校验传输结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5"><span class="post-toc-text">常见故障排查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6"><span class="post-toc-text">连接超时</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#connection-refused"><span class="post-toc-text">Connection refused</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#permission-denied"><span class="post-toc-text">Permission denied</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%AF%86%E9%92%A5%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96"><span class="post-toc-text">主机密钥发生变化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#scp-%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5"><span class="post-toc-text">SCP 写入失败</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%89%E5%85%A8%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95"><span class="post-toc-text">安全检查清单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%98%E6%96%B9%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-text">官方参考资料</span></a></li></ol>
             
         
-        <div class=".article-gallery"><p>在 Linux 虚拟机中安装并启动 SSH 服务（假设使用 OpenSSH）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl start ssh</span><br><span class="line"><span class="comment"># 可以通过以下命令检查 SSH 服务状态：</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查防火墙规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 22/tcp</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span>  <span class="comment"># 启用防火墙</span></span><br></pre></td></tr></table></figure>
-<p>要使 Windows 主机能够访问 Linux 虚拟机的 22 号端口，可以在 VMware 中将网络模式设置为 桥接模式 或 NAT 模式：</p>
+        <div class=".article-gallery"><h2 id="使用场景与最终目标">使用场景与最终目标</h2>
+<p>本文面向这样的本地开发环境：</p>
 <ul>
-<li>桥接模式：Linux 虚拟机会直接连接到与主机相同的网络，分配一个与主机在同一网段的 IP 地址，方便 Windows 直接访问。</li>
-<li>NAT 模式：Linux 虚拟机会通过主机的 IP 地址访问外部网络。在这种模式下，需要进行端口转发，将主机的某个端口（如 2222）映射到虚拟机的 22 端口。</li>
+<li>宿主机是 Windows 或 macOS；</li>
+<li>VMware Workstation/Fusion 中运行 Ubuntu；</li>
+<li>宿主机通过 OpenSSH 登录虚拟机，并使用 SCP 双向传输文件。</li>
 </ul>
-<p>将本地文件传入到VM的虚拟机中，使用csp命令（速度超快！）: <strong>scp &lt;本地文件路径&gt; username@<linux_vm_ip>:&lt;目标路径&gt;</linux_vm_ip></strong></p>
-<blockquote>
+<p>完成后应能从宿主机执行 <code>ssh</code> 和 <code>scp</code>，无需在虚拟机中开启不必要的共享目录，也不需要把 SSH 暴露到公网。</p>
+<p>文中的 <code>YOUR_VM_USER</code>、<code>YOUR_VM_IP</code>、<code>YOUR_HOST_PORT</code> 都是占位值，必须替换成自己的用户名、虚拟机地址和端口。不要把示例地址当成真实配置。</p>
+<h2 id="先选对-vmware-网络模式">先选对 VMware 网络模式</h2>
+<p>SSH 能否连接，首先取决于宿主机和虚拟机之间是否有可达的 IP 路径。切换虚拟网卡模式前，建议先正常关闭虚拟机。</p>
+<h3 id="nat">NAT</h3>
+<p>NAT 通常是笔记本开发环境的首选：</p>
 <ul>
-<li><code>C:\Users\TSingSV&gt;scp C:\Users\TSingSV\Downloads\cuda_11.6.0_511.23_windows.exe xuext@192.168.119.128:/home/xuext/software</code></li>
-<li><code>xuext@192.168.119.128's password:</code></li>
-<li><code>cuda_11.6.0_511.23_windows.exe 100% 2456MB 135.3MB/s 00:18</code></li>
+<li>虚拟机位于 VMware 创建的私有网段，并借用宿主机连接外网；</li>
+<li>宿主机通常可以直接访问虚拟机的私有 IP；</li>
+<li>局域网里的其他机器默认不能主动连接该虚拟机。</li>
 </ul>
-</blockquote>
+<p>因此，<strong>宿主机连接 NAT 虚拟机时通常不需要端口转发</strong>，直接连接虚拟机 IP 的 22 端口即可。只有外部机器需要经宿主机进入 NAT 虚拟机，或当前 VMware 网络配置无法直接路由时，才考虑端口转发。</p>
+<h3 id="桥接">桥接</h3>
+<p>桥接模式让虚拟机像局域网中的独立设备一样，从物理网络获得地址：</p>
+<ul>
+<li>宿主机和局域网内其他设备可直接访问虚拟机；</li>
+<li>虚拟机会暴露在与宿主机相同的网络中，防火墙和账号安全更重要；</li>
+<li>企业 Wi-Fi、访客网络、无线 AP 隔离或网络准入策略可能禁止额外设备，导致桥接无法获取地址。</li>
+</ul>
+<p>需要让局域网中的多台可信设备访问虚拟机时再使用桥接；只在本机开发时，NAT 的暴露面更小。</p>
+<h3 id="端口转发">端口转发</h3>
+<p>端口转发不是一种独立网络模式，而是 NAT 上的入站映射。例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">宿主机 TCP 2222 -&gt; Ubuntu 虚拟机 TCP 22</span><br></pre></td></tr></table></figure>
+<p>VMware Workstation Pro 可在 <code>Edit &gt; Virtual Network Editor &gt; VMnet8 &gt; NAT Settings</code> 中添加映射。虚拟机 IP 应固定，或在 VMware DHCP 中保留，否则地址变化后映射会失效。VMware Fusion 不同版本的配置入口并不一致，应以对应版本文档为准，不要直接复制来历不明的 <code>nat.conf</code> 修改命令。</p>
+<p>配置映射后，从宿主机本地连接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p YOUR_HOST_PORT YOUR_VM_USER@127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>不同 VMware 版本可能让映射端口监听宿主机的多个网络接口；使用 <code>127.0.0.1</code> 连接并不等于监听范围仅限回环地址。配置后应检查实际监听地址，并用宿主机防火墙把来源限制为本机或必要的可信设备。端口转发会扩大攻击面；本地开发优先使用 NAT 私有 IP、桥接后的受限防火墙规则，或可信 VPN，不要把转发端口直接开放到公网。把 22 改成其他端口只能减少扫描噪声，不能替代密钥认证和访问控制。</p>
+<h2 id="在-ubuntu-安装并检查-openssh-server">在 Ubuntu 安装并检查 OpenSSH Server</h2>
+<p>在 VMware 控制台中登录 Ubuntu，执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install --<span class="built_in">yes</span> openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> --now ssh</span><br><span class="line">systemctl is-active ssh</span><br><span class="line"><span class="built_in">sudo</span> systemctl status ssh --no-pager</span><br><span class="line"><span class="built_in">sudo</span> ss -lntp <span class="string">&quot;sport = :22&quot;</span></span><br></pre></td></tr></table></figure>
+<p>预期结果是服务状态为 <code>active</code>，并且有进程监听 TCP 22。Ubuntu 的 systemd 服务名是 <code>ssh</code>，软件包和守护进程则分别叫 <code>openssh-server</code>、<code>sshd</code>。</p>
+<h2 id="查找虚拟机-ip">查找虚拟机 IP</h2>
+<p>在 Ubuntu 中查看接口和地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip -brief address show</span><br><span class="line">ip route</span><br><span class="line">ip route get 1.1.1.1</span><br></pre></td></tr></table></figure>
+<p>重点关注 VMware 虚拟网卡上处于 <code>UP</code> 状态的 IPv4 地址。<code>ip route get</code> 只做路由查询，其输出中的 <code>src</code> 往往就是当前出站地址。不要把下面这些地址误当成宿主机可连接地址：</p>
+<ul>
+<li><code>127.0.0.1</code>：虚拟机自身的回环地址；</li>
+<li><code>169.254.0.0/16</code>：通常表示 DHCP 没有成功；</li>
+<li>Docker、容器或 VPN 创建的虚拟接口地址。</li>
+</ul>
+<p>如果 NAT 下没有地址，检查 VMware 虚拟网卡是否勾选“Connected/Connect at power on”，然后检查 Ubuntu 的网络状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip <span class="built_in">link</span></span><br><span class="line">networkctl status</span><br></pre></td></tr></table></figure>
+<h2 id="谨慎配置-ubuntu-防火墙">谨慎配置 Ubuntu 防火墙</h2>
+<p>先查看 UFW 是否启用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw status verbose</span><br></pre></td></tr></table></figure>
+<p>如果状态是 <code>inactive</code>，它当前不会阻止 SSH；不要为了“修复连接”盲目启用。如果你明确要启用 UFW，应先添加 SSH 规则，再启用防火墙：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow from YOUR_HOST_OR_SUBNET to any port 22 proto tcp &amp;&amp;</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span> &amp;&amp;</span><br><span class="line"><span class="built_in">sudo</span> ufw status numbered</span><br></pre></td></tr></table></figure>
+<p>其中 <code>YOUR_HOST_OR_SUBNET</code> 必须替换为可信宿主机地址或管理网段，不可原样执行。<code>&amp;&amp;</code> 确保添加允许规则失败时不会继续启用防火墙。若来源地址确实无法固定，才把第一条命令改为范围更宽的规则：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow OpenSSH</span><br></pre></td></tr></table></figure>
+<p>两条允许规则应二选一；不要先添加全局 <code>OpenSSH</code> 规则，又误以为后加的来源限制会收窄它。启用前还要确认其他必需服务已有对应规则。</p>
+<p>远程修改防火墙存在把自己锁在门外的风险。应保留 VMware 控制台，在新终端确认 SSH 可用后再结束旧会话。</p>
+<h2 id="从-windows-连接">从 Windows 连接</h2>
+<p>较新的 Windows 10/11 通常已提供 OpenSSH Client。打开 PowerShell，先设置当前会话变量：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$VmUser</span> = <span class="string">&quot;YOUR_VM_USER&quot;</span></span><br><span class="line"><span class="variable">$VmIp</span> = <span class="string">&quot;YOUR_VM_IP&quot;</span></span><br><span class="line"><span class="built_in">Get-Command</span> ssh</span><br><span class="line"><span class="built_in">Test-NetConnection</span> <span class="literal">-ComputerName</span> <span class="variable">$VmIp</span> <span class="literal">-Port</span> <span class="number">22</span></span><br><span class="line">ssh <span class="string">&quot;<span class="variable">$VmUser</span>@<span class="variable">$VmIp</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>首次连接会显示服务器主机密钥指纹。不要未经核对就输入 <code>yes</code>。可先在 Ubuntu 控制台读取 ED25519 指纹，再与客户端提示比较：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub</span><br></pre></td></tr></table></figure>
+<h2 id="从-macos-连接">从 macOS 连接</h2>
+<p>macOS 自带 OpenSSH 客户端。在 Terminal 中执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">VM_USER=<span class="string">&quot;YOUR_VM_USER&quot;</span></span><br><span class="line">VM_IP=<span class="string">&quot;YOUR_VM_IP&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v ssh</span><br><span class="line">nc -vz <span class="string">&quot;<span class="variable">$VM_IP</span>&quot;</span> 22</span><br><span class="line">ssh <span class="string">&quot;<span class="variable">$&#123;VM_USER&#125;</span>@<span class="variable">$&#123;VM_IP&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>nc</code> 只验证 TCP 端口是否可达；即使 <code>ping</code> 因 ICMP 被过滤而失败，SSH 仍可能正常。首次连接同样要核对主机密钥指纹。</p>
+<h2 id="使用-scp-传输文件">使用 SCP 传输文件</h2>
+<p>SCP 走 SSH 通道，不需要另开文件传输服务。先在虚拟机用户目录创建接收目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p <span class="string">&quot;<span class="variable">$HOME</span>/uploads&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="windows-powershell">Windows PowerShell</h3>
+<p>上传单个文件：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$VmUser</span> = <span class="string">&quot;YOUR_VM_USER&quot;</span></span><br><span class="line"><span class="variable">$VmIp</span> = <span class="string">&quot;YOUR_VM_IP&quot;</span></span><br><span class="line">scp <span class="string">&quot;<span class="variable">$HOME</span>\Downloads\dataset.zip&quot;</span> <span class="string">&quot;<span class="variable">$</span>&#123;VmUser&#125;@<span class="variable">$</span>&#123;VmIp&#125;:uploads/&quot;</span></span><br></pre></td></tr></table></figure>
+<p>下载文件到当前目录：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp <span class="string">&quot;<span class="variable">$</span>&#123;VmUser&#125;@<span class="variable">$</span>&#123;VmIp&#125;:uploads/result.tar.gz&quot;</span> .</span><br></pre></td></tr></table></figure>
+<p>递归上传目录：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp <span class="literal">-r</span> <span class="string">&quot;<span class="variable">$HOME</span>\Documents\demo-data&quot;</span> <span class="string">&quot;<span class="variable">$</span>&#123;VmUser&#125;@<span class="variable">$</span>&#123;VmIp&#125;:uploads/&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="macos">macOS</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VM_USER=<span class="string">&quot;YOUR_VM_USER&quot;</span></span><br><span class="line">VM_IP=<span class="string">&quot;YOUR_VM_IP&quot;</span></span><br><span class="line"></span><br><span class="line">scp <span class="string">&quot;<span class="variable">$HOME</span>/Downloads/dataset.zip&quot;</span> <span class="string">&quot;<span class="variable">$&#123;VM_USER&#125;</span>@<span class="variable">$&#123;VM_IP&#125;</span>:uploads/&quot;</span></span><br><span class="line">scp <span class="string">&quot;<span class="variable">$&#123;VM_USER&#125;</span>@<span class="variable">$&#123;VM_IP&#125;</span>:uploads/result.tar.gz&quot;</span> .</span><br><span class="line">scp -r <span class="string">&quot;<span class="variable">$HOME</span>/Documents/demo-data&quot;</span> <span class="string">&quot;<span class="variable">$&#123;VM_USER&#125;</span>@<span class="variable">$&#123;VM_IP&#125;</span>:uploads/&quot;</span></span><br></pre></td></tr></table></figure>
+<p>使用 NAT 端口转发时，SCP 的端口参数是大写 <code>-P</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P YOUR_HOST_PORT ./dataset.zip YOUR_VM_USER@127.0.0.1:uploads/</span><br></pre></td></tr></table></figure>
+<p>目标目录没有写权限时，先上传到自己的主目录，再登录虚拟机用 <code>sudo install</code> 或 <code>sudo mv</code> 移动。不要用 <code>chmod 777</code> 解决权限问题。</p>
+<h2 id="配置密钥认证">配置密钥认证</h2>
+<h3 id="在宿主机生成密钥">1. 在宿主机生成密钥</h3>
+<p>Windows PowerShell 与 macOS Terminal 都可执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -a 64 -C <span class="string">&quot;vmware-ubuntu&quot;</span></span><br></pre></td></tr></table></figure>
+<p>为私钥设置口令，并妥善备份。若默认路径已存在密钥，不要直接覆盖；另选文件名，并在 SSH 配置中指定。</p>
+<p>macOS 上可检查并收紧默认私钥权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 700 <span class="string">&quot;<span class="variable">$HOME</span>/.ssh&quot;</span></span><br><span class="line"><span class="built_in">chmod</span> 600 <span class="string">&quot;<span class="variable">$HOME</span>/.ssh/id_ed25519&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Windows 上由 <code>ssh-keygen</code> 新建在用户配置目录中的私钥通常会继承合适的 ACL。若私钥是复制进来的，或客户端报告权限过宽，可在 PowerShell 中移除继承并重新授予当前用户读取权限，然后检查结果中是否还有不必要的显式授权：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">icacls <span class="string">&quot;<span class="variable">$HOME</span>\.ssh\id_ed25519&quot;</span> /inheritance:<span class="built_in">r</span> /grant:<span class="built_in">r</span> <span class="string">&quot;<span class="variable">$</span>(<span class="variable">$env:USERNAME</span>):(R)&quot;</span></span><br><span class="line">icacls <span class="string">&quot;<span class="variable">$HOME</span>\.ssh\id_ed25519&quot;</span></span><br></pre></td></tr></table></figure>
+<p>使用自定义文件名时应同步替换路径。这里只处理私钥；<code>.pub</code> 公钥可以公开，但仍不应被他人篡改。</p>
+<h3 id="把公钥加入-ubuntu">2. 把公钥加入 Ubuntu</h3>
+<p>macOS 或其他提供 <code>ssh-copy-id</code> 的环境可执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i <span class="string">&quot;<span class="variable">$HOME</span>/.ssh/id_ed25519.pub&quot;</span> YOUR_VM_USER@YOUR_VM_IP</span><br></pre></td></tr></table></figure>
+<p>Windows PowerShell 可使用已有的密码登录通道写入公钥：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> <span class="string">&quot;<span class="variable">$HOME</span>\.ssh\id_ed25519.pub&quot;</span> | ssh <span class="string">&quot;YOUR_VM_USER@YOUR_VM_IP&quot;</span> <span class="string">&quot;umask 077; mkdir -p ~/.ssh; cat &gt;&gt; ~/.ssh/authorized_keys&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后在 Ubuntu 检查权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 700 <span class="string">&quot;<span class="variable">$HOME</span>/.ssh&quot;</span></span><br><span class="line"><span class="built_in">chmod</span> 600 <span class="string">&quot;<span class="variable">$HOME</span>/.ssh/authorized_keys&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="验证并简化连接">3. 验证并简化连接</h3>
+<p>先强制测试公钥认证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o BatchMode=<span class="built_in">yes</span> -o PreferredAuthentications=publickey YOUR_VM_USER@YOUR_VM_IP</span><br></pre></td></tr></table></figure>
+<p>确认成功后，可在宿主机的 <code>~/.ssh/config</code> 添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host ubuntu-vm</span><br><span class="line">    HostName YOUR_VM_IP</span><br><span class="line">    User YOUR_VM_USER</span><br><span class="line">    IdentityFile ~/.ssh/id_ed25519</span><br><span class="line">    IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
+<p>以后可以直接使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh ubuntu-vm</span><br><span class="line">scp ./dataset.zip ubuntu-vm:uploads/</span><br></pre></td></tr></table></figure>
+<h3 id="可选关闭密码登录">4. 可选：关闭密码登录</h3>
+<p>只有在密钥登录已从另一个终端验证成功、私钥有可靠备份且 VMware 控制台仍可用时，才执行此步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudoedit /etc/ssh/sshd_config.d/00-local-hardening.conf</span><br></pre></td></tr></table></figure>
+<p>写入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PubkeyAuthentication yes</span><br><span class="line">PasswordAuthentication no</span><br><span class="line">KbdInteractiveAuthentication no</span><br><span class="line">PermitRootLogin no</span><br></pre></td></tr></table></figure>
+<p>OpenSSH 对多数指令采用“最先读取的值生效”。Ubuntu 会按文件名顺序读取 <code>sshd_config.d/*.conf</code>，因此这里使用 <code>00-</code> 前缀，避免更早的云镜像或安装器片段抢先设置同一指令。</p>
+<p>检查语法和最终生效值，再平滑重载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> /usr/sbin/sshd -t</span><br><span class="line"><span class="built_in">sudo</span> /usr/sbin/sshd -T | grep -E <span class="string">&#x27;^(pubkeyauthentication|passwordauthentication|kbdinteractiveauthentication|permitrootlogin) &#x27;</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl reload ssh</span><br></pre></td></tr></table></figure>
+<p>确认输出包含 <code>pubkeyauthentication yes</code>、<code>passwordauthentication no</code>、<code>kbdinteractiveauthentication no</code> 和 <code>permitrootlogin no</code>。不要立即关闭现有会话；先打开新终端确认仍能登录。若语法检查失败或生效值不符，不要重载，先检查其他配置片段并修正。</p>
+<h2 id="用-sha-256-校验传输结果">用 SHA-256 校验传输结果</h2>
+<p>网络传输完成不等于文件一定正确。传输大文件后，可分别计算 SHA-256。</p>
+<p>Windows PowerShell：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-FileHash</span> <span class="literal">-Algorithm</span> SHA256 <span class="string">&quot;<span class="variable">$HOME</span>\Downloads\dataset.zip&quot;</span></span><br></pre></td></tr></table></figure>
+<p>macOS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shasum -a 256 <span class="string">&quot;<span class="variable">$HOME</span>/Downloads/dataset.zip&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Ubuntu：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sha256sum</span> <span class="string">&quot;<span class="variable">$HOME</span>/uploads/dataset.zip&quot;</span></span><br></pre></td></tr></table></figure>
+<p>两端摘要必须逐字符一致。校验和用于发现传输损坏，不用于证明不可信来源的软件是安全的；下载的软件还应验证发布者签名或官方摘要。</p>
+<h2 id="常见故障排查">常见故障排查</h2>
+<h3 id="连接超时">连接超时</h3>
+<p>通常是 IP、网络模式、路由或防火墙问题：</p>
+<ol type="1">
+<li>在 Ubuntu 重新确认当前 IP，而不是沿用 DHCP 变化前的地址；</li>
+<li>确认 VMware 网卡已连接，NAT/桥接模式符合预期；</li>
+<li>从宿主机测试 TCP 22，而不是只依赖 <code>ping</code>；</li>
+<li>检查 Ubuntu UFW、宿主机防火墙和企业网络策略；</li>
+<li>使用端口转发时，确认映射仍指向当前虚拟机 IP。</li>
+</ol>
+<h3 id="connection-refused"><code>Connection refused</code></h3>
+<p>网络已经到达目标，但 22 端口没有服务监听。回到 VMware 控制台执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status ssh --no-pager</span><br><span class="line"><span class="built_in">sudo</span> journalctl -u ssh --since <span class="string">&quot;10 minutes ago&quot;</span> --no-pager</span><br><span class="line"><span class="built_in">sudo</span> ss -lntp <span class="string">&quot;sport = :22&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="permission-denied"><code>Permission denied</code></h3>
+<p>先确认用户名正确，再查看详细协商过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -vvv YOUR_VM_USER@YOUR_VM_IP</span><br></pre></td></tr></table></figure>
+<p>密钥认证失败时检查公钥是否完整、家目录归属是否正确，以及 <code>~/.ssh</code> 和 <code>authorized_keys</code> 权限。服务端日志可通过以下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> journalctl -u ssh --since <span class="string">&quot;10 minutes ago&quot;</span> --no-pager</span><br></pre></td></tr></table></figure>
+<h3 id="主机密钥发生变化">主机密钥发生变化</h3>
+<p>虚拟机重装、回滚快照或 DHCP 把同一 IP 分给另一台机器时，都可能出现警告。先在 VMware 控制台核对新指纹；只有确认目标身份后，才删除旧记录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -R YOUR_VM_IP</span><br></pre></td></tr></table></figure>
+<p>不要为了消除警告关闭 <code>StrictHostKeyChecking</code>。</p>
+<h3 id="scp-写入失败">SCP 写入失败</h3>
+<p>确认远端磁盘空间和目录权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br><span class="line"><span class="built_in">ls</span> -ld <span class="string">&quot;<span class="variable">$HOME</span>&quot;</span> <span class="string">&quot;<span class="variable">$HOME</span>/uploads&quot;</span></span><br></pre></td></tr></table></figure>
+<p>优先写入普通用户拥有的目录。批量传输大量小文件时，可以先打包再传输，以减少协议往返；敏感数据在传输前仍应按业务要求加密和备份。</p>
+<h2 id="安全检查清单">安全检查清单</h2>
+<ul>
+<li>不允许 root 直接登录，不共享私钥，不把私钥放入项目仓库；</li>
+<li>私钥使用口令，并优先交给系统的 SSH Agent 管理；</li>
+<li>桥接或端口转发时，只向必要的可信来源开放端口；</li>
+<li>不把更换 SSH 端口当成核心防护；</li>
+<li>定期安装 Ubuntu 安全更新，并移除不再使用的公钥；</li>
+<li>修改 SSH 和防火墙前保留 VMware 控制台与现有会话；</li>
+<li>不使用 <code>chmod 777</code>、关闭主机密钥校验或开放空密码来绕过问题。</li>
+</ul>
+<h2 id="官方参考资料">官方参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://documentation.ubuntu.com/server/how-to/security/openssh-server/">Ubuntu Server：OpenSSH server</a></li>
+<li><a target="_blank" rel="noopener" href="https://documentation.ubuntu.com/server/how-to/security/firewalls/">Ubuntu Server：Firewall / UFW</a></li>
+<li><a target="_blank" rel="noopener" href="https://man.openbsd.org/ssh">OpenSSH <code>ssh</code> 手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://man.openbsd.org/scp">OpenSSH <code>scp</code> 手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://man.openbsd.org/sshd_config">OpenSSH <code>sshd_config</code> 手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh-overview">Microsoft Learn：Windows OpenSSH 概述</a></li>
+<li><a target="_blank" rel="noopener" href="https://knowledge.broadcom.com/external/article/309842">VMware/Broadcom：Understanding networking types in hosted products</a></li>
+<li><a target="_blank" rel="noopener" href="https://knowledge.broadcom.com/external/article/303393">VMware/Broadcom：Understanding networking types in VMware Fusion</a></li>
+<li><a target="_blank" rel="noopener" href="https://knowledge.broadcom.com/external/article/308774/configuring-a-web-server-on-a-virtual-ma.html">VMware/Broadcom：配置 NAT 虚拟机的端口转发</a></li>
+</ul>
 </div>
     </div>
 
@@ -334,8 +379,36 @@ mjx-container[display="true"] + br {
         
             <span>2024-10-30</span>
             
+                <span>该篇文章被 Xue xt</span>
             
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/Ubuntu/'>
+                            Ubuntu
+                        </a>
+                    
+                        <a href='/tags/SSH/'>
+                            SSH
+                        </a>
+                    
+                        <a href='/tags/VMware/'>
+                            VMware
+                        </a>
+                    
+                </span>
              
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/Linux/'>
+                            Linux
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -347,11 +420,11 @@ mjx-container[display="true"] + br {
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2024/11/03/blog/pytorch-c/'>pytorch_c</a></span>
+                    <span>上一篇：<a href='/2024/11/03/blog/pytorch-c/'>PyTorch C++/CUDA Extension 教程</a></span>
                 
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/24/blog/PaperSketch/">PaperSketch</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/10/24/blog/PaperSketch/">Gaussian Splatting 论文速览：表示、优化与渲染</a>
                     </span>
                 
             </div>
