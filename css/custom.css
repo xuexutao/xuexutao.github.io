@@ -1,0 +1,72 @@
+/* ============================================================
+   A4 主题自定义样式（通过 scripts/custom-inject.js 注入）
+   ============================================================ */
+
+/* ---------- 1. 列表页 年份分组折叠 ---------- */
+.archive .archive-fold-header {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.archive .archive-fold-header:hover {
+    opacity: 0.72;
+}
+
+.archive-fold-arrow {
+    display: inline-block;
+    width: 1em;
+    margin-right: 4px;
+    color: var(--font-color-3, #aaa);
+    font-size: 0.9em;
+    transition: transform 0.15s ease;
+}
+
+/* 收起时箭头朝右，展开时朝下 */
+.archive-fold-header .archive-fold-arrow {
+    transform: rotate(90deg);
+}
+.archive-fold-header.is-collapsed .archive-fold-arrow {
+    transform: rotate(0deg);
+}
+
+.archive-fold-arrow::before {
+    content: "\25B8"; /* ▸ */
+}
+
+/* ---------- 2. 文章页 A4 纸分隔 ---------- */
+.a4-paper {
+    position: relative;
+}
+
+/* 覆盖层：铺满整张纸，不拦截鼠标事件 */
+.a4-page-guides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* 每一道“纸缝”：与站点背景同色，形成两张 A4 之间的间隙 + 上下阴影 */
+.a4-page-break {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 26px;
+    transform: translateY(-13px);
+    background: #e4e4e4;
+    box-shadow:
+        0 -7px 9px -5px rgba(0, 0, 0, 0.30),
+        inset 0 8px 9px -8px rgba(0, 0, 0, 0.18);
+}
+
+@media only screen and (max-width: 600px) {
+    .a4-page-break {
+        height: 18px;
+        transform: translateY(-9px);
+    }
+}
