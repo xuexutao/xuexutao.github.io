@@ -91,6 +91,9 @@
         <button class="sel-btn sel-btn-edit" id="selBlockEditBtn" title="原位编辑鼠标所在段落（保持渲染效果，仅加边框直接改字，按 ⌘Enter 或失焦保存） · 快捷键 ⌘E">
           ✏️<span>段落编辑</span><kbd class="kbd-hint">⌘E</kbd>
         </button>
+        <button class="sel-btn sel-btn-img" id="selInsertImgBtn" title="在当前段落或位置插入图片（支持剪贴板粘贴 ⌘V、拖拽或选择文件，自动存入对应 assets 文件夹并写入原文件） · 快捷键 ⌘I">
+          🖼️<span>插图</span><kbd class="kbd-hint">⌘I</kbd>
+        </button>
         <span class="sel-divider"></span>
         <button class="sel-btn" id="headerUndoBtn" disabled title="撤销上一步对原文档的修改 · 快捷键 ⌘Z">
           ↩<span>撤销</span><kbd class="kbd-hint">⌘Z</kbd>
@@ -136,6 +139,100 @@
 
 <!-- 实时回写状态轻提示 -->
 <div class="toast-notice" id="toastNotice"></div>
+
+<!-- 隐藏文件选择器：供替换图片与插入图片使用 -->
+<input type="file" id="imgReplaceFileInput" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/svg+xml" hidden>
+<input type="file" id="imgInsertFileInput" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/svg+xml" hidden>
+
+<!-- 原地裁剪图片弹窗 (In-place Image Cropper Modal) -->
+<div class="img-modal-backdrop hidden" id="cropModal">
+  <div class="img-modal-card img-crop-card" role="dialog" aria-modal="true" aria-labelledby="cropModalTitle">
+    <div class="img-modal-header">
+      <div class="img-modal-title-wrap">
+        <span class="img-modal-title" id="cropModalTitle">✂️ 原地裁剪图片</span>
+        <span class="img-modal-subpath" id="cropModalPath"></span>
+      </div>
+      <div class="img-crop-dim-badge" id="cropDimBadge">拖动选框调整裁剪区域</div>
+    </div>
+    <div class="img-crop-stage" id="cropStage">
+      <div class="img-crop-canvas-wrap" id="cropCanvasWrap">
+        <img id="cropSourceImg" alt="待裁剪原图" draggable="false">
+        <div class="img-crop-box" id="cropBox">
+          <span class="crop-handle nw" data-handle="nw"></span>
+          <span class="crop-handle n" data-handle="n"></span>
+          <span class="crop-handle ne" data-handle="ne"></span>
+          <span class="crop-handle e" data-handle="e"></span>
+          <span class="crop-handle se" data-handle="se"></span>
+          <span class="crop-handle s" data-handle="s"></span>
+          <span class="crop-handle sw" data-handle="sw"></span>
+          <span class="crop-handle w" data-handle="w"></span>
+        </div>
+      </div>
+    </div>
+    <div class="img-modal-footer">
+      <div class="img-modal-left-actions">
+        <button class="btn" id="cropResetBoxBtn" title="恢复全图选框">全选整图</button>
+      </div>
+      <div class="img-modal-right-actions">
+        <button class="btn" id="cropCancelBtn">取消 (Esc)</button>
+        <button class="btn btn-primary" id="cropConfirmBtn">💾 覆盖保存到原图文件 (⌘↵)</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 替换 / 插入图片弹窗（支持直接按 Cmd+V 粘贴剪贴板图片、拖拽图片或选择本地图片） -->
+<div class="img-modal-backdrop hidden" id="imgPickerModal">
+  <div class="img-modal-card img-picker-card" role="dialog" aria-modal="true" aria-labelledby="imgPickerTitle">
+    <div class="img-modal-header">
+      <div class="img-modal-title-wrap">
+        <span class="img-modal-title" id="imgPickerTitle">🖼️ 插入 / 替换图片</span>
+        <span class="img-modal-subpath" id="imgPickerSub"></span>
+      </div>
+    </div>
+    <div class="img-picker-body">
+      <div class="img-dropzone" id="imgDropzone" tabindex="0">
+        <div class="img-dropzone-empty" id="imgDropzoneEmpty">
+          <div class="img-dropzone-icon">📋 / 📁</div>
+          <div class="img-dropzone-main">直接按 <kbd>⌘V</kbd> 粘贴剪贴板图片，或拖拽图片到此处</div>
+          <div class="img-dropzone-sub">也可以点击下方按钮从本地电脑选择图片文件</div>
+          <div class="img-dropzone-btns">
+            <button class="btn btn-primary" type="button" id="imgReadClipboardBtn">📋 读取剪贴板图片</button>
+            <button class="btn" type="button" id="imgBrowseLocalBtn">📂 选择本地图片文件…</button>
+          </div>
+        </div>
+        <div class="img-dropzone-preview hidden" id="imgDropzonePreview">
+          <img id="imgPickerPreviewImg" alt="预览图片">
+          <div class="img-preview-meta" id="imgPickerPreviewMeta"></div>
+          <button class="btn" type="button" id="imgClearPreviewBtn">重新选择 / 重新粘贴</button>
+        </div>
+      </div>
+      <div class="img-insert-options" id="imgInsertOptions">
+        <div class="img-option-row">
+          <label for="imgAltInput">图片说明 (Alt)：</label>
+          <input type="text" id="imgAltInput" class="search-input" placeholder="可选，例如：图 1 整体架构图">
+        </div>
+        <div class="img-option-row">
+          <label for="imgPositionSelect">插入位置：</label>
+          <select id="imgPositionSelect" class="search-input">
+            <option value="after">当前选中/悬停段落的下方（推荐）</option>
+            <option value="before">当前选中/悬停段落的上方</option>
+            <option value="end">文档末尾</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="img-modal-footer">
+      <div class="img-modal-left-actions">
+        <span class="img-picker-hint" id="imgPickerHint">图片将直接写入原文件夹</span>
+      </div>
+      <div class="img-modal-right-actions">
+        <button class="btn" id="imgPickerCancelBtn">取消 (Esc)</button>
+        <button class="btn btn-primary" id="imgPickerConfirmBtn" disabled>💾 确认写入原文件 (⌘↵)</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox"><img id="lightboxImg" alt=""></div>
 

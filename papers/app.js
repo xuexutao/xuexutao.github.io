@@ -15,7 +15,8 @@
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
   const state = {
     src: null, hideAssets: true, currentPath: null, currentFolder: '', openFolders: new Set(),
-    query: '', pendingHeading: null, headings: [], dashCache: null, noteIndex: null, objectUrls: []
+    query: '', pendingHeading: null, headings: [], dashCache: null, noteIndex: null, objectUrls: [],
+    assetBuster: new Map()
   };
   let defaultSource = null;
 
@@ -116,12 +117,75 @@
     return null;
   }
 
+  async function apiReadImageDataUrl(vaultRelPath) {
+    for (let i = 0; i < API_ENDPOINTS.length; i++) {
+      const base = API_ENDPOINTS[i];
+      if (location.protocol === 'file:' && base.startsWith('/')) continue;
+      try {
+        const r = await fetch(base + '/image/read?path=' + encodeURIComponent(vaultRelPath) + '&t=' + Date.now(), { mode: 'cors', cache: 'no-store' });
+        if (r.ok) {
+          const j = await r.json();
+          if (j && j.ok && j.dataUrl) return j.dataUrl;
+        }
+      } catch (e) { /* try next endpoint */ }
+    }
+    return null;
+  }
+
+  async function apiOverwriteImage(vaultRelPath, dataUrl) {
+    let lastErr = null;
+    for (let i = 0; i < API_ENDPOINTS.length; i++) {
+      const base = API_ENDPOINTS[i];
+      if (location.protocol === 'file:' && base.startsWith('/')) continue;
+      try {
+        const r = await fetch(base + '/image/overwrite', {
+          method: 'POST',
+          mode: 'cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path: vaultRelPath, imageData: dataUrl })
+        });
+        const j = await r.json();
+        if (r.ok && j && j.ok) return j;
+        lastErr = new Error((j && j.error) || ('HTTP ' + r.status));
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('未连接到本地读写服务 (server.py)，无法写入原图片文件');
+  }
+
+  async function apiUploadNewImage(docPath, dataUrl, fileName) {
+    let lastErr = null;
+    for (let i = 0; i < API_ENDPOINTS.length; i++) {
+      const base = API_ENDPOINTS[i];
+      if (location.protocol === 'file:' && base.startsWith('/')) continue;
+      try {
+        const r = await fetch(base + '/image/upload', {
+          method: 'POST',
+          mode: 'cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ docPath: docPath, imageData: dataUrl, fileName: fileName || null })
+        });
+        const j = await r.json();
+        if (r.ok && j && j.ok) return j;
+        lastErr = new Error((j && j.error) || ('HTTP ' + r.status));
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('未连接到本地读写服务 (server.py)，无法上传保存图片');
+  }
+
   function createDefaultSource() {
     const M = window.OBSIDIAN_VAULT_MANIFEST;
     if (!M) return null;
     const inVault = /\/obsidian_bk\/[^\/]*$/.test(decodeURIComponent(location.pathname));
     const prefix = inVault ? '' : 'vault/';
-    const url = function (rel) { return prefix + rel.split('/').map(encodeURIComponent).join('/'); };
+    const url = function (rel) {
+      const base = prefix + rel.split('/').map(encodeURIComponent).join('/');
+      const bust = state.assetBuster && state.assetBuster.get(rel);
+      return bust ? (base + '?t=' + bust) : base;
+    };
     return {
       mode: 'default', name: M.vaultPath.split('/').pop(), pathLabel: M.vaultPath, files: M.files,
       assetIndex: M.assetMap, docs: window.OBSIDIAN_VAULT_DOCS || null,
@@ -231,15 +295,33 @@
   }
 
   /* ---------- 资源 / 双链解析 ---------- */
-  function resolveAsset(raw, docPath) {
+  function resolveAssetInfo(raw, docPath) {
     const idx = state.src.assetIndex;
     const r = MDR.safeDecode(String(raw).trim()).split('#')[0].split('?')[0];
     if (!r) return null;
     const cands = [joinPath(dirname(docPath), r), normPath(r)];
-    for (let i = 0; i < cands.length; i++) if (has(idx, cands[i])) return state.src.assetUrl(idx[cands[i]]);
+    for (let i = 0; i < cands.length; i++) {
+      if (has(idx, cands[i])) {
+        const relPath = idx[cands[i]];
+        return { url: state.src.assetUrl(relPath), relPath: relPath };
+      }
+      // 对于刚上传但尚未在静态 manifest 中的新图片，只要以 assets/ 开头也可直接构造路径
+      if (cands[i].indexOf('/assets/') >= 0 || cands[i].indexOf('assets/') === 0) {
+        idx[cands[i]] = cands[i];
+        return { url: state.src.assetUrl(cands[i]), relPath: cands[i] };
+      }
+    }
     const b = basename(r);
-    if (has(idx, b)) return state.src.assetUrl(idx[b]);
+    if (has(idx, b)) {
+      const relPath = idx[b];
+      return { url: state.src.assetUrl(relPath), relPath: relPath };
+    }
     return null;
+  }
+
+  function resolveAsset(raw, docPath) {
+    const info = resolveAssetInfo(raw, docPath);
+    return info ? info.url : null;
   }
 
   function resolveNote(target, docPath) {
@@ -466,6 +548,18 @@
     }
     const an = e.target.closest('a.anchor-link');
     if (an) { e.preventDefault(); scrollToHeading(MDR.safeDecode(an.getAttribute('href').slice(1))); return; }
+    const imgToolBtn = e.target.closest('.img-tool-btn');
+    if (imgToolBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const fig = imgToolBtn.closest('.md-img-figure');
+      const vpath = fig && fig.getAttribute('data-vault-path');
+      const act = imgToolBtn.getAttribute('data-img-act');
+      if (vpath && act === 'crop') openCropModal(vpath);
+      else if (vpath && act === 'replace') openImagePickerModal('replace', vpath);
+      else if (vpath && act === 'reveal') revealPathInFinder(vpath);
+      return;
+    }
     const img = e.target.closest('.markdown-rendered img');
     if (img) { el.lightboxImg.src = img.src; el.lightbox.classList.add('open'); }
   });
@@ -507,6 +601,26 @@
       box.appendChild(body);
       bq.parentNode.replaceChild(box, bq);
     });
+
+    // 为所有本地知识库内的图片注入悬浮快捷操作栏（原地裁剪 / 替换原图 / 在 Finder 中显示）
+    root.querySelectorAll('img[data-vault-path]').forEach(function (img) {
+      const vpath = img.getAttribute('data-vault-path');
+      if (!vpath) return;
+      const wrap = document.createElement('span');
+      wrap.className = 'md-img-figure';
+      wrap.setAttribute('data-vault-path', vpath);
+      img.parentNode.insertBefore(wrap, img);
+      wrap.appendChild(img);
+
+      const bar = document.createElement('span');
+      bar.className = 'img-edit-toolbar';
+      bar.setAttribute('contenteditable', 'false');
+      bar.innerHTML =
+        '<button type="button" class="img-tool-btn" data-img-act="crop" title="原地裁剪此图片并覆盖保存到原文件">✂️ 裁剪</button>' +
+        '<button type="button" class="img-tool-btn" data-img-act="replace" title="用剪贴板 (⌘V) 或本地新图片直接替换文件夹中的这张原图">🔄 替换图片</button>' +
+        '<button type="button" class="img-tool-btn" data-img-act="reveal" title="在 Finder 中定位此图片原文件">📂</button>';
+      wrap.appendChild(bar);
+    });
   }
 
   async function openDoc(path, preserveScroll) {
@@ -527,6 +641,7 @@
       const out = MDR.render(rawText, {
         docPath: path,
         resolveAsset: function (r) { return resolveAsset(r, path); },
+        resolveAssetInfo: function (r) { return resolveAssetInfo(r, path); },
         resolveNote: function (t) { return resolveNote(t, path); }
       });
       html = out.html; meta = out.meta;
@@ -716,12 +831,12 @@
   }
 
   /* ---------- 打开源文件夹（由本地服务调用 Finder） ---------- */
-  async function openSourceFolder(rootOnly) { if (window.READER_READONLY) return;
+  async function revealPathInFinder(relPath) {
     if (!state.src || state.src.mode !== 'default') {
       showToast('当前内容是通过「读入本地文件夹」载入的，浏览器拿不到它的真实路径，无法定位；默认知识库可用', true);
       return;
     }
-    const payload = JSON.stringify({ path: rootOnly ? '' : (state.currentPath || '') });
+    const payload = JSON.stringify({ path: relPath || '' });
     let lastErr = '本地服务未连接，请确认 server.py 正在运行';
     for (let i = 0; i < API_ENDPOINTS.length; i++) {
       const base = API_ENDPOINTS[i];
@@ -735,6 +850,9 @@
       } catch (e) { lastErr = e.message || String(e); }
     }
     showToast('打开源文件夹失败：' + lastErr, true);
+  }
+  function openSourceFolder(rootOnly) {
+    return revealPathInFinder(rootOnly ? '' : (state.currentPath || ''));
   }
   $('openFolderBtn').addEventListener('click', function () { openSourceFolder(false); });
   el.vaultPath.style.cursor = 'pointer';
@@ -909,7 +1027,27 @@
       return;
     }
     const curMd = state.currentMarkdown || await state.src.getText(path);
-    const prevMd = MDEditor.popUndo(path, curMd);
+    const entry = MDEditor.popUndo(path, curMd);
+    if (!entry) return;
+
+    // 情况 1：撤销原地裁剪或图片替换（将备份的原图二进制写回原路径）
+    if (entry.type === 'img') {
+      indStart();
+      try {
+        await apiOverwriteImage(entry.imagePath, entry.previousDataUrl);
+        state.assetBuster.set(entry.imagePath, Date.now());
+        await openDoc(path, true);
+        indFinish(true, '已恢复原图片文件：' + entry.imagePath);
+        showToast('↩ 已恢复原图片：' + basename(entry.imagePath));
+      } catch (err) {
+        indFinish(false, '撤销图片修改失败：' + (err.message || err));
+        showToast('撤销图片修改失败：' + (err.message || err), true);
+      }
+      return;
+    }
+
+    // 情况 2：撤销文本或插入图片修改
+    const prevMd = typeof entry === 'string' ? entry : entry.markdown;
     if (prevMd == null) return;
     state.currentMarkdown = prevMd;
     indStart();
@@ -952,6 +1090,10 @@
     }
 
     const blkInfo = MDEditor.getBlockSelectionInfo(blockEl, container);
+    if (!blkInfo && blockEl.querySelector && blockEl.querySelector('img')) {
+      showToast('图片请直接将鼠标移至图片右上角，使用「✂️ 裁剪」或「🔄 替换图片」', false);
+      return;
+    }
     const rawMd = state.currentMarkdown || await state.src.getText(path);
     const loc = blkInfo ? MDEditor.locateInMarkdown(rawMd, blkInfo) : null;
     if (!loc) {
@@ -959,8 +1101,8 @@
       return;
     }
 
-    // 把段落内的 KaTeX 公式节点设为 contenteditable="false"，保持公式精美渲染且不被误删内部 DOM，同时文字可直接编辑
-    blockEl.querySelectorAll('.katex').forEach(function (k) {
+    // 把段落内的 KaTeX 公式节点、子列表与图片工具条设为 contenteditable="false"，保持渲染且不被误删内部 DOM
+    blockEl.querySelectorAll('.katex, ul, ol, .img-edit-toolbar').forEach(function (k) {
       k.setAttribute('contenteditable', 'false');
     });
 
@@ -999,7 +1141,10 @@
     st.blockEl.removeEventListener('compositionstart', st.handlers.compStart);
     st.blockEl.removeEventListener('compositionend', st.handlers.compEnd);
     st.blockEl.removeAttribute('contenteditable');
-    st.blockEl.querySelectorAll('[contenteditable]').forEach(function (n) { n.removeAttribute('contenteditable'); });
+    st.blockEl.querySelectorAll('[contenteditable]').forEach(function (n) {
+      if (n.classList && n.classList.contains('img-edit-toolbar')) return;
+      n.removeAttribute('contenteditable');
+    });
     st.blockEl.classList.remove('md-block-editing');
     selBlockEditBtn.classList.remove('active');
   }
@@ -1015,9 +1160,9 @@
     if (st.busy) { st.dirty = true; return; }
     const path = state.currentPath;
     if (!path) return;
-    const seg = MDEditor.serializeBlockElementToMarkdown(st.blockEl);
     const rawMd = state.currentMarkdown || await state.src.getText(path);
     const oldSeg = rawMd.slice(st.loc.start, st.loc.end);
+    const seg = MDEditor.serializeBlockElementToMarkdown(st.blockEl, oldSeg);
     if (!seg || seg === oldSeg) return;
     const next = rawMd.slice(0, st.loc.start) + seg + rawMd.slice(st.loc.end);
     if (!st.undoPushed) { MDEditor.pushUndo(path, rawMd); st.undoPushed = true; updateUndoButtons(); }
@@ -1052,7 +1197,8 @@
     detachBlockEdit(st);
     const path = state.currentPath;
     if (st.undoPushed && path) {
-      const prev = MDEditor.popUndo(path, state.currentMarkdown || '');
+      const entry = MDEditor.popUndo(path, state.currentMarkdown || '');
+      const prev = entry && typeof entry === 'object' ? entry.markdown : entry;
       if (prev != null) {
         state.currentMarkdown = prev;
         indStart();
@@ -1083,9 +1229,9 @@
     const path = state.currentPath;
     if (!path) return;
 
-    const seg = MDEditor.serializeBlockElementToMarkdown(st.blockEl);
     const rawMd = state.currentMarkdown || await state.src.getText(path);
     const oldSeg = rawMd.slice(st.loc.start, st.loc.end);
+    const seg = MDEditor.serializeBlockElementToMarkdown(st.blockEl, oldSeg);
     if (seg && seg !== oldSeg) {
       const updatedMd = rawMd.slice(0, st.loc.start) + seg + rawMd.slice(st.loc.end);
       await commitMarkdownEdit(updatedMd, '修改段落内容', { skipUndo: st.undoPushed });
@@ -1138,6 +1284,518 @@
     startBlockEdit(null);
   });
 
+  const selInsertImgBtn = $('selInsertImgBtn');
+  if (selInsertImgBtn) {
+    selInsertImgBtn.addEventListener('click', function () {
+      if (!state.currentPath) {
+        showToast('请先打开一篇笔记文档，再插入图片', true);
+        return;
+      }
+      openImagePickerModal('insert', null);
+    });
+  }
+
+  /* ---------- 图片编辑模块：1. 原地裁剪 (In-place Crop)  2. 替换图片 (Replace)  3. 插入图片 (Insert) ---------- */
+  const cropModal = $('cropModal');
+  const cropModalPath = $('cropModalPath');
+  const cropDimBadge = $('cropDimBadge');
+  const cropCanvasWrap = $('cropCanvasWrap');
+  const cropSourceImg = $('cropSourceImg');
+  const cropBox = $('cropBox');
+  const cropResetBoxBtn = $('cropResetBoxBtn');
+  const cropCancelBtn = $('cropCancelBtn');
+  const cropConfirmBtn = $('cropConfirmBtn');
+
+  let cropState = null; // { vaultPath, natW, natH, dispW, dispH, rect: {x, y, w, h}, drag: null }
+
+  function closeCropModal() {
+    if (!cropModal) return;
+    cropModal.classList.add('hidden');
+    cropSourceImg.src = '';
+    cropState = null;
+  }
+
+  function syncCropBoxDom() {
+    if (!cropState) return;
+    const r = cropState.rect;
+    cropBox.style.left = r.x + 'px';
+    cropBox.style.top = r.y + 'px';
+    cropBox.style.width = r.w + 'px';
+    cropBox.style.height = r.h + 'px';
+
+    const scaleX = cropState.natW / (cropState.dispW || 1);
+    const scaleY = cropState.natH / (cropState.dispH || 1);
+    const realW = Math.max(1, Math.round(r.w * scaleX));
+    const realH = Math.max(1, Math.round(r.h * scaleY));
+    cropDimBadge.textContent = '裁剪尺寸：' + realW + ' × ' + realH + ' px（原图 ' + cropState.natW + ' × ' + cropState.natH + ' px）';
+  }
+
+  function resetCropBoxToFull() {
+    if (!cropState) return;
+    const w = cropSourceImg.clientWidth || cropState.dispW;
+    const h = cropSourceImg.clientHeight || cropState.dispH;
+    cropState.dispW = w;
+    cropState.dispH = h;
+    // 默认给出内缩 8% 的易见裁剪框，方便用户直接拖动边缘，也可点击“全选整图”
+    const padX = Math.round(w * 0.06);
+    const padY = Math.round(h * 0.06);
+    cropState.rect = {
+      x: padX,
+      y: padY,
+      w: Math.max(24, w - padX * 2),
+      h: Math.max(24, h - padY * 2)
+    };
+    syncCropBoxDom();
+  }
+
+  async function openCropModal(vaultRelPath) {
+    if (!state.src || state.src.mode !== 'default') {
+      showToast('只有默认知识库模式支持直接修改原图文件', true);
+      return;
+    }
+    cropModalPath.textContent = vaultRelPath;
+    cropDimBadge.textContent = '正在加载原图…';
+    cropModal.classList.remove('hidden');
+
+    const dataUrl = await apiReadImageDataUrl(vaultRelPath);
+    if (!dataUrl) {
+      closeCropModal();
+      showToast('读取原图片失败，请确认 server.py 正在运行', true);
+      return;
+    }
+
+    cropSourceImg.onload = function () {
+      const natW = cropSourceImg.naturalWidth || 1;
+      const natH = cropSourceImg.naturalHeight || 1;
+      const dispW = cropSourceImg.clientWidth || natW;
+      const dispH = cropSourceImg.clientHeight || natH;
+      cropState = {
+        vaultPath: vaultRelPath,
+        natW: natW,
+        natH: natH,
+        dispW: dispW,
+        dispH: dispH,
+        rect: { x: 0, y: 0, w: dispW, h: dispH },
+        drag: null
+      };
+      resetCropBoxToFull();
+    };
+    cropSourceImg.src = dataUrl;
+  }
+
+  if (cropResetBoxBtn) {
+    cropResetBoxBtn.addEventListener('click', function () {
+      if (!cropState) return;
+      cropState.dispW = cropSourceImg.clientWidth || cropState.dispW;
+      cropState.dispH = cropSourceImg.clientHeight || cropState.dispH;
+      cropState.rect = { x: 0, y: 0, w: cropState.dispW, h: cropState.dispH };
+      syncCropBoxDom();
+    });
+  }
+  if (cropCancelBtn) cropCancelBtn.addEventListener('click', closeCropModal);
+
+  if (cropCanvasWrap) {
+    cropCanvasWrap.addEventListener('mousedown', function (e) {
+      if (!cropState) return;
+      e.preventDefault();
+      cropState.dispW = cropSourceImg.clientWidth || cropState.dispW;
+      cropState.dispH = cropSourceImg.clientHeight || cropState.dispH;
+      const wrapRect = cropCanvasWrap.getBoundingClientRect();
+      const mx = Math.max(0, Math.min(cropState.dispW, e.clientX - wrapRect.left));
+      const my = Math.max(0, Math.min(cropState.dispH, e.clientY - wrapRect.top));
+
+      const handleEl = e.target.closest('.crop-handle');
+      if (handleEl) {
+        cropState.drag = {
+          mode: handleEl.getAttribute('data-handle'),
+          startX: e.clientX,
+          startY: e.clientY,
+          orig: Object.assign({}, cropState.rect)
+        };
+      } else if (e.target === cropBox || cropBox.contains(e.target)) {
+        cropState.drag = {
+          mode: 'move',
+          startX: e.clientX,
+          startY: e.clientY,
+          orig: Object.assign({}, cropState.rect)
+        };
+      } else {
+        // 在图片空白处直接拖拽拉出新选框
+        cropState.rect = { x: mx, y: my, w: 1, h: 1 };
+        cropState.drag = {
+          mode: 'new',
+          anchorX: mx,
+          anchorY: my
+        };
+        syncCropBoxDom();
+      }
+    });
+  }
+
+  window.addEventListener('mousemove', function (e) {
+    if (!cropState || !cropState.drag) return;
+    const d = cropState.drag;
+    const maxW = cropState.dispW;
+    const maxH = cropState.dispH;
+    const minSize = 16;
+
+    if (d.mode === 'new') {
+      const wrapRect = cropCanvasWrap.getBoundingClientRect();
+      const curX = Math.max(0, Math.min(maxW, e.clientX - wrapRect.left));
+      const curY = Math.max(0, Math.min(maxH, e.clientY - wrapRect.top));
+      const x1 = Math.min(d.anchorX, curX);
+      const y1 = Math.min(d.anchorY, curY);
+      const x2 = Math.max(d.anchorX, curX);
+      const y2 = Math.max(d.anchorY, curY);
+      cropState.rect = {
+        x: x1,
+        y: y1,
+        w: Math.max(minSize, x2 - x1),
+        h: Math.max(minSize, y2 - y1)
+      };
+      syncCropBoxDom();
+      return;
+    }
+
+    const dx = e.clientX - d.startX;
+    const dy = e.clientY - d.startY;
+    const o = d.orig;
+
+    if (d.mode === 'move') {
+      const nx = Math.max(0, Math.min(maxW - o.w, o.x + dx));
+      const ny = Math.max(0, Math.min(maxH - o.h, o.y + dy));
+      cropState.rect = { x: nx, y: ny, w: o.w, h: o.h };
+      syncCropBoxDom();
+      return;
+    }
+
+    let x1 = o.x;
+    let y1 = o.y;
+    let x2 = o.x + o.w;
+    let y2 = o.y + o.h;
+    if (d.mode.indexOf('w') >= 0) x1 = Math.max(0, Math.min(x2 - minSize, o.x + dx));
+    if (d.mode.indexOf('e') >= 0) x2 = Math.min(maxW, Math.max(x1 + minSize, o.x + o.w + dx));
+    if (d.mode.indexOf('n') >= 0) y1 = Math.max(0, Math.min(y2 - minSize, o.y + dy));
+    if (d.mode.indexOf('s') >= 0) y2 = Math.min(maxH, Math.max(y1 + minSize, o.y + o.h + dy));
+    cropState.rect = { x: x1, y: y1, w: x2 - x1, h: y2 - y1 };
+    syncCropBoxDom();
+  });
+
+  window.addEventListener('mouseup', function () {
+    if (cropState && cropState.drag) {
+      cropState.drag = null;
+    }
+  });
+
+  async function confirmCropSave() {
+    if (!cropState || !state.currentPath) return;
+    const st = cropState;
+    const scaleX = st.natW / (st.dispW || 1);
+    const scaleY = st.natH / (st.dispH || 1);
+    const sx = Math.max(0, Math.round(st.rect.x * scaleX));
+    const sy = Math.max(0, Math.round(st.rect.y * scaleY));
+    const sw = Math.min(st.natW - sx, Math.max(1, Math.round(st.rect.w * scaleX)));
+    const sh = Math.min(st.natH - sy, Math.max(1, Math.round(st.rect.h * scaleY)));
+
+    const canvas = document.createElement('canvas');
+    canvas.width = sw;
+    canvas.height = sh;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(cropSourceImg, sx, sy, sw, sh, 0, 0, sw, sh);
+
+    const ext = (st.vaultPath.split('.').pop() || '').toLowerCase();
+    const mime = (ext === 'jpg' || ext === 'jpeg') ? 'image/jpeg' : (ext === 'webp' ? 'image/webp' : 'image/png');
+    const croppedDataUrl = canvas.toDataURL(mime, 0.95);
+
+    cropConfirmBtn.disabled = true;
+    indStart();
+    try {
+      const res = await apiOverwriteImage(st.vaultPath, croppedDataUrl);
+      if (res && res.previousDataUrl) {
+        MDEditor.pushUndo(state.currentPath, {
+          type: 'img',
+          imagePath: st.vaultPath,
+          previousDataUrl: res.previousDataUrl
+        });
+        updateUndoButtons();
+      }
+      state.assetBuster.set(st.vaultPath, Date.now());
+      closeCropModal();
+      await openDoc(state.currentPath, true);
+      indFinish(true, '已原地裁剪并写入原图：' + st.vaultPath);
+      showToast('✂️ 已原地裁剪并覆盖原图 (' + sw + '×' + sh + ' px)，可按 ⌘Z 撤销');
+    } catch (err) {
+      indFinish(false, '裁剪保存失败：' + (err.message || err));
+      showToast('裁剪保存失败：' + (err.message || err), true);
+    } finally {
+      cropConfirmBtn.disabled = false;
+    }
+  }
+
+  if (cropConfirmBtn) cropConfirmBtn.addEventListener('click', confirmCropSave);
+
+  /* ---------- 替换图片 / 插入图片 弹窗逻辑 ---------- */
+  const imgPickerModal = $('imgPickerModal');
+  const imgPickerTitle = $('imgPickerTitle');
+  const imgPickerSub = $('imgPickerSub');
+  const imgDropzone = $('imgDropzone');
+  const imgDropzoneEmpty = $('imgDropzoneEmpty');
+  const imgDropzonePreview = $('imgDropzonePreview');
+  const imgPickerPreviewImg = $('imgPickerPreviewImg');
+  const imgPickerPreviewMeta = $('imgPickerPreviewMeta');
+  const imgReadClipboardBtn = $('imgReadClipboardBtn');
+  const imgBrowseLocalBtn = $('imgBrowseLocalBtn');
+  const imgClearPreviewBtn = $('imgClearPreviewBtn');
+  const imgInsertOptions = $('imgInsertOptions');
+  const imgAltInput = $('imgAltInput');
+  const imgPositionSelect = $('imgPositionSelect');
+  const imgPickerHint = $('imgPickerHint');
+  const imgPickerCancelBtn = $('imgPickerCancelBtn');
+  const imgPickerConfirmBtn = $('imgPickerConfirmBtn');
+  const imgReplaceFileInput = $('imgReplaceFileInput');
+  const imgInsertFileInput = $('imgInsertFileInput');
+
+  let pickerState = null; // { mode: 'replace'|'insert', targetVaultPath, anchorBlock, dataUrl, fileName, byteSize }
+
+  function closeImagePickerModal() {
+    if (!imgPickerModal) return;
+    imgPickerModal.classList.add('hidden');
+    imgPickerPreviewImg.src = '';
+    pickerState = null;
+  }
+
+  function setPickerPreviewData(dataUrl, fileName, byteSize) {
+    if (!pickerState) return;
+    pickerState.dataUrl = dataUrl;
+    pickerState.fileName = fileName || 'clipboard-image.png';
+    pickerState.byteSize = byteSize || Math.round((dataUrl.length * 3) / 4);
+    imgPickerPreviewImg.onload = function () {
+      const dims = (imgPickerPreviewImg.naturalWidth || 0) + ' × ' + (imgPickerPreviewImg.naturalHeight || 0) + ' px';
+      imgPickerPreviewMeta.textContent = pickerState.fileName + ' · ' + dims + ' · ' + fmtSize(pickerState.byteSize);
+    };
+    imgPickerPreviewImg.src = dataUrl;
+    imgDropzoneEmpty.classList.add('hidden');
+    imgDropzonePreview.classList.remove('hidden');
+    imgPickerConfirmBtn.disabled = false;
+  }
+
+  function clearPickerPreview() {
+    if (!pickerState) return;
+    pickerState.dataUrl = null;
+    pickerState.fileName = null;
+    imgPickerPreviewImg.src = '';
+    imgDropzoneEmpty.classList.remove('hidden');
+    imgDropzonePreview.classList.add('hidden');
+    imgPickerConfirmBtn.disabled = true;
+  }
+
+  function readBlobAsDataUrl(blob, fileName) {
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      setPickerPreviewData(ev.target.result, fileName || blob.name || 'image.png', blob.size);
+    };
+    reader.readAsDataURL(blob);
+  }
+
+  function openImagePickerModal(mode, targetVaultPath, preloadedBlob) {
+    if (!state.src || state.src.mode !== 'default') {
+      showToast('只有默认知识库模式支持直接写入图片到原文件夹', true);
+      return;
+    }
+    const container = el.article.querySelector('.markdown-rendered');
+    const anchorBlock =
+      (activeSelInfo && activeSelInfo.blockElement && container && container.contains(activeSelInfo.blockElement) ? activeSelInfo.blockElement : null) ||
+      (lastClickedBlock && container && container.contains(lastClickedBlock) ? lastClickedBlock : null) ||
+      (lastHoveredBlock && container && container.contains(lastHoveredBlock) ? lastHoveredBlock : null);
+
+    pickerState = {
+      mode: mode,
+      targetVaultPath: targetVaultPath || null,
+      anchorBlock: anchorBlock,
+      dataUrl: null,
+      fileName: null,
+      byteSize: 0
+    };
+
+    clearPickerPreview();
+    if (mode === 'replace') {
+      imgPickerTitle.textContent = '🔄 替换原图片文件';
+      imgPickerSub.textContent = targetVaultPath || '';
+      imgInsertOptions.classList.add('hidden');
+      imgPickerHint.textContent = '新图片将直接覆盖原文件夹中的同名文件，笔记中的引用自动生效';
+      imgPickerConfirmBtn.textContent = '💾 覆盖原图片文件 (⌘↵)';
+    } else {
+      const noteStem = basename(state.currentPath || '').replace(/\.md$/i, '');
+      imgPickerTitle.textContent = '🖼️ 插入新图片到笔记';
+      imgPickerSub.textContent = '将保存至 assets/' + noteStem + '/';
+      imgInsertOptions.classList.remove('hidden');
+      imgAltInput.value = '';
+      imgPositionSelect.value = anchorBlock ? 'after' : 'end';
+      imgPickerHint.textContent = anchorBlock
+        ? ('定位段落：「' + (anchorBlock.textContent || '').trim().slice(0, 26) + '…」')
+        : '未选中特定段落，默认插入到文档末尾';
+      imgPickerConfirmBtn.textContent = '💾 保存图片并插入原文档 (⌘↵)';
+    }
+
+    imgPickerModal.classList.remove('hidden');
+    setTimeout(function () { imgDropzone.focus(); }, 20);
+
+    if (preloadedBlob) {
+      readBlobAsDataUrl(preloadedBlob, preloadedBlob.name || 'pasted-image.png');
+    }
+  }
+
+  if (imgClearPreviewBtn) imgClearPreviewBtn.addEventListener('click', clearPickerPreview);
+  if (imgPickerCancelBtn) imgPickerCancelBtn.addEventListener('click', closeImagePickerModal);
+
+  if (imgBrowseLocalBtn) {
+    imgBrowseLocalBtn.addEventListener('click', function () {
+      if (!pickerState) return;
+      if (pickerState.mode === 'replace') imgReplaceFileInput.click();
+      else imgInsertFileInput.click();
+    });
+  }
+
+  [imgReplaceFileInput, imgInsertFileInput].forEach(function (inp) {
+    if (!inp) return;
+    inp.addEventListener('change', function () {
+      const f = inp.files && inp.files[0];
+      inp.value = '';
+      if (f && pickerState) readBlobAsDataUrl(f, f.name);
+    });
+  });
+
+  if (imgReadClipboardBtn) {
+    imgReadClipboardBtn.addEventListener('click', async function () {
+      if (!navigator.clipboard || !navigator.clipboard.read) {
+        showToast('请直接按键盘 ⌘V 粘贴剪贴板中的图片', false);
+        imgDropzone.focus();
+        return;
+      }
+      try {
+        const items = await navigator.clipboard.read();
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i];
+          const imgType = item.types.find(function (t) { return t.indexOf('image/') === 0; });
+          if (imgType) {
+            const blob = await item.getType(imgType);
+            const ext = imgType.split('/')[1] || 'png';
+            readBlobAsDataUrl(blob, 'clipboard.' + ext);
+            return;
+          }
+        }
+        showToast('剪贴板中没有检测到图片，请先截图或复制图片后再试', true);
+      } catch (e) {
+        showToast('请直接按键盘 ⌘V 粘贴剪贴板中的图片', false);
+        imgDropzone.focus();
+      }
+    });
+  }
+
+  if (imgDropzone) {
+    ['dragenter', 'dragover'].forEach(function (ev) {
+      imgDropzone.addEventListener(ev, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        imgDropzone.classList.add('dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      imgDropzone.addEventListener(ev, function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        imgDropzone.classList.remove('dragover');
+      });
+    });
+    imgDropzone.addEventListener('drop', function (e) {
+      const files = Array.from((e.dataTransfer && e.dataTransfer.files) || []);
+      const imgFile = files.find(function (f) { return /^image\//i.test(f.type) || /\.(png|jpe?g|gif|webp|bmp|svg)$/i.test(f.name); });
+      if (imgFile && pickerState) {
+        readBlobAsDataUrl(imgFile, imgFile.name);
+      }
+    });
+  }
+
+  // 全局粘贴事件：1) 若替换/插入弹窗已打开，直接读入剪贴板图片；2) 若在阅读笔记时直接按 Cmd+V 且剪贴板中有图片，自动唤起插入图片弹窗并载入该图
+  document.addEventListener('paste', function (e) {
+    const items = (e.clipboardData && e.clipboardData.items) || [];
+    let imgBlob = null;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type && items[i].type.indexOf('image/') === 0) {
+        imgBlob = items[i].getAsFile();
+        break;
+      }
+    }
+    if (!imgBlob) return;
+
+    if (pickerState && !imgPickerModal.classList.contains('hidden')) {
+      e.preventDefault();
+      readBlobAsDataUrl(imgBlob, imgBlob.name || 'clipboard-image.png');
+      return;
+    }
+
+    const inInput = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable);
+    if (!inInput && state.currentPath && state.src && state.src.mode === 'default') {
+      e.preventDefault();
+      openImagePickerModal('insert', null, imgBlob);
+    }
+  });
+
+  async function confirmImagePicker() {
+    if (!pickerState || !pickerState.dataUrl || !state.currentPath) return;
+    const st = pickerState;
+    imgPickerConfirmBtn.disabled = true;
+    indStart();
+
+    try {
+      if (st.mode === 'replace') {
+        const res = await apiOverwriteImage(st.targetVaultPath, st.dataUrl);
+        if (res && res.previousDataUrl) {
+          MDEditor.pushUndo(state.currentPath, {
+            type: 'img',
+            imagePath: st.targetVaultPath,
+            previousDataUrl: res.previousDataUrl
+          });
+          updateUndoButtons();
+        }
+        state.assetBuster.set(st.targetVaultPath, Date.now());
+        closeImagePickerModal();
+        await openDoc(state.currentPath, true);
+        indFinish(true, '已替换原图片文件：' + st.targetVaultPath);
+        showToast('🔄 已直接替换文件夹中的原图片：' + basename(st.targetVaultPath) + '（可按 ⌘Z 撤销）');
+      } else {
+        const upRes = await apiUploadNewImage(state.currentPath, st.dataUrl, null);
+        const vaultRel = upRes.vaultPath;
+        const mdLink = upRes.markdownLink;
+        if (state.src && state.src.assetIndex) {
+          state.src.assetIndex[vaultRel] = vaultRel;
+          state.src.assetIndex[basename(vaultRel)] = vaultRel;
+        }
+        state.assetBuster.set(vaultRel, Date.now());
+
+        const rawMd = state.currentMarkdown || await state.src.getText(state.currentPath);
+        const container = el.article.querySelector('.markdown-rendered');
+        let loc = null;
+        const pos = imgPositionSelect.value || 'after';
+        if (pos !== 'end' && st.anchorBlock && container && container.contains(st.anchorBlock)) {
+          const blkInfo = MDEditor.getBlockSelectionInfo(st.anchorBlock, container);
+          if (blkInfo) loc = MDEditor.locateInMarkdown(rawMd, blkInfo);
+        }
+        const updatedMd = MDEditor.insertImageMarkdown(rawMd, loc, mdLink, imgAltInput.value, pos);
+        closeImagePickerModal();
+        await commitMarkdownEdit(updatedMd, '插入新图片 (' + upRes.fileName + ')');
+        showToast('🖼️ 已存入 ' + vaultRel + ' 并写入原笔记');
+      }
+    } catch (err) {
+      indFinish(false, '图片操作失败：' + (err.message || err));
+      showToast('图片操作失败：' + (err.message || err), true);
+    } finally {
+      if (imgPickerConfirmBtn) imgPickerConfirmBtn.disabled = false;
+    }
+  }
+
+  if (imgPickerConfirmBtn) imgPickerConfirmBtn.addEventListener('click', confirmImagePicker);
+
   function openCommentBox() { if (window.READER_READONLY) return;
     const info = MDEditor.extractSelectionInfo(el.article) || activeSelInfo;
     if (!info || !info.text) {
@@ -1182,6 +1840,34 @@
   /* ---------- 全套键盘快捷键绑定 ---------- */
   document.addEventListener('keydown', function (e) {
     const inInput = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA');
+
+    // 如果正在进行图片裁剪或替换/插入图片弹窗：支持 Cmd+Enter 确认，Esc 关闭
+    if (cropState && cropModal && !cropModal.classList.contains('hidden')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeCropModal();
+        return;
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        confirmCropSave();
+        return;
+      }
+      return;
+    }
+    if (pickerState && imgPickerModal && !imgPickerModal.classList.contains('hidden')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeImagePickerModal();
+        return;
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && !imgPickerConfirmBtn.disabled) {
+        e.preventDefault();
+        confirmImagePicker();
+        return;
+      }
+      return;
+    }
 
     // 如果正在进行段落原位编辑：支持 Cmd+Enter 或纯 Enter 保存，Esc 取消
     if (editingState) {
@@ -1267,6 +1953,15 @@
       if (state.currentPath) {
         e.preventDefault();
         startBlockEdit(null);
+        return;
+      }
+    }
+
+    // 6.5 Cmd + I：在当前段落位置插入新图片
+    if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.key.toLowerCase() === 'i') {
+      if (state.currentPath) {
+        e.preventDefault();
+        openImagePickerModal('insert', null);
         return;
       }
     }

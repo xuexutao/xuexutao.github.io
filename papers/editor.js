@@ -11,8 +11,8 @@
     { name: '紫色', value: '#9333ea', hex: '#9333ea', shortcut: '⌥6' }
   ];
 
-  // Undo & Redo 历史栈：按文档路径存储
-  const historyMap = new Map(); // path -> { undo: [str], redo: [str] }
+  // Undo & Redo 历史栈：按文档路径存储，支持字符串（纯 Markdown）或 { type: 'md'|'img'|'insert-img', ... }
+  const historyMap = new Map(); // path -> { undo: [entry], redo: [entry] }
 
   function getHistory(docPath) {
     if (!historyMap.has(docPath)) {
@@ -21,12 +21,17 @@
     return historyMap.get(docPath);
   }
 
-  function pushUndo(docPath, oldMarkdown) {
+  function pushUndo(docPath, oldMarkdownOrEntry) {
     const h = getHistory(docPath);
-    if (h.undo.length === 0 || h.undo[h.undo.length - 1] !== oldMarkdown) {
-      h.undo.push(oldMarkdown);
-      if (h.undo.length > 50) h.undo.shift();
+    const entry = typeof oldMarkdownOrEntry === 'string'
+      ? { type: 'md', markdown: oldMarkdownOrEntry }
+      : oldMarkdownOrEntry;
+    const last = h.undo.length > 0 ? h.undo[h.undo.length - 1] : null;
+    if (entry.type === 'md' && last && last.type === 'md' && last.markdown === entry.markdown) {
+      return;
     }
+    h.undo.push(entry);
+    if (h.undo.length > 50) h.undo.shift();
     h.redo.length = 0;
   }
 
@@ -38,22 +43,54 @@
     const h = getHistory(docPath);
     if (!h.undo.length) return null;
     const prev = h.undo.pop();
-    h.redo.push(currentMarkdown);
+    h.redo.push({ type: 'md', markdown: currentMarkdown });
     return prev;
   }
 
   /**
-   * 向上查找最近的段落级块元素（P, LI, H1-H6, BLOCKQUOTE, TD, TH）
+   * 向上查找最近的段落级块元素（P, LI, H1-H6, TD, TH）
    */
   function findClosestEditableBlock(node, container) {
     let cur = node && node.nodeType === 1 ? node : (node ? node.parentElement : null);
     while (cur && cur !== container) {
-      if (/^(P|LI|H[1-6])$/.test(cur.tagName)) {
+      if (/^(P|LI|H[1-6]|TD|TH)$/.test(cur.tagName)) {
+        // 若命中的是松散列表项 LI，且其内部第一个子元素就是 P，优先定位到该 P，避免把子列表一并框入
+        if (cur.tagName === 'LI') {
+          const directP = Array.from(cur.children).find(function (c) { return c.tagName === 'P'; });
+          if (directP) return directP;
+        }
         return cur;
+      }
+      if (cur.tagName === 'BLOCKQUOTE' || (cur.classList && cur.classList.contains('callout-box'))) {
+        const innerP = cur.querySelector('p');
+        if (innerP) return innerP;
       }
       cur = cur.parentElement;
     }
     return null;
+  }
+
+  /**
+   * 将 DOM 片段清理并还原为带公式与换行的纯文本（移除悬浮按钮与子列表，还原 KaTeX 与 <br>）
+   */
+  function cleanDomFragmentToText(rootNode, isBlockRoot) {
+    const clone = rootNode.cloneNode(true);
+    if (clone.querySelectorAll) {
+      clone.querySelectorAll('.img-edit-toolbar').forEach(function (n) { n.remove(); });
+      if (isBlockRoot) {
+        clone.querySelectorAll('ul, ol').forEach(function (sub) { sub.remove(); });
+      }
+      clone.querySelectorAll('.katex').forEach(function (k) {
+        const ann = k.querySelector('annotation[encoding="application/x-tex"]');
+        const tex = ann ? ann.textContent : '';
+        const isDisplay = k.closest('.katex-display') !== null;
+        k.parentNode.replaceChild(document.createTextNode(tex ? (isDisplay ? '$$' + tex + '$$' : '$' + tex + '$') : ''), k);
+      });
+      clone.querySelectorAll('br').forEach(function (br) {
+        br.parentNode.replaceChild(document.createTextNode('\n'), br);
+      });
+    }
+    return (clone.textContent || '').replace(/\u00a0/g, ' ').trim();
   }
 
   /**
@@ -71,19 +108,11 @@
     const boundingRect = range.getBoundingClientRect();
 
     const frag = range.cloneContents();
-    frag.querySelectorAll('.katex').forEach(function (k) {
-      const ann = k.querySelector('annotation[encoding="application/x-tex"]');
-      const tex = ann ? ann.textContent : '';
-      const isDisplay = k.closest('.katex-display') !== null;
-      const replacement = document.createTextNode(tex ? (isDisplay ? '$$' + tex + '$$' : '$' + tex + '$') : '');
-      k.parentNode.replaceChild(replacement, k);
-    });
-
     frag.querySelectorAll('p, li, h1, h2, h3, h4, h5, h6, blockquote, tr, div.math-block').forEach(function (blk) {
       blk.appendChild(document.createTextNode('\n'));
     });
 
-    let selectedTextWithMath = frag.textContent.replace(/\n{3,}/g, '\n\n').trim();
+    const selectedTextWithMath = cleanDomFragmentToText(frag, false).replace(/\n{3,}/g, '\n\n').trim();
     const rawSelected = sel.toString().trim();
     if (!selectedTextWithMath && !rawSelected) return null;
 
@@ -95,13 +124,7 @@
       preRange.selectNodeContents(container);
       preRange.setEnd(range.startContainer, range.startOffset);
       const preFrag = preRange.cloneContents();
-      preFrag.querySelectorAll('.katex').forEach(function (k) {
-        const ann = k.querySelector('annotation[encoding="application/x-tex"]');
-        const tex = ann ? ann.textContent : '';
-        const isDisplay = k.closest('.katex-display') !== null;
-        k.parentNode.replaceChild(document.createTextNode(tex ? (isDisplay ? '$$' + tex + '$$' : '$' + tex + '$') : ''), k);
-      });
-      const preText = preFrag.textContent;
+      const preText = cleanDomFragmentToText(preFrag, false);
       if (selectedTextWithMath.length >= 2) {
         let pos = 0;
         while (true) {
@@ -127,14 +150,7 @@
   }
 
   function getCleanTextWithMath(el) {
-    const clone = el.cloneNode(true);
-    clone.querySelectorAll('.katex').forEach(function (k) {
-      const ann = k.querySelector('annotation[encoding="application/x-tex"]');
-      const tex = ann ? ann.textContent : '';
-      const isDisplay = k.closest('.katex-display') !== null;
-      k.parentNode.replaceChild(document.createTextNode(tex ? (isDisplay ? '$$' + tex + '$$' : '$' + tex + '$') : ''), k);
-    });
-    return clone.textContent.trim();
+    return cleanDomFragmentToText(el, true);
   }
 
   /**
@@ -151,13 +167,7 @@
       preRange.selectNodeContents(container);
       preRange.setEndBefore(blockEl);
       const preFrag = preRange.cloneContents();
-      preFrag.querySelectorAll('.katex').forEach(function (k) {
-        const ann = k.querySelector('annotation[encoding="application/x-tex"]');
-        const tex = ann ? ann.textContent : '';
-        const isDisplay = k.closest('.katex-display') !== null;
-        k.parentNode.replaceChild(document.createTextNode(tex ? (isDisplay ? '$$' + tex + '$$' : '$' + tex + '$') : ''), k);
-      });
-      const preText = preFrag.textContent;
+      const preText = cleanDomFragmentToText(preFrag, false);
       if (textWithMath.length >= 2) {
         let pos = 0;
         while (true) {
@@ -180,9 +190,9 @@
   }
 
   /**
-   * 将原位编辑后（contenteditable）的段落 DOM 节点逆向序列化为对应的 Markdown 文本（保留公式、加粗、斜体、颜色 span、批注 span、代码、链接）
+   * 将原位编辑后（contenteditable）的段落 DOM 节点逆向序列化为对应的 Markdown 文本（保留公式、加粗、斜体、颜色 span、批注 span、代码、链接、多行引用前缀）
    */
-  function serializeBlockElementToMarkdown(blockEl) {
+  function serializeBlockElementToMarkdown(blockEl, oldSeg) {
     function walk(node) {
       if (node.nodeType === 3) {
         return node.nodeValue;
@@ -206,11 +216,14 @@
       // 2. 换行
       if (tag === 'BR') return '\n';
 
-      // 3. 图片
+      // 3. 图片与悬浮按钮
       if (tag === 'IMG') {
         const alt = node.getAttribute('alt') || '';
-        const src = node.getAttribute('src') || '';
-        return '![' + alt + '](' + src + ')';
+        const rawSrc = node.getAttribute('data-raw-src') || node.getAttribute('src') || '';
+        return '![' + alt + '](' + rawSrc + ')';
+      }
+      if (node.classList && node.classList.contains('img-edit-toolbar')) {
+        return '';
       }
 
       // 递归子节点
@@ -235,6 +248,17 @@
         return '~~' + inner + '~~';
       }
       if (tag === 'A') {
+        const rawWiki = node.getAttribute('data-raw-wikilink');
+        if (rawWiki) {
+          // 如果用户未改动双链的显示文字，直接保留原始 [[...]] 语法
+          const pipeIdx = rawWiki.indexOf('|');
+          if (pipeIdx >= 0) {
+            return rawWiki.slice(0, pipeIdx + 1) + inner + ']]';
+          }
+          const origLabel = rawWiki.slice(2, -2).split('#')[0].split('/').pop();
+          if (!inner || inner === origLabel) return rawWiki;
+          return rawWiki.slice(0, -2) + '|' + inner + ']]';
+        }
         if (node.classList.contains('internal-link')) {
           const p = node.getAttribute('data-path') || '';
           const h = node.getAttribute('data-heading') || '';
@@ -246,6 +270,11 @@
           return '[[' + (target || inner) + ']]';
         }
         const href = node.getAttribute('href') || '';
+        // 若是裸链接（如 https://...），保持原格式而不强制包成 [url](url)
+        if (inner === href && (!oldSeg || oldSeg.indexOf('[' + inner + ']') === -1)) {
+          if (oldSeg && oldSeg.indexOf('<' + href + '>') >= 0) return '<' + href + '>';
+          return href;
+        }
         return '[' + inner + '](' + href + ')';
       }
       if (tag === 'SPAN') {
@@ -258,7 +287,6 @@
           return '<span style="' + styleAttr.replace(/"/g, '\'') + '">' + inner + '</span>';
         }
       }
-      // 瀏覽器在 contenteditable 回车时可能插入 div
       if (tag === 'DIV') {
         return '\n' + inner;
       }
@@ -273,11 +301,37 @@
       if (ch.nodeType === 1 && (ch.tagName === 'UL' || ch.tagName === 'OL')) continue;
       out += walk(ch);
     }
-    return out.replace(/\u00a0/g, ' ').trim();
+    let cleaned = out.replace(/\u00a0/g, ' ').trim();
+
+    // 若当前段落位于 blockquote / callout 内，或原片段含多行 `> ` 引用前缀，换行时自动延续 `> `
+    const inQuote = (blockEl.closest && blockEl.closest('blockquote, .callout-box')) || (oldSeg && /\r?\n[ \t]*>[ \t]?/.test(oldSeg));
+    if (inQuote && cleaned.indexOf('\n') >= 0) {
+      cleaned = cleaned.split('\n').map(function (line, idx) {
+        if (idx === 0) return line;
+        return /^[ \t]*>/.test(line) ? line : ('> ' + line);
+      }).join('\n');
+    } else if (oldSeg && cleaned.indexOf('\n') >= 0) {
+      // 若原片段是带缩进续行的列表项（如 `1. xxx\n   yyy`），保留续行缩进
+      const indentMatch = oldSeg.match(/\r?\n([ \t]{2,})(?![-*+]|\d+\.)/);
+      if (indentMatch) {
+        const indent = indentMatch[1];
+        cleaned = cleaned.split('\n').map(function (line, idx) {
+          if (idx === 0) return line;
+          return line.startsWith(indent) ? line : (indent + line.trimStart());
+        }).join('\n');
+      }
+    }
+
+    return cleaned;
   }
 
+  const TOKEN_UNIT = '\\*\\*|\\*|__|==|~~|`|<\\/?[a-zA-Z][^>\\n]*>|\\[\\[(?:[^\\]\\n]*?[\\/\\|#])?|\\]\\]|\\[|\\]\\([^)\\n]*\\)|<(?=(?:https?|mailto):)|(?<=\\S)>|\\\\(?=[\\\\`*_{}\\[\\]()#+\\-.!|>~])';
+  const INLINE_GAP = '(?:' + TOKEN_UNIT + ')*';
+  const WS_OR_TOKEN_GAP = '(?:' + TOKEN_UNIT + '|[ \\t\\r\\n>])+';
+  const ANCHOR_GAP = '(?:' + TOKEN_UNIT + '|[ \\t\\r\\n>])*';
+
   /**
-   * 在原始 Markdown 正文中精准定位用户选中的片段，返回 { start, end }
+   * 在原始 Markdown 正文中精准定位用户选中的片段或整个段落块，返回 { start, end }
    */
   function locateInMarkdown(fullMarkdown, selInfo) {
     let bodyOffset = 0;
@@ -286,75 +340,173 @@
       bodyOffset = fmMatch[0].length;
     }
     const body = fullMarkdown.slice(bodyOffset);
-    const target = selInfo.text;
+    const target = (selInfo && selInfo.text ? selInfo.text : '').trim();
+    if (!target) return null;
+    const occ = (selInfo && selInfo.occurrenceIndex) || 0;
 
     // 策略 1：直接精确子串查找
     const directMatches = findAllLiteralMatches(body, target);
     if (directMatches.length > 0) {
-      const pick = directMatches[Math.min(selInfo.occurrenceIndex, directMatches.length - 1)];
-      return { start: bodyOffset + pick.start, end: bodyOffset + pick.end };
+      const pick = directMatches[Math.min(occ, directMatches.length - 1)];
+      return extendToBalancedInlineTags(fullMarkdown, bodyOffset + pick.start, bodyOffset + pick.end);
     }
 
-    // 策略 2：弹性正则匹配（容忍 **, *, ==, <span...>, [[target|alias]] 等修饰符）
-    const flexRegex = buildFlexibleRegex(target);
-    if (flexRegex) {
-      const matches = [];
-      let m;
-      while ((m = flexRegex.exec(body)) !== null) {
-        matches.push({ start: m.index, end: m.index + m[0].length });
-        if (m.index === flexRegex.lastIndex) flexRegex.lastIndex++;
-      }
-      if (matches.length > 0) {
-        const pick = matches[Math.min(selInfo.occurrenceIndex, matches.length - 1)];
-        return extendToBalancedInlineTags(fullMarkdown, bodyOffset + pick.start, bodyOffset + pick.end);
+    // 策略 2：无回溯弹性正则匹配（适用于中短句、标题、列表项或划选文字）
+    if (target.length <= 120) {
+      const flexRegex = buildFlexibleRegex(target, true);
+      if (flexRegex) {
+        const matches = [];
+        let m;
+        while ((m = flexRegex.exec(body)) !== null) {
+          matches.push({ start: m.index, end: m.index + m[0].length });
+          if (m.index === flexRegex.lastIndex) flexRegex.lastIndex++;
+        }
+        if (matches.length > 0) {
+          const pick = matches[Math.min(occ, matches.length - 1)];
+          return extendToBalancedInlineTags(fullMarkdown, bodyOffset + pick.start, bodyOffset + pick.end);
+        }
       }
     }
 
-    // 策略 3：首尾锚点消歧（针对含复杂双链别名或长段落）
+    // 策略 3：首尾锚点消歧（针对含多行换行、复杂双链、公式、嵌套颜色/加粗的长段落）
     const compact = target.replace(/\s+/g, '');
-    if (compact.length >= 12) {
-      const headStr = compact.slice(0, Math.min(10, Math.floor(compact.length / 2)));
-      const tailStr = compact.slice(-Math.min(10, Math.floor(compact.length / 2)));
-      const headRx = buildFlexibleRegex(headStr);
-      const tailRx = buildFlexibleRegex(tailStr);
+    if (compact.length >= 4) {
+      const hLen = Math.min(12, Math.max(2, Math.floor(compact.length / 2)));
+      const tLen = Math.min(12, Math.max(2, compact.length - hLen));
+      const headStr = compact.slice(0, hLen);
+      const tailStr = compact.slice(-tLen);
+      const headRx = buildFlexibleRegex(headStr, true);
+      const tailRx = buildFlexibleRegex(tailStr, true);
       if (headRx && tailRx) {
         let hm;
         const candidates = [];
+        const maxSpan = Math.max(target.length * 4 + 600, 1200);
         while ((hm = headRx.exec(body)) !== null) {
           tailRx.lastIndex = hm.index + hm[0].length;
           const tm = tailRx.exec(body);
-          if (tm && (tm.index + tm[0].length - hm.index) <= target.length * 3 + 360) {
+          if (tm && (tm.index + tm[0].length - hm.index) <= maxSpan) {
             candidates.push({ start: hm.index, end: tm.index + tm[0].length });
           }
           if (hm.index === headRx.lastIndex) headRx.lastIndex++;
         }
         if (candidates.length > 0) {
-          const pick = candidates[Math.min(selInfo.occurrenceIndex, candidates.length - 1)];
+          const pick = candidates[Math.min(occ, candidates.length - 1)];
           return extendToBalancedInlineTags(fullMarkdown, bodyOffset + pick.start, bodyOffset + pick.end);
         }
       }
+    }
+
+    // 策略 4：行级/块级去修饰归一化兜底（彻底解决多重嵌套语法、特殊转义字符或超长复杂段落映射）
+    const lineFallback = locateByNormalizedLines(fullMarkdown, bodyOffset, body, target, occ);
+    if (lineFallback) {
+      return lineFallback;
     }
 
     return null;
   }
 
   /**
-   * 若匹配到的区间首尾紧邻外层 `**` 或 `<span...>`，自动向两侧扩展使其闭合，方便整段替换
+   * 将 Markdown 源码片段去除修饰符后转为纯文本（用于策略 4 行级精确对比）
+   */
+  function stripMarkdownToComparable(mdStr) {
+    return mdStr
+      .replace(/!\[\[[^\]]*\]\]/g, '')
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+      .replace(/\[\[([^\]\|#]*)(?:#[^\]\|]*)?\|([^\]]+)\]\]/g, '$2')
+      .replace(/\[\[([^\]\|#]+)(?:#([^\]]+))?\]\]/g, function (_, t, h) {
+        return t ? t.split('/').pop() : (h || '');
+      })
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .replace(/<((?:https?|mailto):[^>]+)>/gi, '$1')
+      .replace(/<\/?[a-zA-Z][^>\n]*>/g, '')
+      .replace(/\\([\\`*_{}\[\]()#+\-.!|>~])/g, '$1')
+      .replace(/(\*\*|\*|__|==|~~|`)/g, '')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/\s+/g, '');
+  }
+
+  function locateByNormalizedLines(fullMd, bodyOffset, body, target, occ) {
+    const normTarget = stripMarkdownToComparable(target);
+    if (!normTarget) return null;
+
+    // 收集每一行的起止位置与去掉行首块标记（#、>、-、1.）后的内容区间
+    const lines = [];
+    let pos = 0;
+    const rawLines = body.split('\n');
+    for (let i = 0; i < rawLines.length; i++) {
+      const lineStr = rawLines[i].replace(/\r$/, '');
+      const lineStart = pos;
+      const lineEnd = pos + lineStr.length;
+      pos += rawLines[i].length + 1;
+
+      const prefixMatch = lineStr.match(/^([ \t]*(?:>[ \t]*)*(?:#{1,6}[ \t]+|(?:[-*+]|\d+\.)[ \t]+)?)/);
+      const prefixLen = prefixMatch ? prefixMatch[0].length : 0;
+      const contentStart = lineStart + prefixLen;
+      const contentStr = lineStr.slice(prefixLen);
+      lines.push({
+        start: contentStart,
+        end: lineEnd,
+        norm: stripMarkdownToComparable(contentStr),
+        isEmpty: contentStr.trim().length === 0
+      });
+    }
+
+    const candidates = [];
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].isEmpty || !lines[i].norm) continue;
+      let accNorm = '';
+      for (let j = i; j < Math.min(lines.length, i + 25); j++) {
+        if (lines[j].isEmpty) break;
+        accNorm += lines[j].norm;
+        if (accNorm === normTarget) {
+          candidates.push({ start: bodyOffset + lines[i].start, end: bodyOffset + lines[j].end });
+          break;
+        }
+        if (accNorm.length > normTarget.length + 30) break;
+      }
+    }
+
+    if (candidates.length > 0) {
+      return candidates[Math.min(occ, candidates.length - 1)];
+    }
+
+    // 若目标是某一行内的子串（如划选部分文字）
+    for (let i = 0; i < lines.length; i++) {
+      if (!lines[i].norm) continue;
+      if (lines[i].norm.indexOf(normTarget) >= 0) {
+        candidates.push({ start: bodyOffset + lines[i].start, end: bodyOffset + lines[i].end });
+      }
+    }
+    if (candidates.length > 0) {
+      return candidates[Math.min(occ, candidates.length - 1)];
+    }
+    return null;
+  }
+
+  /**
+   * 若匹配到的区间首尾紧邻外层 `**`、`<span...>`、`[[...` 等内联包裹符号，自动向两侧扩展使其闭合
    */
   function extendToBalancedInlineTags(fullMd, start, end) {
-    // 扩展两侧紧邻的 **
-    if (start >= 2 && fullMd.slice(start - 2, start) === '**' && fullMd.slice(end, end + 2) === '**') {
-      start -= 2;
-      end += 2;
+    const lineStart = fullMd.lastIndexOf('\n', start - 1) + 1;
+    const leftSlice = fullMd.slice(lineStart, start);
+    const prefixMatch = leftSlice.match(/^([ \t]*(?:>[ \t]*)*(?:#{1,6}[ \t]+|(?:[-*+]|\d+\.)[ \t]+)?)((?:(?:\*\*|\*|==|~~|`|<span\b[^>]*>|<u>|<mark>|\[\[(?:[^\]\n]*?[\/\|#])?|\[)+[ \t]*)+)$/i);
+    if (prefixMatch && prefixMatch[2]) {
+      start -= prefixMatch[2].length;
+    } else {
+      const openInline = leftSlice.match(/((?:\*\*|\*|==|~~|`|<span\b[^>]*>|<u>|<mark>|\[\[(?:[^\]\n]*?[\/\|#])?|\[)+)$/i);
+      if (openInline) start -= openInline[0].length;
     }
-    // 扩展两侧紧邻的 <span ...>...</span>
-    const before = fullMd.slice(Math.max(0, start - 160), start);
-    const after = fullMd.slice(end, Math.min(fullMd.length, end + 20));
-    const openSpan = before.match(/<span\b[^>]*>$/i);
-    const closeSpan = after.match(/^<\/span>/i);
-    if (openSpan && closeSpan) {
-      start -= openSpan[0].length;
-      end += closeSpan[0].length;
+
+    const lineEnd = fullMd.indexOf('\n', end);
+    const rightLimit = lineEnd === -1 ? fullMd.length : lineEnd;
+    const rightSlice = fullMd.slice(end, rightLimit);
+    const closeInline = rightSlice.match(/^((?:\*\*|\*|==|~~|`|<\/span>|<\/u>|<\/mark>|\]\]|\]\([^)\n]*\)|>)+)/i);
+    if (closeInline) {
+      end += closeInline[0].length;
     }
     return { start: start, end: end };
   }
@@ -376,26 +528,35 @@
     return ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
-  function buildFlexibleRegex(text) {
+  function buildFlexibleRegex(text, allowLooseWs) {
     const trimmed = text.trim();
-    if (!trimmed || trimmed.length > 2200) return null;
-    // 允许字符之间穿插 Markdown 修饰符、HTML 标签或双链目标前缀
-    const inlineTokenGap = '(?:\\*\\*|\\*|==|~~|`|<\\/?span[^>]*>|<\\/?u>|<\\/?mark>|\\[\\[(?:[^\\]\\|]*\\|)?|\\]\\]|\\[|\\]\\([^)]*\\))*';
-    const parts = [];
+    if (!trimmed || trimmed.length > 160) return null;
+    const tokens = [];
     let i = 0;
     while (i < trimmed.length) {
-      const ch = trimmed[i];
-      if (/\s/.test(ch)) {
+      if (/\s/.test(trimmed[i])) {
         while (i < trimmed.length && /\s/.test(trimmed[i])) i++;
-        parts.push('(?:[ \\t\\r\\n>]|\\*\\*|\\*|==|<\\/?span[^>]*>)+');
+        tokens.push({ type: 'ws' });
       } else {
-        parts.push(escapeRegexChar(ch));
+        tokens.push({ type: 'ch', val: escapeRegexChar(trimmed[i]) });
         i++;
       }
     }
-    if (parts.length === 0) return null;
+    if (tokens.length === 0) return null;
+    let pattern = INLINE_GAP;
+    for (let k = 0; k < tokens.length; k++) {
+      if (tokens[k].type === 'ch') {
+        pattern += tokens[k].val;
+        if (k + 1 < tokens.length && tokens[k + 1].type === 'ch') {
+          pattern += allowLooseWs ? ANCHOR_GAP : INLINE_GAP;
+        }
+      } else {
+        pattern += WS_OR_TOKEN_GAP;
+      }
+    }
+    pattern += INLINE_GAP;
     try {
-      return new RegExp(inlineTokenGap + parts.join(inlineTokenGap) + inlineTokenGap, 'g');
+      return new RegExp(pattern, 'g');
     } catch (e) {
       return null;
     }
@@ -535,6 +696,32 @@
     );
   }
 
+  /**
+   * 在原始 Markdown 中根据目标段落位置（loc）或位置策略（after / before / end）插入图片语法
+   */
+  function insertImageMarkdown(fullMarkdown, loc, markdownLink, altText, position) {
+    const cleanAlt = (altText || '').replace(/[\r\n\[\]]/g, '').trim();
+    const imgSyntax = '![' + cleanAlt + '](' + markdownLink + ')';
+
+    if (!loc || position === 'end') {
+      const trimmedEnd = fullMarkdown.replace(/\s+$/, '');
+      return trimmedEnd + '\n\n' + imgSyntax + '\n';
+    }
+
+    if (position === 'before') {
+      const beforePart = fullMarkdown.slice(0, loc.start);
+      const lineStart = beforePart.lastIndexOf('\n') + 1;
+      return fullMarkdown.slice(0, lineStart) + imgSyntax + '\n\n' + fullMarkdown.slice(lineStart);
+    }
+
+    // 默认 after：在当前段落结束换行处插入新段落
+    const afterStart = loc.end;
+    const rest = fullMarkdown.slice(afterStart);
+    const nextParaBreak = rest.search(/\r?\n[ \t]*\r?\n/);
+    const insertOffset = nextParaBreak === -1 ? fullMarkdown.length : afterStart + nextParaBreak;
+    return fullMarkdown.slice(0, insertOffset) + '\n\n' + imgSyntax + fullMarkdown.slice(insertOffset);
+  }
+
   window.MDEditor = {
     PRESET_COLORS: PRESET_COLORS,
     findClosestEditableBlock: findClosestEditableBlock,
@@ -546,6 +733,7 @@
     applyColorSpan: applyColorSpan,
     removeColorSpan: removeColorSpan,
     applyCommentSchemeC: applyCommentSchemeC,
+    insertImageMarkdown: insertImageMarkdown,
     pushUndo: pushUndo,
     canUndo: canUndo,
     popUndo: popUndo
