@@ -752,7 +752,8 @@ a {
     line-height: 1.4;
 }
 
-/* 顶部目录卡片 (.post-toc) */
+/* 顶部目录卡片 (.post-toc)：由 custom.js 包裹为 .post-toc-wrap 并注入可收起标题栏；
+   无 JS 时仍按下面 .post-toc 的独立卡片样式正常展示。 */
 .post-md .post-toc {
     margin: 4px 0 28px;
     padding: 16px 22px;
@@ -762,6 +763,88 @@ a {
     border-radius: var(--radius-sm);
     font-size: .9rem;
     list-style: none;
+}
+
+.post-md .post-toc-wrap {
+    margin: 4px 0 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm);
+}
+
+.post-md .post-toc-wrap .post-toc {
+    margin: 0;
+    padding: 4px 22px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.post-toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px 10px 22px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.post-toc-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .92rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.post-toc-count {
+    font-size: .74rem;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.post-toc-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 11px;
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text-soft);
+    background: var(--paper-bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.post-toc-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
+}
+
+.post-toc-toggle-arrow {
+    display: inline-block;
+    font-size: .72rem;
+    color: var(--accent);
+    transition: transform .2s ease;
+}
+
+.post-toc-toggle-arrow::before {
+    content: "\25B8"; /* ▸ */
+}
+
+.post-toc-wrap:not(.is-collapsed) .post-toc-toggle-arrow {
+    transform: rotate(90deg);
 }
 
 .post-md .post-toc ol,

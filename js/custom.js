@@ -1,7 +1,8 @@
 /**
  * A4 主题自定义前端增强
  * 1. 列表页：按年份分组折叠（默认最新一年展开，其余收起）
- * 2. 正文排版修复：清理 Pandoc + 引用块导致的未解析 > ### 标题和多余全角空格
+ * 2. 文章页：正文前目录可收起（长目录默认收起）
+ * 3. 正文排版修复：清理 Pandoc + 引用块导致的未解析 > ### 标题和多余全角空格
  */
 (function () {
   'use strict';
@@ -16,6 +17,7 @@
 
   ready(function () {
     initArchiveFold();
+    initPostTocFold();
     fixMarkdownArtifacts();
   });
 
@@ -71,7 +73,73 @@
     }
   }
 
-  /* ============ 2. 清理 Markdown / Pandoc 边界渲染瑕疵 ============ */
+  /* ============ 2. 文章页 正文前目录收起 ============ */
+  // 长目录会把正文推到很后面：超过阈值时默认收起，读者点按钮/标题栏再展开。
+  var TOC_COLLAPSE_THRESHOLD = 12;
+
+  function initPostTocFold() {
+    var toc = document.querySelector('.post-md > .post-toc');
+    if (!toc) return;
+
+    var itemCount = toc.querySelectorAll('a').length;
+    if (!toc.id) toc.id = 'post-toc-list';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'post-toc-wrap';
+    toc.parentNode.insertBefore(wrap, toc);
+
+    var header = document.createElement('div');
+    header.className = 'post-toc-header';
+
+    var title = document.createElement('span');
+    title.className = 'post-toc-title';
+    title.textContent = '目录';
+    if (itemCount > 0) {
+      var count = document.createElement('span');
+      count.className = 'post-toc-count';
+      count.textContent = itemCount + ' 项';
+      title.appendChild(count);
+    }
+
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'post-toc-toggle';
+    button.setAttribute('aria-controls', toc.id);
+
+    var label = document.createElement('span');
+    label.className = 'post-toc-toggle-label';
+    var arrow = document.createElement('span');
+    arrow.className = 'post-toc-toggle-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    button.appendChild(label);
+    button.appendChild(arrow);
+
+    header.appendChild(title);
+    header.appendChild(button);
+    wrap.appendChild(header);
+    wrap.appendChild(toc);
+
+    var collapsed = itemCount > TOC_COLLAPSE_THRESHOLD;
+    apply(collapsed);
+
+    header.addEventListener('click', function () {
+      collapsed = !collapsed;
+      apply(collapsed);
+    });
+
+    function apply(isCollapsed) {
+      toc.style.display = isCollapsed ? 'none' : '';
+      label.textContent = isCollapsed ? '展开' : '收起';
+      button.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+      if (isCollapsed) {
+        wrap.classList.add('is-collapsed');
+      } else {
+        wrap.classList.remove('is-collapsed');
+      }
+    }
+  }
+
+  /* ============ 3. 清理 Markdown / Pandoc 边界渲染瑕疵 ============ */
   function fixMarkdownArtifacts() {
     var postMd = document.querySelector('.post-md');
     if (!postMd) return;
