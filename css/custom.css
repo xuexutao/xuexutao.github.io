@@ -423,10 +423,10 @@ a {
 /* ---------- 4. 文章页标题与元信息 ---------- */
 .post-main-title {
     margin-top: 4px;
-    font-size: 1.95rem;
+    font-size: 1.7rem;
     font-weight: 700;
-    line-height: 1.38;
-    letter-spacing: .2px;
+    line-height: 1.42;
+    letter-spacing: -0.012em;
     color: var(--text-main);
 }
 
@@ -441,15 +441,24 @@ a {
 }
 
 /* ---------- 5. 文章详情页 正文排版 (.post-md) ---------- */
+/* 字号/行高/间距对齐自有 HTML 阅读器（obsidian_bk/Html/styles.css 的 .markdown-rendered）：
+   14.5px / 1.78，段落 0.72em，标题以 em 相对正文缩放，避免 rem 与正文字号脱节。 */
 .post-md {
-    font-size: 16.5px;
-    line-height: 1.85;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.78;
     color: var(--text-main);
 }
 
 .post-md p {
-    margin: 14px 0;
-    line-height: 1.85;
+    margin: 0.72em 0;
+    line-height: 1.78;
+}
+
+.post-md strong {
+    font-family: inherit;
+    font-weight: 680;
+    color: var(--text-main);
 }
 
 /* 过滤 Pandoc 遗留的大量空段落 */
@@ -464,22 +473,23 @@ a {
 .post-md h5,
 .post-md h6 {
     font-weight: 700;
-    line-height: 1.38;
+    line-height: 1.42;
+    letter-spacing: -0.012em;
     color: var(--text-main);
     scroll-margin-top: 24px;
 }
 
 .post-md h1 {
-    font-size: 1.65rem;
-    margin: 34px 0 14px;
-    padding: 0 0 10px;
+    font-size: 1.82em;
+    margin: 0 0 1.05em;
+    padding: 0 0 0.35em;
     border-bottom: 1px solid var(--line);
 }
 
 .post-md h2 {
-    font-size: 1.38rem;
-    margin: 28px 0 12px;
-    padding: 2px 0 2px 12px;
+    font-size: 1.34em;
+    margin: 1.75em 0 0.72em;
+    padding: 0 0 0 10px;
     position: relative;
 }
 
@@ -487,29 +497,32 @@ a {
     content: "";
     position: absolute;
     left: 0;
-    top: 5px;
-    bottom: 5px;
+    top: 4px;
+    bottom: 4px;
     width: 4px;
     border-radius: 4px;
     background: var(--accent);
 }
 
 .post-md h3 {
-    font-size: 1.18rem;
-    margin: 22px 0 10px;
+    font-size: 1.12em;
+    font-weight: 680;
+    margin: 1.42em 0 0.56em;
     padding: 0;
 }
 
 .post-md h4 {
-    font-size: 1.05rem;
-    margin: 18px 0 8px;
+    font-size: 1em;
+    font-weight: 650;
+    margin: 1.2em 0 0.45em;
     padding: 0;
 }
 
 .post-md h5,
 .post-md h6 {
-    font-size: .96rem;
-    margin: 14px 0 6px;
+    font-size: 1em;
+    font-weight: 650;
+    margin: 1.2em 0 0.45em;
     padding: 0;
     color: var(--text-soft);
 }
@@ -529,22 +542,23 @@ a {
 /* 解决 pandoc loose list (<li><p>...</p></li>) 导致的列表间距过大与序号错位 */
 .post-md ul,
 .post-md ol {
-    padding-left: 1.65em;
-    margin: 12px 0;
+    padding-left: 1.72em;
+    margin: 0.72em 0 0.95em;
 }
 
 .post-md li {
-    margin: 6px 0;
-    line-height: 1.8;
+    margin: 0.34em 0;
+    padding-left: 0.12em;
+    line-height: 1.78;
 }
 
 .post-md li > p {
-    margin: 4px 0;
+    margin: 0.2em 0;
 }
 
 .post-md li > ul,
 .post-md li > ol {
-    margin: 4px 0;
+    margin: 0.2em 0 0.4em;
 }
 
 .post-md li::marker {
@@ -554,8 +568,8 @@ a {
 
 /* 引用块美化 */
 .post-md blockquote {
-    margin: 18px 0;
-    padding: 12px 18px;
+    margin: 1.05em 0;
+    padding: 0.75em 1.1em;
     border-left: 4px solid var(--accent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     background: #f6f8fb;
@@ -563,16 +577,16 @@ a {
 }
 
 .post-md blockquote p {
-    margin: 6px 0;
+    margin: 0.28em 0;
 }
 
 .post-md blockquote ul,
 .post-md blockquote ol {
-    margin: 6px 0;
+    margin: 0.28em 0;
 }
 
 .post-md hr {
-    margin: 36px auto;
+    margin: 1.8em auto;
     width: 60%;
     height: 1px;
     border: none;
@@ -584,7 +598,7 @@ a {
     display: block;
     width: fit-content;
     max-width: 100%;
-    margin: 18px auto;
+    margin: 1.1em auto;
     box-shadow: none !important;
     background: transparent !important;
     text-align: center;
@@ -603,16 +617,16 @@ a {
 .post-md code {
     background: var(--code-bg);
     color: #c7254e;
-    padding: 2px 6px;
+    padding: 0.14em 0.38em;
     border-radius: 5px;
-    font-size: .87em;
+    font-size: .88em;
     font-family: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
     word-break: break-word;
 }
 
 /* 代码块 */
 .post-md pre {
-    margin: 18px 0;
+    margin: 1.1em 0;
     border-radius: var(--radius);
     overflow-x: auto;
     box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
@@ -622,8 +636,8 @@ a {
     color: inherit;
     background: transparent;
     padding: 0;
-    font-size: 13.5px;
-    line-height: 1.65;
+    font-size: .88em;
+    line-height: 1.62;
     word-break: normal;
 }
 
@@ -633,17 +647,18 @@ a {
     overflow-x: auto;
     width: max-content;
     max-width: 100%;
-    margin: 20px auto;
+    margin: 1.15em auto 1.35em;
     border-collapse: collapse;
     border-radius: var(--radius-sm);
-    font-size: .92em;
+    font-size: .94em;
+    line-height: 1.58;
 }
 
 .post-md table th,
 .post-md table td,
 .post-md table tr:nth-child(odd) td,
 .post-md table tr:nth-child(even) td {
-    padding: 9px 16px;
+    padding: 0.6em 0.78em;
     border: 1px solid var(--line);
 }
 
@@ -659,7 +674,7 @@ a {
 
 /* 代码块（带行号的 highlight 也是 table）不继承普通表格样式 */
 .post-md figure.highlight {
-    margin: 18px 0;
+    margin: 1.1em 0;
     border-radius: var(--radius);
     overflow-x: auto;
     box-shadow: 0 3px 14px rgba(0, 0, 0, .10);
@@ -706,7 +721,7 @@ a {
 
 .post-md mjx-container:not([display="true"]) {
     display: inline !important;
-    margin: 0 2px;
+    margin: 0 1px;
     padding: 0;
 }
 
@@ -724,8 +739,17 @@ a {
     text-align: center;
     overflow-x: auto;
     overflow-y: hidden;
-    margin: 14px 0 !important;
-    padding: 4px 0;
+    /* 公式自身只留极小间距，总间距由外层段落统一控制（见下），避免双层叠加 */
+    margin: 0 !important;
+    padding: 0;
+}
+
+/* 独占一段的块公式：总上下间距 ~0.9em，与自有 HTML 的 .math-block(1.15em) + 段落折叠效果接近。
+   原写法是外层 p 14px + mjx 14px 叠加成约 28px，这是公式上下特别空的主因。 */
+.post-md p:has(> .math.display:only-child),
+.post-md p:has(> mjx-container[display="true"]:only-child) {
+    margin: 0.9em 0;
+    line-height: 1.4;
 }
 
 /* 顶部目录卡片 (.post-toc) */
@@ -1263,14 +1287,14 @@ a {
         font-size: 2rem;
     }
     .post-main-title {
-        font-size: 1.55rem;
+        font-size: 1.45rem;
     }
     .post-md {
-        font-size: 16px;
+        font-size: 14.5px;
     }
-    .post-md h1 { font-size: 1.45rem; }
-    .post-md h2 { font-size: 1.25rem; }
-    .post-md h3 { font-size: 1.12rem; }
+    .post-md h1 { font-size: 1.65em; }
+    .post-md h2 { font-size: 1.3em; }
+    .post-md h3 { font-size: 1.1em; }
     .categories-grid {
         grid-template-columns: 1fr;
     }
