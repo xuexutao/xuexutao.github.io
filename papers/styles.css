@@ -277,6 +277,59 @@ html, body {
   display: none;
 }
 
+.sidebar-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 2px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-tab {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 11.8px;
+  font-weight: 500;
+  padding: 4px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.14s ease;
+  white-space: nowrap;
+}
+
+.sidebar-tab:hover {
+  color: var(--text-heading);
+}
+
+.sidebar-tab.active {
+  background: var(--bg-surface);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-badge {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  background: color-mix(in srgb, var(--text-muted) 14%, transparent);
+  color: var(--text-muted);
+  padding: 0 5px;
+  border-radius: 99px;
+  line-height: 1.45;
+}
+
+.sidebar-tab.active .tab-badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 .tree-toolbar {
   display: flex;
   align-items: center;
@@ -289,6 +342,10 @@ html, body {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.tree-toolbar-actions.hidden {
+  display: none;
 }
 
 .link-btn {
@@ -304,6 +361,11 @@ html, body {
 .link-btn:hover, .link-btn.active {
   color: var(--accent);
   background: var(--accent-soft);
+}
+
+.link-btn-danger:hover {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
 }
 
 /* Folder Tree */
@@ -438,6 +500,58 @@ html, body {
   flex-shrink: 0;
 }
 
+.file-star-btn,
+.file-remove-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-faint);
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.12s, color 0.12s, background 0.12s, transform 0.12s;
+}
+
+.tree-file:hover .file-star-btn,
+.tree-file:hover .file-remove-btn,
+.file-star-btn.starred {
+  opacity: 1;
+}
+
+.file-star-btn.starred {
+  color: #f59e0b;
+}
+
+.file-star-btn:hover {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.14);
+  transform: scale(1.12);
+}
+
+.file-remove-btn:hover {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.12);
+}
+
+.flat-item-wrap {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  gap: 1px;
+}
+
+.flat-item-sub {
+  font-size: 10.5px;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Main Content Area */
 .main-pane {
   flex: 1;
@@ -515,6 +629,25 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+}
+
+button.stat-chip-btn {
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.14s ease;
+}
+
+button.stat-chip-btn:hover {
+  border-color: #f59e0b;
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+button.stat-chip-btn.starred {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.14);
+  font-weight: 600;
 }
 
 /* Content Body + Right TOC */

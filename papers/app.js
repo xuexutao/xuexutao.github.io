@@ -9,14 +9,16 @@
     crumbs: $('breadcrumbs'), headerStats: $('headerStats'), tocPane: $('tocPane'), tocList: $('tocList'),
     search: $('searchInput'), searchClear: $('searchClear'), treeStat: $('treeStat'),
     vaultName: $('vaultName'), vaultPath: $('vaultPath'), lightbox: $('lightbox'), lightboxImg: $('lightboxImg'),
-    folderInput: $('folderInput'), filesInput: $('filesInput'), hideAssetBtn: $('hideAssetBtn')
+    folderInput: $('folderInput'), filesInput: $('filesInput'), hideAssetBtn: $('hideAssetBtn'),
+    sidebarTabs: $('sidebarTabs'), favCountBadge: $('favCountBadge'), recentCountBadge: $('recentCountBadge'),
+    treeToolbarActions: $('treeToolbarActions'), listToolbarActions: $('listToolbarActions'), clearListBtn: $('clearListBtn')
   };
   const collator = new Intl.Collator('zh-CN', { numeric: true, sensitivity: 'base' });
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
   const state = {
     src: null, hideAssets: true, currentPath: null, currentFolder: '', openFolders: new Set(),
     query: '', pendingHeading: null, headings: [], dashCache: null, noteIndex: null, objectUrls: [],
-    assetBuster: new Map()
+    assetBuster: new Map(), sidebarTab: 'tree', favorites: [], recent: []
   };
   let defaultSource = null;
 
@@ -31,7 +33,127 @@
   function joinPath(a, b) { return normPath((a ? a + '/' : '') + b); }
   function fmtSize(n) { return n < 1024 ? n + ' B' : n < 1048576 ? (n / 1024).toFixed(1) + ' KB' : (n / 1048576).toFixed(2) + ' MB'; }
   function fmtDate(sec) { return sec ? new Date(sec * 1000).toLocaleDateString('zh-CN') : ''; }
+  function fmtRelTime(ms) {
+    if (!ms) return '';
+    const diff = Math.max(0, Math.floor((Date.now() - ms) / 1000));
+    if (diff < 60) return '刚刚';
+    if (diff < 3600) return Math.floor(diff / 60) + ' 分钟前';
+    if (diff < 86400) return Math.floor(diff / 3600) + ' 小时前';
+    if (diff < 86400 * 30) return Math.floor(diff / 86400) + ' 天前';
+    return new Date(ms).toLocaleDateString('zh-CN');
+  }
   const tick = () => new Promise(function (r) { setTimeout(r, 16); });
+
+  /* ---------- 收藏与最近阅读（浏览器本地存储） ---------- */
+  const FAV_STORAGE_KEY = 'md-reader-favorites';
+  const RECENT_STORAGE_KEY = 'md-reader-recent';
+  const MAX_RECENT_COUNT = 40;
+
+  function loadUserLists() {
+    try {
+      const favRaw = JSON.parse(localStorage.getItem(FAV_STORAGE_KEY) || '[]');
+      if (Array.isArray(favRaw)) {
+        state.favorites = favRaw.filter(function (x) { return x && typeof x.path === 'string'; });
+      }
+    } catch (e) { state.favorites = []; }
+    try {
+      const recRaw = JSON.parse(localStorage.getItem(RECENT_STORAGE_KEY) || '[]');
+      if (Array.isArray(recRaw)) {
+        state.recent = recRaw.filter(function (x) { return x && typeof x.path === 'string'; });
+      }
+    } catch (e) { state.recent = []; }
+  }
+
+  function saveFavorites() {
+    try { localStorage.setItem(FAV_STORAGE_KEY, JSON.stringify(state.favorites)); } catch (e) { /* quota ignore */ }
+    updateListBadges();
+  }
+
+  function saveRecent() {
+    try { localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(state.recent)); } catch (e) { /* quota ignore */ }
+    updateListBadges();
+  }
+
+  function isFavorited(path) {
+    return state.favorites.some(function (x) { return x.path === path; });
+  }
+
+  function toggleFavorite(path) {
+    if (!path) return false;
+    const idx = state.favorites.findIndex(function (x) { return x.path === path; });
+    let added = false;
+    if (idx >= 0) {
+      state.favorites.splice(idx, 1);
+    } else {
+      state.favorites.unshift({ path: path, time: Date.now() });
+      added = true;
+    }
+    saveFavorites();
+    renderTree();
+    updateHeaderStarBtn();
+    return added;
+  }
+
+  function removeFavorite(path) {
+    const idx = state.favorites.findIndex(function (x) { return x.path === path; });
+    if (idx >= 0) {
+      state.favorites.splice(idx, 1);
+      saveFavorites();
+      renderTree();
+      updateHeaderStarBtn();
+    }
+  }
+
+  function recordRecentRead(path) {
+    if (!path) return;
+    state.recent = state.recent.filter(function (x) { return x.path !== path; });
+    state.recent.unshift({ path: path, time: Date.now() });
+    if (state.recent.length > MAX_RECENT_COUNT) state.recent.length = MAX_RECENT_COUNT;
+    saveRecent();
+    if (state.sidebarTab === 'recent') renderTree();
+  }
+
+  function removeRecentItem(path) {
+    const idx = state.recent.findIndex(function (x) { return x.path === path; });
+    if (idx >= 0) {
+      state.recent.splice(idx, 1);
+      saveRecent();
+      renderTree();
+    }
+  }
+
+  function validListItems(list) {
+    if (!state.src || !state.src.fileMap) return [];
+    const terms = state.query ? state.query.toLowerCase().split(/\s+/).filter(Boolean) : [];
+    const out = [];
+    list.forEach(function (item) {
+      const f = state.src.fileMap.get(item.path);
+      if (!f) return;
+      if (terms.length) {
+        const hay = (f.path + ' ' + f.title + ' ' + f.tags.join(' ') + ' ' + f.arxiv).toLowerCase();
+        if (!terms.every(function (t) { return hay.indexOf(t) >= 0; })) return;
+      }
+      out.push({ file: f, time: item.time || 0 });
+    });
+    return out;
+  }
+
+  function updateListBadges() {
+    if (!state.src || !state.src.fileMap) return;
+    const favCount = state.favorites.filter(function (x) { return state.src.fileMap.has(x.path); }).length;
+    const recCount = state.recent.filter(function (x) { return state.src.fileMap.has(x.path); }).length;
+    if (el.favCountBadge) el.favCountBadge.textContent = String(favCount);
+    if (el.recentCountBadge) el.recentCountBadge.textContent = String(recCount);
+  }
+
+  function updateHeaderStarBtn() {
+    const btn = $('headerStarBtn');
+    if (!btn || !state.currentPath) return;
+    const starred = isFavorited(state.currentPath);
+    btn.classList.toggle('starred', starred);
+    btn.innerHTML = (starred ? '⭐ 已收藏' : '☆ 收藏');
+    btn.title = starred ? '点击取消收藏此文章' : '收藏此文章到浏览器本地书签';
+  }
 
   /* ---------- 数据源 ---------- */
   function buildAssetIndex(paths) {
@@ -404,14 +526,55 @@
     Array.from(node.folders.values()).sort(function (a, b) { return collator.compare(a.name, b.name); })
       .forEach(function (c) { h += folderHtml(c, force); });
     node.files.slice().sort(function (a, b) { return collator.compare(a.fileName, b.fileName); }).forEach(function (f) {
+      const starred = isFavorited(f.path);
       h += '<div class="tree-file" data-path="' + E(f.path) + '" title="' + E(f.path) + '"><span class="file-icon">📄</span>' +
         '<span class="file-title">' + E(f.title) + '</span>' +
-        (f.mathCount ? '<span class="math-pill">∑' + f.mathCount + '</span>' : '') + '</div>';
+        (f.mathCount ? '<span class="math-pill">∑' + f.mathCount + '</span>' : '') +
+        '<button type="button" class="file-star-btn' + (starred ? ' starred' : '') + '" data-star-path="' + E(f.path) + '" title="' + (starred ? '取消收藏' : '收藏此文章') + '">' + (starred ? '★' : '☆') + '</button></div>';
     });
     return h;
   }
 
+  function renderFlatList(mode) {
+    const isFav = mode === 'fav';
+    const items = validListItems(isFav ? state.favorites : state.recent);
+    if (el.treeToolbarActions) el.treeToolbarActions.classList.add('hidden');
+    if (el.listToolbarActions) el.listToolbarActions.classList.toggle('hidden', items.length === 0);
+    if (el.clearListBtn) {
+      el.clearListBtn.textContent = isFav ? '清空收藏' : '清空记录';
+      el.clearListBtn.title = isFav ? '清空所有浏览器本地收藏' : '清空所有浏览器最近阅读记录';
+    }
+    el.treeStat.textContent = (isFav ? '收藏文章 · ' : '最近阅读 · ') + items.length + ' 篇';
+    if (!items.length) {
+      const emptyMsg = state.query
+        ? '没有匹配的记录'
+        : (isFav ? '暂无收藏文章<br><span style="font-size:11.5px;opacity:.75">可在目录列表或文章右上角点击 ☆ 收藏</span>' : '暂无最近阅读记录');
+      el.tree.innerHTML = '<div class="empty-hint">' + emptyMsg + '</div>';
+      return;
+    }
+    let h = '';
+    items.forEach(function (it) {
+      const f = it.file;
+      const sub = isFav ? (f.folder || '根目录') : ((fmtRelTime(it.time) ? fmtRelTime(it.time) + ' · ' : '') + (f.folder || '根目录'));
+      h += '<div class="tree-file" data-path="' + E(f.path) + '" title="' + E(f.path) + '">' +
+        '<span class="file-icon">' + (isFav ? '⭐' : '🕒') + '</span>' +
+        '<div class="flat-item-wrap"><span class="file-title">' + E(f.title) + '</span>' +
+        '<span class="flat-item-sub">' + E(sub) + '</span></div>' +
+        (f.mathCount ? '<span class="math-pill">∑' + f.mathCount + '</span>' : '') +
+        '<button type="button" class="file-remove-btn" data-remove-mode="' + mode + '" data-remove-path="' + E(f.path) + '" title="' + (isFav ? '取消收藏' : '移除此条记录') + '">✕</button></div>';
+    });
+    el.tree.innerHTML = h;
+    syncActive();
+  }
+
   function renderTree() {
+    updateListBadges();
+    if (state.sidebarTab === 'fav' || state.sidebarTab === 'recent') {
+      renderFlatList(state.sidebarTab);
+      return;
+    }
+    if (el.treeToolbarActions) el.treeToolbarActions.classList.remove('hidden');
+    if (el.listToolbarActions) el.listToolbarActions.classList.add('hidden');
     const fs = visibleFiles();
     const root = buildTree(fs);
     el.tree.innerHTML = childrenHtml(root, !!state.query) || '<div class="empty-hint">没有匹配的文档</div>';
@@ -443,6 +606,23 @@
   }
 
   el.tree.addEventListener('click', function (e) {
+    const starBtn = e.target.closest('.file-star-btn');
+    if (starBtn) {
+      e.stopPropagation();
+      const p = starBtn.getAttribute('data-star-path');
+      const added = toggleFavorite(p);
+      showToast(added ? '⭐ 已加入本地收藏' : '已取消收藏');
+      return;
+    }
+    const rmBtn = e.target.closest('.file-remove-btn');
+    if (rmBtn) {
+      e.stopPropagation();
+      const mode = rmBtn.getAttribute('data-remove-mode');
+      const p = rmBtn.getAttribute('data-remove-path');
+      if (mode === 'fav') { removeFavorite(p); showToast('已取消收藏'); }
+      else { removeRecentItem(p); showToast('已移除该条浏览记录'); }
+      return;
+    }
     const fe = e.target.closest('.tree-file');
     if (fe) { navigate('d', fe.dataset.path); return; }
     const hd = e.target.closest('.tree-folder-header');
@@ -453,6 +633,41 @@
     setFolderOpen(folder, showing ? !folder.classList.contains('open') : true);
     navigate('f', hd.dataset.fpath);
   });
+
+  if (el.sidebarTabs) {
+    el.sidebarTabs.addEventListener('click', function (e) {
+      const tabBtn = e.target.closest('.sidebar-tab');
+      if (!tabBtn) return;
+      const tab = tabBtn.getAttribute('data-tab') || 'tree';
+      if (state.sidebarTab === tab) return;
+      state.sidebarTab = tab;
+      el.sidebarTabs.querySelectorAll('.sidebar-tab').forEach(function (b) {
+        const active = b.getAttribute('data-tab') === tab;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      renderTree();
+    });
+  }
+
+  if (el.clearListBtn) {
+    el.clearListBtn.addEventListener('click', function () {
+      if (state.sidebarTab === 'fav') {
+        if (!state.favorites.length) return;
+        state.favorites = [];
+        saveFavorites();
+        renderTree();
+        updateHeaderStarBtn();
+        showToast('已清空所有本地收藏');
+      } else if (state.sidebarTab === 'recent') {
+        if (!state.recent.length) return;
+        state.recent = [];
+        saveRecent();
+        renderTree();
+        showToast('已清空所有最近浏览记录');
+      }
+    });
+  }
 
   /* ---------- 路由 ---------- */
   function navigate(kind, path) {
@@ -627,6 +842,7 @@
     const f = state.src.fileMap.get(path);
     const savedScrollTop = preserveScroll ? el.scroll.scrollTop : 0;
     state.currentPath = path; state.currentFolder = f.folder;
+    if (!preserveScroll) recordRecentRead(path);
     setCrumbs(f.folder, f.title);
     syncActive();
     if (!preserveScroll) {
@@ -660,8 +876,19 @@
     el.article.innerHTML = '<div class="doc-meta-banner"><div class="meta-badges">' + (badges || '<span class="meta-info-item">无标签</span>') +
       '</div><div class="meta-badges">' + info + '</div></div><div class="markdown-rendered">' + html + '</div>';
     postProcess(el.article.querySelector('.markdown-rendered'));
-    el.headerStats.innerHTML = (f.mathCount ? '<span class="stat-chip">∑ ' + f.mathCount + ' 公式</span>' : '') +
+    const starred = isFavorited(path);
+    el.headerStats.innerHTML =
+      '<button type="button" class="stat-chip stat-chip-btn' + (starred ? ' starred' : '') + '" id="headerStarBtn" title="' + (starred ? '点击取消收藏此文章' : '收藏此文章到浏览器本地书签') + '">' + (starred ? '⭐ 已收藏' : '☆ 收藏') + '</button>' +
+      (f.mathCount ? '<span class="stat-chip">∑ ' + f.mathCount + ' 公式</span>' : '') +
       '<span class="stat-chip">' + fmtSize(f.size) + '</span>' + (f.mtime ? '<span class="stat-chip">' + fmtDate(f.mtime) + '</span>' : '');
+    const starBtnEl = $('headerStarBtn');
+    if (starBtnEl) {
+      starBtnEl.addEventListener('click', function () {
+        if (!state.currentPath) return;
+        const added = toggleFavorite(state.currentPath);
+        showToast(added ? '⭐ 已加入本地收藏' : '已取消收藏');
+      });
+    }
     updateUndoButtons();
     buildToc();
     if (preserveScroll) {
@@ -1990,6 +2217,7 @@
   });
 
   /* ---------- 启动 ---------- */
+  loadUserLists();
   let theme = 'light';
   try { theme = localStorage.getItem('md-reader-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) { /* ignore */ }
   applyTheme(theme);

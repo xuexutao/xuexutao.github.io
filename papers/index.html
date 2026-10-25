@@ -47,12 +47,20 @@
         <input class="search-input" id="searchInput" type="text" placeholder="搜索标题 / 路径 / 标签，回车全文搜索">
         <button class="search-clear" id="searchClear">✕</button>
       </div>
+      <div class="sidebar-tabs" id="sidebarTabs" role="tablist" aria-label="文档列表视图">
+        <button class="sidebar-tab active" data-tab="tree" role="tab" aria-selected="true">📁 目录</button>
+        <button class="sidebar-tab" data-tab="fav" role="tab" aria-selected="false">⭐ 收藏 <span class="tab-badge" id="favCountBadge">0</span></button>
+        <button class="sidebar-tab" data-tab="recent" role="tab" aria-selected="false">🕒 最近 <span class="tab-badge" id="recentCountBadge">0</span></button>
+      </div>
       <div class="tree-toolbar">
         <span class="tree-stat" id="treeStat">-</span>
-        <div class="tree-toolbar-actions">
+        <div class="tree-toolbar-actions" id="treeToolbarActions">
           <button class="link-btn" id="expandAllBtn">展开</button>
           <button class="link-btn" id="collapseAllBtn">折叠</button>
           <button class="link-btn active" id="hideAssetBtn" title="隐藏 assets 附件目录里的辅助文档">隐藏附件文档</button>
+        </div>
+        <div class="tree-toolbar-actions hidden" id="listToolbarActions">
+          <button class="link-btn link-btn-danger" id="clearListBtn" title="清空当前列表记录">清空记录</button>
         </div>
       </div>
     </div>
