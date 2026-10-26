@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1f2937}
+      .title{font-size:38px;font-weight:700}.sub{font-size:21px;fill:#4b5563}.h{font-size:25px;font-weight:700}.b{font-size:19px}.s{font-size:17px;fill:#475569}
+      .arrow{stroke:#64748b;stroke-width:3;fill:none;marker-end:url(#m)}
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="1600" height="980" fill="#f8fafc"/>
+  <text x="800" y="58" text-anchor="middle" class="title">九大技术方向的统一技术地图</text>
+  <text x="800" y="94" text-anchor="middle" class="sub">从观测几何 → 生成与模拟 → 预测与行动闭环</text>
+
+  <rect x="55" y="155" width="440" height="735" rx="26" fill="#e0f2fe" stroke="#38bdf8" stroke-width="3"/>
+  <text x="275" y="205" text-anchor="middle" class="h">A. 几何感知层</text>
+  <rect x="95" y="245" width="360" height="155" rx="18" fill="#ffffff" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="275" y="282" text-anchor="middle" class="h">前馈 3D 重建</text>
+  <text x="120" y="320" class="b">pointmap / depth-ray / 3DGS</text>
+  <text x="120" y="350" class="b">all-to-all / pairwise / memory</text>
+  <text x="120" y="380" class="s">DUSt3R · VGGT · DA3 · CUT3R</text>
+  <rect x="95" y="435" width="360" height="155" rx="18" fill="#ffffff" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="275" y="472" text-anchor="middle" class="h">单目深度估计</text>
+  <text x="120" y="510" class="b">relative → metric → pointmap</text>
+  <text x="120" y="540" class="b">判别式 / 生成式 / 相机感知</text>
+  <text x="120" y="570" class="s">MiDaS · Depth Anything · MoGe</text>
+  <rect x="95" y="625" width="360" height="205" rx="18" fill="#ffffff" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="275" y="662" text-anchor="middle" class="h">广义深度估计</text>
+  <text x="120" y="700" class="b">Stereo · MVS · Temporal</text>
+  <text x="120" y="730" class="b">Depth Completion · GFM</text>
+  <text x="120" y="760" class="s">显式对应 + 单目基础先验</text>
+  <text x="120" y="790" class="s">最终汇入统一几何状态接口</text>
+
+  <rect x="580" y="155" width="440" height="735" rx="26" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="800" y="205" text-anchor="middle" class="h">B. 生成与世界模拟层</text>
+  <rect x="620" y="245" width="360" height="155" rx="18" fill="#ffffff" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="800" y="282" text-anchor="middle" class="h">视频生成模型</text>
+  <text x="645" y="320" class="b">VQ-AR / latent diffusion / flow</text>
+  <text x="645" y="350" class="b">U-Net → DiT · 离线 → 流式</text>
+  <text x="645" y="380" class="s">Wan · HunyuanVideo · LTX · CausVid</text>
+  <rect x="620" y="435" width="360" height="155" rx="18" fill="#ffffff" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="800" y="472" text-anchor="middle" class="h">视频世界模型</text>
+  <text x="645" y="510" class="b">动作条件未来预测 + 闭环交互</text>
+  <text x="645" y="540" class="b">RSSM / token AR / causal diffusion</text>
+  <text x="645" y="570" class="s">Dreamer · Genie · GameNGen · Cosmos</text>
+  <rect x="620" y="625" width="360" height="205" rx="18" fill="#ffffff" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="800" y="662" text-anchor="middle" class="h">3D / 4D 世界模型</text>
+  <text x="645" y="700" class="b">occupancy / 3DGS / point / mesh</text>
+  <text x="645" y="730" class="b">显式几何记忆 + 生成式补全</text>
+  <text x="645" y="760" class="s">GaussianWorld · GEN3C · Lyra · AEON</text>
+  <text x="645" y="790" class="s">核心：持久状态、回环、动态对象</text>
+
+  <rect x="1105" y="155" width="440" height="735" rx="26" fill="#dcfce7" stroke="#22c55e" stroke-width="3"/>
+  <text x="1325" y="205" text-anchor="middle" class="h">C. 预测与行动闭环层</text>
+  <rect x="1145" y="245" width="360" height="155" rx="18" fill="#ffffff" stroke="#86efac" stroke-width="2"/>
+  <text x="1325" y="282" text-anchor="middle" class="h">JEPA</text>
+  <text x="1170" y="320" class="b">预测未来 embedding，而非像素</text>
+  <text x="1170" y="350" class="b">表征 → 动作条件动力学 → MPC</text>
+  <text x="1170" y="380" class="s">I-JEPA · V-JEPA 2 · LeWorldModel</text>
+  <rect x="1145" y="435" width="360" height="155" rx="18" fill="#ffffff" stroke="#86efac" stroke-width="2"/>
+  <text x="1325" y="472" text-anchor="middle" class="h">具身智能 VLA</text>
+  <text x="1170" y="510" class="b">离散 AR / 回归 / diffusion-flow</text>
+  <text x="1170" y="540" class="b">单系统 / action expert / 快慢双系统</text>
+  <text x="1170" y="570" class="s">RT-2 · OpenVLA · π0 · GR00T</text>
+  <rect x="1145" y="625" width="360" height="205" rx="18" fill="#ffffff" stroke="#86efac" stroke-width="2"/>
+  <text x="1325" y="662" text-anchor="middle" class="h">世界动作模型 WAM</text>
+  <text x="1170" y="700" class="b">future prediction ↔ action path</text>
+  <text x="1170" y="730" class="b">级联 / 候选评分 / 联合建模</text>
+  <text x="1170" y="760" class="s">UniPi · DreamZero · OpenWAM · LeWAM</text>
+  <text x="1170" y="790" class="s">不是单一模型，而是预测—动作家族</text>
+
+  <path d="M495 510 C535 510 540 510 580 510" class="arrow"/>
+  <path d="M1020 510 C1060 510 1065 510 1105 510" class="arrow"/>
+  <path d="M455 730 C740 925 1060 925 1320 830" class="arrow"/>
+  <text x="800" y="945" text-anchor="middle" class="sub">统一主矛盾：表示什么状态、如何预测状态、动作如何进入状态转移、预测是否真的改善决策</text>
+</svg>

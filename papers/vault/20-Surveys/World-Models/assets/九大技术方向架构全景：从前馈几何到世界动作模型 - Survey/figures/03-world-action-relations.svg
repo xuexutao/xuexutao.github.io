@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920">
+  <defs>
+    <style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1f2937}.title{font-size:38px;font-weight:700}.h{font-size:24px;font-weight:700}.b{font-size:18px}.s{font-size:16px;fill:#475569}.a{stroke:#64748b;stroke-width:3;fill:none;marker-end:url(#m)}</style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="1600" height="920" fill="#f8fafc"/>
+  <text x="800" y="60" text-anchor="middle" class="title">视频世界模型、3D 世界模型、JEPA、VLA 与 WAM 的关系</text>
+
+  <rect x="590" y="115" width="420" height="120" rx="22" fill="#ede9fe" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="800" y="158" text-anchor="middle" class="h">广义世界模型</text>
+  <text x="800" y="192" text-anchor="middle" class="b">学习状态、状态转移与干预后果</text>
+
+  <rect x="120" y="330" width="360" height="190" rx="22" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+  <text x="300" y="375" text-anchor="middle" class="h">视频世界模型</text>
+  <text x="300" y="412" text-anchor="middle" class="b">未来帧 / 视频 latent / token</text>
+  <text x="300" y="445" text-anchor="middle" class="b">可动作条件、可流式交互</text>
+  <text x="300" y="485" text-anchor="middle" class="s">Dreamer · Genie · Cosmos</text>
+
+  <rect x="620" y="330" width="360" height="190" rx="22" fill="#dcfce7" stroke="#22c55e" stroke-width="3"/>
+  <text x="800" y="375" text-anchor="middle" class="h">JEPA 世界模型</text>
+  <text x="800" y="412" text-anchor="middle" class="b">未来 embedding / latent dynamics</text>
+  <text x="800" y="445" text-anchor="middle" class="b">MPC / latent rollout / 低 pixel tax</text>
+  <text x="800" y="485" text-anchor="middle" class="s">V-JEPA 2 · DINO-WM · LeWorldModel</text>
+
+  <rect x="1120" y="330" width="360" height="190" rx="22" fill="#ffedd5" stroke="#f97316" stroke-width="3"/>
+  <text x="1300" y="375" text-anchor="middle" class="h">3D / 4D 世界模型</text>
+  <text x="1300" y="412" text-anchor="middle" class="b">occupancy / points / 3DGS / mesh</text>
+  <text x="1300" y="445" text-anchor="middle" class="b">持久几何、回环、碰撞与规划</text>
+  <text x="1300" y="485" text-anchor="middle" class="s">GaussianWorld · Lyra · AEON</text>
+
+  <path d="M700 235 C610 270 450 285 330 330" class="a"/>
+  <path d="M800 235 L800 330" class="a"/>
+  <path d="M900 235 C990 270 1150 285 1270 330" class="a"/>
+
+  <rect x="165" y="660" width="380" height="165" rx="22" fill="#fef9c3" stroke="#eab308" stroke-width="3"/>
+  <text x="355" y="706" text-anchor="middle" class="h">具身 VLA</text>
+  <text x="355" y="743" text-anchor="middle" class="b">观察 + 语言 → 动作</text>
+  <text x="355" y="776" text-anchor="middle" class="b">可以没有显式未来预测</text>
+
+  <rect x="980" y="660" width="455" height="165" rx="22" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/>
+  <text x="1208" y="706" text-anchor="middle" class="h">世界动作模型 WAM</text>
+  <text x="1208" y="743" text-anchor="middle" class="b">预测未来真正进入动作生成、评分或规划</text>
+  <text x="1208" y="776" text-anchor="middle" class="b">级联 · 候选评分 · 联合 world–action</text>
+
+  <path d="M300 520 C300 570 320 610 350 660" class="a"/>
+  <path d="M800 520 C860 585 990 620 1110 660" class="a"/>
+  <path d="M1300 520 C1300 575 1270 615 1235 660" class="a"/>
+  <path d="M545 742 L980 742" class="a"/>
+  <text x="760" y="722" text-anchor="middle" class="s">加入动作后果建模、候选预测或联合训练</text>
+
+  <text x="800" y="875" text-anchor="middle" class="b">边界判据：不是“能不能生成视频”，而是“未来预测是否改变动作选择，并提升真实闭环决策”</text>
+</svg>

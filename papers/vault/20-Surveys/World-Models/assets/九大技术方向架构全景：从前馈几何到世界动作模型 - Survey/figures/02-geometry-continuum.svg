@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760">
+  <defs>
+    <style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1f2937}.title{font-size:38px;font-weight:700}.h{font-size:24px;font-weight:700}.b{font-size:18px}.s{font-size:16px;fill:#475569}.line{stroke:#0ea5e9;stroke-width:6}.dash{stroke:#64748b;stroke-width:2;stroke-dasharray:8 8}</style>
+  </defs>
+  <rect width="1600" height="760" fill="#f8fafc"/>
+  <text x="800" y="62" text-anchor="middle" class="title">深度与前馈 3D 的观测证据连续谱</text>
+  <line x1="135" y1="270" x2="1465" y2="270" class="line"/>
+  <polygon points="1465,270 1425,248 1425,292" fill="#0ea5e9"/>
+  <text x="130" y="220" class="s">先验更强 / 几何证据更弱</text>
+  <text x="1300" y="220" class="s">几何证据更强 / 度量尺度更可靠</text>
+
+  <g transform="translate(120,0)">
+    <circle cx="0" cy="270" r="18" fill="#0284c7"/><rect x="-85" y="315" width="170" height="220" rx="16" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="0" y="352" text-anchor="middle" class="h">单图 RGB</text><text x="0" y="390" text-anchor="middle" class="b">relative / metric</text><text x="0" y="420" text-anchor="middle" class="b">depth / pointmap</text><text x="0" y="465" text-anchor="middle" class="s">MiDaS</text><text x="0" y="490" text-anchor="middle" class="s">Depth Anything</text><text x="0" y="515" text-anchor="middle" class="s">MoGe / UniDepth</text>
+  </g>
+  <g transform="translate(380,0)">
+    <circle cx="0" cy="270" r="18" fill="#0284c7"/><rect x="-90" y="315" width="180" height="220" rx="16" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="0" y="352" text-anchor="middle" class="h">双目</text><text x="0" y="390" text-anchor="middle" class="b">极线相关 / cost volume</text><text x="0" y="420" text-anchor="middle" class="b">Z = fB / d</text><text x="0" y="465" text-anchor="middle" class="s">RAFT-Stereo</text><text x="0" y="490" text-anchor="middle" class="s">IGEV-Stereo</text><text x="0" y="515" text-anchor="middle" class="s">FoundationStereo</text>
+  </g>
+  <g transform="translate(650,0)">
+    <circle cx="0" cy="270" r="18" fill="#0284c7"/><rect x="-95" y="315" width="190" height="220" rx="16" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="0" y="352" text-anchor="middle" class="h">标定多视图</text><text x="0" y="390" text-anchor="middle" class="b">plane sweep / MVS</text><text x="0" y="420" text-anchor="middle" class="b">显式重投影一致性</text><text x="0" y="465" text-anchor="middle" class="s">MVSNet</text><text x="0" y="490" text-anchor="middle" class="s">PatchmatchNet</text><text x="0" y="515" text-anchor="middle" class="s">MVSAnywhere</text>
+  </g>
+  <g transform="translate(930,0)">
+    <circle cx="0" cy="270" r="18" fill="#0284c7"/><rect x="-95" y="315" width="190" height="220" rx="16" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="0" y="352" text-anchor="middle" class="h">视频 / 时间序列</text><text x="0" y="390" text-anchor="middle" class="b">时间基线 + 动态分解</text><text x="0" y="420" text-anchor="middle" class="b">offline / streaming</text><text x="0" y="465" text-anchor="middle" class="s">DepthCrafter</text><text x="0" y="490" text-anchor="middle" class="s">Video Depth Anything</text><text x="0" y="515" text-anchor="middle" class="s">CUT3R</text>
+  </g>
+  <g transform="translate(1210,0)">
+    <circle cx="0" cy="270" r="18" fill="#0284c7"/><rect x="-95" y="315" width="190" height="220" rx="16" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="0" y="352" text-anchor="middle" class="h">RGB + 稀疏深度</text><text x="0" y="390" text-anchor="middle" class="b">dense prior + metric anchor</text><text x="0" y="420" text-anchor="middle" class="b">depth completion</text><text x="0" y="465" text-anchor="middle" class="s">NLSPN</text><text x="0" y="490" text-anchor="middle" class="s">Prompt Depth Anything</text><text x="0" y="515" text-anchor="middle" class="s">Marigold-DC</text>
+  </g>
+  <g transform="translate(1460,0)">
+    <circle cx="0" cy="270" r="18" fill="#0284c7"/><rect x="-105" y="315" width="210" height="220" rx="16" fill="#ede9fe" stroke="#8b5cf6"/>
+    <text x="0" y="352" text-anchor="middle" class="h">统一几何模型</text><text x="0" y="390" text-anchor="middle" class="b">可选相机 / 深度 / 视图</text><text x="0" y="420" text-anchor="middle" class="b">rays + depth + points</text><text x="0" y="465" text-anchor="middle" class="s">VGGT / DA3</text><text x="0" y="490" text-anchor="middle" class="s">MapAnything</text><text x="0" y="515" text-anchor="middle" class="s">OmniVGGT / UniT</text>
+  </g>
+
+  <rect x="180" y="610" width="1240" height="90" rx="20" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="800" y="648" text-anchor="middle" class="h">2026 年的收敛配方</text>
+  <text x="800" y="682" text-anchor="middle" class="b">强单目先验 + 显式对应/投影证据 + 相机与尺度锚点 + 统一 depth-ray/pointmap 状态 + 可选 BA/融合</text>
+</svg>
