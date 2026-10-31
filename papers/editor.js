@@ -3,12 +3,12 @@
   'use strict';
 
   const PRESET_COLORS = [
-    { name: '红色', value: 'red', hex: '#ef4444', shortcut: '⌥1' },
-    { name: '橙色', value: '#e67e22', hex: '#e67e22', shortcut: '⌥2' },
-    { name: '琥珀黄', value: '#d97706', hex: '#d97706', shortcut: '⌥3' },
-    { name: '绿色', value: '#16a34a', hex: '#16a34a', shortcut: '⌥4' },
-    { name: '蓝色', value: '#2563eb', hex: '#2563eb', shortcut: '⌥5' },
-    { name: '紫色', value: '#9333ea', hex: '#9333ea', shortcut: '⌥6' }
+    { name: '红色', value: 'red', hex: '#ef4444', shortcut: '⌘1 / ⌥1' },
+    { name: '橙色', value: '#e67e22', hex: '#e67e22', shortcut: '⌘2 / ⌥2' },
+    { name: '琥珀黄', value: '#d97706', hex: '#d97706', shortcut: '⌘3 / ⌥3' },
+    { name: '绿色', value: '#16a34a', hex: '#16a34a', shortcut: '⌘4 / ⌥4' },
+    { name: '蓝色', value: '#2563eb', hex: '#2563eb', shortcut: '⌘5 / ⌥5' },
+    { name: '紫色', value: '#9333ea', hex: '#9333ea', shortcut: '⌘6 / ⌥6' }
   ];
 
   // Undo & Redo 历史栈：按文档路径存储，支持字符串（纯 Markdown）或 { type: 'md'|'img'|'insert-img', ... }

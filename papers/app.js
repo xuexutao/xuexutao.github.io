@@ -2141,12 +2141,13 @@
       }
     }
 
-    // 3. Option + 1~6（或 Cmd + Shift + 1~6）：6 种预设颜色快速上色
-    if ((e.altKey && !e.metaKey && !e.ctrlKey) || ((e.metaKey || e.ctrlKey) && e.shiftKey)) {
-      const codeMatch = (e.code || '').match(/^Digit([0-6])$/);
+    // 3. Cmd + 1~6 / Option + 1~6 / Cmd + Shift + 1~6：6 种预设颜色快速上色（0 为取消颜色）
+    if ((e.metaKey || e.ctrlKey) || (e.altKey && !e.metaKey && !e.ctrlKey)) {
+      const codeMatch = (e.code || '').match(/^Digit([0-6])$/) || (String(e.key || '').match(/^([0-6])$/));
       if (codeMatch && state.currentPath) {
         const num = parseInt(codeMatch[1], 10);
         e.preventDefault();
+        e.stopPropagation();
         if (num === 0) {
           runSelectionTransform(function (md, loc) {
             return MDEditor.removeColorSpan(md, loc);
