@@ -770,6 +770,11 @@ button.stat-chip-btn.starred {
   font-weight: 680;
 }
 
+.markdown-rendered span[style*="color"] strong,
+.markdown-rendered strong span[style*="color"] {
+  color: inherit;
+}
+
 .markdown-rendered a {
   color: var(--link-color);
   text-decoration: underline;

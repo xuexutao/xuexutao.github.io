@@ -1187,6 +1187,8 @@
       if (info && info.text.length > 0) {
         activeSelInfo = info;
         if (info.blockElement) lastClickedBlock = info.blockElement;
+      } else {
+        activeSelInfo = null;
       }
     }, 15);
   });
@@ -1213,9 +1215,13 @@
     try {
       const res = await state.src.saveText(path, newMarkdown);
       closeCommentPanel();
+      const preservedSel = opts && opts.keepSelection ? opts.keepSelection : null;
       window.getSelection().removeAllRanges();
       activeSelInfo = null;
       await openDoc(path, true);
+      if (preservedSel && MDEditor.restoreSelectionInfo) {
+        activeSelInfo = MDEditor.restoreSelectionInfo(el.article, preservedSel);
+      }
       const ok = saveResultOk(res);
       indFinish(ok, saveResultNote(res));
       if (!ok) showToast('「' + actionLabel + '」已显示，但没有写入原文件：' + saveResultNote(res), true);
@@ -1225,13 +1231,13 @@
     }
   }
 
-  async function runSelectionTransform(transformFn, actionLabel) { if (window.READER_READONLY) return;
+  async function runSelectionTransform(transformFn, actionLabel, keepSel) { if (window.READER_READONLY) return;
     const path = state.currentPath;
     if (!path || !window.MDEditor) return;
+    const info = MDEditor.extractSelectionInfo(el.article) || activeSelInfo;
     if (editingState) {
       await finishBlockEdit(true);
     }
-    const info = MDEditor.extractSelectionInfo(el.article) || activeSelInfo;
     if (!info || !info.text) {
       showToast('请先用鼠标在正文中选中文字，再执行「' + actionLabel + '」', true);
       return;
@@ -1243,7 +1249,9 @@
       return;
     }
     const updated = transformFn(rawMd, loc);
-    await commitMarkdownEdit(updated, actionLabel);
+    await commitMarkdownEdit(updated, actionLabel, {
+      keepSelection: keepSel === false ? null : info
+    });
   }
 
   async function triggerUndo() { if (window.READER_READONLY) return;
@@ -2049,7 +2057,7 @@
     }
     await runSelectionTransform(function (md, loc) {
       return MDEditor.applyCommentSchemeC(md, loc, val);
-    }, '添加批注评论');
+    }, '添加批注评论', false);
   }
 
   $('commentSubmitBtn').addEventListener('click', submitComment);

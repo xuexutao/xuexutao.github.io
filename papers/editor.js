@@ -149,6 +149,115 @@
     };
   }
 
+  /**
+   * 在文档重绘后，根据保存的 selInfo 恢复浏览器的文字高亮选区并返回最新的 SelectionInfo
+   */
+  function restoreSelectionInfo(articleRoot, selInfo) {
+    if (!articleRoot || !selInfo || !selInfo.text) return null;
+    const container = articleRoot.querySelector('.markdown-rendered');
+    if (!container) return selInfo;
+
+    const segments = [];
+    let fullText = '';
+
+    function collectSegments(node) {
+      if (!node) return;
+      if (node.nodeType === 3) {
+        const val = (node.nodeValue || '').replace(/\u00a0/g, ' ');
+        if (val.length > 0) {
+          const start = fullText.length;
+          fullText += val;
+          segments.push({ node: node, isText: true, start: start, end: fullText.length });
+        }
+        return;
+      }
+      if (node.nodeType !== 1) return;
+      if (node.classList && node.classList.contains('img-edit-toolbar')) return;
+
+      if (node.classList && node.classList.contains('katex')) {
+        const ann = node.querySelector('annotation[encoding="application/x-tex"]');
+        const tex = ann ? ann.textContent : '';
+        const isDisplay = node.closest('.katex-display') !== null;
+        const repr = tex ? (isDisplay ? '$$' + tex + '$$' : '$' + tex + '$') : '';
+        if (repr.length > 0) {
+          const start = fullText.length;
+          fullText += repr;
+          segments.push({ node: node, isKatex: true, start: start, end: fullText.length });
+        }
+        return;
+      }
+
+      if (node.tagName === 'BR') {
+        fullText += '\n';
+        return;
+      }
+
+      for (let i = 0; i < node.childNodes.length; i++) {
+        collectSegments(node.childNodes[i]);
+      }
+    }
+
+    collectSegments(container);
+
+    const target = selInfo.text;
+    const targetOcc = selInfo.occurrenceIndex || 0;
+    let matchStart = -1;
+    let curOcc = 0;
+    let searchPos = 0;
+
+    while (true) {
+      const idx = fullText.indexOf(target, searchPos);
+      if (idx === -1) break;
+      matchStart = idx;
+      if (curOcc === targetOcc) break;
+      curOcc++;
+      searchPos = idx + Math.max(1, target.length);
+    }
+
+    if (matchStart === -1 || segments.length === 0) {
+      return selInfo;
+    }
+
+    const matchEnd = matchStart + target.length;
+    let startSeg = null;
+    let endSeg = null;
+
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i];
+      if (!startSeg && matchStart >= seg.start && matchStart < seg.end) {
+        startSeg = seg;
+      }
+      if (matchEnd > seg.start && matchEnd <= seg.end) {
+        endSeg = seg;
+        break;
+      }
+    }
+
+    if (!startSeg || !endSeg) return selInfo;
+
+    try {
+      const range = document.createRange();
+      if (startSeg.isText) {
+        range.setStart(startSeg.node, Math.max(0, Math.min(startSeg.node.nodeValue.length, matchStart - startSeg.start)));
+      } else {
+        range.setStartBefore(startSeg.node);
+      }
+      if (endSeg.isText) {
+        range.setEnd(endSeg.node, Math.max(0, Math.min(endSeg.node.nodeValue.length, matchEnd - endSeg.start)));
+      } else {
+        range.setEndAfter(endSeg.node);
+      }
+      const sel = window.getSelection();
+      if (sel) {
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      return extractSelectionInfo(articleRoot) || selInfo;
+    } catch (e) {
+      return selInfo;
+    }
+  }
+
   function getCleanTextWithMath(el) {
     return cleanDomFragmentToText(el, true);
   }
@@ -233,7 +342,12 @@
       }
 
       if (tag === 'STRONG' || tag === 'B') {
-        return inner ? ('**' + inner + '**') : '';
+        if (!inner) return '';
+        const spanWrapMatch = inner.match(/^(<span\s+style=["'][^"']*color:\s*[^"']+["'][^>]*>)([\s\S]*?)(<\/span>)$/i);
+        if (spanWrapMatch && !/<\/span>/i.test(spanWrapMatch[2])) {
+          return spanWrapMatch[1] + '**' + spanWrapMatch[2] + '**' + spanWrapMatch[3];
+        }
+        return '**' + inner + '**';
       }
       if (tag === 'EM' || tag === 'I') {
         return inner ? ('*' + inner + '*') : '';
@@ -488,26 +602,131 @@
   }
 
   /**
-   * 若匹配到的区间首尾紧邻外层 `**`、`<span...>`、`[[...` 等内联包裹符号，自动向两侧扩展使其闭合
+   * 若匹配到的区间首尾紧邻成对的外层 `**`、`<span...>`、`[[...` 等内联包裹符号，自动向两侧对称扩展使其闭合
    */
   function extendToBalancedInlineTags(fullMd, start, end) {
     const lineStart = fullMd.lastIndexOf('\n', start - 1) + 1;
-    const leftSlice = fullMd.slice(lineStart, start);
-    const prefixMatch = leftSlice.match(/^([ \t]*(?:>[ \t]*)*(?:#{1,6}[ \t]+|(?:[-*+]|\d+\.)[ \t]+)?)((?:(?:\*\*|\*|==|~~|`|<span\b[^>]*>|<u>|<mark>|\[\[(?:[^\]\n]*?[\/\|#])?|\[)+[ \t]*)+)$/i);
-    if (prefixMatch && prefixMatch[2]) {
-      start -= prefixMatch[2].length;
-    } else {
-      const openInline = leftSlice.match(/((?:\*\*|\*|==|~~|`|<span\b[^>]*>|<u>|<mark>|\[\[(?:[^\]\n]*?[\/\|#])?|\[)+)$/i);
-      if (openInline) start -= openInline[0].length;
-    }
-
     const lineEnd = fullMd.indexOf('\n', end);
     const rightLimit = lineEnd === -1 ? fullMd.length : lineEnd;
-    const rightSlice = fullMd.slice(end, rightLimit);
-    const closeInline = rightSlice.match(/^((?:\*\*|\*|==|~~|`|<\/span>|<\/u>|<\/mark>|\]\]|\]\([^)\n]*\)|>)+)/i);
-    if (closeInline) {
-      end += closeInline[0].length;
+
+    let changed = true;
+    let guard = 0;
+    while (changed && guard++ < 16) {
+      changed = false;
+      const left = fullMd.slice(lineStart, start);
+      const right = fullMd.slice(end, rightLimit);
+      const cur = fullMd.slice(start, end);
+
+      // 1. 若区间内部存在奇数个未配对的 **，且紧邻左/右侧恰好是配对的 **，先补齐闭合
+      const boldCount = (cur.match(/\*\*/g) || []).length;
+      if (boldCount % 2 === 1) {
+        if (right.startsWith('**')) {
+          end += 2;
+          changed = true;
+          continue;
+        }
+        if (left.endsWith('**')) {
+          start -= 2;
+          changed = true;
+          continue;
+        }
+      }
+
+      // 2. 若区间内部存在未闭合的 <span...>，且紧邻左/右侧恰好是配对标签，先补齐闭合
+      const openSpanCount = (cur.match(/<span\b[^>]*>/gi) || []).length;
+      const closeSpanCount = (cur.match(/<\/span>/gi) || []).length;
+      if (openSpanCount > closeSpanCount) {
+        const rightCloseSpan = right.match(/^<\/span>/i);
+        if (rightCloseSpan) {
+          end += rightCloseSpan[0].length;
+          changed = true;
+          continue;
+        }
+      } else if (closeSpanCount > openSpanCount) {
+        const leftOpenSpan = left.match(/<span\b[^>]*>$/i);
+        if (leftOpenSpan) {
+          start -= leftOpenSpan[0].length;
+          changed = true;
+          continue;
+        }
+      }
+
+      // 3. 向两侧对称扩展成对的内联包裹标签
+      if (left.endsWith('**') && right.startsWith('**')) {
+        start -= 2;
+        end += 2;
+        changed = true;
+        continue;
+      }
+      if (left.endsWith('__') && right.startsWith('__')) {
+        start -= 2;
+        end += 2;
+        changed = true;
+        continue;
+      }
+      if (left.endsWith('*') && !left.endsWith('**') && right.startsWith('*') && !right.startsWith('**')) {
+        start -= 1;
+        end += 1;
+        changed = true;
+        continue;
+      }
+      if (left.endsWith('==') && right.startsWith('==')) {
+        start -= 2;
+        end += 2;
+        changed = true;
+        continue;
+      }
+      if (left.endsWith('~~') && right.startsWith('~~')) {
+        start -= 2;
+        end += 2;
+        changed = true;
+        continue;
+      }
+      if (left.endsWith('`') && !left.endsWith('``') && right.startsWith('`') && !right.startsWith('``')) {
+        start -= 1;
+        end += 1;
+        changed = true;
+        continue;
+      }
+
+      const spanOpen = left.match(/<span\b[^>]*>$/i);
+      const spanClose = right.match(/^<\/span>/i);
+      if (spanOpen && spanClose) {
+        start -= spanOpen[0].length;
+        end += spanClose[0].length;
+        changed = true;
+        continue;
+      }
+
+      const tagOpen = left.match(/<(u|mark)>$/i);
+      const tagClose = right.match(/^<\/(u|mark)>/i);
+      if (tagOpen && tagClose && tagOpen[1].toLowerCase() === tagClose[1].toLowerCase()) {
+        start -= tagOpen[0].length;
+        end += tagClose[0].length;
+        changed = true;
+        continue;
+      }
+
+      const wikiOpen = left.match(/\[\[(?:[^\]\n]*?[\/\|#])?$/);
+      const wikiClose = right.match(/^\]\]/);
+      if (wikiOpen && wikiClose) {
+        start -= wikiOpen[0].length;
+        end += wikiClose[0].length;
+        changed = true;
+        continue;
+      }
+
+      if (left.endsWith('[') && !left.endsWith('[[') && !left.endsWith('![')) {
+        const mdLinkClose = right.match(/^\]\([^)\n]*\)/);
+        if (mdLinkClose) {
+          start -= 1;
+          end += mdLinkClose[0].length;
+          changed = true;
+          continue;
+        }
+      }
     }
+
     return { start: start, end: end };
   }
 
@@ -543,7 +762,7 @@
       }
     }
     if (tokens.length === 0) return null;
-    let pattern = INLINE_GAP;
+    let pattern = '';
     for (let k = 0; k < tokens.length; k++) {
       if (tokens[k].type === 'ch') {
         pattern += tokens[k].val;
@@ -554,7 +773,6 @@
         pattern += WS_OR_TOKEN_GAP;
       }
     }
-    pattern += INLINE_GAP;
     try {
       return new RegExp(pattern, 'g');
     } catch (e) {
@@ -577,8 +795,41 @@
     }).join('\n');
   }
 
+  function toggleBoldOnSegment(seg) {
+    const wsMatch = seg.match(/^(\s*)([\s\S]*?)(\s*)$/);
+    if (!wsMatch || !wsMatch[2]) return seg;
+    const lead = wsMatch[1];
+    const core = wsMatch[2];
+    const trail = wsMatch[3];
+
+    // 情况 A：外层是 <span ...>...</span>（如颜色 span 或批注高亮 span），将 ** 放在 span 内部，确保中文环境下 CommonMark 正常解析加粗且与颜色共存
+    const outerSpanMatch = core.match(/^(<span\b[^>]*>)([\s\S]*?)(<\/span>)$/i);
+    if (outerSpanMatch && !/<\/?span\b/i.test(outerSpanMatch[2])) {
+      const openTag = outerSpanMatch[1];
+      const innerText = outerSpanMatch[2];
+      const closeTag = outerSpanMatch[3];
+      const innerBoldMatch = innerText.match(/^(\s*)\*\*([\s\S]+?)\*\*(\s*)$/);
+      if (innerBoldMatch && (innerText.match(/\*\*/g) || []).length === 2) {
+        return lead + openTag + innerBoldMatch[1] + innerBoldMatch[2] + innerBoldMatch[3] + closeTag + trail;
+      }
+      const innerWs = innerText.match(/^(\s*)([\s\S]*?)(\s*)$/);
+      if (!innerWs || !innerWs[2]) return seg;
+      const cleanedInner = innerWs[2].replace(/\*\*/g, '');
+      return lead + openTag + innerWs[1] + '**' + cleanedInner + '**' + innerWs[3] + closeTag + trail;
+    }
+
+    // 情况 B：外层已经是 **...**（例如 **文字** 或历史遗留的 **<span...>**） -> 取消加粗，保留内部颜色等标签
+    if (/^\*\*[\s\S]+\*\*$/.test(core) && (core.match(/\*\*/g) || []).length === 2) {
+      return lead + core.slice(2, -2) + trail;
+    }
+
+    // 情况 C：未加粗 -> 包裹 **...**（若内部含有局部 ** 则合并去重）
+    const cleanedCore = core.replace(/\*\*/g, '');
+    return lead + '**' + cleanedCore + '**' + trail;
+  }
+
   /**
-   * 功能 1：切换加粗 (**text**)
+   * 功能 1：切换加粗 (**text**)，兼容带颜色 span 的叠加与取消
    */
   function applyBoldToggle(fullMarkdown, loc) {
     let { start, end } = loc;
@@ -586,26 +837,18 @@
       return fullMarkdown.slice(0, start - 2) + fullMarkdown.slice(start, end) + fullMarkdown.slice(end + 2);
     }
     const slice = fullMarkdown.slice(start, end);
-    if (/^\*\*[\s\S]+\*\*$/.test(slice.trim()) && (slice.match(/\*\*/g) || []).length === 2) {
-      const unbolded = slice.replace(/^\s*\*\*([\s\S]+?)\*\*\s*$/, '$1');
-      return fullMarkdown.slice(0, start) + unbolded + fullMarkdown.slice(end);
-    }
-    const replaced = transformAcrossParagraphs(slice, function (seg) {
-      const m = seg.match(/^(\s*)([\s\S]*?)(\s*)$/);
-      if (!m || !m[2]) return seg;
-      return m[1] + '**' + m[2] + '**' + m[3];
-    });
+    const replaced = transformAcrossParagraphs(slice, toggleBoldOnSegment);
     return fullMarkdown.slice(0, start) + replaced + fullMarkdown.slice(end);
   }
 
   /**
-   * 功能 2A：设置颜色 (<span style="color: ...">...</span>)
+   * 功能 2A：设置颜色 (<span style="color: ...">...</span>)，保留已有加粗并规范为外层 span + 内层 **
    */
   function applyColorSpan(fullMarkdown, loc, colorValue) {
     let { start, end } = loc;
-    const before = fullMarkdown.slice(Math.max(0, start - 60), start);
+    const before = fullMarkdown.slice(Math.max(0, start - 80), start);
     const after = fullMarkdown.slice(end, Math.min(fullMarkdown.length, end + 20));
-    const openMatch = before.match(/<span\s+style=["']color:\s*[^"']+["']\s*>$/i);
+    const openMatch = before.match(/<span\s+style=["'][^"']*color:\s*[^"']+["'][^>]*>$/i);
     const closeMatch = after.match(/^<\/span>/i);
     if (openMatch && closeMatch) {
       start -= openMatch[0].length;
@@ -726,6 +969,7 @@
     PRESET_COLORS: PRESET_COLORS,
     findClosestEditableBlock: findClosestEditableBlock,
     extractSelectionInfo: extractSelectionInfo,
+    restoreSelectionInfo: restoreSelectionInfo,
     getBlockSelectionInfo: getBlockSelectionInfo,
     serializeBlockElementToMarkdown: serializeBlockElementToMarkdown,
     locateInMarkdown: locateInMarkdown,
