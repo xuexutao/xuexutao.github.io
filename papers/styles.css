@@ -899,6 +899,89 @@ button.stat-chip-btn.starred {
   font-size: inherit;
 }
 
+/* 细分代码语法高亮角色配色（解决默认 GitHub Light 把 attr/number/variable/literal/operator 全设为同一蓝色的问题） */
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-comment,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-quote {
+  color: #64748b;
+  font-style: italic;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-keyword,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-selector-tag,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-type {
+  color: #cf222e;
+  font-weight: 550;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-built_in {
+  color: #c2410c;
+  font-weight: 600;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-literal {
+  color: #be185d;
+  font-weight: 550;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-attr,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-attribute {
+  color: #0969da;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-variable,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-template-variable {
+  color: #7c3aed;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-string,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-regexp,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-doctag {
+  color: #15803d;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-number {
+  color: #0d9488;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-symbol,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-bullet {
+  color: #4338ca;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-title,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-title.class_,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-title.function_,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-section {
+  color: #6d28d9;
+  font-weight: 600;
+}
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-operator,
+[data-theme="light"] .markdown-rendered pre code.hljs .hljs-meta {
+  color: #b45309;
+}
+
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-built_in {
+  color: #ffa657;
+  font-weight: 600;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-literal {
+  color: #ff9bce;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-attr,
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-attribute {
+  color: #79c0ff;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-variable,
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-template-variable {
+  color: #d2a8ff;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-string,
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-regexp {
+  color: #7ee787;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-number {
+  color: #56d4dd;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-symbol,
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-bullet {
+  color: #a5b4fc;
+}
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-operator,
+[data-theme="dark"] .markdown-rendered pre code.hljs .hljs-meta {
+  color: #f2cc60;
+}
+
 /* Tables */
 .markdown-rendered table {
   width: 100%;

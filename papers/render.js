@@ -14,6 +14,69 @@
   };
 
   const mathCache = new Map();
+  let bashGrammarEnhanced = false;
+
+  function ensureEnhancedBashGrammar() {
+    if (bashGrammarEnhanced || !window.hljs || !window.hljs.getLanguage) return;
+    const origLang = window.hljs.getLanguage('bash');
+    if (!origLang || typeof origLang.rawDefinition !== 'function') return;
+    bashGrammarEnhanced = true;
+
+    const origDef = origLang.rawDefinition;
+    window.hljs.registerLanguage('bash', function (hljs) {
+      const base = origDef(hljs);
+      const extraBuiltins = [
+        'python', 'python3', 'pip', 'pip3', 'uv', 'conda', 'mamba', 'micromamba', 'poetry', 'pipx', 'pytest',
+        'torchrun', 'accelerate', 'deepspeed', 'vllm', 'sglang', 'uvicorn', 'gunicorn', 'gradio', 'streamlit',
+        'tensorboard', 'wandb', 'huggingface-cli', 'hf', 'ollama', 'ray',
+        'git', 'gh', 'docker', 'docker-compose', 'podman', 'kubectl', 'helm', 'tmux', 'screen', 'nohup',
+        'curl', 'wget', 'ssh', 'scp', 'rsync', 'sftp', 'ping', 'nc', 'netstat', 'ss', 'ip', 'ifconfig', 'lsof',
+        'find', 'grep', 'egrep', 'fgrep', 'rg', 'fd', 'ag', 'sed', 'awk', 'gawk', 'xargs', 'sort', 'uniq',
+        'wc', 'cut', 'tr', 'paste', 'tee', 'head', 'tail', 'less', 'more', 'cat', 'tac', 'nl', 'diff', 'patch', 'jq', 'yq',
+        'ls', 'll', 'la', 'tree', 'mkdir', 'rmdir', 'rm', 'cp', 'mv', 'ln', 'touch', 'chmod', 'chown', 'chgrp',
+        'file', 'realpath', 'dirname', 'basename', 'mktemp', 'du', 'df', 'free', 'top', 'htop', 'btop', 'ps',
+        'pgrep', 'pkill', 'killall', 'watch', 'time', 'timeout', 'env', 'printenv', 'date', 'uname', 'hostname', 'whoami',
+        'tar', 'zip', 'unzip', 'gzip', 'gunzip', 'bzip2', 'xz', '7z', 'zstd',
+        'sudo', 'su', 'apt', 'apt-get', 'apt-cache', 'dpkg', 'yum', 'dnf', 'pacman', 'apk', 'brew',
+        'systemctl', 'service', 'journalctl', 'crontab',
+        'npm', 'npx', 'yarn', 'pnpm', 'bun', 'node', 'deno', 'tsx', 'tsc', 'hexo',
+        'gcc', 'g++', 'clang', 'clang++', 'cc', 'c++', 'make', 'cmake', 'ninja', 'cargo', 'rustc', 'go',
+        'nvcc', 'nvidia-smi', 'nsys', 'ncu', 'ffmpeg', 'ffprobe', 'vim', 'nvim', 'nano', 'code', 'open',
+        'bash', 'sh', 'zsh', 'fish'
+      ];
+      const subcommands = [
+        'install', 'uninstall', 'freeze', 'download', 'wheel',
+        'create', 'activate', 'deactivate', 'remove',
+        'serve', 'launch', 'train', 'predict',
+        'clone', 'commit', 'checkout', 'switch', 'branch', 'merge', 'rebase', 'pull', 'push', 'fetch', 'status', 'add', 'reset', 'stash', 'tag', 'remote',
+        'run', 'build', 'compose', 'images', 'logs', 'stop', 'start', 'restart', 'reload',
+        'update', 'upgrade', 'search', 'list', 'info', 'show', 'clean', 'init', 'new', 'generate', 'deploy'
+      ];
+
+      base.aliases = ['sh', 'zsh', 'shell'];
+      base.keywords.built_in = Array.from(new Set([].concat(base.keywords.built_in || [], extraBuiltins)));
+      base.keywords.literal = Array.from(new Set([].concat(base.keywords.literal || [], subcommands)));
+
+      // 移除原本无样式的纯路径吞噬规则，改为带样式的路径/文件名与参数高亮
+      base.contains = (base.contains || []).filter(function (c) {
+        return !(c && c.match && String(c.match) === '/(\\/[a-z._-]+)+/');
+      });
+
+      base.contains.push(
+        { className: 'string', match: /\b(?:git\+)?https?:\/\/[^\s"'<>]+/ },
+        { className: 'variable', match: /\b[A-Z_][A-Z0-9_]*(?==)/ },
+        { className: 'attr', match: /(?<=^|[ \t])(--?[a-zA-Z0-9][a-zA-Z0-9_-]*)(?=[ \t=]|$)/m },
+        { className: 'number', match: /\bcuda:\d+\b/ },
+        {
+          className: 'symbol',
+          match: /(?:~|\.{1,2}|<[A-Za-z0-9_.-]+>)?(?:\/[A-Za-z0-9._+-]+)+\/?|\b[A-Za-z0-9._+-]+(?:\/[A-Za-z0-9._+-]+)+\/?|\b[A-Za-z0-9._-]+\.(?:py|sh|zsh|bash|yaml|yml|json|jsonl|toml|cfg|ini|conf|md|txt|log|csv|tsv|pt|pth|ckpt|safetensors|onnx|bin|tar|gz|tgz|zip|whl|jpg|jpeg|png|webp|mp4|ply|obj|glb|gltf|cu|cpp|c|h|hpp|so)\b/
+        },
+        { className: 'number', match: /(?:==|>=|<=|~=|!=)?\b\d+(?:\.\d+)*(?:[eE][+-]?\d+)?(?:\.?post\d+|rc\d+|a\d+|b\d+|dev\d+|\+cu\d+)?\b/ },
+        { className: 'operator', match: /\\$|\|\||&&|\||>>|2>&1|[<>]/m }
+      );
+      return base;
+    });
+  }
 
   function escapeHtml(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -142,16 +205,19 @@
     /* 4) 还原代码并交给 marked */
     text = text.replace(/\u0003C(\d+)\u0004/g, function (m, i) { return codeStash[+i]; });
 
+    ensureEnhancedBashGrammar();
+
     const renderer = new window.marked.Renderer();
     renderer.code = function (code, infostring) {
-      const lang = ((infostring || '').match(/^\S*/) || [''])[0].toLowerCase();
+      const rawLang = ((infostring || '').match(/^\S*/) || [''])[0].toLowerCase();
+      const lang = /^(sh|shell|zsh|console|terminal)$/.test(rawLang) ? 'bash' : rawLang;
       let body;
       if (lang && window.hljs && window.hljs.getLanguage(lang)) {
         try { body = window.hljs.highlight(code, { language: lang, ignoreIllegals: true }).value; } catch (e) { body = escapeHtml(code); }
       } else {
         body = escapeHtml(code);
       }
-      return '<pre><code class="hljs' + (lang ? ' language-' + escapeHtml(lang) : '') + '">' + body + '\n</code></pre>';
+      return '<pre><code class="hljs' + (rawLang ? ' language-' + escapeHtml(rawLang) : '') + '">' + body + '\n</code></pre>';
     };
     renderer.image = function (href, title, alt) {
       const raw = safeDecode(href || '');
