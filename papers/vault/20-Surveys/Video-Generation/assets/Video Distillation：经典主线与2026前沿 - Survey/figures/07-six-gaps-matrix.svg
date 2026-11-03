@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940">
+  <defs><style>
+    .title{font:700 34px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#172033}
+    .sub{font:500 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#56647a}
+    .h{font:700 21px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#1e2b43}
+    .t{font:500 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#3f4d63}
+    .m{font:700 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#17365d}
+  </style><filter id="s"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#172033" flood-opacity="0.12"/></filter></defs>
+  <rect width="1600" height="940" rx="24" fill="#f8fafc"/>
+  <text x="70" y="64" class="title">视频蒸馏的六类“鸿沟”：每篇论文究竟修了哪一层</text>
+  <text x="70" y="98" class="sub">不要把所有 Forcing 都当成新蒸馏损失；很多工作改的是初始化、历史分布、梯度路径或缓存系统</text>
+
+  <g filter="url(#s)">
+    <rect x="70" y="140" width="460" height="210" rx="20" fill="#ffffff" stroke="#89aee8" stroke-width="2"/>
+    <text x="98" y="180" class="h">1. 采样步数鸿沟</text>
+    <text x="98" y="216" class="t">教师 50 步，学生 1–4 步：如何压缩去噪轨迹？</text>
+    <text x="98" y="254" class="m">DMD / DMD2 · 一致性模型 · PTD</text>
+    <text x="98" y="286" class="m">One-Forcing · Causal-rCM · Causal Forcing++</text>
+    <text x="98" y="321" class="t">核心风险：一步高噪声端曲率过大、结构/运动被平均。</text>
+
+    <rect x="570" y="140" width="460" height="210" rx="20" fill="#ffffff" stroke="#9d82d7" stroke-width="2"/>
+    <text x="598" y="180" class="h">2. 架构与可见信息鸿沟</text>
+    <text x="598" y="216" class="t">双向教师看到未来，因果学生只能看到过去。</text>
+    <text x="598" y="254" class="m">CausVid：分布层面允许不对称</text>
+    <text x="598" y="286" class="m">Causal Forcing / ++：轨迹初始化必须因果对齐</text>
+    <text x="598" y="321" class="t">核心风险：非单值回归目标退化为条件均值。</text>
+
+    <rect x="1070" y="140" width="460" height="210" rx="20" fill="#ffffff" stroke="#71b49c" stroke-width="2"/>
+    <text x="1098" y="180" class="h">3. 历史分布鸿沟</text>
+    <text x="1098" y="216" class="t">训练喂真值历史，推理喂学生自己生成的历史。</text>
+    <text x="1098" y="254" class="m">Self Forcing：训练时 self-rollout</text>
+    <text x="1098" y="286" class="m">Self-Forcing++：延长 rollout 再局部纠错</text>
+    <text x="1098" y="321" class="t">核心风险：exposure bias 随时间滚雪球。</text>
+
+    <rect x="70" y="390" width="460" height="210" rx="20" fill="#ffffff" stroke="#db9b5b" stroke-width="2"/>
+    <text x="98" y="430" class="h">4. 教师上限与质量信号鸿沟</text>
+    <text x="98" y="466" class="t">只匹配视频教师，学生继承教师盲区和偏差。</text>
+    <text x="98" y="504" class="m">Reward / Data Forcing · DuoMatching</text>
+    <text x="98" y="536" class="m">SF² · DMAD 的真实数据 head</text>
+    <text x="98" y="571" class="t">核心风险：糊、过饱和、语义遗漏、动态衰减。</text>
+
+    <rect x="570" y="390" width="460" height="210" rx="20" fill="#ffffff" stroke="#d47688" stroke-width="2"/>
+    <text x="598" y="430" class="h">5. 梯度与信用分配鸿沟</text>
+    <text x="598" y="466" class="t">未来损失无法告诉早期 chunk 应如何写入记忆。</text>
+    <text x="598" y="504" class="m">Leta：FutureCredit + ScoreDelta</text>
+    <text x="598" y="536" class="m">SGF：重放 KV 写入 · SGF+：角色参数解耦</text>
+    <text x="598" y="571" class="t">核心风险：局部看似合理，长程身份/布局逐渐漂移。</text>
+
+    <rect x="1070" y="390" width="460" height="210" rx="20" fill="#ffffff" stroke="#64a6b8" stroke-width="2"/>
+    <text x="1098" y="430" class="h">6. 系统吞吐与记忆容量鸿沟</text>
+    <text x="1098" y="466" class="t">少步不等于实时；历史 KV 仍随时长膨胀。</text>
+    <text x="1098" y="504" class="m">Sparse Forcing：持久块 + 局部动态稀疏</text>
+    <text x="1098" y="536" class="m">Reward Forcing：EMA-Sink</text>
+    <text x="1098" y="571" class="t">核心风险：显存爆炸、首帧复制、长期上下文丢失。</text>
+  </g>
+
+  <rect x="70" y="650" width="1460" height="210" rx="22" fill="#edf3ff" stroke="#c5d5ef"/>
+  <text x="98" y="692" class="h">统一判断：强系统往往是多层组合，而不是单篇论文包打天下</text>
+  <text x="98" y="734" class="t">少步初始化（Causal CD / TF-CM） → on-policy 分布精修（SF-DMD） → 外部质量信号（奖励、真实数据、图像教师、表征）</text>
+  <text x="98" y="770" class="t">→ 跨 chunk 信用（Leta / SGF） → 稀疏 KV 与定制 kernel（Sparse Forcing） → 长 horizon 训练（Self-Forcing++）。</text>
+  <text x="98" y="814" class="m">所以，“video distillation”在 2026 年已从一个 loss 问题，变成初始化、目标、rollout、梯度、记忆与系统协同设计。</text>
+  <text x="70" y="905" class="sub">综述自绘；方法归类依据各论文官方定义，分类轴为本综述提出。</text>
+</svg>
