@@ -217,7 +217,23 @@
       } else {
         body = escapeHtml(code);
       }
-      return '<pre><code class="hljs' + (rawLang ? ' language-' + escapeHtml(rawLang) : '') + '">' + body + '\n</code></pre>';
+      const trimmedLines = String(code || '').replace(/\n$/, '').split('\n');
+      const lineCount = trimmedLines.length;
+      const firstMeaningful = (
+        trimmedLines.find(function (l) { const s = l.trim(); return s.length > 0 && !/^(\/\/|#|--|\/\*)/.test(s); }) ||
+        trimmedLines.find(function (l) { return l.trim().length > 0; }) ||
+        ''
+      ).trim();
+      const preview = firstMeaningful.length > 56 ? firstMeaningful.slice(0, 56) + '…' : firstMeaningful;
+      const summaryText = lineCount + ' 行' + (preview ? '  ·  ' + preview : '');
+      const langBadge = rawLang || 'code';
+      return (
+        '<pre class="code-block">' +
+          '<button type="button" class="code-fold-btn" title="折叠/展开代码" aria-label="折叠或展开代码" aria-expanded="true"></button>' +
+          '<span class="code-fold-summary" title="点击展开代码" data-lang="' + escapeHtml(langBadge) + '" data-summary="' + escapeHtml(summaryText) + '"></span>' +
+          '<code class="hljs' + (rawLang ? ' language-' + escapeHtml(rawLang) : '') + '">' + body + '\n</code>' +
+        '</pre>'
+      );
     };
     renderer.image = function (href, title, alt) {
       const raw = safeDecode(href || '');

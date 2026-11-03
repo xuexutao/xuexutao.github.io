@@ -763,6 +763,17 @@
     }
     const an = e.target.closest('a.anchor-link');
     if (an) { e.preventDefault(); scrollToHeading(MDR.safeDecode(an.getAttribute('href').slice(1))); return; }
+    const foldTrigger = e.target.closest('.code-fold-btn, .code-fold-summary');
+    if (foldTrigger) {
+      e.preventDefault();
+      const pre = foldTrigger.closest('pre');
+      if (pre) {
+        const collapsed = pre.classList.toggle('is-collapsed');
+        const btn = pre.querySelector('.code-fold-btn');
+        if (btn) btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      }
+      return;
+    }
     const imgToolBtn = e.target.closest('.img-tool-btn');
     if (imgToolBtn) {
       e.preventDefault();

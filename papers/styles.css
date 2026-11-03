@@ -883,12 +883,13 @@ button.stat-chip-btn.starred {
   font-size: 0.88em;
   line-height: 1.62;
   margin: 1.1em 0;
-  padding: 1em 1.15em;
+  padding: 0.95em 1.15em 0.95em 2.1em;
   background: var(--bg-soft);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   overflow-x: auto;
   position: relative;
+  transition: padding 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .markdown-rendered pre code {
@@ -897,6 +898,101 @@ button.stat-chip-btn.starred {
   padding: 0;
   color: inherit;
   font-size: inherit;
+}
+
+/* 左上角小三角折叠按钮 & 折叠态预览 */
+.markdown-rendered pre > .code-fold-btn {
+  position: absolute;
+  top: 0.92em;
+  left: 0.48em;
+  width: 1.25em;
+  height: 1.25em;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.65;
+  transition: transform 0.16s ease, opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+
+.markdown-rendered pre:hover > .code-fold-btn {
+  opacity: 1;
+}
+
+.markdown-rendered pre > .code-fold-btn:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.markdown-rendered pre > .code-fold-btn::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 4.5px solid transparent;
+  border-right: 4.5px solid transparent;
+  border-top: 6px solid currentColor;
+}
+
+.markdown-rendered pre > .code-fold-summary {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-muted);
+  font-size: 0.92em;
+  line-height: 1.4;
+}
+
+.markdown-rendered pre > .code-fold-summary::before {
+  content: attr(data-lang);
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 7px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.markdown-rendered pre > .code-fold-summary::after {
+  content: attr(data-summary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.85;
+}
+
+.markdown-rendered pre.is-collapsed {
+  padding: 0.45em 1em 0.45em 2.1em;
+  overflow: hidden;
+}
+
+.markdown-rendered pre.is-collapsed:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-color));
+}
+
+.markdown-rendered pre.is-collapsed > code {
+  display: none;
+}
+
+.markdown-rendered pre.is-collapsed > .code-fold-btn {
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  opacity: 0.9;
+}
+
+.markdown-rendered pre.is-collapsed > .code-fold-summary {
+  display: flex;
 }
 
 /* 细分代码语法高亮角色配色（解决默认 GitHub Light 把 attr/number/variable/literal/operator 全设为同一蓝色的问题） */
