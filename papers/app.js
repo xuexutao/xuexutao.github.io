@@ -99,13 +99,24 @@
     }
   }
 
+  let isRestoringScroll = false;
+
   function recordCurrentTabScroll() {
-    if (!state.currentPath || !el.scroll) return;
+    if (isRestoringScroll || !state.currentPath || !el.scroll) return;
     const tab = state.openTabs.find(function (t) { return t.path === state.currentPath; });
     if (tab) {
       tab.scrollTop = el.scroll.scrollTop;
       saveOpenTabs(false);
     }
+  }
+
+  function applyInstantScrollTop(targetTop) {
+    if (!el.scroll) return;
+    const prevBehavior = el.scroll.style.scrollBehavior;
+    el.scroll.style.scrollBehavior = 'auto';
+    el.scroll.scrollTop = targetTop;
+    void el.scroll.offsetHeight;
+    el.scroll.style.scrollBehavior = prevBehavior;
   }
 
   function stashCurrentArticleToCache() {
@@ -980,6 +991,7 @@
       recordCurrentTabScroll();
       stashCurrentArticleToCache();
     }
+    isRestoringScroll = true;
     const dash = getDash();
     const node = dash.map.get(path) || dash.root;
     path = node.path;
@@ -1014,7 +1026,8 @@
     h += '</div>';
     el.article.innerHTML = h;
     el.headerStats.innerHTML = '';
-    el.scroll.scrollTop = 0;
+    applyInstantScrollTop(0);
+    isRestoringScroll = false;
     syncActive();
   }
 
@@ -1142,16 +1155,20 @@
     const f = state.src.fileMap.get(path);
     if (!f) return;
 
-    // 切换文档前，先保存上一篇文档的滚动位置与已渲染 DOM 缓存
+    // 切换文档前，先保存上一篇文档的滚动位置，再锁定滚动记录，防止清空 DOM 时触发 scroll=0 覆盖新标签页位置
     if (!preserveScroll && state.currentPath && state.currentPath !== path) {
       recordCurrentTabScroll();
+      isRestoringScroll = true;
       stashCurrentArticleToCache();
-    } else if (preserveScroll) {
-      invalidateTabDomCache(path);
+    } else {
+      if (preserveScroll) invalidateTabDomCache(path);
+      isRestoringScroll = true;
     }
 
     const savedScrollTop = preserveScroll ? el.scroll.scrollTop : 0;
     const tabEntry = ensureOpenTab(path);
+    const targetScrollTop = preserveScroll ? savedScrollTop : (tabEntry ? (tabEntry.scrollTop || 0) : 0);
+
     state.currentPath = path; state.currentFolder = f.folder;
     if (!preserveScroll) recordRecentRead(path);
     setCrumbs(f.folder, f.title);
@@ -1167,12 +1184,18 @@
       state.currentMarkdown = cached.rawMarkdown;
       bindHeaderStats(path, f);
       updateUndoButtons();
-      buildToc();
       if (state.pendingHeading) {
         const h = state.pendingHeading; state.pendingHeading = null;
+        buildToc();
+        isRestoringScroll = false;
         setTimeout(function () { scrollToHeading(h); }, 40);
       } else {
-        el.scroll.scrollTop = tabEntry ? (tabEntry.scrollTop || 0) : 0;
+        applyInstantScrollTop(targetScrollTop);
+        if (tabEntry) tabEntry.scrollTop = targetScrollTop;
+        buildToc();
+        requestAnimationFrame(function () {
+          isRestoringScroll = false;
+        });
       }
       return;
     }
@@ -1181,7 +1204,7 @@
       el.article.innerHTML = '<div class="loading-hint">正在渲染 ' + E(f.title) + '（' + fmtSize(f.size) + '，约 ' + f.mathCount + ' 处公式）…</div>';
       await tick();
     }
-    if (state.currentPath !== path) return;
+    if (state.currentPath !== path) { isRestoringScroll = false; return; }
     let html = '', meta = {}, rawText = '';
     try {
       rawText = await state.src.getText(path);
@@ -1194,10 +1217,11 @@
       });
       html = out.html; meta = out.meta;
     } catch (err) {
+      isRestoringScroll = false;
       el.article.innerHTML = '<div class="img-missing">渲染失败：' + E(err.message || String(err)) + '</div>';
       return;
     }
-    if (state.currentPath !== path) return;
+    if (state.currentPath !== path) { isRestoringScroll = false; return; }
     const tags = Array.isArray(meta.tags) ? meta.tags : f.tags;
     let badges = tags.map(function (t) { return '<span class="meta-tag">#' + E(t) + '</span>'; }).join('');
     if (meta.status) badges += '<span class="meta-tag" style="background:rgba(16,185,129,.14);color:#059669">' + E(meta.status) + '</span>';
@@ -1210,14 +1234,18 @@
     postProcess(el.article.querySelector('.markdown-rendered'));
     bindHeaderStats(path, f);
     updateUndoButtons();
-    buildToc();
-    if (preserveScroll) {
-      el.scroll.scrollTop = savedScrollTop;
-      if (tabEntry) tabEntry.scrollTop = savedScrollTop;
-    } else if (state.pendingHeading) {
-      const h = state.pendingHeading; state.pendingHeading = null; setTimeout(function () { scrollToHeading(h); }, 60);
+    if (!preserveScroll && state.pendingHeading) {
+      const h = state.pendingHeading; state.pendingHeading = null;
+      buildToc();
+      isRestoringScroll = false;
+      setTimeout(function () { scrollToHeading(h); }, 60);
     } else {
-      el.scroll.scrollTop = tabEntry ? (tabEntry.scrollTop || 0) : 0;
+      applyInstantScrollTop(targetScrollTop);
+      if (tabEntry) tabEntry.scrollTop = targetScrollTop;
+      buildToc();
+      requestAnimationFrame(function () {
+        isRestoringScroll = false;
+      });
     }
   }
 
@@ -1229,7 +1257,7 @@
       return '<li class="toc-item toc-lvl-' + h.tagName.charAt(1) + '" data-i="' + i + '" title="' + E(h.textContent) + '">' + E(h.textContent) + '</li>';
     }).join('');
     el.tocPane.classList.remove('hidden');
-    onScroll();
+    updateTocActive();
   }
   el.tocList.addEventListener('click', function (e) {
     const it = e.target.closest('.toc-item');
@@ -1237,8 +1265,7 @@
   });
 
   let raf = 0;
-  function onScroll() {
-    recordCurrentTabScroll();
+  function updateTocActive() {
     if (raf) return;
     raf = requestAnimationFrame(function () {
       raf = 0;
@@ -1251,6 +1278,10 @@
       for (let i = 0; i < items.length; i++) items[i].classList.toggle('active', i === cur);
       if (items[cur]) items[cur].scrollIntoView({ block: 'nearest' });
     });
+  }
+  function onScroll() {
+    recordCurrentTabScroll();
+    updateTocActive();
   }
   el.scroll.addEventListener('scroll', onScroll);
 
