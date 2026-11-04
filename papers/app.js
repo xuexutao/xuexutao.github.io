@@ -11,14 +11,17 @@
     vaultName: $('vaultName'), vaultPath: $('vaultPath'), lightbox: $('lightbox'), lightboxImg: $('lightboxImg'),
     folderInput: $('folderInput'), filesInput: $('filesInput'), hideAssetBtn: $('hideAssetBtn'),
     sidebarTabs: $('sidebarTabs'), favCountBadge: $('favCountBadge'), recentCountBadge: $('recentCountBadge'),
-    treeToolbarActions: $('treeToolbarActions'), listToolbarActions: $('listToolbarActions'), clearListBtn: $('clearListBtn')
+    treeToolbarActions: $('treeToolbarActions'), listToolbarActions: $('listToolbarActions'), clearListBtn: $('clearListBtn'),
+    docTabsBar: $('docTabsBar'), docTabsList: $('docTabsList'),
+    closeOtherTabsBtn: $('closeOtherTabsBtn'), closeAllTabsBtn: $('closeAllTabsBtn')
   };
   const collator = new Intl.Collator('zh-CN', { numeric: true, sensitivity: 'base' });
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
   const state = {
     src: null, hideAssets: true, currentPath: null, currentFolder: '', openFolders: new Set(),
     query: '', pendingHeading: null, headings: [], dashCache: null, noteIndex: null, objectUrls: [],
-    assetBuster: new Map(), sidebarTab: 'tree', favorites: [], recent: []
+    assetBuster: new Map(), sidebarTab: 'tree', favorites: [], recent: [],
+    openTabs: [], tabDomCache: new Map()
   };
   let defaultSource = null;
 
@@ -44,10 +47,12 @@
   }
   const tick = () => new Promise(function (r) { setTimeout(r, 16); });
 
-  /* ---------- 收藏与最近阅读（浏览器本地存储） ---------- */
+  /* ---------- 收藏、最近阅读与多文章标签页（浏览器本地存储） ---------- */
   const FAV_STORAGE_KEY = 'md-reader-favorites';
   const RECENT_STORAGE_KEY = 'md-reader-recent';
+  const TABS_STORAGE_KEY = 'md-reader-open-tabs-v1';
   const MAX_RECENT_COUNT = 40;
+  const MAX_DOM_CACHE_TABS = 12;
 
   function loadUserLists() {
     try {
@@ -62,6 +67,158 @@
         state.recent = recRaw.filter(function (x) { return x && typeof x.path === 'string'; });
       }
     } catch (e) { state.recent = []; }
+    try {
+      const tabsRaw = JSON.parse(localStorage.getItem(TABS_STORAGE_KEY) || 'null');
+      if (tabsRaw && Array.isArray(tabsRaw.tabs)) {
+        state.openTabs = tabsRaw.tabs
+          .filter(function (x) { return x && typeof x.path === 'string'; })
+          .map(function (x) { return { path: x.path, scrollTop: Number(x.scrollTop) || 0, lastActive: Number(x.lastActive) || 0 }; });
+        state.savedActiveTabPath = typeof tabsRaw.activePath === 'string' ? tabsRaw.activePath : null;
+      }
+    } catch (e) { state.openTabs = []; }
+  }
+
+  let saveTabsTimer = 0;
+  function saveOpenTabs(immediate) {
+    const write = function () {
+      try {
+        localStorage.setItem(TABS_STORAGE_KEY, JSON.stringify({
+          activePath: state.currentPath || null,
+          tabs: state.openTabs.map(function (t) {
+            return { path: t.path, scrollTop: Math.round(t.scrollTop || 0), lastActive: t.lastActive || 0 };
+          })
+        }));
+      } catch (e) { /* quota ignore */ }
+    };
+    if (immediate) {
+      clearTimeout(saveTabsTimer);
+      write();
+    } else {
+      clearTimeout(saveTabsTimer);
+      saveTabsTimer = setTimeout(write, 180);
+    }
+  }
+
+  function recordCurrentTabScroll() {
+    if (!state.currentPath || !el.scroll) return;
+    const tab = state.openTabs.find(function (t) { return t.path === state.currentPath; });
+    if (tab) {
+      tab.scrollTop = el.scroll.scrollTop;
+      saveOpenTabs(false);
+    }
+  }
+
+  function stashCurrentArticleToCache() {
+    const curPath = state.currentPath;
+    if (!curPath || !el.article || !el.article.querySelector('.markdown-rendered')) return;
+    if (editingState) return;
+    const frag = document.createDocumentFragment();
+    while (el.article.firstChild) {
+      frag.appendChild(el.article.firstChild);
+    }
+    state.tabDomCache.delete(curPath);
+    state.tabDomCache.set(curPath, {
+      frag: frag,
+      rawMarkdown: state.currentMarkdown || ''
+    });
+    while (state.tabDomCache.size > MAX_DOM_CACHE_TABS) {
+      const oldestKey = state.tabDomCache.keys().next().value;
+      state.tabDomCache.delete(oldestKey);
+    }
+  }
+
+  function invalidateTabDomCache(path) {
+    if (!path) state.tabDomCache.clear();
+    else state.tabDomCache.delete(path);
+  }
+
+  function ensureOpenTab(path) {
+    if (!path || !state.src || !state.src.fileMap.has(path)) return null;
+    let tab = state.openTabs.find(function (t) { return t.path === path; });
+    if (!tab) {
+      tab = { path: path, scrollTop: 0, lastActive: Date.now() };
+      state.openTabs.push(tab);
+    } else {
+      tab.lastActive = Date.now();
+    }
+    saveOpenTabs(true);
+    return tab;
+  }
+
+  function renderTabsBar() {
+    if (!el.docTabsBar || !el.docTabsList) return;
+    if (state.src && state.src.fileMap) {
+      state.openTabs = state.openTabs.filter(function (t) { return state.src.fileMap.has(t.path); });
+    }
+    if (!state.openTabs.length) {
+      el.docTabsBar.classList.add('hidden');
+      el.docTabsList.innerHTML = '';
+      return;
+    }
+    el.docTabsBar.classList.remove('hidden');
+    if (el.closeOtherTabsBtn) {
+      el.closeOtherTabsBtn.disabled = state.openTabs.length <= 1 || !state.currentPath;
+    }
+    let h = '';
+    state.openTabs.forEach(function (t, idx) {
+      const f = state.src && state.src.fileMap ? state.src.fileMap.get(t.path) : null;
+      const title = f ? f.title : basename(t.path).replace(/\.md$/i, '');
+      const folderHint = f && f.folder ? f.folder : '根目录';
+      const active = state.currentPath === t.path;
+      h += '<div class="doc-tab' + (active ? ' active' : '') + '" role="tab" aria-selected="' + String(active) +
+        '" draggable="true" data-tab-path="' + E(t.path) + '" data-tab-idx="' + idx +
+        '" title="' + E(title + '\n路径：' + t.path + '\n提示：左键切换 · 中键或 ✕ 关闭 · 拖拽可调整顺序') + '">' +
+        '<span class="doc-tab-icon">📄</span>' +
+        '<span class="doc-tab-title">' + E(title) + '</span>' +
+        '<span class="doc-tab-folder">' + E(folderHint.split('/').pop()) + '</span>' +
+        '<button type="button" class="doc-tab-close" data-close-tab="' + E(t.path) + '" title="关闭此标签页" aria-label="关闭标签页">✕</button>' +
+        '</div>';
+    });
+    el.docTabsList.innerHTML = h;
+    const activeEl = el.docTabsList.querySelector('.doc-tab.active');
+    if (activeEl) {
+      activeEl.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+  }
+
+  function closeTab(path) {
+    const idx = state.openTabs.findIndex(function (t) { return t.path === path; });
+    if (idx < 0) return;
+    const wasActive = state.currentPath === path;
+    state.openTabs.splice(idx, 1);
+    invalidateTabDomCache(path);
+    saveOpenTabs(true);
+    if (!wasActive) {
+      renderTabsBar();
+      return;
+    }
+    if (state.openTabs.length > 0) {
+      // 优先切换到最近激活的相邻或上一个标签
+      const nextTab = state.openTabs[Math.min(idx, state.openTabs.length - 1)];
+      navigate('d', nextTab.path);
+    } else {
+      navigate('f', state.currentFolder || '');
+    }
+  }
+
+  function closeOtherTabs(keepPath) {
+    const target = keepPath || state.currentPath;
+    if (!target) return;
+    state.openTabs.forEach(function (t) {
+      if (t.path !== target) invalidateTabDomCache(t.path);
+    });
+    state.openTabs = state.openTabs.filter(function (t) { return t.path === target; });
+    saveOpenTabs(true);
+    renderTabsBar();
+    if (state.currentPath !== target) navigate('d', target);
+  }
+
+  function closeAllTabs() {
+    state.openTabs = [];
+    invalidateTabDomCache();
+    saveOpenTabs(true);
+    renderTabsBar();
+    navigate('f', state.currentFolder || '');
   }
 
   function saveFavorites() {
@@ -398,6 +555,7 @@
   function setSource(src) {
     state.objectUrls.forEach(function (u) { URL.revokeObjectURL(u); });
     state.objectUrls = [];
+    invalidateTabDomCache();
     src.fileMap = new Map(src.files.map(function (f) { return [f.path, f]; }));
     const byPath = new Map(), byName = new Map();
     src.files.forEach(function (f) {
@@ -414,6 +572,7 @@
     el.vaultPath.textContent = src.pathLabel; el.vaultPath.title = src.pathLabel;
     document.title = src.name + ' · 知识库阅读器';
     renderTree();
+    renderTabsBar();
   }
 
   /* ---------- 资源 / 双链解析 ---------- */
@@ -684,9 +843,115 @@
       if (state.src.fileMap.has(p)) return openDoc(p);
     }
     if ((m = h.match(/^#\/f\/(.*)$/))) return openFolder(decodeURIComponent(m[1]));
+    // 初次进入无 hash 且上次保存过激活的标签页时，自动恢复到该标签页
+    if (!h && state.savedActiveTabPath && state.src.fileMap.has(state.savedActiveTabPath)) {
+      const target = state.savedActiveTabPath;
+      state.savedActiveTabPath = null;
+      return navigate('d', target);
+    }
+    state.savedActiveTabPath = null;
     return openFolder('');
   }
   window.addEventListener('hashchange', route);
+
+  /* ---------- 顶部多文章标签栏交互（点击切换 / 中键关闭 / 拖拽排序） ---------- */
+  let draggedTabIdx = null;
+
+  if (el.docTabsList) {
+    el.docTabsList.addEventListener('click', function (e) {
+      const closeBtn = e.target.closest('.doc-tab-close');
+      if (closeBtn) {
+        e.stopPropagation();
+        closeTab(closeBtn.getAttribute('data-close-tab'));
+        return;
+      }
+      const tabEl = e.target.closest('.doc-tab');
+      if (tabEl) {
+        const p = tabEl.getAttribute('data-tab-path');
+        if (p) navigate('d', p);
+      }
+    });
+
+    // 鼠标中键点击标签页直接关闭
+    el.docTabsList.addEventListener('auxclick', function (e) {
+      if (e.button !== 1) return;
+      const tabEl = e.target.closest('.doc-tab');
+      if (tabEl) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeTab(tabEl.getAttribute('data-tab-path'));
+      }
+    });
+
+    // 鼠标滚轮在标签栏上横向滚动
+    el.docTabsList.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        el.docTabsList.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // 拖拽排序标签页
+    el.docTabsList.addEventListener('dragstart', function (e) {
+      const tabEl = e.target.closest('.doc-tab');
+      if (!tabEl) return;
+      draggedTabIdx = parseInt(tabEl.getAttribute('data-tab-idx'), 10);
+      tabEl.classList.add('dragging');
+      if (e.dataTransfer) {
+        e.dataTransfer.effectAllowed = 'move';
+        try { e.dataTransfer.setData('text/plain', String(draggedTabIdx)); } catch (err) { /* ignore */ }
+      }
+    });
+
+    el.docTabsList.addEventListener('dragover', function (e) {
+      if (draggedTabIdx === null) return;
+      e.preventDefault();
+      if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+      const overEl = e.target.closest('.doc-tab');
+      el.docTabsList.querySelectorAll('.doc-tab.drag-over').forEach(function (n) { n.classList.remove('drag-over'); });
+      if (overEl && parseInt(overEl.getAttribute('data-tab-idx'), 10) !== draggedTabIdx) {
+        overEl.classList.add('drag-over');
+      }
+    });
+
+    el.docTabsList.addEventListener('dragleave', function (e) {
+      const overEl = e.target.closest('.doc-tab');
+      if (overEl) overEl.classList.remove('drag-over');
+    });
+
+    el.docTabsList.addEventListener('drop', function (e) {
+      if (draggedTabIdx === null) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const targetEl = e.target.closest('.doc-tab');
+      el.docTabsList.querySelectorAll('.doc-tab.drag-over, .doc-tab.dragging').forEach(function (n) {
+        n.classList.remove('drag-over', 'dragging');
+      });
+      if (!targetEl) { draggedTabIdx = null; return; }
+      const toIdx = parseInt(targetEl.getAttribute('data-tab-idx'), 10);
+      if (!isNaN(toIdx) && toIdx !== draggedTabIdx && state.openTabs[draggedTabIdx]) {
+        const moved = state.openTabs.splice(draggedTabIdx, 1)[0];
+        state.openTabs.splice(toIdx, 0, moved);
+        saveOpenTabs(true);
+        renderTabsBar();
+      }
+      draggedTabIdx = null;
+    });
+
+    el.docTabsList.addEventListener('dragend', function () {
+      draggedTabIdx = null;
+      el.docTabsList.querySelectorAll('.doc-tab.drag-over, .doc-tab.dragging').forEach(function (n) {
+        n.classList.remove('drag-over', 'dragging');
+      });
+    });
+  }
+
+  if (el.closeOtherTabsBtn) {
+    el.closeOtherTabsBtn.addEventListener('click', function () { closeOtherTabs(); });
+  }
+  if (el.closeAllTabsBtn) {
+    el.closeAllTabsBtn.addEventListener('click', function () { closeAllTabs(); });
+  }
 
   function setCrumbs(folder, docTitle) {
     let h = '<span class="crumb-item" data-fpath="">' + E(state.src.name) + '</span>';
@@ -711,10 +976,16 @@
   }
 
   function openFolder(path) {
+    if (state.currentPath) {
+      recordCurrentTabScroll();
+      stashCurrentArticleToCache();
+    }
     const dash = getDash();
     const node = dash.map.get(path) || dash.root;
     path = node.path;
     state.currentPath = null; state.currentFolder = path; state.headings = [];
+    saveOpenTabs(false);
+    renderTabsBar();
     el.tocPane.classList.add('hidden');
     setCrumbs(path, '');
     const isHome = path === '';
@@ -851,13 +1122,61 @@
     }
   }
 
+  function bindHeaderStats(path, f) {
+    const starred = isFavorited(path);
+    el.headerStats.innerHTML =
+      '<button type="button" class="stat-chip stat-chip-btn' + (starred ? ' starred' : '') + '" id="headerStarBtn" title="' + (starred ? '点击取消收藏此文章' : '收藏此文章到浏览器本地书签') + '">' + (starred ? '⭐ 已收藏' : '☆ 收藏') + '</button>' +
+      (f.mathCount ? '<span class="stat-chip">∑ ' + f.mathCount + ' 公式</span>' : '') +
+      '<span class="stat-chip">' + fmtSize(f.size) + '</span>' + (f.mtime ? '<span class="stat-chip">' + fmtDate(f.mtime) + '</span>' : '');
+    const starBtnEl = $('headerStarBtn');
+    if (starBtnEl) {
+      starBtnEl.addEventListener('click', function () {
+        if (!state.currentPath) return;
+        const added = toggleFavorite(state.currentPath);
+        showToast(added ? '⭐ 已加入本地收藏' : '已取消收藏');
+      });
+    }
+  }
+
   async function openDoc(path, preserveScroll) {
     const f = state.src.fileMap.get(path);
+    if (!f) return;
+
+    // 切换文档前，先保存上一篇文档的滚动位置与已渲染 DOM 缓存
+    if (!preserveScroll && state.currentPath && state.currentPath !== path) {
+      recordCurrentTabScroll();
+      stashCurrentArticleToCache();
+    } else if (preserveScroll) {
+      invalidateTabDomCache(path);
+    }
+
     const savedScrollTop = preserveScroll ? el.scroll.scrollTop : 0;
+    const tabEntry = ensureOpenTab(path);
     state.currentPath = path; state.currentFolder = f.folder;
     if (!preserveScroll) recordRecentRead(path);
     setCrumbs(f.folder, f.title);
     syncActive();
+    renderTabsBar();
+
+    // 若命中内存 DOM 缓存（且非强制重新渲染），0 延迟直接恢复 DOM 与滚动条位置
+    if (!preserveScroll && state.tabDomCache.has(path)) {
+      const cached = state.tabDomCache.get(path);
+      state.tabDomCache.delete(path);
+      el.article.innerHTML = '';
+      el.article.appendChild(cached.frag);
+      state.currentMarkdown = cached.rawMarkdown;
+      bindHeaderStats(path, f);
+      updateUndoButtons();
+      buildToc();
+      if (state.pendingHeading) {
+        const h = state.pendingHeading; state.pendingHeading = null;
+        setTimeout(function () { scrollToHeading(h); }, 40);
+      } else {
+        el.scroll.scrollTop = tabEntry ? (tabEntry.scrollTop || 0) : 0;
+      }
+      return;
+    }
+
     if (!preserveScroll) {
       el.article.innerHTML = '<div class="loading-hint">正在渲染 ' + E(f.title) + '（' + fmtSize(f.size) + '，约 ' + f.mathCount + ' 处公式）…</div>';
       await tick();
@@ -889,27 +1208,16 @@
     el.article.innerHTML = '<div class="doc-meta-banner"><div class="meta-badges">' + (badges || '<span class="meta-info-item">无标签</span>') +
       '</div><div class="meta-badges">' + info + '</div></div><div class="markdown-rendered">' + html + '</div>';
     postProcess(el.article.querySelector('.markdown-rendered'));
-    const starred = isFavorited(path);
-    el.headerStats.innerHTML =
-      '<button type="button" class="stat-chip stat-chip-btn' + (starred ? ' starred' : '') + '" id="headerStarBtn" title="' + (starred ? '点击取消收藏此文章' : '收藏此文章到浏览器本地书签') + '">' + (starred ? '⭐ 已收藏' : '☆ 收藏') + '</button>' +
-      (f.mathCount ? '<span class="stat-chip">∑ ' + f.mathCount + ' 公式</span>' : '') +
-      '<span class="stat-chip">' + fmtSize(f.size) + '</span>' + (f.mtime ? '<span class="stat-chip">' + fmtDate(f.mtime) + '</span>' : '');
-    const starBtnEl = $('headerStarBtn');
-    if (starBtnEl) {
-      starBtnEl.addEventListener('click', function () {
-        if (!state.currentPath) return;
-        const added = toggleFavorite(state.currentPath);
-        showToast(added ? '⭐ 已加入本地收藏' : '已取消收藏');
-      });
-    }
+    bindHeaderStats(path, f);
     updateUndoButtons();
     buildToc();
     if (preserveScroll) {
       el.scroll.scrollTop = savedScrollTop;
+      if (tabEntry) tabEntry.scrollTop = savedScrollTop;
     } else if (state.pendingHeading) {
       const h = state.pendingHeading; state.pendingHeading = null; setTimeout(function () { scrollToHeading(h); }, 60);
     } else {
-      el.scroll.scrollTop = 0;
+      el.scroll.scrollTop = tabEntry ? (tabEntry.scrollTop || 0) : 0;
     }
   }
 
@@ -930,6 +1238,7 @@
 
   let raf = 0;
   function onScroll() {
+    recordCurrentTabScroll();
     if (raf) return;
     raf = requestAnimationFrame(function () {
       raf = 0;
@@ -947,8 +1256,13 @@
 
   /* ---------- 搜索 ---------- */
   function fullTextSearch(q) {
+    if (state.currentPath) {
+      recordCurrentTabScroll();
+      stashCurrentArticleToCache();
+    }
     const docs = state.src.docs;
     state.currentPath = null; state.headings = [];
+    renderTabsBar();
     el.tocPane.classList.add('hidden'); el.headerStats.innerHTML = '';
     setCrumbs('', '全文搜索：' + q);
     if (!docs) { el.article.innerHTML = '<div class="empty-hint">全文索引未加载（缺少 vault-docs.js），仅支持标题 / 路径搜索。</div>'; return; }

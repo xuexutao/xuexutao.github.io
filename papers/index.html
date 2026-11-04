@@ -69,6 +69,15 @@
   </aside>
 
   <main class="main-pane">
+    <!-- 顶部多文章标签栏 -->
+    <div class="doc-tabs-bar hidden" id="docTabsBar" role="tablist" aria-label="已打开的文章标签页">
+      <div class="doc-tabs-scroll" id="docTabsList"></div>
+      <div class="doc-tabs-actions" id="docTabsActions">
+        <button type="button" class="doc-tabs-action-btn" id="closeOtherTabsBtn" title="关闭除当前外的所有标签页">关闭其他</button>
+        <button type="button" class="doc-tabs-action-btn" id="closeAllTabsBtn" title="关闭全部标签页并返回概览">关闭全部</button>
+      </div>
+    </div>
+
     <header class="top-header">
       <div class="header-left">
         <button class="btn btn-icon" id="sidebarBtn" title="收起左侧列表" aria-label="收起左侧列表" aria-controls="sidebar" aria-expanded="true">☰</button>
