@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="VLA 具身智能 75 道高频面试题详解" />
+    <meta name="hexo-theme-A4" content="v1.9.6" />
+    <link rel="alternate icon" type="image/webp" href="/img/man.jpg">
+    <title>Xuext</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <a href="/" class="header-avatar-link">
+            <img alt="^-^" cache-control="max-age=86400" class="header-img" src="/img/man.jpg" />
+        </a>
+        <div class="header-content">
+            <a class="logo" href="/">Xuext</a> 
+            <span class="description">Beihang University</span> 
+        </div>
+    </div>
+    
+    
+    <ul class="nav">
+        
+            
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+            
+                <li><a href="/list/">⛰️文章</a></li>
+            
+        
+            
+            
+                <li><a href="/categories/">🌬️分类</a></li>
+            
+        
+            
+            
+                <li><a href="/papers/index.html">📚论文精读</a></li>
+            
+        
+            
+            
+                <li><a href="/lover/">💗💗</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    VLA 具身智能 75 道高频面试题详解
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-11-05</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：19k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：65分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vla-%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD-75-%E9%81%93%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="post-toc-text">VLA 具身智能 75 道高频面试题详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-avla-%E5%9F%BA%E7%A1%80%E4%B8%8E%E8%B0%B1%E7%B3%BB"><span class="post-toc-text">模块 A：VLA 基础与谱系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q1.-rt-2-%E5%A6%82%E4%BD%95%E6%8A%8A%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8A%A8%E4%BD%9C%E5%A1%9E%E8%BF%9B%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9E%E7%BB%AD%E5%8A%A8%E4%BD%9C%E6%80%8E%E6%A0%B7%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="post-toc-text">Q1. RT-2 如何把机器人动作塞进语言模型？连续动作怎样离散化？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q2.-%E7%AB%AF%E5%88%B0%E7%AB%AF-vla-%E4%B8%8E%E6%84%9F%E7%9F%A5%E5%BB%BA%E5%9B%BE%E8%A7%84%E5%88%92%E6%8E%A7%E5%88%B6%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E7%AE%A1%E7%BA%BF%E6%80%8E%E4%B9%88%E9%80%89"><span class="post-toc-text">Q2. 端到端 VLA 与“感知→建图→规划→控制”的模块化管线怎么选？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q3.-openvla-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8-dinov2-%E4%B8%8E-siglip-%E5%8F%8C%E8%A7%86%E8%A7%89%E7%BC%96%E7%A0%81%E5%99%A8"><span class="post-toc-text">Q3. OpenVLA 为什么采用 DINOv2 与 SigLIP 双视觉编码器？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q4.-%E8%B7%A8%E6%9C%AC%E4%BD%93%E8%AE%AD%E7%BB%83%E6%80%8E%E6%A0%B7%E7%BB%9F%E4%B8%80%E5%8A%A8%E4%BD%9C%E7%A9%BA%E9%97%B4%E4%B8%BA%E4%BB%80%E4%B9%88%E5%B8%B8%E7%94%A8-delta-eef-%E5%8A%A0%E5%A4%B9%E7%88%AA"><span class="post-toc-text">Q4. 跨本体训练怎样统一动作空间？为什么常用 delta EEF 加夹爪？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q5.-rt-2-%E5%B1%95%E7%A4%BA%E7%9A%84%E6%B6%8C%E7%8E%B0%E6%B3%9B%E5%8C%96%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8"><span class="post-toc-text">Q5. RT-2 展示的“涌现泛化”到底是什么性质？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q6.-%E5%8F%AA%E6%9C%89%E4%B8%80%E5%8F%B0%E6%96%B0%E6%9C%BA%E6%A2%B0%E8%87%82%E5%92%8C%E5%B0%91%E9%87%8F%E7%9C%9F%E6%9C%BA%E6%95%B0%E6%8D%AE%E6%80%8E%E6%A0%B7%E5%9F%BA%E4%BA%8E%E5%BC%80%E6%BA%90-vla-%E8%90%BD%E5%9C%B0"><span class="post-toc-text">Q6. 只有一台新机械臂和少量真机数据，怎样基于开源 VLA 落地？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q7.-vlm-%E9%A2%84%E8%AE%AD%E7%BB%83%E9%AA%A8%E5%B9%B2%E5%AF%B9-vla-%E6%98%AF%E5%8A%A9%E5%8A%9B%E8%BF%98%E6%98%AF%E5%8C%85%E8%A2%B1%E5%86%BB%E7%BB%93%E8%BF%98%E6%98%AF%E5%85%A8%E9%87%8F%E5%BE%AE%E8%B0%83"><span class="post-toc-text">Q7. VLM 预训练骨干对 VLA 是助力还是包袱？冻结还是全量微调？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q8.-%E4%BB%8E-%CF%800.5-%E5%88%B0-%CF%800.6%CF%800.6%E5%86%8D%E5%88%B0-%CF%800.7%E6%8A%80%E6%9C%AF%E4%B8%BB%E7%BA%BF%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%E5%8F%98%E5%8C%96"><span class="post-toc-text">Q8. 从 π0.5 到 π0.6&#x2F;π*0.6，再到 π0.7，技术主线发生了什么变化？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-b%E5%8A%A8%E4%BD%9C%E8%A1%A8%E7%A4%BA%E4%B8%8E%E7%94%9F%E6%88%90"><span class="post-toc-text">模块 B：动作表示与生成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q9.-%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AE%B9%E6%98%93%E6%8A%96%E5%8A%A8act-%E7%94%A8%E4%BB%80%E4%B9%88%E6%9C%BA%E5%88%B6%E7%BC%93%E8%A7%A3"><span class="post-toc-text">Q9. 模仿学习策略为什么容易抖动？ACT 用什么机制缓解？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q10.-action-chunk-%E9%95%BF%E5%BA%A6%E6%80%8E%E6%A0%B7%E6%9D%83%E8%A1%A1%E6%89%A7%E8%A1%8C%E5%88%B0%E4%B8%80%E5%8D%8A%E7%8E%AF%E5%A2%83%E5%8F%98%E5%8C%96%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="post-toc-text">Q10. Action chunk 长度怎样权衡？执行到一半环境变化怎么办？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q11.-%E4%BB%8E-diffusion-policy-%E5%88%B0-%CF%800-%E7%9A%84-flow-matching%E5%B7%AE%E5%BC%82%E6%98%AF%E4%BB%80%E4%B9%88%E6%80%8E%E6%A0%B7%E6%94%AF%E6%8C%81%E9%AB%98%E9%A2%91%E6%8E%A7%E5%88%B6"><span class="post-toc-text">Q11. 从 Diffusion Policy 到 π0 的 flow matching，差异是什么？怎样支持高频控制？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q12.-%CF%800-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%8A%E5%8A%A8%E4%BD%9C%E4%B8%93%E5%AE%B6%E5%81%9A%E6%88%90%E7%8B%AC%E7%AB%8B%E5%B0%8F%E7%BD%91%E7%BB%9C%E6%8C%82%E5%9C%A8-vlm-%E9%AA%A8%E5%B9%B2%E4%B8%8A"><span class="post-toc-text">Q12. π0 为什么把动作专家做成独立小网络挂在 VLM 骨干上？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q13.-%E5%8A%A8%E4%BD%9C%E7%A9%BA%E9%97%B4%E9%80%89%E6%9C%AB%E7%AB%AF%E6%89%A7%E8%A1%8C%E5%99%A8%E8%BF%98%E6%98%AF%E5%85%B3%E8%8A%82%E7%BB%9D%E5%AF%B9%E4%BD%8D%E5%A7%BF%E8%BF%98%E6%98%AF%E5%A2%9E%E9%87%8F"><span class="post-toc-text">Q13. 动作空间选末端执行器还是关节？绝对位姿还是增量？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q14.-%E7%9C%9F%E6%9C%BA%E7%AD%96%E7%95%A5%E8%BE%93%E5%87%BA%E6%8A%96%E5%8A%A8%E6%88%96%E8%BD%A8%E8%BF%B9%E6%BC%82%E7%A7%BB%E6%8E%92%E6%9F%A5%E6%B8%85%E5%8D%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q14. 真机策略输出抖动或轨迹漂移，排查清单是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q15.-%E7%8E%B0%E6%9C%89%E5%8A%A8%E4%BD%9C%E8%A1%A8%E7%A4%BA%E5%9C%A8%E7%81%B5%E5%B7%A7%E6%89%8B%E6%8E%A5%E8%A7%A6%E5%8A%9B%E5%92%8C%E5%8F%98%E9%95%BF%E4%BB%BB%E5%8A%A1%E4%B8%8A%E8%BF%98%E7%BC%BA%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q15. 现有动作表示在灵巧手、接触力和变长任务上还缺什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q16.-%E5%BC%82%E6%AD%A5%E7%94%9F%E6%88%90%E5%8A%A8%E4%BD%9C%E5%9D%97%E6%97%B6%E6%96%B0%E6%97%A7-chunk-%E4%BA%A4%E7%95%8C%E5%A4%84%E4%BC%9A%E8%B7%B3%E4%B8%80%E4%B8%8B%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="post-toc-text">Q16. 异步生成动作块时，新旧 chunk 交界处会跳一下，怎么处理？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-c%E5%85%B7%E8%BA%AB%E6%95%B0%E6%8D%AE%E5%BC%95%E6%93%8E"><span class="post-toc-text">模块 C：具身数据引擎</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q17.-%E5%85%B7%E8%BA%AB%E6%95%B0%E6%8D%AE%E7%9A%84%E9%87%91%E5%AD%97%E5%A1%94%E6%98%AF%E4%BB%80%E4%B9%88%E6%AF%8F%E4%B8%80%E5%B1%82%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="post-toc-text">Q17. 具身数据的“金字塔”是什么？每一层解决什么问题？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q18.-%E9%81%A5%E6%93%8D%E4%BD%9C%E9%87%87%E9%9B%86%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%BB%E6%B5%81%E6%96%B9%E6%A1%88%E6%80%8E%E6%A0%B7%E9%80%89%E5%B9%B6%E6%8E%A7%E5%88%B6%E8%B4%A8%E9%87%8F"><span class="post-toc-text">Q18. 遥操作采集有哪些主流方案？怎样选并控制质量？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q19.-%E5%A4%B1%E8%B4%A5%E6%95%B0%E6%8D%AE%E5%88%B0%E5%BA%95%E6%9C%89%E6%B2%A1%E6%9C%89%E7%94%A8%E8%AE%AD%E7%BB%83%E6%97%B6%E6%80%8E%E6%A0%B7%E5%88%A9%E7%94%A8"><span class="post-toc-text">Q19. 失败数据到底有没有用？训练时怎样利用？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q20.-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%80%E6%9D%A1%E8%BD%A8%E8%BF%B9%E9%85%8D-35-%E6%9D%A1-gpt-%E6%94%B9%E5%86%99%E7%9A%84%E8%AF%AD%E8%A8%80%E6%8C%87%E4%BB%A4%E5%B8%B8%E8%83%BD%E6%98%BE%E8%91%97%E6%8F%90%E5%8D%87%E6%95%88%E6%9E%9C"><span class="post-toc-text">Q20. 为什么一条轨迹配 3—5 条 GPT 改写的语言指令常能显著提升效果？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q21.-%E4%BB%8E%E4%BA%BA%E7%B1%BB%E8%A7%86%E9%A2%91%E5%AD%A6%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%93%8D%E4%BD%9C%E9%9C%80%E8%A6%81%E8%B7%A8%E8%BF%87%E5%93%AA%E4%BA%9B%E9%B8%BF%E6%B2%9F"><span class="post-toc-text">Q21. 从人类视频学机器人操作，需要跨过哪些鸿沟？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q22.-%E6%88%91%E4%BB%AC%E5%B7%B2%E7%BB%8F%E6%9C%89%E4%B8%80%E7%99%BE%E4%B8%87%E6%9D%A1%E6%95%B0%E6%8D%AE%E6%80%8E%E6%A0%B7%E8%AF%84%E4%BC%B0%E8%BF%99%E6%89%B9%E6%95%B0%E6%8D%AE%E7%9A%84%E8%B4%A8%E9%87%8F"><span class="post-toc-text">Q22. “我们已经有一百万条数据”，怎样评估这批数据的质量？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q23.-%E7%AC%AC%E4%B8%80%E8%A7%86%E8%A7%92%E4%BA%BA%E7%B1%BB%E8%A7%86%E9%A2%91%E6%9B%B4%E4%BE%BF%E5%AE%9C%E6%9B%B4%E5%A4%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%96%82%E7%BB%99-vla"><span class="post-toc-text">Q23. 第一视角人类视频更便宜、更多，为什么不能直接喂给 VLA？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q24.-umi-%E8%BF%99%E7%B1%BB%E6%89%8B%E6%8C%81%E9%87%87%E9%9B%86%E4%B8%8E%E4%BC%A0%E7%BB%9F%E9%81%A5%E6%93%8D%E4%BD%9C%E7%9B%B8%E6%AF%94%E4%BC%98%E5%8A%BF%E5%92%8C%E5%8A%A3%E5%8A%BF%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="post-toc-text">Q24. UMI 这类手持采集与传统遥操作相比，优势和劣势在哪里？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q25.-%E4%BB%80%E4%B9%88%E6%98%AF-latent-action-%E9%A2%84%E8%AE%AD%E7%BB%83%E5%AE%83%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="post-toc-text">Q25. 什么是 latent action 预训练？它解决了什么问题？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-d%E4%BB%BF%E7%9C%9F%E4%B8%8E-sim2real"><span class="post-toc-text">模块 D：仿真与 Sim2Real</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q26.-sim2real-gap-%E7%9A%84%E6%9D%A5%E6%BA%90%E5%8F%AF%E5%88%86%E5%93%AA%E5%9B%9B%E7%B1%BBdomain-randomization-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="post-toc-text">Q26. Sim2Real gap 的来源可分哪四类？Domain Randomization 有什么作用？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q27.-%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E6%80%8E%E6%A0%B7%E9%80%89isaac-labmujocogenesis-%E5%90%84%E9%80%82%E5%90%88%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q27. 仿真平台怎样选？Isaac Lab、MuJoCo、Genesis 各适合什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q28.-domain-randomization-%E5%81%9A%E8%BF%87%E5%A4%B4%E4%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E7%97%87%E7%8A%B6%E6%80%8E%E6%A0%B7%E8%AE%BE%E8%8C%83%E5%9B%B4"><span class="post-toc-text">Q28. Domain Randomization 做过头会有什么症状？怎样设范围？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q29.-%E7%AD%96%E7%95%A5%E5%9C%A8%E4%BB%BF%E7%9C%9F%E9%87%8C-90-%E5%88%86%E7%9C%9F%E6%9C%BA%E5%8F%AA%E6%9C%89-40-%E5%88%86%E6%8E%92%E6%9F%A5%E9%A1%BA%E5%BA%8F%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q29. 策略在仿真里 90 分，真机只有 40 分，排查顺序是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q30.-real2sim%E6%95%B0%E5%AD%97%E5%AD%AA%E7%94%9F%E7%9A%84%E4%BB%B7%E5%80%BC%E5%9C%BA%E6%99%AF%E5%9C%A8%E5%93%AA%E9%87%8C3dgs-%E9%87%8D%E5%BB%BA%E8%83%BD%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q30. Real2Sim&#x2F;数字孪生的价值场景在哪里？3DGS 重建能解决什么？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-e%E5%85%B7%E8%BA%AB%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">模块 E：具身世界模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q31.-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E9%9C%80%E8%A6%81%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E5%AE%83%E8%A1%A5%E4%BA%86%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88%E7%9F%AD%E6%9D%BF"><span class="post-toc-text">Q31. 为什么具身智能需要世界模型？它补了模仿学习什么短板？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q32.-v-jepa-2-%E5%92%8C-gr-2-%E4%BB%A3%E8%A1%A8%E5%93%AA%E4%B8%A4%E6%9D%A1%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E8%B7%AF%E7%BA%BF%E6%80%8E%E6%A0%B7%E5%8F%96%E8%88%8D"><span class="post-toc-text">Q32. V-JEPA 2 和 GR-2 代表哪两条世界模型路线？怎样取舍？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q33.-%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E6%B3%A8%E5%85%A5-vla%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E5%B7%A5%E7%A8%8B%E4%BB%A3%E4%BB%B7%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q33. 世界模型怎样注入 VLA？三种方式的工程代价分别是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q34.-gr-1-%E7%9A%84%E8%A7%86%E9%A2%91%E9%A2%84%E8%AE%AD%E7%BB%83%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%81%94%E5%90%88%E9%A2%84%E6%B5%8B%E7%AD%96%E7%95%A5%E9%83%A8%E7%BD%B2%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%90%E7%AB%8B"><span class="post-toc-text">Q34. GR-1 的“视频预训练→机器人联合预测→策略部署”为什么成立？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q35.-%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E5%90%88%E6%88%90%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%B4%E6%8E%A5%E5%96%82%E7%BB%99-vla%E6%9C%80%E5%A4%A7%E7%9A%84%E5%9D%91%E6%98%AF%E4%BB%80%E4%B9%88%E6%80%8E%E4%B9%88%E9%98%B2"><span class="post-toc-text">Q35. 世界模型合成的数据直接喂给 VLA，最大的坑是什么？怎么防？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q36.-2026-%E5%B9%B4%E5%BE%88%E7%81%AB%E7%9A%84-world-action-model-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q36. 2026 年很火的 World Action Model 是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q37.-%E7%BB%99%E4%B8%80%E4%B8%AA%E9%A2%84%E8%AE%AD%E7%BB%83%E5%A5%BD%E7%9A%84%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E6%8A%8A%E5%AE%83%E6%94%B9%E6%88%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%AD%96%E7%95%A5"><span class="post-toc-text">Q37. 给一个预训练好的视频生成模型，怎样把它改成机器人策略？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-f%E7%AD%96%E7%95%A5%E6%9E%B6%E6%9E%84%E4%B8%8E%E9%AA%A8%E5%B9%B2"><span class="post-toc-text">模块 F：策略架构与骨干</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q38.-%E9%80%9A%E7%94%A8-vla-%E6%9E%B6%E6%9E%84%E5%8F%AF%E4%BB%A5%E6%8B%86%E6%88%90%E5%93%AA%E5%9B%9B%E6%AE%B5%E9%AA%A8%E5%B9%B2%E8%A6%81%E4%B8%8D%E8%A6%81%E5%86%BB%E7%BB%93%E6%80%8E%E6%A0%B7%E5%86%B3%E5%AE%9A"><span class="post-toc-text">Q38. 通用 VLA 架构可以拆成哪四段？“骨干要不要冻结”怎样决定？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q39.-%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%BF%AB%E6%85%A2%E8%84%91%E6%9E%B6%E6%9E%84%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%8A%A8%E6%9C%BA%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q39. 双系统“快慢脑”架构的工程动机是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q40.-%E7%A9%BA%E9%97%B4%E6%B3%9B%E5%8C%96%E9%9D%A0%E5%8F%8C-2d-%E7%BC%96%E7%A0%81%E5%99%A8%E6%98%BE%E5%BC%8F-3d%E8%BF%98%E6%98%AF-3d-aware-token"><span class="post-toc-text">Q40. 空间泛化靠双 2D 编码器、显式 3D，还是 3D-aware token？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q41.-%E8%85%95%E9%83%A8%E7%9B%B8%E6%9C%BA%E5%92%8C%E7%AC%AC%E4%B8%89%E8%A7%86%E8%A7%92%E7%9B%B8%E6%9C%BA%E6%80%8E%E4%B9%88%E8%9E%8D%E5%90%88%E4%B8%BA%E4%BB%80%E4%B9%88%E8%85%95%E9%83%A8%E7%9B%B8%E6%9C%BA%E5%AF%B9%E7%B2%BE%E7%BB%86%E6%93%8D%E4%BD%9C%E5%85%B3%E9%94%AE"><span class="post-toc-text">Q41. 腕部相机和第三视角相机怎么融合？为什么腕部相机对精细操作关键？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q42.-%E6%8C%87%E5%93%AA%E6%89%93%E5%93%AA%E7%9A%84%E7%A9%BA%E9%97%B4%E7%B2%BE%E5%BA%A6%E6%80%BB%E5%B7%AE%E4%B8%80%E6%88%AA%E6%9E%B6%E6%9E%84%E4%B8%8A%E8%83%BD%E5%81%9A%E5%93%AA%E4%BA%9B%E6%94%B9%E9%80%A0"><span class="post-toc-text">Q42. “指哪打哪”的空间精度总差一截，架构上能做哪些改造？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q43.-gemini-robotics-1.5-%E7%9A%84-think-before-acting-%E5%92%8C-motion-transfer-%E5%88%86%E5%88%AB%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q43. Gemini Robotics 1.5 的 “think before acting” 和 Motion Transfer 分别解决什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q44.-%E6%98%BE%E5%BC%8F%E6%80%9D%E7%BB%B4%E9%93%BE%E8%AE%A9-vla-%E6%9B%B4%E8%81%AA%E6%98%8E%E4%BD%86%E4%B9%9F%E6%9B%B4%E6%85%A2%E5%BB%B6%E8%BF%9F%E6%80%8E%E6%A0%B7%E5%8E%8B"><span class="post-toc-text">Q44. 显式思维链让 VLA 更聪明但也更慢，延迟怎样压？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-g%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%90%8E%E8%AE%AD%E7%BB%83"><span class="post-toc-text">模块 G：强化学习与后训练</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q45.-%E7%BA%AF%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%90%8E%E4%B8%BA%E4%BB%80%E4%B9%88-rl-%E5%8F%88%E5%9B%9E%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%89%88-rlvr"><span class="post-toc-text">Q45. 纯模仿学习之后，为什么 RL 又回来了？什么是机器人版 RLVR？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q46.-%E6%9C%BA%E5%99%A8%E4%BA%BA-rl-%E7%9A%84%E5%A5%96%E5%8A%B1%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5%E5%9B%9B%E7%B1%BB%E6%9D%A5%E6%BA%90%E5%90%84%E6%9C%89%E4%BB%80%E4%B9%88%E5%9D%91"><span class="post-toc-text">Q46. 机器人 RL 的奖励从哪里来？四类来源各有什么坑？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q47.-sim-rl-real-finetune%E7%9A%84%E6%A0%87%E5%87%86%E7%AE%A1%E7%BA%BF%E6%98%AF%E4%BB%80%E4%B9%88privileged-learning-%E7%94%A8%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="post-toc-text">Q47. “sim-RL + real finetune”的标准管线是什么？Privileged learning 用在哪里？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q48.-rl-%E5%BE%AE%E8%B0%83%E4%BC%9A%E4%B8%8D%E4%BC%9A%E6%AF%81%E6%8E%89-vla-%E5%8E%9F%E6%9C%89%E7%9A%84%E8%AF%AD%E4%B9%89%E8%83%BD%E5%8A%9B%E6%80%8E%E4%B9%88%E4%BF%9D%E6%8A%A4"><span class="post-toc-text">Q48. RL 微调会不会毁掉 VLA 原有的语义能力？怎么保护？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q49.-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99-rl-%E4%B8%8D%E6%98%AF%E5%A5%BD%E9%80%89%E6%8B%A9%E5%8A%A8%E6%89%8B%E5%89%8D%E5%85%88%E6%A3%80%E6%9F%A5%E5%93%AA%E4%B8%89%E4%B8%AA%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="post-toc-text">Q49. 什么时候 RL 不是好选择？动手前先检查哪三个前置条件？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q50.-%CF%800.6-%E7%9A%84-recap-%E6%80%8E%E6%A0%B7%E5%9C%A8%E7%9C%9F%E6%9C%BA%E4%B8%8A%E5%81%9A-rl%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-advantage-conditioning"><span class="post-toc-text">Q50. π*0.6 的 RECAP 怎样在真机上做 RL？为什么使用 advantage conditioning？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q51.-simplevla-rl-%E5%8F%AA%E7%94%A8%E6%88%90%E5%8A%9F%E5%A4%B1%E8%B4%A5%E4%B8%80%E4%B8%AA%E6%AF%94%E7%89%B9%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B9%9F%E8%83%BD%E8%AE%AD%E7%BB%83-vla"><span class="post-toc-text">Q51. SimpleVLA-RL 只用“成功&#x2F;失败”一个比特，为什么也能训练 VLA？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-h%E8%AE%B0%E5%BF%86%E4%B8%8E%E9%95%BF%E6%97%B6%E7%A8%8B%E4%BB%BB%E5%8A%A1"><span class="post-toc-text">模块 H：记忆与长时程任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q52.-vla-%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AA%97%E5%8F%A3%E5%B7%B2%E7%BB%8F-128k%E9%95%BF%E6%97%B6%E7%A8%8B%E4%BB%BB%E5%8A%A1%E6%98%AF%E4%B8%8D%E6%98%AF%E8%A7%A3%E5%86%B3%E4%BA%86"><span class="post-toc-text">Q52. “VLA 上下文窗口已经 128k”，长时程任务是不是解决了？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q53.-%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%B0%E5%BF%86%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E4%B8%BB%E6%B5%81%E7%BB%84%E5%90%88%E6%80%8E%E6%A0%B7%E6%90%AD"><span class="post-toc-text">Q53. 机器人记忆有哪些类型？主流组合怎样搭？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q54.-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%94%99%E8%AF%AF%E6%81%A2%E5%A4%8D%E7%AD%96%E7%95%A5%E6%AF%94%E4%B8%BB%E7%AD%96%E7%95%A5%E6%9B%B4%E9%9A%BE%E8%AE%AD%E7%BB%83%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE%E6%80%8E%E6%A0%B7%E7%94%9F%E4%BA%A7"><span class="post-toc-text">Q54. 为什么错误恢复策略比主策略更难训练？恢复数据怎样生产？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q55.-%E9%95%BF%E6%97%B6%E7%A8%8B%E4%BB%BB%E5%8A%A1%E6%80%8E%E6%A0%B7%E8%AF%84%E6%B5%8B%E5%8F%AA%E7%9C%8B%E6%9C%80%E7%BB%88%E6%88%90%E5%8A%9F%E7%8E%87%E5%A4%9F%E4%B8%8D%E5%A4%9F"><span class="post-toc-text">Q55. 长时程任务怎样评测？只看最终成功率够不够？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-i%E6%8A%93%E5%8F%96%E4%B8%8E%E6%93%8D%E4%BD%9C"><span class="post-toc-text">模块 I：抓取与操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q56.-6d-%E6%8A%93%E5%8F%96%E5%92%8C%E5%B9%B3%E8%A1%8C%E7%88%AA%E6%8A%93%E5%8F%96%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%ABanygrasp-%E7%B1%BB%E6%A3%80%E6%B5%8B%E5%99%A8%E8%83%BD%E8%A7%A3%E5%86%B3%E5%88%B0%E5%93%AA"><span class="post-toc-text">Q56. 6D 抓取和平行爪抓取有什么区别？AnyGrasp 类检测器能解决到哪？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q57.-%E6%8F%92%E5%AD%94%E6%8B%89%E9%93%BE%E7%AD%89%E6%8E%A5%E8%A7%A6%E4%B8%B0%E5%AF%8C%E4%BB%BB%E5%8A%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E4%BB%BF%E7%9C%9F%E9%87%8C%E9%9A%BE%E5%AD%A6%E5%8A%9B%E6%8E%A7%E6%80%8E%E4%B9%88%E6%8E%A5%E5%85%A5"><span class="post-toc-text">Q57. 插孔、拉链等接触丰富任务为什么在仿真里难学？力控怎么接入？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q58.-%E7%81%B5%E5%B7%A7%E6%89%8B-20-%E8%87%AA%E7%94%B1%E5%BA%A6%E7%BB%B4%E5%BA%A6%E7%88%86%E7%82%B8%E6%80%8E%E6%A0%B7%E9%99%8D%E7%BB%B4"><span class="post-toc-text">Q58. 灵巧手 20+ 自由度维度爆炸，怎样降维？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q59.-%E5%8F%A0%E8%A1%A3%E6%9C%8D%E6%89%93%E7%BB%93%E7%AD%89%E5%8F%AF%E5%8F%98%E5%BD%A2%E7%89%A9%E4%BD%93%E4%BB%BB%E5%8A%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E7%9C%8B%E8%B5%B7%E6%9D%A5%E7%AE%80%E5%8D%95%E5%81%9A%E8%B5%B7%E6%9D%A5%E9%9A%BE"><span class="post-toc-text">Q59. 叠衣服、打结等可变形物体任务为什么“看起来简单，做起来难”？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q60.-%E8%A7%A6%E8%A7%89%E5%92%8C%E5%8A%9B%E8%A7%89%E6%80%8E%E6%A0%B7%E6%8E%A5%E5%85%A5-vla%E5%8F%AA%E9%9D%A0%E8%A7%86%E8%A7%89%E5%81%9A%E6%8E%A5%E8%A7%A6%E4%B8%B0%E5%AF%8C%E4%BB%BB%E5%8A%A1%E7%9A%84%E4%B8%8A%E9%99%90%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="post-toc-text">Q60. 触觉和力觉怎样接入 VLA？只靠视觉做接触丰富任务的上限在哪里？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-j%E8%AF%84%E6%B5%8B%E4%B8%8E%E5%9F%BA%E5%87%86"><span class="post-toc-text">模块 J：评测与基准</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q61.-%E4%BB%BF%E7%9C%9F%E8%AF%84%E6%B5%8B%E5%88%86%E6%95%B0%E8%99%9A%E9%AB%98%E7%9A%84%E4%B8%A4%E5%A4%A7%E6%9D%A5%E6%BA%90%E6%98%AF%E4%BB%80%E4%B9%88simplerenv-%E7%BB%99%E5%87%BA%E4%BB%80%E4%B9%88%E5%90%AF%E7%A4%BA"><span class="post-toc-text">Q61. 仿真评测分数虚高的两大来源是什么？SimplerEnv 给出什么启示？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q62.-%E7%9C%9F%E6%9C%BA%E8%AF%84%E6%B5%8B%E5%8D%8F%E8%AE%AE%E6%80%8E%E6%A0%B7%E8%AE%BE%E8%AE%A1%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%8F%AA%E6%8A%A5%E5%B9%B3%E5%9D%87%E6%88%90%E5%8A%9F%E7%8E%87"><span class="post-toc-text">Q62. 真机评测协议怎样设计？为什么不能只报平均成功率？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q63.-%E5%85%B7%E8%BA%AB%E8%AF%84%E6%B5%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E8%A7%81%E4%BD%9C%E5%BC%8A%E6%89%8B%E6%B3%95%E6%80%8E%E6%A0%B7%E8%AE%BE%E8%AE%A1%E9%98%B2%E4%BD%9C%E5%BC%8A%E6%9C%BA%E5%88%B6"><span class="post-toc-text">Q63. 具身评测有哪些常见“作弊”手法？怎样设计防作弊机制？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q64.-%E7%BB%99%E4%B8%80%E4%B8%AA%E6%96%B0%E4%BB%BB%E5%8A%A1%E5%9F%9F%E4%BE%8B%E5%A6%82%E5%8E%A8%E6%88%BF%E5%A4%87%E9%A4%90%E6%80%8E%E6%A0%B7%E4%BB%8E%E9%9B%B6%E8%AE%BE%E8%AE%A1%E8%AF%84%E6%B5%8B"><span class="post-toc-text">Q64. 给一个新任务域，例如厨房备餐，怎样从零设计评测？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q65.-%E7%9C%9F%E6%9C%BA%E8%AF%84%E6%B5%8B%E6%88%90%E6%9C%AC%E9%AB%98%E4%B8%8D%E5%8F%AF%E5%A4%8D%E7%8E%B0%E8%A1%8C%E4%B8%9A%E6%80%8E%E6%A0%B7%E5%81%9A%E5%A4%A7%E8%A7%84%E6%A8%A1%E8%AF%84%E6%B5%8B"><span class="post-toc-text">Q65. 真机评测成本高、不可复现，行业怎样做大规模评测？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-k%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%AE%9E%E6%97%B6%E6%80%A7"><span class="post-toc-text">模块 K：部署与实时性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q66.-50hz-%E6%8E%A7%E5%88%B6%E4%B8%80%E6%8B%8D%E5%8F%AA%E6%9C%89-20ms%E9%A2%84%E7%AE%97%E6%80%8E%E4%B9%88%E6%8B%86%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E9%A2%84%E6%B5%8B%E6%89%A7%E8%A1%8C"><span class="post-toc-text">Q66. 50Hz 控制一拍只有 20ms，预算怎么拆？为什么要做预测执行？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q67.-%E4%BA%91%E8%BE%B9%E7%AB%AF%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A7%E5%88%B6%E9%97%AD%E7%8E%AF%E7%BB%9D%E4%B8%8D%E8%83%BD%E6%94%BE%E4%BA%91%E7%AB%AF"><span class="post-toc-text">Q67. 云—边—端三层架构是什么？为什么控制闭环绝不能放云端？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q68.-%E7%AB%AF%E4%BE%A7%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%89%E6%9D%BF%E6%96%A7%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8A%A8%E4%BD%9C%E5%A4%B4%E9%87%8F%E5%8C%96%E8%A6%81%E8%B0%A8%E6%85%8E"><span class="post-toc-text">Q68. 端侧推理优化的“三板斧”是什么？为什么动作头量化要谨慎？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q69.-demo-%E9%87%8C%E5%BE%88%E6%B5%81%E7%95%85%E5%88%B0%E4%BA%86%E5%AE%A2%E6%88%B7%E7%8E%B0%E5%9C%BA%E5%B0%B1%E6%8B%89%E8%83%AF%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9B%9B%E7%B1%BB%E7%8E%B0%E8%B1%A1%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q69. Demo 里很流畅，到了客户现场就拉胯，最常见的四类现象是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q70.-50hz-%E6%98%AF%E6%89%80%E6%9C%89%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%A1%AC%E6%80%A7%E8%A6%81%E6%B1%82%E5%90%97%E6%80%8E%E6%A0%B7%E6%8C%89%E4%BB%BB%E5%8A%A1%E5%88%86%E6%A1%A3"><span class="post-toc-text">Q70. 50Hz 是所有任务的硬性要求吗？怎样按任务分档？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-l%E5%89%8D%E6%B2%BF%E8%B6%8B%E5%8A%BF%E4%B8%8E%E8%A1%8C%E4%B8%9A%E6%A0%BC%E5%B1%80"><span class="post-toc-text">模块 L：前沿趋势与行业格局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q71.-%E9%80%9A%E7%94%A8%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E5%BA%A7%E4%B9%8B%E4%BA%89%E4%B8%AD%E6%95%B0%E6%8D%AE%E8%B7%AF%E7%BA%BF%E6%9C%AC%E4%BD%93%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BC%80%E6%BA%90%E7%A8%8B%E5%BA%A6%E6%80%8E%E6%A0%B7%E7%9C%8B"><span class="post-toc-text">Q71. 通用机器人基座之争中，数据路线、本体路线与开源程度怎样看？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q72.-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E8%BF%90%E5%8A%A8%E6%8E%A7%E5%88%B6%E9%97%AE%E9%A2%98%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%AD%96%E7%95%A5%E6%80%8E%E6%A0%B7%E7%BB%9F%E4%B8%80"><span class="post-toc-text">Q72. 人形机器人中，运动控制问题与操作策略怎样统一？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q73.-%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E7%9A%84gpt-%E6%97%B6%E5%88%BB%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%9D%A5%E5%88%A4%E6%96%AD%E4%BE%9D%E6%8D%AE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">Q73. 具身智能的“GPT 时刻”什么时候来？判断依据是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q74.-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%85%A8%E8%BA%AB%E6%8E%A7%E5%88%B6%E7%8E%B0%E5%9C%A8%E6%80%8E%E4%B9%88%E5%81%9Asonic-%E7%B1%BB%E8%BF%90%E5%8A%A8%E8%B7%9F%E8%B8%AA%E6%A8%A1%E5%9E%8B%E6%80%8E%E6%A0%B7%E4%B8%8E-vla-%E8%A1%94%E6%8E%A5"><span class="post-toc-text">Q74. 人形机器人全身控制现在怎么做？SONIC 类运动跟踪模型怎样与 VLA 衔接？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9D%97-m%E9%9D%A2%E8%AF%95%E9%80%9A%E8%AF%86%E4%B8%8E%E9%A1%B9%E7%9B%AE%E6%B7%B1%E6%8C%96"><span class="post-toc-text">模块 M：面试通识与项目深挖</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q75.-%E5%85%B7%E8%BA%AB%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%B7%B1%E6%8C%96%E4%BC%9A%E8%BF%BD%E5%88%B0%E5%93%AA%E4%B8%80%E5%B1%82"><span class="post-toc-text">Q75. 具身算法面试中的项目深挖会追到哪一层？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%9375-%E9%81%93%E9%A2%98%E8%83%8C%E5%90%8E%E5%85%B6%E5%AE%9E%E6%98%AF%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF"><span class="post-toc-text">总结：75 道题背后其实是一条主线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="vla-具身智能-75-道高频面试题详解">VLA 具身智能 75 道高频面试题详解</h1>
+<p>这篇文章逐题回答一张“13 个模块、75 道高频题”的具身智能题单，覆盖 VLA 基础、动作生成、数据、仿真、世界模型、强化学习、长时程记忆、抓取、评测、部署与项目深挖。</p>
+<blockquote>
+<p>原图是目录页，很多题目的后半句被省略号截断。本文依据图片中可辨识的主题重新完整表述问题，目标是回答知识点，而不是声称逐字还原原题。涉及 2025—2026 年新模型时，厂商演示与论文自报结果均按其原始实验语境理解，不直接外推到任意机器人和真实场景。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="目录">目录</h2>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th style="text-align: right;">题号</th>
+<th>主题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align: right;">Q1—Q8</td>
+<td>VLA 基础与谱系</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: right;">Q9—Q16</td>
+<td>动作表示与生成</td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align: right;">Q17—Q25</td>
+<td>具身数据引擎</td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align: right;">Q26—Q30</td>
+<td>仿真与 Sim2Real</td>
+</tr>
+<tr>
+<td>E</td>
+<td style="text-align: right;">Q31—Q37</td>
+<td>具身世界模型</td>
+</tr>
+<tr>
+<td>F</td>
+<td style="text-align: right;">Q38—Q44</td>
+<td>策略架构与骨干</td>
+</tr>
+<tr>
+<td>G</td>
+<td style="text-align: right;">Q45—Q51</td>
+<td>强化学习与后训练</td>
+</tr>
+<tr>
+<td>H</td>
+<td style="text-align: right;">Q52—Q55</td>
+<td>记忆与长时程任务</td>
+</tr>
+<tr>
+<td>I</td>
+<td style="text-align: right;">Q56—Q60</td>
+<td>抓取与操作</td>
+</tr>
+<tr>
+<td>J</td>
+<td style="text-align: right;">Q61—Q65</td>
+<td>评测与基准</td>
+</tr>
+<tr>
+<td>K</td>
+<td style="text-align: right;">Q66—Q70</td>
+<td>部署与实时性</td>
+</tr>
+<tr>
+<td>L</td>
+<td style="text-align: right;">Q71—Q74</td>
+<td>前沿趋势与行业格局</td>
+</tr>
+<tr>
+<td>M</td>
+<td style="text-align: right;">Q75</td>
+<td>面试通识与项目深挖</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="模块-avla-基础与谱系">模块 A：VLA 基础与谱系</h2>
+<h3 id="q1.-rt-2-如何把机器人动作塞进语言模型连续动作怎样离散化">Q1. RT-2 如何把机器人动作塞进语言模型？连续动作怎样离散化？</h3>
+<p>RT-2 把机器人控制命令序列化成类似文本的 token，使预训练 VLM 继续用“预测下一个 token”的目标学习动作。典型动作包含终止标志、末端执行器三维平移增量、三维旋转增量和夹爪开合量。每个连续维度先按预设范围裁剪，再均匀量化到有限个区间，区间编号映射到保留词表；推理时限制模型只输出合法动作 token，最后反量化为连续控制量。</p>
+<p>设某维动作范围为 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="10.677ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4719.3 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="msub" transform="translate(278,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(833,0)"></path><path data-c="6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(1111,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(2068.7,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(2513.4,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z" transform="translate(833,0)"></path><path data-c="78" d="M201 0Q189 3 102 3Q26 3 17 0H11V46H25Q48 47 67 52T96 61T121 78T139 96T160 122T180 150L226 210L168 288Q159 301 149 315T133 336T122 351T113 363T107 370T100 376T94 379T88 381T80 383Q74 383 44 385H16V431H23Q59 429 126 429Q219 429 229 431H237V385Q201 381 201 369Q201 367 211 353T239 315T268 274L272 270L297 304Q329 345 329 358Q329 364 327 369T322 376T317 380T310 384L307 385H302V431H309Q324 428 408 428Q487 428 493 431H499V385H492Q443 385 411 368Q394 360 377 341T312 257L296 236L358 151Q424 61 429 57T446 50Q464 46 499 46H516V0H510H502Q494 1 482 1T457 2T432 2T414 3Q403 3 377 3T327 1L304 0H295V46H298Q309 46 320 51T331 63Q331 65 291 120L250 175Q249 174 219 133T185 88Q181 83 181 74Q181 63 188 55T206 46Q208 46 208 23V0H201Z" transform="translate(1333,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(4441.3,0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g></g></g></svg></mjx-container></span>，划分为 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.717ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 759 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></g></g></g></svg></mjx-container></span> 个桶，则可写成：</p>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.148ex;" xmlns="http://www.w3.org/2000/svg" width="36.711ex" height="5.428ex" role="img" focusable="false" viewBox="0 -1449.5 16226.1 2399"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></g><g data-mml-node="mo" transform="translate(798.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(1854.6,0)"><path data-c="63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path data-c="6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z" transform="translate(444,0)"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(722,0)"></path><path data-c="70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z" transform="translate(1000,0)"></path></g><g data-mml-node="mrow" transform="translate(3577.2,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><path data-c="28" d="M701 -940Q701 -943 695 -949H664Q662 -947 636 -922T591 -879T537 -818T475 -737T412 -636T350 -511T295 -362T250 -186T221 17T209 251Q209 962 573 1361Q596 1386 616 1405T649 1437T664 1450H695Q701 1444 701 1441Q701 1436 681 1415T629 1356T557 1261T476 1118T400 927T340 675T308 359Q306 321 306 250Q306 -139 400 -430T690 -924Q701 -936 701 -940Z"></path></g><g data-mml-node="mrow" transform="translate(736,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><path data-c="230A" d="M246 -949V1450H308V-887H571V-949H246Z"></path></g><g data-mml-node="mfrac" transform="translate(583,0)"><g data-mml-node="mrow" transform="translate(919.5,676)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(751.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="msub" transform="translate(1751.4,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(833,0)"></path><path data-c="6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(1111,0)"></path></g></g></g></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z" transform="translate(833,0)"></path><path data-c="78" d="M201 0Q189 3 102 3Q26 3 17 0H11V46H25Q48 47 67 52T96 61T121 78T139 96T160 122T180 150L226 210L168 288Q159 301 149 315T133 336T122 351T113 363T107 370T100 376T94 379T88 381T80 383Q74 383 44 385H16V431H23Q59 429 126 429Q219 429 229 431H237V385Q201 381 201 369Q201 367 211 353T239 315T268 274L272 270L297 304Q329 345 329 358Q329 364 327 369T322 376T317 380T310 384L307 385H302V431H309Q324 428 408 428Q487 428 493 431H499V385H492Q443 385 411 368Q394 360 377 341T312 257L296 236L358 151Q424 61 429 57T446 50Q464 46 499 46H516V0H510H502Q494 1 482 1T457 2T432 2T414 3Q403 3 377 3T327 1L304 0H295V46H298Q309 46 320 51T331 63Q331 65 291 120L250 175Q249 174 219 133T185 88Q181 83 181 74Q181 63 188 55T206 46Q208 46 208 23V0H201Z" transform="translate(1333,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(2150.1,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="msub" transform="translate(3150.4,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(833,0)"></path><path data-c="6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(1111,0)"></path></g></g></g></g><rect width="5141.1" height="60" x="120" y="220"></rect></g><g data-mml-node="mi" transform="translate(5964.1,0)"><path data-c="1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></g><g data-mml-node="mo" transform="translate(6723.1,0) translate(0 -0.5)"><path data-c="230B" d="M274 -887V1450H336V-949H11V-887H274Z"></path></g></g><g data-mml-node="mo" transform="translate(8042.1,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(8486.8,0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></g><g data-mml-node="mo" transform="translate(8986.8,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(9431.5,0)"><path data-c="1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></g><g data-mml-node="mo" transform="translate(10412.7,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(11412.9,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(11912.9,0) translate(0 -0.5)"><path data-c="29" d="M34 1438Q34 1446 37 1448T50 1450H56H71Q73 1448 99 1423T144 1380T198 1319T260 1238T323 1137T385 1013T440 864T485 688T514 485T526 251Q526 134 519 53Q472 -519 162 -860Q139 -885 119 -904T86 -936T71 -949H56Q43 -949 39 -947T34 -937Q88 -883 140 -813Q428 -430 428 251Q428 453 402 628T338 922T245 1146T145 1309T46 1425Q44 1427 42 1429T39 1433T36 1436L34 1438Z"></path></g></g></g></g></svg></mjx-container></span></p>
+<p>优势是直接复用 VLM 架构、预训练知识和交叉熵训练流程；代价是量化误差和自回归解码延迟。工程上应使用训练集分位数而不是极端最大值确定范围，并检查各维饱和率、零动作附近分辨率和反量化误差。精密接触或高频控制通常更适合连续动作头、扩散或 flow matching。</p>
+<h3 id="q2.-端到端-vla-与感知建图规划控制的模块化管线怎么选">Q2. 端到端 VLA 与“感知→建图→规划→控制”的模块化管线怎么选？</h3>
+<p>模块化系统把状态估计、地图、任务规划、运动规划和控制器分开，接口清楚，容易注入几何约束、碰撞检查和安全规则，也便于定位“看错、想错还是控错”。它适合环境稳定、目标明确、失败成本高、需要审计的工业任务，但模块误差会逐级传递，手工接口也可能丢掉遮挡、接触等难以显式建模的信息。</p>
+<p>端到端 VLA 直接学习 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="10.848ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 4794.9 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(892,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mo" transform="translate(1698.8,0)"><path data-c="2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(2254.6,0)"><path data-c="1D43C" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path></g><g data-mml-node="mo" transform="translate(2758.6,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(3203.2,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mo" transform="translate(3501.2,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(3945.9,0)"><path data-c="1D45E" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="mo" transform="translate(4405.9,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span>，可利用大规模视觉语言先验，并从示教中吸收难写成规则的操作策略；缺点是可解释性弱、分布外行为难约束。工程上常采用混合架构：VLA 负责语义决策和短时动作，标定、逆运动学、碰撞检测、力限位、急停和高频伺服仍留在确定性安全层。选择依据是失败成本、环境开放度、控制频率与可验证性，而不是“端到端一定更先进”。</p>
+<h3 id="q3.-openvla-为什么采用-dinov2-与-siglip-双视觉编码器">Q3. OpenVLA 为什么采用 DINOv2 与 SigLIP 双视觉编码器？</h3>
+<p>两类特征互补。DINOv2 的自监督视觉表示更强调局部结构、形状和空间对应，适合判断物体边界、姿态与抓取几何；SigLIP 经过图文对齐，更擅长把“红色杯子”“可倾倒容器”等语言概念落到图像区域。只用前者可能语义指代不足，只用后者又可能牺牲精细空间关系。</p>
+<p>OpenVLA 将两路 patch 特征融合并投影到语言模型输入空间，再由 LLM 预测动作 token。双编码器会增加显存和延迟，所以不能只凭名称判断收益：应分别评测语言换目标、同类实例区分、背景扰动和定位精度。任务单一且算力紧张时，单编码器可能更划算；任务同时要求开放词汇理解与精细操作时，双路表示更有价值。</p>
+<h3 id="q4.-跨本体训练怎样统一动作空间为什么常用-delta-eef-加夹爪">Q4. 跨本体训练怎样统一动作空间？为什么常用 delta EEF 加夹爪？</h3>
+<p><code>delta EEF + gripper</code> 把动作表示成末端执行器在统一坐标系中的短时位姿增量，再附加夹爪命令。它弱化了机械臂关节数、连杆长度和关节定义差异：同一个“向杯柄移动并闭合夹爪”的语义动作，可由各本体自己的逆运动学和底层控制器执行。增量形式以当前状态为参照，数值范围集中，通常比全局绝对位姿更容易归一化。</p>
+<p>但“统一”不等于完全本体无关。坐标系、旋转表示、控制周期、工作空间、夹爪语义和奇异位形仍须显式对齐。训练时最好保留 embodiment ID、控制模态和动作掩码，底层负责可达性、碰撞和速度限制，否则同维数字可能对应完全不同的物理效果。</p>
+<h3 id="q5.-rt-2-展示的涌现泛化到底是什么性质">Q5. RT-2 展示的“涌现泛化”到底是什么性质？</h3>
+<p>RT-2 的核心是<strong>语义知识向动作选择迁移</strong>：模型从网页图文预训练中获得物体类别、属性、符号和简单关系知识，再把这些概念与机器人数据中的既有技能组合。例如识别机器人训练数据中没出现过的目标概念，或依据语言含义选择合适对象。这不等于凭空学会新的动力学技能，更不证明模型拥有完整物理因果模型。</p>
+<p>评测时至少拆成三条轴：新视觉实例、新语言组合、新操作技能。换颜色或背景属于感知泛化；把已学抓取迁到新语义对象上属于组合泛化；只有出现示教中不存在的接触策略，才接近新技能学习。还要排除训练数据泄漏，并设置无网页预训练、打乱语言、仅机器人数据等对照。</p>
+<h3 id="q6.-只有一台新机械臂和少量真机数据怎样基于开源-vla-落地">Q6. 只有一台新机械臂和少量真机数据，怎样基于开源 VLA 落地？</h3>
+<p>第一步不是训练，而是打通可验证的数据接口：标定相机和工具中心点，定义观测时间戳、状态向量、动作坐标系、控制频率与夹爪语义，再写确定性回放器，确认数据中的动作能在低速和安全区域复现。随后把新本体 schema 映射到模型接口，采集覆盖目标物体、初始位姿、场景变化、失败与恢复的高质量示教。</p>
+<p>训练上可先用 LoRA、投影层或动作头适配，效果不足再逐层解冻视觉与语言骨干；同时保留从零训练的 ACT 或 Diffusion Policy 作为窄任务基线。部署时使用滚动 action chunk、工作空间裁剪、碰撞检查和人工接管。若任务单一且不依赖语言，大模型未必比轻量专用策略更好。</p>
+<h3 id="q7.-vlm-预训练骨干对-vla-是助力还是包袱冻结还是全量微调">Q7. VLM 预训练骨干对 VLA 是助力还是包袱？冻结还是全量微调？</h3>
+<p>助力来自开放词汇语义、物体属性、场景常识和强视觉表示，使有限机器人数据不必从零学会“看懂世界”；包袱在于 VLM 的目标是图文理解而非接触控制，特征可能忽略毫米级位置、速度和力，大规模动作训练还可能造成灾难性遗忘。</p>
+<p>常见策略是先冻结大部分骨干，只训练投影层、动作专家或 LoRA；若存在明显视觉域差，再以较小学习率解冻后层或视觉编码器。只有多任务、多场景数据足够时才考虑全量微调，并混入视觉语言任务或对骨干施加蒸馏约束。选择依据应同时包含控制成功率、语言指代、视觉 OOD 和旧能力保留率。</p>
+<h3 id="q8.-从-π0.5-到-π0.6π0.6再到-π0.7技术主线发生了什么变化">Q8. 从 π0.5 到 π0.6/π*0.6，再到 π0.7，技术主线发生了什么变化？</h3>
+<p>π0.5 的重点是开放世界泛化：把机器人动作、网页多模态数据、高层子任务和自然语言指导协同训练，让移动操作机器人在新房间中分解并执行长任务。π0.6 延续高层语义与低层连续 action expert 的组合，并进一步强化数据配方、知识保留和工程效率。</p>
+<p>π*0.6 把主线从“模仿更多数据”推进到“从部署经验中改进”。RECAP 混合示教、人工纠正和自主尝试，通过价值或优势条件区分好坏行为，专门覆盖策略自身会访问的失败状态。π0.7 进一步强调 steerable context：用子任务语言、质量/速度标签、控制模态或视觉 subgoal 描述“不仅做什么，还要怎样做”，以吸收不同质量、不同策略的多源数据。以上提升主要来自 Physical Intelligence 的第一方报告，阅读时要区分方法贡献、演示案例与独立复现。</p>
+<hr>
+<h2 id="模块-b动作表示与生成">模块 B：动作表示与生成</h2>
+<h3 id="q9.-模仿学习策略为什么容易抖动act-用什么机制缓解">Q9. 模仿学习策略为什么容易抖动？ACT 用什么机制缓解？</h3>
+<p>同一观测可能对应多条合理轨迹，逐步回归会把“从左绕”和“从右绕”平均成不合理动作；示教中的停顿、回拉和时间错位也会形成冲突标签。单步策略只优化下一时刻，预测噪声经过闭环执行后会放大，模型便在相邻方向间反复修正。</p>
+<p>ACT 一次预测未来一段动作，把决策单位从单步变成时序一致的 chunk，缩短有效决策长度；其条件 VAE 用潜变量表达示教风格或多模态性，Transformer 建模跨时间相关性。部署时还能对重叠 chunk 的同一时刻预测做时间加权融合。需要注意：若根因是时间戳、控制增益或示教错位，chunk 只会把错误变得更平滑。</p>
+<h3 id="q10.-action-chunk-长度怎样权衡执行到一半环境变化怎么办">Q10. Action chunk 长度怎样权衡？执行到一半环境变化怎么办？</h3>
+<p>长 chunk 轨迹连续、摊薄单次推理成本、有效规划时域更长，但后半段依据旧观测生成，环境变化或抓取失败后仍可能开环执行过时动作。短 chunk 更灵敏，却增加推理负担和边界不一致。</p>
+<p>应区分预测长度 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.009ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 888 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g></svg></mjx-container></span> 与实际执行前缀 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.011ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 889 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path></g></g></g></svg></mjx-container></span>，通常 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.312ex;" xmlns="http://www.w3.org/2000/svg" width="7.037ex" height="1.857ex" role="img" focusable="false" viewBox="0 -683 3110.6 821"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path></g><g data-mml-node="mo" transform="translate(1166.8,0)"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></g><g data-mml-node="mi" transform="translate(2222.6,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g></svg></mjx-container></span>：模型可预测较长计划，只执行前几步后用新观测重算。自由空间运动可增大 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.011ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 889 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path></g></g></g></svg></mjx-container></span>，接触阶段应缩短 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.011ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 889 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path></g></g></g></svg></mjx-container></span>。参数扫描要同时观察扰动恢复率、chunk 后半段误差、边界加速度、推理延迟和任务成功率。</p>
+<h3 id="q11.-从-diffusion-policy-到-π0-的-flow-matching差异是什么怎样支持高频控制">Q11. 从 Diffusion Policy 到 π0 的 flow matching，差异是什么？怎样支持高频控制？</h3>
+<p>Diffusion Policy 学习去噪过程，通过多次迭代从随机噪声生成动作序列，擅长表达多峰策略。π0 的 action expert 学习连接噪声与真实动作块的连续速度场，通过 ODE 积分把噪声运输到动作分布。两者都属于条件生成式策略，但训练目标和采样路径不同；flow matching 往往可用较少积分步。</p>
+<p>“支持 50Hz”不代表大模型每个伺服周期都重新编码图像。核心是一次生成连续 action chunk，由底层控制器高频执行，同时异步生成下一块。实际延迟还取决于网络大小、相机编码、缓存和硬件，因此公平比较必须固定数据、动作表示、chunk 长度与执行频率。</p>
+<h3 id="q12.-π0-为什么把动作专家做成独立小网络挂在-vlm-骨干上">Q12. π0 为什么把动作专家做成独立小网络挂在 VLM 骨干上？</h3>
+<p>语义理解与运动生成的计算需求不同。VLM 需要大容量解析图像、语言和任务上下文；控制输出则要求连续精度、动作维相关性和快速并行生成。让主语言模型自回归输出大量动作 token 会产生串行解码瓶颈，独立 action expert 可以读取 VLM 上下文、本体状态和带噪动作，通过 flow matching 并行生成整段连续轨迹。</p>
+<p>这种分工还能单独缩放动作网络、缓存视觉语言上下文，并为新本体替换输入输出适配层。风险是接口成为信息瓶颈，所以要检查动作专家是否真正利用语言，以及骨干特征是否保留精确空间信息。</p>
+<h3 id="q13.-动作空间选末端执行器还是关节绝对位姿还是增量">Q13. 动作空间选末端执行器还是关节？绝对位姿还是增量？</h3>
+<p>EEF 动作直观、跨机械臂更容易共享，适合桌面抓放和语言条件任务；但依赖逆运动学，接近奇异位形或存在多组解时可能跳变。关节空间与执行器直接对齐，适合双臂协调、动力学敏感或需保持特定姿态的任务，但本体绑定强。</p>
+<p>绝对目标能抑制误差长期积分，适合位置伺服和重复工作区；增量动作分布集中、迁移方便，却可能因偏置持续漂移。常见折中是模型输出短时 EEF 增量或未来 EEF 路径，底层转成连续关节目标，并用绝对状态闭环修正。选择时比较可达率、逆解连续性、累计漂移、示教标签方差和安全约束实现难度。</p>
+<h3 id="q14.-真机策略输出抖动或轨迹漂移排查清单是什么">Q14. 真机策略输出抖动或轨迹漂移，排查清单是什么？</h3>
+<p>先查系统，再查模型：</p>
+<ol type="1">
+<li><strong>时间</strong>：图像、关节状态和动作是否同钟，训练与部署周期是否一致；</li>
+<li><strong>几何</strong>：单位、坐标系、TCP、外参、旋转顺序和左右乘约定是否正确；</li>
+<li><strong>控制</strong>：位置/速度命令是否混用，增益、限速、插值与死区是否匹配；</li>
+<li><strong>数据</strong>：是否有停顿、震颤、丢帧、重复帧或动作晚一拍；</li>
+<li><strong>模型</strong>：输出是否饱和、零动作是否偏置、chunk 边界是否跳变；</li>
+<li><strong>机械</strong>：关节间隙、负载、碰撞保护和网络丢包是否异常。</li>
+</ol>
+<p>可分别做静态零动作、记录回放、固定观测重复推理和无物体自由空间轨迹。若固定观测输出仍波动，优先查采样或模型；若离线回放平滑、上机才抖，多半是延迟、控制器或动力学接口。</p>
+<h3 id="q15.-现有动作表示在灵巧手接触力和变长任务上还缺什么">Q15. 现有动作表示在灵巧手、接触力和变长任务上还缺什么？</h3>
+<p>灵巧手需要表达手指协同、欠驱动耦合、接触模式和物体在手内运动，仅靠固定维位置命令不够；通常要结合低维协同表示、关节残差、本体拓扑和动作掩码。视觉也难以可靠判断微滑移，因此触觉、力矩、接触位置和材料状态应进入观测或局部反射控制环。</p>
+<p>接触任务还需要力/阻抗目标、允许方向、接触阶段和安全边界；变长任务则缺少事件终止、技能切换、等待条件、失败恢复和长期记忆。更完整的接口是分层的：高层输出 subgoal 与完成条件，中层生成可变时长技能，底层利用力觉和本体反馈高频闭环。</p>
+<h3 id="q16.-异步生成动作块时新旧-chunk-交界处会跳一下怎么处理">Q16. 异步生成动作块时，新旧 chunk 交界处会跳一下，怎么处理？</h3>
+<p>跳变常因新 chunk 使用更新观测，却没有以机器人“切换时刻将达到的状态”为起点；推理延迟越大越明显。基本做法是给观测、推理结果和预计执行时刻统一时间戳，以预测切换状态作为新块条件。</p>
+<p>可进一步对新旧块的重叠窗口做平滑融合，约束新块首个位置、速度和加速度与旧块连续，并在训练时随机模拟推理延迟、已执行前缀和块中途续写。若新观测表明碰撞或目标移动，应允许立即中断旧块，不能为了“平滑”继续错误动作。验收时单独统计边界位置差、速度突变和接触力峰值。</p>
+<hr>
+<h2 id="模块-c具身数据引擎">模块 C：具身数据引擎</h2>
+<h3 id="q17.-具身数据的金字塔是什么每一层解决什么问题">Q17. 具身数据的“金字塔”是什么？每一层解决什么问题？</h3>
+<p>底层是互联网图文、普通视频和仿真数据，规模大、成本低，主要提供物体语义、任务结构、物理变化先验和长尾覆盖，但不能直接给出目标机器人的可执行动作。中间层包括第一视角人类视频、动捕、手套和 UMI 等代理设备数据，它们补充手物交互、相对轨迹和真实环境多样性，但仍有本体与动力学鸿沟。</p>
+<p>上层是多本体机器人数据、目标机器人遥操作和力/触觉数据，数量较少，却负责把抽象动作落到具体传感器、控制周期与接触动力学。塔尖是部署后的纠正、失败、自主成功尝试和人工评分，用于修复策略自身的状态分布。正确做法不是把各层等权拼接，而是带上来源、质量、本体和控制条件，并用真机评测判断边际价值。</p>
+<h3 id="q18.-遥操作采集有哪些主流方案怎样选并控制质量">Q18. 遥操作采集有哪些主流方案？怎样选并控制质量？</h3>
+<p>常见接口包括同构 leader-follower 机械臂、VR/手柄、末端位姿追踪、外骨骼和双臂主从。同构主从精度高、动作天然可执行，适合接触与双臂任务；VR 更灵活，但深度感、夹爪控制和延迟可能更差。选择标准是任务自由度、接触精度、操作者负担、扩展性和目标机器人接口。</p>
+<p>质控要贯穿采集：开始前自动检查标定、帧率和传感器健康；过程中记录统一时间戳、原始观测、执行命令、实际状态、接管与复位；结束后校验可达性、动作饱和、丢帧、碰撞和任务完成度。数据划分要按场景、物体和操作者分组，避免相邻轨迹泄漏。少量轨迹还应真机回放或训练轻量基线，确认“可学且可执行”。</p>
+<h3 id="q19.-失败数据到底有没有用训练时怎样利用">Q19. 失败数据到底有没有用？训练时怎样利用？</h3>
+<p>失败轨迹包含策略真正会遇到的偏移状态、错误抓取与恢复入口，价值很高；但若把失败动作当普通监督目标，模型会学会复现失败。必须区分“失败前的坏动作”“失败后的人工纠正”“局部有价值但最终未完成的动作”和“不可恢复状态”。</p>
+<p>可只监督人工接管后的纠正段；给轨迹附成功、质量、速度或 advantage 条件；训练价值/奖励模型做离线或在线 RL；也可把失败作为对比负样本降低其概率。工程上要保存失败原因、阶段和可恢复性，并检查加入失败后恢复率是否提高、正常成功轨迹是否被稀释。</p>
+<h3 id="q20.-为什么一条轨迹配-35-条-gpt-改写的语言指令常能显著提升效果">Q20. 为什么一条轨迹配 3—5 条 GPT 改写的语言指令常能显著提升效果？</h3>
+<p>若每条轨迹只有固定模板，模型容易把某个词串当成任务 ID，而不真正学习语言与对象、目标状态和动作阶段的对应。多种等价改写迫使模型提取稳定语义，提高同义词、语序和口语表达下的鲁棒性。</p>
+<p>但改写必须保持可执行语义一致，不能凭空加入颜色、顺序或空间关系。最好混合短命令、自然描述和分步说法，并对对象槽位和成功条件做结构化校验。评测时要按语言模板隔离训练与测试，还应做打乱语言对照；若打乱后成功率几乎不降，说明模型可能没有真正使用指令。</p>
+<h3 id="q21.-从人类视频学机器人操作需要跨过哪些鸿沟">Q21. 从人类视频学机器人操作，需要跨过哪些鸿沟？</h3>
+<p>至少包括：观测鸿沟（视角、相机运动、遮挡、画质不同）、本体鸿沟（人手与夹爪的自由度和可达域不同）、动力学鸿沟（质量、摩擦、顺应性与力反馈不同）、时间鸿沟（剪辑、变速、缺少精确时间戳）以及意图鸿沟（视频不一定有明确任务标签）。</p>
+<p>常见管线是先做手物体追踪、相对位姿和接触事件抽取，再学习本体无关的 affordance、subgoal 或 latent action，最后用目标机器人数据做动作 grounding。验证时必须分开测“看懂步骤”“生成可达轨迹”和“真实接触成功”，不能拿视频预测准确率替代真机能力。</p>
+<h3 id="q22.-我们已经有一百万条数据怎样评估这批数据的质量">Q22. “我们已经有一百万条数据”，怎样评估这批数据的质量？</h3>
+<p>第一层做 schema 与完整性审计：字段、单位、坐标系、本体版本、频率、时间戳、episode 边界和语言是否齐全。第二层做信号审计：丢帧率、动作饱和、静止占比、观测—动作时延、关节越界、图像损坏和传感器异常。第三层做语义审计：指令是否匹配对象与结果、任务是否成功、失败原因和质量等级是否可信。</p>
+<p>还要审计分布与重复：各机器人、任务、操作者、场景和物体是否失衡，近重复轨迹是否跨进验证集，少数大数据源是否支配训练。可为每条轨迹生成质量分和 embedding，聚类后分层抽检，再通过数据源消融判断真实价值。百万条只是规模，不是质量证明。</p>
+<h3 id="q23.-第一视角人类视频更便宜更多为什么不能直接喂给-vla">Q23. 第一视角人类视频更便宜、更多，为什么不能直接喂给 VLA？</h3>
+<p>第一视角视频只有像素变化，没有目标机器人的动作向量、本体状态、夹爪宽度、力觉和控制时间戳。画面变化混合了头部运动、手运动、物体运动和相机曝光；两帧之间“物体向左”不能唯一确定机器人该输出哪个关节或 EEF 命令。</p>
+<p>它更适合视觉语义预训练、步骤识别、affordance、接触时序、subgoal 或世界模型学习。若要进入动作训练，需要先提取手—物相对运动、稳定相机运动、估计尺度与接触，再通过 latent action、动作重定向或少量配对机器人数据完成 grounding。</p>
+<h3 id="q24.-umi-这类手持采集与传统遥操作相比优势和劣势在哪里">Q24. UMI 这类手持采集与传统遥操作相比，优势和劣势在哪里？</h3>
+<p>UMI 用带相机和位姿估计的手持夹爪采集人类演示，便携、可快速进入多种真实环境，人的动作自然，适合动态、双手和长任务；相机中心的相对轨迹表示也有利于跨机械臂迁移。它处在人类视频与真机遥操作之间：比裸视频更接近机器人夹爪，又不必把机器人搬到每个采集地点。</p>
+<p>缺点是采集时没有目标机器人的真实动力学、关节限制、碰撞几何和执行延迟，位姿估计还会受纹理、运动模糊与尺度误差影响。传统遥操作成本高、覆盖慢，却直接产生目标本体的观测、状态和动作，尤其适合力控、窄容差和最终打磨。实际可用 UMI 扩场景，再用少量目标机器人遥操作与真机纠正闭环。</p>
+<h3 id="q25.-什么是-latent-action-预训练它解决了什么问题">Q25. 什么是 latent action 预训练？它解决了什么问题？</h3>
+<p>Latent action 预训练尝试从无机器人动作标签的视频中学习“导致相邻画面变化的抽象动作”。典型方法用 VQ-VAE 或逆动力学式模型，根据前后帧把变化量量化为离散 latent action；随后让视觉语言模型依据当前观测和指令预测这些 latent token；最后用少量有真实动作标签的机器人数据，将 latent space 对齐到 EEF、关节或夹爪命令。</p>
+<p>它解决机器人动作数据昂贵、互联网和人类视频无法直接用于动作监督的问题，让大规模视频先教会模型任务阶段、物体状态变化和粗粒度运动模式。局限是 latent 可能吸收相机运动、外界扰动或不可控变化，也未必满足目标机器人可达性。不能只看视频重建质量，还要看少量真机 grounding 后是否真正提升样本效率。</p>
+<hr>
+<h2 id="模块-d仿真与-sim2real">模块 D：仿真与 Sim2Real</h2>
+<h3 id="q26.-sim2real-gap-的来源可分哪四类domain-randomization-有什么作用">Q26. Sim2Real gap 的来源可分哪四类？Domain Randomization 有什么作用？</h3>
+<p>Sim2Real gap 可归为四类：①视觉外观差异，如纹理、光照、反射、背景与相机成像；②几何和场景差异，如尺寸、初始位姿、装配误差与遮挡；③动力学和接触差异，如摩擦、回弹、柔性、阻尼与接触求解近似；④感知—控制系统差异，如标定误差、传感噪声、通信延迟、控制频率和真机限幅。</p>
+<p>Domain Randomization 不是把仿真做得与真机完全一样，而是把训练分布扩展为一族环境：</p>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.626ex;" xmlns="http://www.w3.org/2000/svg" width="37.516ex" height="3.323ex" role="img" focusable="false" viewBox="0 -750 16582 1468.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g><g data-mml-node="mo" transform="translate(746.8,0)"><path data-c="223C" d="M55 166Q55 241 101 304T222 367Q260 367 296 349T362 304T421 252T484 208T554 189Q616 189 655 236T694 338Q694 350 698 358T708 367Q722 367 722 334Q722 260 677 197T562 134H554Q517 134 481 152T414 196T355 248T292 293T223 311Q179 311 145 286Q109 257 96 218T80 156T69 133Q55 133 55 166Z"></path></g><g data-mml-node="mi" transform="translate(1802.6,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(2305.6,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(2694.6,0)"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g><g data-mml-node="mo" transform="translate(3163.6,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(3552.6,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mstyle" transform="translate(3830.6,0)"><g data-mml-node="mspace"></g></g><g data-mml-node="msup" transform="translate(5997.2,0)"><g data-mml-node="mi"><path data-c="1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></g><g data-mml-node="mo" transform="translate(603,413) scale(0.707)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g></g><g data-mml-node="mo" transform="translate(7281.6,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(8337.3,0)"><path data-c="61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path data-c="72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z" transform="translate(500,0)"></path><path data-c="67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z" transform="translate(892,0)"></path></g><g data-mml-node="mo" transform="translate(9729.3,0)"><path data-c="2061" d=""></path></g><g data-mml-node="munder" transform="translate(9896,0)"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z" transform="translate(833,0)"></path><path data-c="78" d="M201 0Q189 3 102 3Q26 3 17 0H11V46H25Q48 47 67 52T96 61T121 78T139 96T160 122T180 150L226 210L168 288Q159 301 149 315T133 336T122 351T113 363T107 370T100 376T94 379T88 381T80 383Q74 383 44 385H16V431H23Q59 429 126 429Q219 429 229 431H237V385Q201 381 201 369Q201 367 211 353T239 315T268 274L272 270L297 304Q329 345 329 358Q329 364 327 369T322 376T317 380T310 384L307 385H302V431H309Q324 428 408 428Q487 428 493 431H499V385H492Q443 385 411 368Q394 360 377 341T312 257L296 236L358 151Q424 61 429 57T446 50Q464 46 499 46H516V0H510H502Q494 1 482 1T457 2T432 2T414 3Q403 3 377 3T327 1L304 0H295V46H298Q309 46 320 51T331 63Q331 65 291 120L250 175Q249 174 219 133T185 88Q181 83 181 74Q181 63 188 55T206 46Q208 46 208 23V0H201Z" transform="translate(1333,0)"></path></g><g data-mml-node="mi" transform="translate(729,-611) scale(0.707)"><path data-c="1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></g></g><g data-mml-node="msub" transform="translate(11923.7,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D53C" d="M12 666Q12 675 24 683H582Q590 680 593 672V588Q593 514 591 502T575 490Q567 490 563 495T555 517Q552 556 517 590Q486 623 445 634T340 648H282Q266 636 264 620T260 492V370H277Q329 375 358 391T404 439Q420 480 420 506Q420 529 436 529Q445 529 451 521Q455 517 455 361Q455 333 455 298T456 253Q456 217 453 207T437 197Q420 196 420 217Q420 240 406 270Q377 328 284 335H260V201Q261 174 261 134Q262 73 264 61T278 38Q281 36 282 35H331Q400 35 449 50Q571 93 602 179Q605 203 622 203Q629 203 634 197T640 183Q638 181 624 95T604 3L600 -1H24Q12 5 12 16Q12 35 51 35Q92 38 97 52Q102 60 102 341T97 632Q91 645 51 648Q12 648 12 666ZM137 341Q137 131 136 89T130 37Q129 36 129 35H235Q233 41 231 48L226 61V623L231 635L235 648H129Q132 641 133 638T135 603T137 517T137 341ZM557 603V648H504Q504 646 515 639Q527 634 542 619L557 603ZM420 317V397L406 383Q394 370 380 363L366 355Q373 350 382 346Q400 333 409 328L420 317ZM582 61L586 88Q585 88 582 83Q557 61 526 46L511 37L542 35H577Q577 36 578 39T580 49T582 61Z"></path></g></g><g data-mml-node="mi" transform="translate(700,-150) scale(0.707)"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g></g><g data-mml-node="mo" transform="translate(13005.3,0)"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="mi" transform="translate(13283.3,0)"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path></g><g data-mml-node="mo" transform="translate(14042.3,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(14431.3,0)"><path data-c="1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></g><g data-mml-node="mo" transform="translate(15001.3,0)"><path data-c="3B" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 85 94 103T137 121Q202 121 202 8Q202 -44 183 -94T144 -169T118 -194Q115 -194 106 -186T95 -174Q94 -171 107 -155T137 -107T160 -38Q161 -32 162 -22T165 -4T165 4Q165 5 161 4T142 0Q110 0 94 18T78 60Z"></path></g><g data-mml-node="mi" transform="translate(15446,0)"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g><g data-mml-node="mo" transform="translate(15915,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(16304,0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g></g></g></svg></mjx-container></span></p>
+<p>只要真实参数落在随机化分布覆盖范围内，策略就可能把真机视为训练中见过的一种变化。随机化应按故障假设分组，并保留 nominal 环境，避免策略只学会过度保守的最坏情况动作。</p>
+<h3 id="q27.-仿真平台怎样选isaac-labmujocogenesis-各适合什么">Q27. 仿真平台怎样选？Isaac Lab、MuJoCo、Genesis 各适合什么？</h3>
+<p>Isaac Lab 适合 NVIDIA GPU 栈、大规模并行强化学习、人形与移动操作、Omniverse 资产和后续 Isaac ROS 工程，但环境较重、版本耦合与调试成本较高。MuJoCo 适合接触控制、算法基线、快速迭代和可复现实验，数值行为容易理解，但超大规模视觉仿真和数字孪生资产不是其最强项。</p>
+<p>Genesis 更偏 GPU 并行、多物理场和高吞吐的新路线，适合探索软体、流体或大规模生成式仿真，但应单独评估版本稳定性、资产兼容和长期维护。实践中可用 MuJoCo 做控制器单元测试与消融，用 Isaac Lab 或 Genesis 做大规模训练。最终选型前，应拿自己的机器人与接触任务实测吞吐、显存、接触稳定性、资产导入与真机排序相关性。</p>
+<h3 id="q28.-domain-randomization-做过头会有什么症状怎样设范围">Q28. Domain Randomization 做过头会有什么症状？怎样设范围？</h3>
+<p>症状包括：训练回报长期上不去；nominal 环境也明显退化；动作幅度小、速度慢、反复试探；视觉特征退化为粗糙轮廓；所有环境都勉强工作，却没有任何场景做得好。更隐蔽的问题是随机化组合不符合现实，模型学到了不存在的相关性。</p>
+<p>范围设计应遵循“测量中心值—估计不确定度—逐步扩张—真机回归”：可测参数以标定均值为中心，先覆盖制造公差和运行波动；不可测参数通过 system identification 或真实轨迹反推。参数应保留相关性，如质量、惯量和尺寸联合采样。训练可从窄分布 curriculum 到宽分布，评测则拆成 nominal、边界、OOD 与真机四套。</p>
+<h3 id="q29.-策略在仿真里-90-分真机只有-40-分排查顺序是什么">Q29. 策略在仿真里 90 分，真机只有 40 分，排查顺序是什么？</h3>
+<p>第一步排除评测不一致：成功条件、超时、复位、初始位姿与失败重试是否一致，并逐帧对齐同一任务的仿真与真机视频。第二步查接口：坐标系、单位、关节顺序、四元数约定、相机时间戳、动作归一化、夹爪语义和控制频率。很多大幅掉点其实是 frame transform、缩放或延迟问题。</p>
+<p>随后按“感知→执行→交互”定位：用真机图像离线回放策略；只记录动作不执行以查抖动与饱和；用固定轨迹测量跟踪误差、延迟、摩擦与夹爪闭合。最后做单变量 A/B，例如把真机图像送入仿真、逐项注入实测延迟和标定误差。找到主因后先修接口与仿真，再考虑真机适配，避免用更多数据掩盖工程错误。</p>
+<h3 id="q30.-real2sim数字孪生的价值场景在哪里3dgs-重建能解决什么">Q30. Real2Sim/数字孪生的价值场景在哪里？3DGS 重建能解决什么？</h3>
+<p>Real2Sim 把真实工作空间转成可重复、可编辑、可批量运行的训练与评测环境。完整数字孪生不仅是外观模型，还应包含机器人运动学、物体几何、可动关节、碰撞体、材质参数、传感器和任务状态。它适合复现真机失败、生成边界条件、软件在环/硬件在环测试和策略回归。</p>
+<p>3D Gaussian Splatting 擅长从多视角图像快速重建高保真外观，对缩小视觉域差、生成新视角与重放真实背景很有价值；但“看起来真实”不等于“能交互”。原始 3DGS 通常缺少可靠表面、碰撞几何、对象级语义和动力学。工程上常用 3DGS 负责视觉层，mesh/SDF、关节模型和辨识参数负责物理层。</p>
+<hr>
+<h2 id="模块-e具身世界模型">模块 E：具身世界模型</h2>
+<h3 id="q31.-为什么具身智能需要世界模型它补了模仿学习什么短板">Q31. 为什么具身智能需要世界模型？它补了模仿学习什么短板？</h3>
+<p>行为克隆学习的是 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="11.939ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5276.9 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(892,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(562,-150) scale(0.707)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g><g data-mml-node="mo" transform="translate(2037,0)"><path data-c="2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="msub" transform="translate(2592.8,0)"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></g><g data-mml-node="mi" transform="translate(778,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(3966.2,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(4410.9,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="mo" transform="translate(4887.9,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span>：在类似观测下复现专家动作。它不必显式回答“执行这个动作后世界会怎样”，因此一旦偏离专家轨迹，误差会改变后续观测，形成 covariate shift。数据中没覆盖的失败恢复、反事实动作和稀有接触也很难仅靠模仿获得。</p>
+<p>世界模型学习近似动力学 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="13.45ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5944.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(892,0)"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="TeXAtom" transform="translate(502,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(1139,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g><g data-mml-node="mo" transform="translate(2880.7,0)"><path data-c="2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="msub" transform="translate(3436.5,0)"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mi" transform="translate(502,-150) scale(0.707)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g><g data-mml-node="mo" transform="translate(4243.8,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(4688.4,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(562,-150) scale(0.707)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g><g data-mml-node="mo" transform="translate(5555.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span> 或其 latent 版本，使机器人能预测候选动作后果、比较计划、估计进度并进行 imagined rollout。它补上因果动态、反事实评估和闭环纠错，但也可能幻觉、长时漂移或忽略接触细节。因此通常使用短视界滚动规划、真实观测频繁重规划，并配合价值模型和安全约束。</p>
+<h3 id="q32.-v-jepa-2-和-gr-2-代表哪两条世界模型路线怎样取舍">Q32. V-JEPA 2 和 GR-2 代表哪两条世界模型路线？怎样取舍？</h3>
+<p>V-JEPA 2 代表 latent prediction：不重建每个像素，而在表征空间预测未来，并寻找使预测 latent 接近目标 latent 的动作。公开资料称其先用互联网规模视频预训练，再用不到 62 小时 DROID 数据后训练动作条件模型；这个数字建立在大规模预训练之上，不能解读为“62 小时训练出通用机器人”。该路线计算更省、适合在线规划，但 latent 可解释性弱，遗漏接触信息时不易发现。</p>
+<p>“GR-2”在不同资料中的具体指代并不统一，这里按生成式世界模型路线理解：生成未来视频、状态或多模态轨迹，并可同时预测动作。它便于可视化、合成数据与多未来建模，但训练/推理昂贵，像素逼真也可能掩盖物理错误。在线 MPC 和边缘部署更偏 latent；需要可审计想象或数据生成时偏生成式；常见折中是共享 latent 动力学，仅对少量候选轨迹解码视频。</p>
+<h3 id="q33.-世界模型怎样注入-vla三种方式的工程代价分别是什么">Q33. 世界模型怎样注入 VLA？三种方式的工程代价分别是什么？</h3>
+<p>第一种是<strong>外置规划器/评估器</strong>：VLA 提出动作或子目标，世界模型 rollout 并打分，再滚动执行。模块清晰、可独立替换，但一次控制需多次推演，延迟最高，两个模型的状态与动作接口必须严格对齐。</p>
+<p>第二种是<strong>共享骨干加辅助预测头</strong>：VLA 输出动作的同时预测未来 latent、图像、深度或接触。辅助监督迫使表示保留动力学信息，部署时还能裁掉预测头，但难点是多任务损失权重、梯度冲突与时间对齐。第三种是<strong>统一 World Action Model</strong>：同一模型联合建模观测、未来和动作，潜力最大，数据、算力、稳定性和安全验证成本也最高。工程上常从外置验证价值，再做辅助头，规模足够后才考虑统一。</p>
+<h3 id="q34.-gr-1-的视频预训练机器人联合预测策略部署为什么成立">Q34. GR-1 的“视频预训练→机器人联合预测→策略部署”为什么成立？</h3>
+<p>机器人轨迹本身就是“视频序列＋本体状态＋动作”。普通视频虽然没有机器人动作标签，却包含物体恒常性、手物交互、运动边界和事件先后关系，因此视频预测预训练可以先学习视觉动态先验。GR-1 随后在机器人数据上接入语言、图像与机器人状态，并联合预测未来图像和动作，使视频知识通过共享的 GPT-style 时序模型迁移到控制。</p>
+<p>关键不是“会生成视频就会控制”，而是未来图像预测为动作头提供任务进展和状态变化的密集监督，动作监督再把被动观察与可执行空间对齐。互联网视频缺少准确力觉、触觉和机器人约束，所以接触丰富任务仍依赖机器人数据；GR-1 的结果也应限制在其具体基准和真机设置中理解。</p>
+<h3 id="q35.-世界模型合成的数据直接喂给-vla最大的坑是什么怎么防">Q35. 世界模型合成的数据直接喂给 VLA，最大的坑是什么？怎么防？</h3>
+<p>最大坑是<strong>模型偏差被策略放大</strong>。合成轨迹看似逼真，却可能包含错误因果：手穿物、接触后不守恒、夹爪未抓稳但物体跟随。VLA 会主动利用这些“仿真漏洞”；若合成数据比例过高，世界模型的偏差还会被蒸馏进策略，形成闭环自证。</p>
+<p>防护包括：真实数据始终作为锚点；合成数据带来源标签并限制权重；用多模型 disagreement、物理规则、逆动力学和多视角一致性过滤；关键接触片段提高拒绝阈值；主要用合成数据扩充可验证的视觉变化、子目标与失败恢复，而不是凭空生成高精度力控真值。最终必须在隔离的真实集和真机上评估，不能让同一个世界模型既出题又当裁判。</p>
+<h3 id="q36.-2026-年很火的-world-action-model-是什么">Q36. 2026 年很火的 World Action Model 是什么？</h3>
+<p>World Action Model（WAM）更像快速演化的技术范式，而不是唯一标准结构。其核心是联合建模“世界如何演化”和“智能体采取什么动作”：</p>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="24.227ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 10708.3 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(892,0)"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(1139,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1639,0)"><path data-c="3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></g><g data-mml-node="mi" transform="translate(1917,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(2278,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(3056,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g><g data-mml-node="mo" transform="translate(4248.8,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(4693.5,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="3A" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></g><g data-mml-node="mi" transform="translate(639,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(1000,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(1778,0)"><path data-c="1D43B" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g></g></g><g data-mml-node="mo" transform="translate(7468.4,0)"><path data-c="2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="msub" transform="translate(8024.2,0)"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></g><g data-mml-node="mi" transform="translate(778,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(9397.6,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(9842.3,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="mo" transform="translate(10319.3,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span></p>
+<p>相较于只从当前观察直接输出动作的 VLA，WAM 把未来状态预测、动作生成，有时还包括价值判断放进同一表示或生成过程，使策略能先内部预演再行动。</p>
+<p>它试图统一三条链路：从海量视频学物理与交互先验，从机器人数据学可执行动作，再通过 imagined rollout 做规划、RL 或数据扩增。判断 WAM 不能只看生成视频清晰度，关键是动作条件、闭环校正和决策可用性。2026 年不少名称与结果来自第一方报告，比较时必须限定本体、任务、控制频率和真机协议。</p>
+<h3 id="q37.-给一个预训练好的视频生成模型怎样把它改成机器人策略">Q37. 给一个预训练好的视频生成模型，怎样把它改成机器人策略？</h3>
+<p>第一步把“被动视频生成”改成“动作条件世界模型”：加入机器人状态、语言目标、相机参数和 action token，学习 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="14.767ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 6526.8 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="msub" transform="translate(892,0)"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(361,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mn" transform="translate(1139,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g><g data-mml-node="mo" transform="translate(2896.7,0)"><path data-c="2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="msub" transform="translate(3452.5,0)"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></g><g data-mml-node="mi" transform="translate(778,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g></g><g data-mml-node="mo" transform="translate(4825.9,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="msub" transform="translate(5270.6,0)"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(562,-150) scale(0.707)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g></g><g data-mml-node="mo" transform="translate(6137.8,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span>。动作可用关节增量、末端位姿、离散技能或 latent action；无动作视频可先通过逆动力学学习 latent，但最终仍需真实机器人数据对齐。</p>
+<p>第二步有两种策略化方式：保留视频模型作为 simulator，对候选动作生成未来并用目标相似度/价值函数选优；或在视频骨干上增加 action head，联合训练未来预测和行为克隆，再做 DAgger/RL 后训练。部署要使用短视界、action chunk、闭环重规划和独立安全控制器，并补齐多视角一致性、时延、触觉/力反馈与本体约束。</p>
+<hr>
+<h2 id="模块-f策略架构与骨干">模块 F：策略架构与骨干</h2>
+<h3 id="q38.-通用-vla-架构可以拆成哪四段骨干要不要冻结怎样决定">Q38. 通用 VLA 架构可以拆成哪四段？“骨干要不要冻结”怎样决定？</h3>
+<p>通用 VLA 可拆成四段：①输入编码，处理多相机图像、语言、本体和可选触觉；②多模态融合与推理骨干，完成语义 grounding、时空记忆和任务分解；③动作专家/解码器，用回归、离散 token、diffusion 或 flow matching 生成 action chunk；④执行与安全层，负责反归一化、运动学映射、插值、限位、碰撞检查和故障恢复。</p>
+<p>小规模单本体数据先冻结视觉和语言骨干，只训投影层、LoRA 与动作头；数据增加后可解冻融合层，让表示适应机器人视角；只有多任务、多场景数据充足时才小学习率解冻视觉后层。seen 上升而 OOD 下滑，通常说明解冻过多或数据覆盖不足。</p>
+<h3 id="q39.-双系统快慢脑架构的工程动机是什么">Q39. 双系统“快慢脑”架构的工程动机是什么？</h3>
+<p>机器人同时面对两种时间尺度：任务规划可以用数百毫秒到数秒思考，而接触、避障和状态反馈需要几十到上千赫兹。一个超大模型包办所有频率会带来延迟和算力浪费；只有快速反应策略，又难处理长指令、失败恢复和工具调用。因此双系统把低频语义推理与高频运动执行解耦。</p>
+<p>典型做法是慢脑 VLM/LLM 生成子目标、关键帧、技能 token 或约束，快脑 diffusion policy、轻量 VLA、MPC 或传统控制器执行 action chunk。两者通过共享状态或目标位姿通信，快脑持续闭环，慢脑在任务切换、低置信度或异常时触发。真正难点是接口：子目标必须可执行、可检测完成，并支持超时、抢占和降级。</p>
+<h3 id="q40.-空间泛化靠双-2d-编码器显式-3d还是-3d-aware-token">Q40. 空间泛化靠双 2D 编码器、显式 3D，还是 3D-aware token？</h3>
+<p>双 2D 编码器可让一支保留预训练语义，另一支强化局部纹理、深度线索或机器人视角，改造成本低、推理快，但空间关系主要靠数据隐式学习，对视角变化和精确距离敏感。</p>
+<p>显式 3D 把深度、多视角和标定投影到点云、体素或场景图，坐标一致，适合精确放置和运动规划；代价是标定、深度误差和显存成本。3D-aware token 是折中：仍用图像骨干，但注入射线、相机位姿、深度或 3D positional encoding。语义泛化优先双 2D，计量操作优先显式 3D，大规模通用 VLA 常使用 3D-aware token 再加局部 3D 精修。</p>
+<h3 id="q41.-腕部相机和第三视角相机怎么融合为什么腕部相机对精细操作关键">Q41. 腕部相机和第三视角相机怎么融合？为什么腕部相机对精细操作关键？</h3>
+<p>第三视角提供全局工作区、目标关系和机械臂整体姿态；腕部相机在接近目标后提供局部纹理、遮挡后视野和毫米级闭环信号。可靠融合不仅是拼接 token，还要加入 camera ID、内外参、时间戳和本体位姿，使模型知道两个视图如何在几何上对应。</p>
+<p>工程上要处理同步、视图失效和分辨率分配：移动腕相机的延迟会被误判为物体运动；腕部近距离可能模糊，第三视角可能遮挡；全局图可低分辨率，腕部 ROI 应保留高分辨率。训练时随机丢弃单个视角，防止策略过度依赖固定相机。</p>
+<h3 id="q42.-指哪打哪的空间精度总差一截架构上能做哪些改造">Q42. “指哪打哪”的空间精度总差一截，架构上能做哪些改造？</h3>
+<p>不要只扩大 VLM。语言—图像 token 擅长语义定位，却常因 patch 下采样和纯 2D 表示丢失厘米级几何。可增加粗到细 grounding：全局分支选择目标和操作区域，局部分支对原图 ROI、腕部图和深度做高分辨率关键点/掩码预测，再转到机器人坐标系。输出端优先预测 3D waypoint、末端增量和抓取姿态，而不是直接猜关节值。</p>
+<p>还可加入相机射线编码、3D-aware token、坐标查询 token，以及视觉伺服式闭环：先到预抓取位，再根据腕部相机小步修正。误差固定方向时先查外参与时间同步；误差随距离增大时查深度或投影；识别正确但末端抖动时查动作生成与控制器。</p>
+<h3 id="q43.-gemini-robotics-1.5-的-think-before-acting-和-motion-transfer-分别解决什么">Q43. Gemini Robotics 1.5 的 “think before acting” 和 Motion Transfer 分别解决什么？</h3>
+<p>根据官方技术报告，think-before-act 解决复杂任务分解、进度判断与恢复：模型在动作之间插入多层语言推理，把长指令拆成短技能，结合新观察判断成败，再决定下一段动作。它提高多步任务的可解释性和适应性，但也增加上下文与推理延迟，因此不应进入高频控制环。</p>
+<p>Motion Transfer 解决跨本体数据复用：通过多本体训练和相应的动作映射机制，让在 ALOHA、双臂 Franka 等平台上学到的运动知识迁移到不同机器人，而不是每换本体就从头训练。它仍需处理视角、运动学、动作维度和可达空间差异。官方结果属于其团队在特定数据与协议下的第一方实验，不能等同于任意本体零样本通用。</p>
+<h3 id="q44.-显式思维链让-vla-更聪明但也更慢延迟怎样压">Q44. 显式思维链让 VLA 更聪明但也更慢，延迟怎样压？</h3>
+<p>第一种方法是“训练时长推理、部署时短推理”：用强教师生成详细轨迹，再蒸馏成子目标 token、离散技能或紧凑 latent plan。第二种是事件触发：正常执行走快速路径，只在新任务、低置信度、进度停滞或失败时调用慢思考。</p>
+<p>第三种是分层缓存与并行：慢脑提前规划后续子任务，快脑执行当前 chunk；复用场景编码和 KV cache，只更新变化区域；把自然语言链压成固定槽位，如 <code>{目标对象, 目标区域, 当前阶段, 完成条件, 恢复动作}</code>。压缩目标不是删光思考，而是让思考低频、结构化、可被新观测及时打断。</p>
+<hr>
+<h2 id="模块-g强化学习与后训练">模块 G：强化学习与后训练</h2>
+<h3 id="q45.-纯模仿学习之后为什么-rl-又回来了什么是机器人版-rlvr">Q45. 纯模仿学习之后，为什么 RL 又回来了？什么是机器人版 RLVR？</h3>
+<p>行为克隆只优化“在专家分布上拟合动作”，而 RL 直接优化“策略自己闭环执行后的累计结果”。它能让策略访问示教之外的失败状态，学习速度、成功率和恢复行为，因此在 SFT 饱和后仍可能继续提高。但 RL 一开始会离开专家分布，稀疏奖励又带来高方差；若学习率、KL 约束或奖励不当，就会遗忘原技能、钻奖励漏洞，表现先回退甚至崩溃。</p>
+<p>机器人版 RLVR 可理解为“带可验证奖励的机器人强化学习”：物体是否进入目标区、抽屉是否关到阈值、插头是否插到底，可由位姿、开关、力传感器或视觉检查器给出客观反馈。它比主观评分更容易扩展，但验证器仍可能误判或鼓励捷径，所以必须同时监控奖励—人工判定一致率、动作越界率和失败类型。</p>
+<h3 id="q46.-机器人-rl-的奖励从哪里来四类来源各有什么坑">Q46. 机器人 RL 的奖励从哪里来？四类来源各有什么坑？</h3>
+<p>第一类是<strong>程序化结果奖励</strong>，由任务状态、几何关系或业务系统给出，稳定但容易阈值抖动和 reward hacking。第二类是<strong>稠密塑形奖励</strong>，基于距离、姿态误差、接触或仿真特权状态，学习快，却可能把策略锁在人工设计的局部最优。</p>
+<p>第三类是<strong>人工信号</strong>，包括成功标注、偏好比较、在线接管和纠正，能覆盖难形式化的质量要求，但成本高、延迟大且一致性差。第四类是<strong>学习型奖励模型</strong>，由视觉模型、VLM 或轨迹判别器判断完成质量，扩展性好，却可能域偏移、提示词敏感或被对抗性画面欺骗。上线前要分别报告奖励准确率、假阳性率与跨场景校准误差。</p>
+<h3 id="q47.-sim-rl-real-finetune的标准管线是什么privileged-learning-用在哪里">Q47. “sim-RL + real finetune”的标准管线是什么？Privileged learning 用在哪里？</h3>
+<p>常见流程是：先用示教训练出有非零成功率的 BC/VLA；建立覆盖视觉、动力学、接触与延迟随机性的仿真；在并行环境中做 RL；进行零样本真机验收，收集少量真实失败、纠正和自主轨迹；最后用受约束的离线或在线 RL 微调。每阶段都应设置成功率、最差分位数、安全违规率和 sim-to-real 落差等闸门。</p>
+<p>Privileged learning 允许训练阶段的教师、价值函数或奖励器读取部署时不可得的信息，如精确物体位姿、接触点和无噪声速度；学生策略仍只看真实可用传感器。常见做法是非对称 actor-critic 或教师—学生蒸馏。风险是学生暗中依赖仿真专属线索，因此必须做去特权消融、观测遮挡与真实噪声回放。</p>
+<h3 id="q48.-rl-微调会不会毁掉-vla-原有的语义能力怎么保护">Q48. RL 微调会不会毁掉 VLA 原有的语义能力？怎么保护？</h3>
+<p>会。目标域通常只有少数任务和指令，RL 梯度却持续推动共享骨干迎合局部回报，可能造成灾难性遗忘：目标任务更快，但同义指令、陌生物体、空间关系和旧技能变差。奖励漏洞也可能把语义理解压缩成训练场景中的视觉捷径。</p>
+<p>保护手段包括：冻结视觉语言骨干，只训练 action expert、adapter 或 LoRA；加入对初始策略的 KL/特征蒸馏约束，并混入预训练或旧任务回放；把稳定语义通路与可塑控制通路解耦。验收时同时报告新任务收益、旧任务下降、语言/视觉 OOD 与参数漂移，不能只看目标任务成功率。</p>
+<h3 id="q49.-什么时候-rl-不是好选择动手前先检查哪三个前置条件">Q49. 什么时候 RL 不是好选择？动手前先检查哪三个前置条件？</h3>
+<p>若问题本质是标注错误、控制器不稳、任务定义含糊，或补少量针对性纠正数据就能解决，不应先上 RL。对高碰撞风险、无法自动复位、每次试验代价极高的任务，也应优先考虑 BC、DAgger、规划或离线方法。</p>
+<p>三个前置条件是：①<strong>能力条件</strong>：BC 策略已有非零成功率，能到达接近成功的状态；②<strong>反馈条件</strong>：奖励与真实目标一致、可重复计算、低假阳性；③<strong>交互条件</strong>：可安全、足量地采样和复位，日志与急停完备。任一条件不满足，都应先修系统，而不是调 RL 超参数。</p>
+<h3 id="q50.-π0.6-的-recap-怎样在真机上做-rl为什么使用-advantage-conditioning">Q50. π*0.6 的 RECAP 怎样在真机上做 RL？为什么使用 advantage conditioning？</h3>
+<p>RECAP 把三类真实数据放进同一改进循环：示教提供基本技能，策略自主尝试暴露部署错误，人工接管提供从错误状态恢复的动作。系统根据成败结果估计动作相对当前状态基线的 advantage，再让 VLA 在监督式训练中读取“正/负 advantage”条件；部署时请求高 advantage 行为。</p>
+<p>这样做的原因是不同数据来自不同策略，不能直接等权模仿。Advantage 标签告诉模型“这段动作比当时预期更好还是更差”，能从失败数据中提取信号；同时避免直接对大型 flow-matching VLA 计算复杂策略似然。验证应看单位时间吞吐、失败率、人工接管率和完成时间，而不仅是 episode reward。</p>
+<h3 id="q51.-simplevla-rl-只用成功失败一个比特为什么也能训练-vla">Q51. SimpleVLA-RL 只用“成功/失败”一个比特，为什么也能训练 VLA？</h3>
+<p>只要初始策略偶尔成功，一组 rollout 中就会同时出现成功和失败。组相对优势估计可以整体上调成功轨迹、下调失败轨迹，并把序列级结果传到动作 token 或 action chunk；并行仿真又能低成本产生大量比较样本。动态筛选“既有成功又有失败”的组、提高探索多样性并从 SFT checkpoint 冷启动，都会提高有效梯度比例。</p>
+<p>关键前提仍是非零成功：若所有 rollout 都是 0，二元奖励没有排序信息。项目自报在特定 OpenVLA-OFT 与 LIBERO-Long 设置中，从每任务一条轨迹的 SFT 冷启动由 17.3 提升到 91.7；这是特定仿真基准结果，不等于开放世界只需一条示教。</p>
+<hr>
+<h2 id="模块-h记忆与长时程任务">模块 H：记忆与长时程任务</h2>
+<h3 id="q52.-vla-上下文窗口已经-128k长时程任务是不是解决了">Q52. “VLA 上下文窗口已经 128k”，长时程任务是不是解决了？</h3>
+<p>不是。长上下文只是提高可输入信息上限，不代表模型会保存、检索和利用关键历史。机器人视频冗余极高，几分钟多相机画面就可能耗尽预算；全量注意力还增加延迟，导致控制频率下降。更根本的问题是模型要知道哪些变化值得记、哪些步骤已完成、哪些失败不应重复。</p>
+<p>长时程还涉及信用分配、任务分解和恢复。工程上通常组合短期视觉缓存、压缩任务进度、显式物体状态、空间记忆、层级规划器和恢复策略。应评测重复动作率、已完成步骤遗忘率、删除关键历史后的性能变化，以及上下文增长时的延迟—收益曲线。</p>
+<h3 id="q53.-机器人记忆有哪些类型主流组合怎样搭">Q53. 机器人记忆有哪些类型？主流组合怎样搭？</h3>
+<p>短期/工作记忆保存最近数秒的图像、动作、本体和力信号，可用环形缓冲、时序注意力或压缩 latent，实现遮挡恢复与速度趋势估计。情景记忆保存完整尝试、失败和结果，适合轨迹库与向量检索。语义记忆保存较稳定的事实和技能知识，可用结构化状态或知识图谱表达。空间记忆维护房间、容器和物体关系，通常与 SLAM/3D 场景图结合。</p>
+<p>组合时不要把全部记忆直接拼进 VLA。更合理的是门控检索：低层策略消费短期连续信号，高层规划器读取任务进度、空间图和少量相关情景，成功经验再提炼进语义库。还要处理过期和冲突，例如物体已被移动时旧位置必须失效。</p>
+<h3 id="q54.-为什么错误恢复策略比主策略更难训练恢复数据怎样生产">Q54. 为什么错误恢复策略比主策略更难训练？恢复数据怎样生产？</h3>
+<p>主策略从标准初始状态出发，成功轨迹集中、结构清楚；恢复策略面对的是主策略制造的长尾状态：物体被推到边缘、夹爪卡住、局部顺序错乱。失败状态种类远多于正常状态，且可恢复性不明确，错误恢复还可能升级事故。</p>
+<p>恢复数据应从真实失败分布构造：运行当前策略并记录失败前后窗口；由人在线接管；在仿真中对关键状态施加扰动；从成功轨迹中制造抓偏、漏抓、遮挡等反事实状态；并标注“可自主恢复、需重置、需人工介入”。评测要单列故障检测召回率、恢复成功率、平均恢复时间、二次损坏率和不必要重置率。</p>
+<h3 id="q55.-长时程任务怎样评测只看最终成功率够不够">Q55. 长时程任务怎样评测？只看最终成功率够不够？</h3>
+<p>不够。最终成功率会把“九步完成、最后一步失败”和“第一步就撞停”都记为 0，也会掩盖极慢但最终成功的策略。至少还应报告子目标完成率与顺序、首次失败步骤、无故障运行时长、完成时间、路径效率、重试次数、循环行为、人工接管和恢复成功率。</p>
+<p>统计上应给出每任务、每场景分布和置信区间，而非只报宏平均。建议补充中位数、P90 完成时间、最差场景成功率、连续运行最长无人工干预时长，以及多步骤任务的生存曲线。可靠性、效率、恢复和安全必须一起看。</p>
+<hr>
+<h2 id="模块-i抓取与操作">模块 I：抓取与操作</h2>
+<h3 id="q56.-6d-抓取和平行爪抓取有什么区别anygrasp-类检测器能解决到哪">Q56. 6D 抓取和平行爪抓取有什么区别？AnyGrasp 类检测器能解决到哪？</h3>
+<p>6D grasp 指预测夹爪在三维空间的完整位姿，即三维平移和三维旋转，并可能附加夹爪宽度、接近方向与质量分数；平行夹爪描述的是执行器类型。两者不对立：多数 6D grasp 检测器正是为二指平行爪生成候选位姿，相比二维抓取框，它能处理侧抓、斜抓和点云几何约束。</p>
+<p>AnyGrasp 类方法适合作为几何 proposal 模块，不等于完整操作策略。它通常不知道“抓杯把而不是杯口”、后续放置姿态、材质摩擦、透明物体和重量。评测不能只看离线 AP，还应看真实抓取成功率、碰撞率、任务相关抓取比例和抓后放置成功率。</p>
+<h3 id="q57.-插孔拉链等接触丰富任务为什么在仿真里难学力控怎么接入">Q57. 插孔、拉链等接触丰富任务为什么在仿真里难学？力控怎么接入？</h3>
+<p>这类任务对毫米级几何误差、摩擦、材料顺应性、间隙和延迟高度敏感。仿真中的刚体接触、摩擦锥与求解器时间步只是近似；拉链还涉及柔性体、双边接触和拓扑变化。单靠视觉随机化无法覆盖这些力学误差。</p>
+<p>常见方案是“视觉到邻域、力觉完成接触”：VLA 先把末端送到预接触位姿，局部控制器再使用六维力矩、触觉和位姿误差执行阻抗/导纳控制、搜索或沿约束方向运动。策略可输出目标位姿、刚度、阻尼或控制模式，而不是直接输出高频关节力矩。评测要看峰值力、卡死率、接触后成功率和零件损伤。</p>
+<h3 id="q58.-灵巧手-20-自由度维度爆炸怎样降维">Q58. 灵巧手 20+ 自由度维度爆炸，怎样降维？</h3>
+<p>第一条路线是<strong>协同空间</strong>：用 PCA、关节耦合或预定义 grasp synergy，把高维关节映射到少量开合、捏合与卷曲系数，稳定但限制新手型。第二条是<strong>层级控制</strong>：高层选择抓取类型、接触目标或低维手势，低层负责关节跟踪与力分配，适合与 VLA 结合。</p>
+<p>第三条是<strong>学习型动作潜空间</strong>：用 autoencoder、VAE、diffusion prior 或动作 tokenizer 学习低维 latent，再由策略预测 latent action chunk。表达力强，但可能出现不可控解码误差。三条路线都应结合腕部位姿、触觉闭环和关节限位，并评测重建误差、越界率、接触稳定性与独立手指调整能力。</p>
+<h3 id="q59.-叠衣服打结等可变形物体任务为什么看起来简单做起来难">Q59. 叠衣服、打结等可变形物体任务为什么“看起来简单，做起来难”？</h3>
+<p>可变形物体状态维度极高，同一件衣服会因折叠、遮挡和自接触呈现完全不同的外观；单目图像难以判断被遮住的层次、边角与拓扑关系。结果又依赖材料刚度、摩擦、重力和抓点，一次小抓偏就改变所有后续状态。打结还涉及绳段穿越、环路和结型，二维图像相似不代表拓扑正确。</p>
+<p>常见方法包括关键点/边界检测、粒子或网格状态估计、双臂分阶段策略，以及通过抖动、铺平、重新抓取主动降低不确定性。评测不能只看最终照片，还要看关键点误差、覆盖率、褶皱度、拓扑正确率、重抓次数和跨材料泛化。</p>
+<h3 id="q60.-触觉和力觉怎样接入-vla只靠视觉做接触丰富任务的上限在哪里">Q60. 触觉和力觉怎样接入 VLA？只靠视觉做接触丰富任务的上限在哪里？</h3>
+<p>触觉/力觉可在三处接入：输入端把腕部六维力矩、指尖阵列和本体状态编码为时序 token；动作端让 action expert 同时预测位姿、夹持力、刚度或控制模式；训练端加入接触、滑移、过载与稳定抓持等辅助目标。由于力信号频率高于视觉，常采用异步双速率架构：VLA 低频规划，局部力控高频执行并在异常时打断。</p>
+<p>视觉可以推断“可能接触”，却无法可靠判断真实接触力、早期滑移、夹爪是否夹空、插孔是否卡住或软物体是否被压坏。开放空间搬运可能够用，精密装配、易碎物体和灵巧抓取通常不够。应做视觉-only、视觉+力觉、视觉+触觉消融。</p>
+<hr>
+<h2 id="模块-j评测与基准">模块 J：评测与基准</h2>
+<h3 id="q61.-仿真评测分数虚高的两大来源是什么simplerenv-给出什么启示">Q61. 仿真评测分数虚高的两大来源是什么？SimplerEnv 给出什么启示？</h3>
+<p>第一类来源是环境与任务泄漏：训练和评测共享资产、初始位姿、相机、纹理或成功判定，策略记住了基准规律。第二类是 sim-to-real gap：渲染、时延、控制接口、接触动力学和传感噪声不同，策略可能利用仿真特有纹理、穿透或理想控制精度。</p>
+<p>SimplerEnv 的核心启示不是“仿真能替代真机”，而是仿真评测是否有用，要看它能否保持策略在真机上的<strong>相对排名与行为趋势</strong>。绝对成功率偏低但排名稳定的仿真，比高分却与真机排序相反的仿真更有价值。应报告 sim/real 的相关性、排名违例和分布偏移敏感性。</p>
+<h3 id="q62.-真机评测协议怎样设计为什么不能只报平均成功率">Q62. 真机评测协议怎样设计？为什么不能只报平均成功率？</h3>
+<p>平均值会掩盖任务组合、初始状态与失败成本。模型可能在九个简单任务上满分、在一个安全关键任务上全败；不同团队还可能采用不同超时、重试、人工摆放和成功判据。20 次中的 14 次成功与 100 次中的 70 次成功都是 70%，统计可信度却不同。</p>
+<p>完整协议应预注册任务、随机化、超时、重试、人工介入和失败分类，报告每任务成功率及置信区间，同时给出最差组、完成时间、接管率、碰撞/损伤率与吞吐量。还应分开 ID、组合泛化和 OOD，保留连续未剪辑 rollout 或可审计日志。</p>
+<h3 id="q63.-具身评测有哪些常见作弊手法怎样设计防作弊机制">Q63. 具身评测有哪些常见“作弊”手法？怎样设计防作弊机制？</h3>
+<p>常见捷径包括：利用固定背景识别任务、记忆初始位置、从文件名或语言模板猜目标、读取仿真特权状态、利用成功检测器漏洞、选择性展示成功视频，以及失败后人工复位却不计次数。某些物理捷径可能是创新技能，也可能违反任务规范，必须在协议中事先定义。</p>
+<p>防护措施包括训练/测试资产与场景生成器隔离；随机化相机、背景、语言和初始状态；封闭部署接口，审计策略可读取的传感器；使用多个独立成功验证器并盲评抽检；报告所有尝试、重试和人工介入。还可做反事实测试：任务不变但换背景，或画面相似但换目标，检查策略是否依赖非因果线索。</p>
+<h3 id="q64.-给一个新任务域例如厨房备餐怎样从零设计评测">Q64. 给一个新任务域，例如厨房备餐，怎样从零设计评测？</h3>
+<p>先定义能力矩阵，而不是先挑好看的 demo。至少覆盖感知语义、抓取倾倒、切配工具、容器操作、顺序与计时、卫生、安全和恢复；再拆成原子技能、短组合与长时程配方。每个任务都要明确初始状态分布、允许动作、完成判据、超时和不可接受事件。</p>
+<p>测试集要包含新食材、新包装、新厨房布局、同义指令和干扰物，并隔离训练/测试实例。评测可结合程序化传感器、视觉复核和人工盲评，记录子步骤、耗时、食材浪费、峰值力、碰撞、交叉污染、接管和恢复。正式比较前先用强弱基线校准难度，避免全零或全满分。</p>
+<h3 id="q65.-真机评测成本高不可复现行业怎样做大规模评测">Q65. 真机评测成本高、不可复现，行业怎样做大规模评测？</h3>
+<p>把评测做成标准化生产系统：统一硬件与控制 API，模块化工装和自动复位，版本化任务配置、物体资产、相机标定与成功验证器；所有 rollout 自动记录模型版本、环境状态、延迟、动作和故障。先用仿真和离线回放淘汰明显较差策略，再把少量候选送入真机 A/B 测试。</p>
+<p>跨机构复现需要共享协议而不只是共享平均分：固定参考策略作为标尺，定期做配对 sim/real 校准，发布失败视频、机器可读日志和环境版本。远程机器人农场能提高利用率，但也要记录维修、磨损和操作者差异。目标不是取消真机，而是“仿真做宽覆盖、真机校准排名、部署监测漂移”。</p>
+<hr>
+<h2 id="模块-k部署与实时性">模块 K：部署与实时性</h2>
+<h3 id="q66.-50hz-控制一拍只有-20ms预算怎么拆为什么要做预测执行">Q66. 50Hz 控制一拍只有 20ms，预算怎么拆？为什么要做预测执行？</h3>
+<p>预算应按“动作真正生效”而不是“模型前向”拆分。一份示例是：传感器曝光与传输 3ms、同步和预处理 1.5ms、策略推理 6ms、动作后处理与安全检查 1.5ms、总线通信 2ms、驱动器更新 2ms、抖动余量 4ms。具体数字随硬件而变，关键是同时约束平均值和 P95/P99，并通过统一时钟记录采集、入队、推理、发包与执行确认时间。</p>
+<p>机器人执行的是“过去观测算出的未来动作”。若总延迟是 40ms、末端速度是 1m/s，状态已可能相差 4cm。因此策略应预测执行时刻 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.467ex" height="1.805ex" role="img" focusable="false" viewBox="0 -716 2416.4 798"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(583.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(1583.4,0)"><path data-c="394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path></g></g></g></svg></mjx-container></span> 的状态，或输出未来 action chunk 并滚动重规划。没有预测补偿会产生追赶振荡、接触过冲和相位错位；预测太远又会放大模型误差，所以 horizon 必须依据实测端到端延迟。</p>
+<h3 id="q67.-云边端三层架构是什么为什么控制闭环绝不能放云端">Q67. 云—边—端三层架构是什么？为什么控制闭环绝不能放云端？</h3>
+<p>“端”负责不可失联的确定性控制：编码器采样、关节位置/速度/力矩环、急停和碰撞限幅，通常运行在数百到上千赫兹。“边”是机器人本体或现场工控机，运行视觉、状态估计、VLA、轨迹生成和局部地图，约 10—100Hz。“云”适合低频、异步、可重试的任务，如大模型语义规划、训练、模型管理、车队调度与日志分析。</p>
+<p>闭环不能依赖云端，根因不是平均带宽而是最坏时延不可控。公网 RTT 会因排队、切网、重连或拥塞跃升到数百毫秒；视频上行还带来编码延迟。合理边界是：断云后机器人仍能安全制动、维持平衡并完成当前原子动作；云端只下发任务、子目标或非实时参数，不直接维持力控与平衡。</p>
+<h3 id="q68.-端侧推理优化的三板斧是什么为什么动作头量化要谨慎">Q68. 端侧推理优化的“三板斧”是什么？为什么动作头量化要谨慎？</h3>
+<p>第一类是<strong>模型层</strong>：蒸馏、剪枝、低秩适配、INT8/INT4 量化，减少视觉 token、历史帧和网络宽度。第二类是<strong>编译与硬件层</strong>：算子融合、Flash Attention、静态 shape、混合精度、零拷贝和 profiling，重点压内存搬运。第三类是<strong>时序与系统层</strong>：缓存、异步流水线、action chunking、并行解码和双缓冲，让采集、推理与执行重叠。</p>
+<p>动作头输出的是连续控制量，一个量化台阶可能直接变成毫米级偏差、速度尖峰或夹爪力误差，并在闭环中累计。因此常让主干使用低比特，动作头、归一化层和最后若干层保留 FP16/BF16。校准集必须覆盖接触、急停前后与恢复状态，验收还要看动作误差尾部、jerk、限位触发和峰值力。</p>
+<h3 id="q69.-demo-里很流畅到了客户现场就拉胯最常见的四类现象是什么">Q69. Demo 里很流畅，到了客户现场就拉胯，最常见的四类现象是什么？</h3>
+<p>第一类是<strong>实时链路塌陷</strong>：实验室只报模型 FPS，现场加入多相机、录像、通信和安全节点后，周期与 P99 抖动明显变坏。第二类是<strong>感知域偏移</strong>：频闪、反光、遮挡、脏镜头、相机位移和陌生背景让目标定位失效。第三类是<strong>本体与标定漂移</strong>：负载、摩擦、夹爪磨损、关节零位、手眼标定和网络延迟改变。第四类是<strong>长时程与恢复缺失</strong>：公开视频筛选短成功片段，客户关心连续数小时和数百次任务。</p>
+<p>即使每个关键步骤成功率为 98%，20 步全成功的理想上限也只有 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.127ex;" xmlns="http://www.w3.org/2000/svg" width="12.974ex" height="2.081ex" role="img" focusable="false" viewBox="0 -864 5734.7 920"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path data-c="2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" transform="translate(500,0)"></path><path data-c="39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z" transform="translate(778,0)"></path><path data-c="38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z" transform="translate(1278,0)"></path></g><g data-mml-node="TeXAtom" transform="translate(1811,393.1) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path></g></g></g><g data-mml-node="mo" transform="translate(2845.9,0)"><path data-c="2248" d="M55 319Q55 360 72 393T114 444T163 472T205 482Q207 482 213 482T223 483Q262 483 296 468T393 413L443 381Q502 346 553 346Q609 346 649 375T694 454Q694 465 698 474T708 483Q722 483 722 452Q722 386 675 338T555 289Q514 289 468 310T388 357T308 404T224 426Q164 426 125 393T83 318Q81 289 69 289Q55 289 55 319ZM55 85Q55 126 72 159T114 210T163 238T205 248Q207 248 213 248T223 249Q262 249 296 234T393 179L443 147Q502 112 553 112Q609 112 649 141T694 220Q694 249 708 249T722 217Q722 153 675 104T555 55Q514 55 468 76T388 123T308 170T224 192Q164 192 125 159T83 84Q80 55 69 55Q55 55 55 85Z"></path></g><g data-mml-node="mn" transform="translate(3901.7,0)"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path data-c="37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z" transform="translate(500,0)"></path></g><g data-mml-node="mi" transform="translate(4901.7,0)"><path data-c="25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></g></g></g></svg></mjx-container></span>。现场验收应冻结模型版本，进行未见场景盲测、连续运行和故障注入，并报告任务成功率、平均无故障任务数、P95/P99 延迟、恢复率与人工介入率。</p>
+<h3 id="q70.-50hz-是所有任务的硬性要求吗怎样按任务分档">Q70. 50Hz 是所有任务的硬性要求吗？怎样按任务分档？</h3>
+<p>不是。频率应按动力学速度、接触风险和允许误差分档：</p>
+<table>
+<thead>
+<tr>
+<th>任务层级</th>
+<th style="text-align: right;">典型频率</th>
+<th>重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电流/力矩、双足稳定、碰撞响应</td>
+<td style="text-align: right;">500Hz—2kHz</td>
+<td>硬实时，过期动作丢弃</td>
+</tr>
+<tr>
+<td>全身控制、阻抗控制、快速接触</td>
+<td style="text-align: right;">100—500Hz</td>
+<td>强实时、低抖动</td>
+</tr>
+<tr>
+<td>视觉伺服、动态抓取、连续遥操作</td>
+<td style="text-align: right;">30—100Hz</td>
+<td>50Hz 常是合理起点</td>
+</tr>
+<tr>
+<td>普通桌面抓放、开关门、折叠</td>
+<td style="text-align: right;">10—30Hz</td>
+<td>可配 action chunk 与插值</td>
+</tr>
+<tr>
+<td>语义分解、导航子目标、任务规划</td>
+<td style="text-align: right;">0.1—5Hz</td>
+<td>可异步重规划</td>
+</tr>
+</tbody>
+</table>
+<p>简单判断是：一个控制周期内目标或末端的移动量应明显小于允许误差。更常见的系统是多速率架构：VLA 以 5—20Hz 产生子目标或动作块，运动策略以 50—200Hz 跟踪，底层驱动以更高频闭环。</p>
+<hr>
+<h2 id="模块-l前沿趋势与行业格局">模块 L：前沿趋势与行业格局</h2>
+<h3 id="q71.-通用机器人基座之争中数据路线本体路线与开源程度怎样看">Q71. 通用机器人基座之争中，数据路线、本体路线与开源程度怎样看？</h3>
+<p>数据路线各有作用：真机遥操作含真实接触但昂贵；人类视频规模大却缺少动作和力信息；仿真便宜可自动标注却有域差；自主探索和 RL 能补失败恢复，但依赖可靠奖励与安全基础设施。可信路线通常是“互联网视频学语义与时序—仿真扩覆盖—真机校准动作—部署数据补失败”的闭环。</p>
+<p>本体路线一类是统一 action token/latent，再用本体适配器映射不同关节；另一类是共享视觉语言骨干，为不同机器人保留专用动作专家。前者迁移潜力大，后者更容易保住控制精度。评估时不要只问“支持多少本体”，而要问新本体需要多少数据、哪些层重训、动作如何归一化、迁移是否超过同本体基线。</p>
+<p>开源程度至少拆成代码、权重、训练数据、数据配方、评测环境和部署栈六项。只有推理代码不等于可复现；有权重但无数据配方也难研究 scaling。工程选型应比较许可证、可部署性、适配成本和自己的数据闭环，而不是做公司排名。</p>
+<h3 id="q72.-人形机器人中运动控制问题与操作策略怎样统一">Q72. 人形机器人中，运动控制问题与操作策略怎样统一？</h3>
+<p>统一不等于让一个大模型直接输出所有关节力矩，而是统一状态、目标和约束接口。上层 VLA 读取多相机、语言和本体状态，输出手部轨迹、物体子目标、躯干朝向、期望基座速度或未来关键姿态；下层全身控制器把这些目标与质心、接触、关节限位、自碰撞和摩擦锥约束一起求解，再由高频阻抗/力矩环执行。</p>
+<p>可采用三层：VLA 以 2—20Hz 规划语义和动作块，学习型全身策略或 MPC/QP 以 50—200Hz 生成可行关节目标，驱动器以 500Hz—2kHz 闭环。共享接口必须包含时间戳、参考时域、接触模式、目标优先级与不确定度。训练与评测也要覆盖推、拉、弯腰、跨步补偿以及操作失败后的重新站稳。</p>
+<h3 id="q73.-具身智能的gpt-时刻什么时候来判断依据是什么">Q73. 具身智能的“GPT 时刻”什么时候来？判断依据是什么？</h3>
+<p>截至 2026 年 11 月，更稳妥的回答是：不能用一个发布日期或一段 demo 宣布已经到来。语言模型的转折点不仅是单次能力展示，还包括统一接口、可预测的规模收益、低门槛适配和大量真实用户复用。具身智能也应满足若干可检验条件：跨任务与跨场景稳定扩展；新本体少量数据可适配；长时程具备恢复与记忆；独立团队可在统一协议下复现；部署成本和人工接管率进入可接受区间；部署数据能形成持续改进飞轮。</p>
+<p>RT-2、OpenVLA、π 系列、Gemini Robotics、V-JEPA 2 等分别展示了语义迁移、开放训练、连续动作、跨本体和世界模型规划的进展，但它们不能互相替代，也不能从官方演示外推到任意现场。所谓 GPT 时刻更可能先表现为“同一模型族能经济地解决大量中低风险任务”，再逐步进入高接触、高安全要求场景。</p>
+<h3 id="q74.-人形机器人全身控制现在怎么做sonic-类运动跟踪模型怎样与-vla-衔接">Q74. 人形机器人全身控制现在怎么做？SONIC 类运动跟踪模型怎样与 VLA 衔接？</h3>
+<p>SONIC 类路线把大规模 motion tracking 作为全身控制基础：从人体或机器人运动中获得逐帧目标，在仿真中学习兼顾姿态、速度、平衡和接触的通用跟踪策略。它的关键价值不是“会表演动作”，而是提供快速、反应式、受动力学约束的低层执行器。具体数据量和训练成本应以对应项目的官方论文为准，不把厂商演示当成跨本体通用结论。</p>
+<p>与 VLA 衔接时，VLA 不应直接输出裸关节力矩，而应输出未来 0.5—2 秒的关键点、末端位姿、根节点速度、接触意图或全身参考 token；低层策略负责把目标投影到可行动作。可采用滚动窗口：VLA 低频更新参考，全身策略以 50—200Hz 执行，驱动器再以更高频闭环。接口处必须加入参考平滑、可达性、自碰撞、支撑域与力矩限制；目标不可行时应降级为保持平衡或安全停止。</p>
+<hr>
+<h2 id="模块-m面试通识与项目深挖">模块 M：面试通识与项目深挖</h2>
+<h3 id="q75.-具身算法面试中的项目深挖会追到哪一层">Q75. 具身算法面试中的项目深挖会追到哪一层？</h3>
+<p>面试官通常不会停在“用了某个 VLA/扩散策略”，而会沿数据、算法、系统和结果追到可复现细节。至少准备以下十个维度：</p>
+<ol type="1">
+<li><strong>问题与约束</strong>：任务为什么难？自由度、接触、速度和安全边界是什么？</li>
+<li><strong>指标定义</strong>：成功如何判定？为什么选成功率、吞吐或 P99 延迟？</li>
+<li><strong>数据闭环</strong>：多少轨迹/小时，怎样采集、切分、处理失败和泄漏？</li>
+<li><strong>观测与动作</strong>：多相机、本体、力觉怎样同步？为何选该动作表示？</li>
+<li><strong>模型与损失</strong>：骨干、动作头、时序窗口和损失权重各解决什么？</li>
+<li><strong>训练工程</strong>：显存、batch、学习率、时长、过拟合与分布式故障怎样处理？</li>
+<li><strong>实时部署</strong>：延迟如何拆？量化、缓存、丢帧和过期动作怎样处理？</li>
+<li><strong>评测设计</strong>：ID、视觉 OOD、物体 OOD、位置 OOD、长时程各测多少次？</li>
+<li><strong>Sim2Real</strong>：标定、摩擦、控制接口和时延差异怎样定位？</li>
+<li><strong>失败恢复与个人贡献</strong>：前三类失败是什么？你改了哪些代码与决策？</li>
+</ol>
+<p>可用 STAR 结构回答：</p>
+<ul>
+<li><strong>S（Situation）</strong>：说明机器人、场景、初始成功率、主要限制和部署要求；</li>
+<li><strong>T（Task）</strong>：明确你负责的模块、量化目标与验收范围；</li>
+<li><strong>A（Action）</strong>：把问题拆成感知/策略/控制，说明数据补采、模型改动、消融和部署优化；</li>
+<li><strong>R（Result）</strong>：报告冻结版本后的成功率、置信区间、P99 延迟、连续运行和人工介入，并坦白未解决的故障模式。</li>
+</ul>
+<p>最忌讳只报最好视频或只讲模型名。真正有说服力的答案要能回到数据版本、代码模块、时间戳、失败样本和对照实验，并明确哪些是团队结果、哪些是个人贡献。</p>
+<hr>
+<h2 id="总结75-道题背后其实是一条主线">总结：75 道题背后其实是一条主线</h2>
+<p>这组问题可以收束为一句话：<strong>把大模型的语义与泛化能力放进受时延、动力学、安全和数据成本约束的闭环系统，并通过可复现的失败统计持续改进。</strong></p>
+<p>从 RT-2 的动作 token、π0 的连续动作专家，到世界模型、RL 后训练、长时记忆和端侧部署，真正的落点始终是四件事：机器人能否在正确时间观察真实状态；能否生成可执行而不是“看起来合理”的动作；遇到偏差后能否恢复；能否以足够低的成本稳定重复成功。</p>
+<hr>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li>RT-2: <a target="_blank" rel="noopener" href="https://robotics-transformer2.github.io/">Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</a></li>
+<li>OpenVLA: <a target="_blank" rel="noopener" href="https://openvla.github.io/">An Open-Source Vision-Language-Action Model</a></li>
+<li>OpenVLA-OFT: <a target="_blank" rel="noopener" href="https://openvla-oft.github.io/">Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success</a></li>
+<li>Physical Intelligence: <a target="_blank" rel="noopener" href="https://www.physicalintelligence.company/">π0、π0.5、π*0.6、π0.7 与 RL Token 官方研究页</a></li>
+<li>Google DeepMind: <a target="_blank" rel="noopener" href="https://deepmind.google/discover/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/">Gemini Robotics 1.5 官方介绍</a></li>
+<li>Gemini Robotics Team: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2510.03342">Gemini Robotics 1.5 Technical Report</a></li>
+<li>Meta FAIR: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2506.09985">V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning</a></li>
+<li>GR-1: <a target="_blank" rel="noopener" href="https://gr1-manipulation.github.io/">Unleashing Large-Scale Video Generative Pre-training for Visual Robot Manipulation</a></li>
+<li>UMI: <a target="_blank" rel="noopener" href="https://umi-gripper.github.io/">Universal Manipulation Interface</a></li>
+<li>SimpleVLA-RL: <a target="_blank" rel="noopener" href="https://github.com/PRIME-RL/SimpleVLA-RL">Scaling VLA Training via Reinforcement Learning</a></li>
+<li>RoboTwin 2.0: <a target="_blank" rel="noopener" href="https://robotwin-platform.github.io/">A Scalable Data Generator and Benchmark</a></li>
+<li>SIMPLER: <a target="_blank" rel="noopener" href="https://simpler-env.github.io/">Evaluating Real-World Robot Manipulation Policies in Simulation</a></li>
+<li>Open X-Embodiment: <a target="_blank" rel="noopener" href="https://robotics-transformer-x.github.io/">Robotics Transformer X</a></li>
+<li>ACT: <a target="_blank" rel="noopener" href="https://tonyzhaozh.github.io/aloha/">Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware</a></li>
+<li>Diffusion Policy: <a target="_blank" rel="noopener" href="https://diffusion-policy.cs.columbia.edu/">Visuomotor Policy Learning via Action Diffusion</a></li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-11-05</span>
+            
+                <span>该篇文章被 xuexutao</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/VLA/'>
+                            VLA
+                        </a>
+                    
+                        <a href='/tags/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/'>
+                            具身智能
+                        </a>
+                    
+                        <a href='/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0/'>
+                            机器人学习
+                        </a>
+                    
+                        <a href='/tags/%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B/'>
+                            世界模型
+                        </a>
+                    
+                        <a href='/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/'>
+                            强化学习
+                        </a>
+                    
+                        <a href='/tags/Sim2Real/'>
+                            Sim2Real
+                        </a>
+                    
+                        <a href='/tags/%E9%9D%A2%E8%AF%95/'>
+                            面试
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD/'>
+                            具身智能
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/25/blog_2026/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83AI%E6%96%B9%E5%90%91%E7%AC%94%E8%AF%95%E9%A2%98/">华为机考 AI 方向笔试题（9 月 9 日）</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2001-2026 Xuext 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    <!-- hexo injector body_end start --><script src="/js/custom.js"></script><!-- hexo injector body_end end --></body>
+</html>
